@@ -1,0 +1,624 @@
+<!DOCTYPE html> <html itemscope itemtype=https://schema.org/QAPage class=html__responsive style><!--
+ Page saved with SingleFile 
+ url: https://vi.stackexchange.com/questions/2350/how-to-map-alt-key 
+ saved date: Sun Mar 20 2022 11:57:10 GMT+0530 (India Standard Time)
+--><meta charset=utf-8>
+<title>key bindings - How to map Alt key? - Vi and Vim Stack Exchange</title>
+<link rel=image_src href="https://cdn.sstatic.net/Sites/vi/Img/apple-touch-icon.png?v=1f04b3f6e8f4">
+<link rel=search type=application/opensearchdescription+xml title="Vi and Vim Stack Exchange" href=https://vi.stackexchange.com/opensearch.xml>
+<link rel=canonical href=https://vi.stackexchange.com/questions/2350/how-to-map-alt-key>
+<meta name=viewport content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+<meta property=og:type content=website>
+<meta property=og:url content=https://vi.stackexchange.com/questions/2350/how-to-map-alt-key>
+<meta property=og:site_name content="Vi and Vim Stack Exchange">
+<meta property=og:image itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/vi/Img/apple-touch-icon@2.png?v=af57295b1ad9">
+<meta name=twitter:card content=summary>
+<meta name=twitter:domain content=vi.stackexchange.com>
+<meta name=twitter:title property=og:title itemprop=name content="How to map Alt key?">
+<meta name=twitter:description property=og:description itemprop=description content="I'm trying to map Alt key in the following way:
+
+:map &amp;lt;A-j&amp;gt; j
+:map &amp;lt;A-k&amp;gt; k
+but it doesn't work (bell is rang on Alt + j/Alt + k).
+
+What am I missing?
+
+I'm using Terminal on OSX, the same ">
+<style>html,body,div,p,pre,a,code,kbd,time{margin:0;padding:0;border:0;font:inherit;font-size:100%;vertical-align:baseline}button{margin:0}.svg-icon:not(.native) *,.svg-spot:not(.native) *{fill:currentColor}@supports ((-webkit-clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%)) or (clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%))){.s-expandable:not(.is-expanded) .s-expandable--content{opacity:1;-webkit-transform:none;transform:none}}@supports (-webkit-overflow-scrolling:touch){.s-input,.s-textarea{font-size:16px;padding:.36em .55em}.s-input::-webkit-input-placeholder,.s-textarea::-webkit-input-placeholder{line-height:normal!important}}@supports (-webkit-overflow-scrolling:touch){.s-select>select{font-size:16px;padding:.4em .55em}}@supports ((-webkit-appearance:none) or (-moz-appearance:none) or (appearance:none)){.s-checkbox,.s-radio{-webkit-appearance:none;-moz-appearance:none;appearance:none;margin:0;width:1em;height:1em;border:1px solid var(--bc-darker);background-color:var(--white);outline:0;font-size:inherit;vertical-align:middle;cursor:pointer}.s-checkbox::-ms-check,.s-radio::-ms-check{display:none}}@supports ((-webkit-appearance:none) or (-moz-appearance:none) or (appearance:none)){.s-checkbox{border-radius:3px;background-position:center center;background-repeat:no-repeat;background-size:contain}.s-checkbox:checked{border-color:var(--theme-secondary-400)!important;background-color:var(--theme-secondary-400);background-image:url("data:image/svg+xml,%3Csvg width='11' height='11' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 3.41L8.59 2 4 6.59 2.41 5 1 6.41l3 3z' fill='%23fff'/%3E%3C/svg%3E")}@media (prefers-color-scheme:dark){body.theme-highcontrast.theme-system .s-checkbox:checked{border-color:var(--blue-700)!important;background-color:var(--blue-300)}}body.theme-highcontrast.theme-dark .s-checkbox:checked{border-color:var(--blue-700)!important;background-color:var(--blue-300)}.s-checkbox:checked:focus{border-color:var(--theme-secondary-400)}.s-checkbox:focus{border-color:var(--theme-secondary-300);box-shadow:0 0 0 4px var(--focus-ring)}}@supports ((-webkit-appearance:none) or (-moz-appearance:none) or (appearance:none)){.s-radio{border-radius:50%}.s-radio:checked{border-color:var(--theme-secondary-400);border-width:.30769231em;background-color:hsl(0,0%,100%)}@media (prefers-color-scheme:dark){body.theme-highcontrast.theme-system .s-radio:checked{border-color:var(--blue-300);outline:1px solid var(--black)}}body.theme-highcontrast.theme-dark .s-radio:checked{border-color:var(--blue-300);outline:1px solid var(--black)}.s-radio:focus{box-shadow:0 0 0 4px var(--focus-ring)}}.s-input-icon{position:absolute;top:50%;right:.7em;margin-top:-9px;pointer-events:none}.s-input-icon.s-input-icon__search{right:auto;left:.7em;color:var(--black-200)}@supports (-webkit-overflow-scrolling:touch){.s-input__md,.s-textarea__md{font-size:17px;padding-top:.4em;padding-bottom:.4em}}.s-modal--close .svg-icon{margin:0!important}.s-prose{--s-prose-line-height:1.5;--s-prose-spacing:1.1em;--s-prose-spacing-condensed:calc(var(--s-prose-spacing) / 2);font-size:15px;line-height:var(--s-prose-line-height);word-wrap:break-word}.s-prose p{margin-bottom:var(--s-prose-spacing)}.s-prose pre{word-wrap:normal}.s-prose code{font-size:13px;font-family:var(--ff-mono)}.s-prose p:last-child,.s-prose dl:last-child,.s-prose blockquote:last-child,.s-prose table:last-child,.s-prose .s-table-container:last-child,.s-prose .s-link-preview:last-child,.s-prose hr:last-child,.s-prose ol:last-child,.s-prose ul:last-child,.s-prose img:last-child,.s-prose pre:last-child,.s-prose h1:last-child,.s-prose h2:last-child,.s-prose h3:last-child,.s-prose h4:last-child,.s-prose h5:last-child,.s-prose h6:last-child,.s-prose p:only-child,.s-prose dl:only-child,.s-prose blockquote:only-child,.s-prose table:only-child,.s-prose .s-table-container:only-child,.s-prose .s-link-preview:only-child,.s-prose hr:only-child,.s-prose ol:only-child,.s-prose ul:only-child,.s-prose img:only-child,.s-prose pre:only-child,.s-prose h1:only-child,.s-prose h2:only-child,.s-prose h3:only-child,.s-prose h4:only-child,.s-prose h5:only-child,.s-prose h6:only-child{margin-bottom:0}.s-prose kbd{display:inline-block;margin:0 .1em;padding:.1em .6em;font-family:var(--ff-sans);font-size:11px;line-height:var(--s-prose-line-height);color:var(--black-800);text-shadow:0 1px 0 var(--white);background-color:var(--black-075);border:1px solid var(--black-300);border-radius:3px;box-shadow:0 1px 1px hsla(210,8%,5%,0.15),inset 0 1px 0 0 hsl(0,0%,100%);overflow-wrap:break-word}.s-prose *:not(.s-code-block)>code{padding:2px 4px;color:var(--black-800);background-color:var(--black-075);border-radius:3px}.s-prose pre{margin-top:0;margin-bottom:calc(var(--s-prose-spacing) + .4em)}.s-prose pre:not(.s-code-block){padding:12px;color:var(--highlight-color);width:auto;max-height:600px;overflow:auto;font-size:13px;line-height:1.30769231;background-color:var(--highlight-bg);border-radius:5px;scrollbar-color:var(--scrollbar) transparent}.s-prose pre:not(.s-code-block) code{background-color:transparent;padding:0;border-radius:0}.s-prose pre:not(.s-code-block)::-webkit-scrollbar{width:10px;height:10px;background-color:transparent}.s-prose pre:not(.s-code-block)::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.s-prose pre:not(.s-code-block)::-webkit-scrollbar-thumb{border-radius:10px;background-color:var(--scrollbar)}.s-prose pre:not(.s-code-block)::-webkit-scrollbar-corner{background-color:transparent;border-color:transparent}@media not all and (min-resolution:.001dpcm){@supports (-webkit-appearance:none) and (stroke-color:transparent){.s-spinner,.s-spinner:before,.s-spinner:after{box-shadow:0 0 0 2px transparent}}}@keyframes s-spinner-rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}@supports ((-webkit-clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%)) or (clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%))) or (-webkit-clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%)){.s-sidebarwidget:after{-webkit-clip-path:polygon(0% 0%,100% 0%,100% 50%,0% 50%);clip-path:polygon(0% 0%,100% 0%,100% 50%,0% 50%);border:1px solid var(--bc-medium)}}body{--ff-sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Liberation Sans",sans-serif;--ff-serif:Georgia,Cambria,"Times New Roman",Times,serif;--ff-mono:ui-monospace,"Cascadia Mono","Segoe UI Mono","Liberation Mono",Menlo,Monaco,Consolas,monospace}body{--theme-button-background-color:transparent;--theme-button-primary-color:var(--white);--theme-button-primary-hover-color:var(--white);--theme-button-primary-selected-color:var(--white);--theme-button-primary-number-color:var(--theme-secondary-900);--theme-topbar-height:48px;--theme-topbar-background-color:var(--black-025);--theme-topbar-search-color:var(--black-700);--theme-topbar-search-background:var(--white);--theme-topbar-search-placeholder:var(--black-200);--theme-topbar-search-border:var(--black-200);--theme-topbar-search-border-focus:var(--blue-300);--theme-topbar-search-shadow-focus:0 0 0 4px var(--focus-ring);--theme-topbar-select-color:var(--black-700);--theme-topbar-select-background:var(--black-075);--theme-topbar-item-color:var(--black-600);--theme-topbar-item-color-hover:var(--black-800);--theme-topbar-item-background-hover:var(--black-075);--theme-topbar-item-color-current:var(--black);--theme-topbar-item-border-current:var(--theme-primary-color);--theme-topbar-accent-border:3px solid var(--theme-primary-color)}:root{--theme-base-primary-color-h:27;--theme-base-primary-color-s:90%;--theme-base-primary-color-l:55%;--theme-base-primary-color-r:243.525;--theme-base-primary-color-g:129.9225;--theme-base-primary-color-b:36.975;--theme-base-secondary-color-h:206;--theme-base-secondary-color-s:100%;--theme-base-secondary-color-l:40%;--theme-base-secondary-color-r:0;--theme-base-secondary-color-g:115.6;--theme-base-secondary-color-b:204}body:not(.theme-dark),body.theme-dark .theme-light__forced,body.theme-system .theme-light__forced{--white:hsl(0,0%,100%);--black:hsl(210,8%,5%);--orange:hsl(27,90%,55%);--yellow:hsl(47,83%,91%);--green:hsl(140,40%,55%);--blue:hsl(206,100%,40%);--powder:hsl(205,46%,92%);--red:hsl(358,62%,52%);--black-025:hsl(210,8%,97.5%);--black-050:hsl(210,8%,95%);--black-075:hsl(210,8%,90%);--black-100:hsl(210,8%,85%);--black-150:hsl(210,8%,80%);--black-200:hsl(210,8%,75%);--black-300:hsl(210,8%,65%);--black-350:hsl(210,8%,60%);--black-400:hsl(210,8%,55%);--black-500:hsl(210,8%,45%);--black-600:hsl(210,8%,35%);--black-700:hsl(210,8%,25%);--black-750:hsl(210,8%,20%);--black-800:hsl(210,8%,15%);--black-900:hsl(210,8%,5%);--orange-050:hsl(27,100%,97%);--orange-100:hsl(27,95%,90%);--orange-200:hsl(27,90%,83%);--orange-300:hsl(27,90%,70%);--orange-400:hsl(27,90%,55%);--orange-500:hsl(27,90%,50%);--orange-600:hsl(27,90%,45%);--orange-700:hsl(27,90%,39%);--orange-800:hsl(27,87%,35%);--orange-900:hsl(27,80%,30%);--blue-050:hsl(206,100%,97%);--blue-100:hsl(206,96%,90%);--blue-200:hsl(206,93%,83.5%);--blue-300:hsl(206,90%,69.5%);--blue-400:hsl(206,85%,57.5%);--blue-500:hsl(206,100%,52%);--blue-600:hsl(206,100%,40%);--blue-700:hsl(209,100%,37.5%);--blue-800:hsl(209,100%,32%);--blue-900:hsl(209,100%,26%);--powder-050:hsl(205,47%,97%);--powder-100:hsl(205,46%,92%);--powder-200:hsl(205,53%,88%);--powder-300:hsl(205,57%,81%);--powder-400:hsl(205,56%,76%);--powder-500:hsl(205,41%,63%);--powder-600:hsl(205,36%,53%);--powder-700:hsl(205,47%,42%);--powder-800:hsl(205,46%,32%);--powder-900:hsl(205,46%,22%);--green-025:hsl(140,42%,95%);--green-050:hsl(140,40%,90%);--green-100:hsl(140,40%,85%);--green-200:hsl(140,40%,75%);--green-300:hsl(140,40%,65%);--green-400:hsl(140,40%,55%);--green-500:hsl(140,40%,47%);--green-600:hsl(140,40%,40%);--green-700:hsl(140,41%,31%);--green-800:hsl(140,40%,27%);--green-900:hsl(140,40%,20%);--yellow-050:hsl(47,87%,94%);--yellow-100:hsl(47,83%,91%);--yellow-200:hsl(47,65%,84%);--yellow-300:hsl(47,69%,69%);--yellow-400:hsl(47,79%,58%);--yellow-500:hsl(47,73%,50%);--yellow-600:hsl(47,76%,46%);--yellow-700:hsl(47,79%,40%);--yellow-800:hsl(47,82%,34%);--yellow-900:hsl(47,84%,28%);--red-050:hsl(358,75%,97%);--red-100:hsl(358,76%,90%);--red-200:hsl(358,74%,83%);--red-300:hsl(358,70%,70%);--red-400:hsl(358,68%,59%);--red-500:hsl(358,62%,52%);--red-600:hsl(358,62%,47%);--red-700:hsl(358,64%,41%);--red-800:hsl(358,64%,35%);--red-900:hsl(358,67%,29%);--gold:hsl(48,100%,50%);--gold-lighter:hsl(48,100%,91%);--gold-darker:hsl(45,100%,47%);--silver:hsl(210,6%,72%);--silver-lighter:hsl(0,0%,91%);--silver-darker:hsl(210,3%,61%);--bronze:hsl(28,38%,67%);--bronze-lighter:hsl(28,40%,92%);--bronze-darker:hsl(28,31%,52%);--bc-lightest:var(--black-025);--bc-lighter:var(--black-050);--bc-light:var(--black-075);--bc-medium:var(--black-100);--bc-dark:var(--black-150);--bc-darker:var(--black-200);--fc-dark:hsl(210,8%,5%);--fc-medium:hsl(210,8%,25%);--fc-light:hsl(210,8%,45%);--focus-ring-success:hsla(140,40%,75%,0.4);--focus-ring-warning:hsla(47,79%,58%,0.4);--focus-ring-error:hsla(358,62%,47%,0.15);--focus-ring-muted:hsla(210,8%,15%,0.1);--bs-sm:0 1px 2px hsla(0,0%,0%,0.05),0 1px 4px hsla(0,0%,0%,0.05),0 2px 8px hsla(0,0%,0%,0.05);--bs-md:0 1px 3px hsla(0,0%,0%,0.06),0 2px 6px hsla(0,0%,0%,0.06),0 3px 8px hsla(0,0%,0%,0.09);--bs-lg:0 1px 4px hsla(0,0%,0%,0.09),0 3px 8px hsla(0,0%,0%,0.09),0 4px 13px hsla(0,0%,0%,0.13);--scrollbar:hsla(0,0%,0%,0.2);--highlight-bg:hsl(0,0%,96.5%);--highlight-color:var(--black-750);--highlight-comment:hsl(210,8%,43.5%);--highlight-punctuation:var(--black-600);--highlight-namespace:hsl(27,99%,36%);--highlight-attribute:hsl(206,98.5%,29%);--highlight-literal:hsl(27,99%,36%);--highlight-symbol:hsl(306,43%,35%);--highlight-keyword:hsl(206,98.5%,29%);--highlight-variable:hsl(80,80.5%,26.5%);--highlight-addition:var(--green-700);--highlight-deletion:var(--red-600)}body:not(.theme-dark),body.theme-dark .theme-light__forced,body.theme-system .theme-light__forced,body:not(.theme-dark) .themed,body.theme-dark .theme-light__forced .themed,body.theme-system .theme-light__forced .themed{--theme-primary-color-h:var(--theme-light-primary-color-h, var(--theme-base-primary-color-h));--theme-primary-color-s:var(--theme-light-primary-color-s, var(--theme-base-primary-color-s));--theme-primary-color-l:var(--theme-light-primary-color-l, var(--theme-base-primary-color-l));--theme-primary-color-r:var(--theme-light-primary-color-r, var(--theme-base-primary-color-r));--theme-primary-color-g:var(--theme-light-primary-color-g, var(--theme-base-primary-color-g));--theme-primary-color-b:var(--theme-light-primary-color-b, var(--theme-base-primary-color-b));--theme-secondary-color-h:var(--theme-light-secondary-color-h, var(--theme-base-secondary-color-h));--theme-secondary-color-s:var(--theme-light-secondary-color-s, var(--theme-base-secondary-color-s));--theme-secondary-color-l:var(--theme-light-secondary-color-l, var(--theme-base-secondary-color-l));--theme-secondary-color-r:var(--theme-light-secondary-color-r, var(--theme-base-secondary-color-r));--theme-secondary-color-g:var(--theme-light-secondary-color-g, var(--theme-base-secondary-color-g));--theme-secondary-color-b:var(--theme-light-secondary-color-b, var(--theme-base-secondary-color-b));--theme-primary-color:hsl(var(--theme-primary-color-h),var(--theme-primary-color-s),var(--theme-primary-color-l));--theme-primary-900:hsl(var(--theme-primary-color-h),var(--theme-primary-color-s),calc(var(--theme-primary-color-l) - 26%));--theme-primary-800:hsl(var(--theme-primary-color-h),var(--theme-primary-color-s),calc(var(--theme-primary-color-l) - 21%));--theme-primary-700:hsl(var(--theme-primary-color-h),var(--theme-primary-color-s),calc(var(--theme-primary-color-l) - 16%));--theme-primary-600:hsl(var(--theme-primary-color-h),var(--theme-primary-color-s),calc(var(--theme-primary-color-l) - 10%));--theme-primary-500:hsl(var(--theme-primary-color-h),var(--theme-primary-color-s),calc(var(--theme-primary-color-l) - 5%));--theme-primary-400:var(--theme-primary-color);--theme-primary-350:rgb(calc(51 + var(--theme-primary-color-r) * .8),calc(51 + var(--theme-primary-color-g) * .8),calc(51 + var(--theme-primary-color-b) * .8));--theme-primary-300:rgb(calc(89.25 + var(--theme-primary-color-r) * .65),calc(89.25 + var(--theme-primary-color-g) * .65),calc(89.25 + var(--theme-primary-color-b) * .65));--theme-primary-200:rgb(calc(122.4 + var(--theme-primary-color-r) * .52),calc(122.4 + var(--theme-primary-color-g) * .52),calc(122.4 + var(--theme-primary-color-b) * .52));--theme-primary-150:rgb(calc(165.75 + var(--theme-primary-color-r) * .35),calc(165.75 + var(--theme-primary-color-g) * .35),calc(165.75 + var(--theme-primary-color-b) * .35));--theme-primary-100:rgb(calc(198.9 + var(--theme-primary-color-r) * .22),calc(198.9 + var(--theme-primary-color-g) * .22),calc(198.9 + var(--theme-primary-color-b) * .22));--theme-primary-075:rgb(calc(216.75 + var(--theme-primary-color-r) * .15),calc(216.75 + var(--theme-primary-color-g) * .15),calc(216.75 + var(--theme-primary-color-b) * .15));--theme-primary-050:rgb(calc(234.6 + var(--theme-primary-color-r) * .08),calc(234.6 + var(--theme-primary-color-g) * .08),calc(234.6 + var(--theme-primary-color-b) * .08));--theme-primary-025:rgb(calc(244.8 + var(--theme-primary-color-r) * .04),calc(244.8 + var(--theme-primary-color-g) * .04),calc(244.8 + var(--theme-primary-color-b) * .04));--theme-secondary-color:hsl(var(--theme-secondary-color-h),var(--theme-secondary-color-s),var(--theme-secondary-color-l));--theme-secondary-900:hsl(var(--theme-secondary-color-h),var(--theme-secondary-color-s),calc(var(--theme-secondary-color-l) - 26%));--theme-secondary-800:hsl(var(--theme-secondary-color-h),var(--theme-secondary-color-s),calc(var(--theme-secondary-color-l) - 21%));--theme-secondary-700:hsl(var(--theme-secondary-color-h),var(--theme-secondary-color-s),calc(var(--theme-secondary-color-l) - 16%));--theme-secondary-600:hsl(var(--theme-secondary-color-h),var(--theme-secondary-color-s),calc(var(--theme-secondary-color-l) - 10%));--theme-secondary-500:hsl(var(--theme-secondary-color-h),var(--theme-secondary-color-s),calc(var(--theme-secondary-color-l) - 5%));--theme-secondary-400:var(--theme-secondary-color);--theme-secondary-350:rgb(calc(51 + var(--theme-secondary-color-r) * .8),calc(51 + var(--theme-secondary-color-g) * .8),calc(51 + var(--theme-secondary-color-b) * .8));--theme-secondary-300:rgb(calc(89.25 + var(--theme-secondary-color-r) * .65),calc(89.25 + var(--theme-secondary-color-g) * .65),calc(89.25 + var(--theme-secondary-color-b) * .65));--theme-secondary-200:rgb(calc(122.4 + var(--theme-secondary-color-r) * .52),calc(122.4 + var(--theme-secondary-color-g) * .52),calc(122.4 + var(--theme-secondary-color-b) * .52));--theme-secondary-150:rgb(calc(165.75 + var(--theme-secondary-color-r) * .35),calc(165.75 + var(--theme-secondary-color-g) * .35),calc(165.75 + var(--theme-secondary-color-b) * .35));--theme-secondary-100:rgb(calc(198.9 + var(--theme-secondary-color-r) * .22),calc(198.9 + var(--theme-secondary-color-g) * .22),calc(198.9 + var(--theme-secondary-color-b) * .22));--theme-secondary-075:rgb(calc(216.75 + var(--theme-secondary-color-r) * .15),calc(216.75 + var(--theme-secondary-color-g) * .15),calc(216.75 + var(--theme-secondary-color-b) * .15));--theme-secondary-050:rgb(calc(234.6 + var(--theme-secondary-color-r) * .08),calc(234.6 + var(--theme-secondary-color-g) * .08),calc(234.6 + var(--theme-secondary-color-b) * .08));--theme-secondary-025:rgb(calc(244.8 + var(--theme-secondary-color-r) * .04),calc(244.8 + var(--theme-secondary-color-g) * .04),calc(244.8 + var(--theme-secondary-color-b) * .04));--focus-ring:hsla(var(--theme-secondary-color-h),var(--theme-secondary-color-s),var(--theme-secondary-color-l),.15);--theme-body-font-color:var(--black-800)}.fc-orange-400{color:var(--orange-400)!important}.gs8{margin:-4px}.gs8>.flex--item{margin:4px}.gsy,.gsy>[class*="flex--item"]{margin-right:0;margin-left:0}.fw-wrap{flex-wrap:wrap!important}.jc-end{justify-content:flex-end!important}.ai-start{align-items:flex-start!important}.mt24{margin-top:24px!important}.mtn1{margin-top:-1px!important}.mr0{margin-right:0!important}.mr16{margin-right:16px!important}.mln2{margin-left:-2px!important}.pt2{padding-top:2px!important}.d-flex{display:flex!important}.clearfix:before,.clearfix:after{content:"";display:table}.clearfix:after{clear:both}.va-text-bottom{vertical-align:text-bottom!important}.va-text-top{vertical-align:text-top!important}.o50{opacity:.5!important}body{--theme-base-primary-color-h:205;--theme-base-primary-color-s:47%;--theme-base-primary-color-l:42%;--theme-base-primary-color-r:56.763;--theme-base-primary-color-g:115.4895;--theme-base-primary-color-b:157.437;--theme-button-color:var(--theme-primary-color);--theme-button-hover-color:var(--theme-primary-500);--theme-button-hover-background-color:var(--theme-primary-025);--theme-button-active-background-color:var(--theme-primary-050);--theme-button-selected-color:var(--theme-primary-600);--theme-button-selected-background-color:var(--theme-primary-150);--theme-button-filled-color:var(--theme-primary-600);--theme-button-filled-background-color:var(--theme-primary-075);--theme-button-filled-border-color:var(--theme-primary-600);--theme-button-filled-hover-color:var(--theme-primary-800);--theme-button-filled-hover-background-color:var(--theme-primary-100);--theme-button-filled-active-background-color:var(--theme-primary-150);--theme-button-filled-active-border-color:var(--theme-primary-600);--theme-button-filled-selected-color:var(--theme-primary-900);--theme-button-filled-selected-background-color:var(--theme-primary-200);--theme-button-filled-selected-border-color:var(--theme-primary-800);--theme-button-outlined-border-color:var(--theme-primary-350);--theme-button-outlined-selected-border-color:var(--theme-primary-600);--theme-button-primary-background-color:var(--theme-primary-color);--theme-button-primary-hover-background-color:var(--theme-primary-500);--theme-button-primary-active-background-color:var(--theme-primary-600);--theme-button-primary-selected-background-color:var(--theme-primary-700);--theme-background-color:var(--white);--theme-background-position:top left;--theme-background-repeat:repeat;--theme-background-size:auto;--theme-background-attachment:auto;--theme-content-background-color:var(--white);--theme-content-border-color:var(--black-100);--theme-header-background-color:hsl(205,47%,97%);--theme-header-background-position:center left;--theme-header-background-repeat:repeat;--theme-header-background-size:auto;--theme-header-background-border-bottom:0;--theme-header-link-color:var(--theme-primary-color);--theme-header-sponsored-color:hsla(0,0%,100%,0.4);--theme-header-foreground-color:transparent;--theme-header-foreground-position:bottom right;--theme-header-foreground-repeat:no-repeat;--theme-header-foreground-size:auto;--theme-footer-background-color:hsl(205,47%,97%);--theme-footer-background-position:top left;--theme-footer-background-repeat:no-repeat;--theme-footer-background-size:auto;--theme-footer-background-border-top:0;--theme-footer-title-color:hsl(210,8%,15%);--theme-footer-text-color:hsl(210,8%,65%);--theme-footer-link-color:hsl(205,36%,53%);--theme-footer-link-color-hover:hsl(205,47%,42%);--theme-footer-link-color-active:hsl(205,46%,22%);--theme-footer-link-caret-color:var(--theme-footer-background-color);--theme-footer-divider-color:hsl(210,8%,85%);--theme-footer-padding-top:0;--theme-footer-padding-bottom:0;--theme-link-color:var(--theme-primary-color);--theme-link-color-hover:var(--theme-primary-300);--theme-link-color-visited:var(--theme-primary-800);--theme-tag-color:var(--powder-700);--theme-tag-background-color:var(--powder-100);--theme-tag-border-color:var(--powder-100);--theme-tag-hover-color:var(--powder-800);--theme-tag-hover-background-color:var(--powder-200);--theme-tag-hover-border-color:var(--powder-200);--theme-body-font-family:var(--ff-sans);--theme-body-font-color:var(--black-800);--theme-question-title-font-family:var(--ff-sans);--theme-question-title-color:var(--theme-link-color);--theme-question-title-color-hover:var(--theme-link-color-hover);--theme-question-title-color-visited:var(--theme-link-color-visited);--theme-question-body-font-family:var(--ff-sans);--theme-post-owner-background-color:hsla(var(--theme-primary-color-h),var(--theme-primary-color-s),calc(var(--theme-primary-color-l) - 8%),.15);--theme-post-owner-new-background-color:hsla(var(--theme-primary-color-h),var(--theme-primary-color-s),calc(var(--theme-primary-color-l) - 8%),.2)}html,body{color:var(--theme-body-font-color);font-family:var(--theme-body-font-family);font-size:13px;line-height:1.30769231}@media (max-width:640px){html.html__responsive:not(.html__unpinned-leftnav),html.html__responsive:not(.html__unpinned-leftnav) body{font-size:11px}}body{box-sizing:border-box}body *,body *:before,body *:after{box-sizing:inherit}.s-btn{position:relative;background-color:transparent;font-family:inherit;font-size:13px;font-weight:normal;line-height:1.15384615}.s-btn:hover,.s-btn:focus,.s-btn:active{color:var(--theme-button-hover-color);background:var(--theme-button-hover-background-color);text-decoration:none}.s-btn:active{background:var(--theme-button-active-background-color)}.s-btn:focus{outline:none;box-shadow:0 0 0 4px var(--focus-ring)}.s-btn__link{display:inline;padding:0;border:none;border-radius:0;outline:none;font:inherit;background:none;box-shadow:none;text-align:inherit;text-decoration:none;cursor:pointer;user-select:auto}.s-btn__link:hover,.s-btn__link.s-link__visited:hover,.s-btn__link:active,.s-btn__link.s-link__visited:active{color:var(--theme-link-color-hover)}.s-btn__link:hover,.s-btn__link:active,.s-btn__link:focus,.s-btn__link[disabled]{background:none;box-shadow:none}.s-btn__icon .svg-icon{vertical-align:baseline;margin-top:-0.3em;margin-bottom:-0.3em;transition:opacity 200ms cubic-bezier(.165,.84,.44,1)}a{user-select:auto}a:hover,.s-link:hover,a.s-link__visited:hover,.s-link.s-link__visited:hover,a:active,.s-link:active,a.s-link__visited:active,.s-link.s-link__visited:active{color:var(--theme-link-color-hover)}.s-anchors.s-anchors__muted a:not(.s-link),.s-anchors.s-anchors__muted .s-btn.s-btn__link{color:var(--black-500)}.s-anchors.s-anchors__muted a:not(.s-link):hover,.s-anchors .s-anchors.s-anchors__muted a:not(.s-link):hover,.s-anchors.s-anchors__muted .s-btn.s-btn__link:hover,.s-anchors .s-anchors.s-anchors__muted .s-btn.s-btn__link:hover,.s-anchors.s-anchors__muted a:not(.s-link):active,.s-anchors .s-anchors.s-anchors__muted a:not(.s-link):active,.s-anchors.s-anchors__muted .s-btn.s-btn__link:active,.s-anchors .s-anchors.s-anchors__muted .s-btn.s-btn__link:active{color:var(--black-400)}.s-anchors.s-anchors__muted a:not(.s-link):visited,.s-anchors .s-anchors.s-anchors__muted a:not(.s-link):visited,.s-anchors.s-anchors__muted .s-btn.s-btn__link:visited,.s-anchors .s-anchors.s-anchors__muted .s-btn.s-btn__link:visited{color:var(--black-500)}.s-anchors.s-anchors__muted a:not(.s-link):visited:hover,.s-anchors .s-anchors.s-anchors__muted a:not(.s-link):visited:hover,.s-anchors.s-anchors__muted .s-btn.s-btn__link:visited:hover,.s-anchors .s-anchors.s-anchors__muted .s-btn.s-btn__link:visited:hover,.s-anchors.s-anchors__muted a:not(.s-link):visited:active,.s-anchors .s-anchors.s-anchors__muted a:not(.s-link):visited:active,.s-anchors.s-anchors__muted .s-btn.s-btn__link:visited:active,.s-anchors .s-anchors.s-anchors__muted .s-btn.s-btn__link:visited:active{color:var(--black-400)}.svg-icon{vertical-align:bottom}.svg-icon:not(.native) *{fill:currentColor}a{color:var(--theme-link-color);text-decoration:none;cursor:pointer}a:hover,a:active{color:var(--theme-link-color-hover);text-decoration:none}kbd{white-space:nowrap}p{clear:both;margin-top:0}p code{padding:1px 5px}code{background-color:var(--black-075)}pre{padding:12px;width:auto;max-height:600px;overflow:auto;font-family:var(--ff-mono);font-size:13px;background-color:var(--black-050);border-radius:3px}pre code{background-color:transparent}pre::-webkit-scrollbar{width:10px;height:10px;background-color:transparent}pre::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}pre::-webkit-scrollbar-thumb{border-radius:10px;background-color:var(--scrollbar)}pre::-webkit-scrollbar-corner{background-color:transparent;border-color:transparent}.s-prose{font-family:var(--theme-question-body-font-family)}@keyframes spinnerRotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes blink{50%{background-color:transparent}}.post-layout{display:grid;grid-template-columns:-webkit-max-content 1fr;grid-template-columns:max-content 1fr}.post-layout--right{padding-right:16px;grid-column:2;width:auto;min-width:0}.post-layout--right .s-prose{width:100%}@media not all and (min-resolution:.001dpcm){@supports (-webkit-appearance:none) and (stroke-color:transparent){.s-editor-shadow:after{transition:none}}}html{--top-bar-allocated-space:50px}.top-bar *{box-sizing:border-box}.top-bar .-secondary .-link .svg-icon{vertical-align:text-top}@media screen and (max-width:640px){html.html__responsive .top-bar .-logo.network-logo .svg-icon{transform:scale(2);transform-origin:0 -10px}}@supports (display:grid){ul.comments-list .comment-actions{display:grid;grid-template-columns:repeat(2,max-content);align-content:flex-start;width:37px;width:calc(2ch + 16px + 4px + 2px)}ul.comments-list .comment-flagging:nth-child(3){grid-column:2}}@supports (display:grid) and (display:contents) and (not (-apple-trailing-word:auto)){body:not(.no-grid-comments) ul.comments-list{display:grid;grid-template-columns:max-content 1fr}body:not(.no-grid-comments) ul.comments-list .comment-score{width:auto;min-width:16px}body:not(.no-grid-comments) ul.comments-list .comment-score>span{min-width:0;float:none}body:not(.no-grid-comments) ul.comments-list .comment-actions{width:auto}body:not(.no-grid-comments) ul.comments-list .comment{display:contents}body:not(.no-grid-comments) ul.comments-list .comment__highlight .comment-actions{transition:none;background-color:var(--yellow-100)}}html{height:100%}body{min-height:100%;display:flex;flex-direction:column;background-color:var(--theme-background-color);background-image:none;background-position:var(--theme-background-position);background-repeat:var(--theme-background-repeat);background-size:var(--theme-background-size);background-attachment:var(--theme-background-attachment);--mp-alt-row-color:var(--black-050);--mp-critical-color:var(--red-600);--mp-duration-color:var(--black-800);--mp-gap-bg-color:var(--black-025);--mp-gap-font-color:var(--black-700);--mp-highlight-default-color:var(--fc-dark);--mp-highlight-fade-color:var(--yellow-300);--mp-highlight-keyword-color:var(--blue-700);--mp-highlight-literal-color:var(--green-500);--mp-label-color:var(--black-700);--mp-link-color:var(--blue-700);--mp-main-bg-color:var(--white);--mp-muted-color:var(--black-300);--mp-popup-shadow:var(--bs-sm);--mp-query-border-color:var(--black-100);--mp-result-border:solid .5px var(--black-300);--mp-warning-color:var(--red-600)}.container{position:relative;flex:1 0 auto;text-align:left}#content{margin:0 auto}#content:before,#content:after{content:"";display:table}#content:after{clear:both}#answers{clear:both}#answers{padding-top:10px}.question-page #answers .answer{border-bottom:1px solid var(--black-075)}.answer{padding-bottom:16px;padding-top:16px}#mainbar{float:left;margin:0;padding:0}code{white-space:pre-wrap}pre code{white-space:inherit;padding:0}@keyframes highlighted-post-fade{0%{background-color:var(--yellow-100)}100%{background-color:rgba(0,0,0,0)}}@keyframes blinking{from{background:#f4a83d}to{background:rgba(244,168,61,0)}}html.html__responsive,html.html__responsive body{min-width:auto}body{padding-top:50px}body .top-bar~.container{margin-top:0}body>.container{max-width:1264px;width:100%;background:none;display:flex;justify-content:space-between;margin:0 auto}body>.container:after,body>.container:before{display:none}#content{max-width:1100px;width:calc(100% - 164px);background-color:var(--theme-content-background-color);border-radius:0;border:1px solid var(--theme-content-border-color);border-top-width:0;border-bottom-width:0;border-left-width:1px;border-right-width:0;padding:24px;box-sizing:border-box}@media screen and (max-width:640px){html.html__responsive #content{border-left:0;border-right:0}}@media screen and (max-width:980px){html.html__responsive:not(.html__unpinned-leftnav) #content{padding-left:16px;padding-right:16px}}@media screen and (max-width:640px){html.html__responsive #content{padding-left:12px;padding-right:12px;width:100%}}#mainbar{width:calc(100% - 300px - 24px)}@media screen and (max-width:980px){html.html__responsive:not(.html__unpinned-leftnav) #mainbar,html.html__responsive:not(.html__unpinned-leftnav) .mainbar{width:100%;float:none}}#answers{width:auto;float:none}.answer{width:100%}.left-sidebar *,.left-sidebar *:after,.left-sidebar *:before{box-sizing:border-box}@supports (position:sticky) or (position:-webkit-sticky){.left-sidebar--sticky-container:not(.left-sidebar__fake-sticky){position:-webkit-sticky;position:sticky;width:auto;top:0;margin-bottom:8px;max-height:calc(100vh);overflow-y:auto;scrollbar-color:var(--scrollbar) transparent;top:var(--top-bar-allocated-space);max-height:calc(100vh - var(--top-bar-allocated-space))}.left-sidebar--sticky-container:not(.left-sidebar__fake-sticky)::-webkit-scrollbar{width:10px;height:10px;background-color:transparent}.left-sidebar--sticky-container:not(.left-sidebar__fake-sticky)::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.left-sidebar--sticky-container:not(.left-sidebar__fake-sticky)::-webkit-scrollbar-thumb{border-radius:10px;background-color:var(--scrollbar)}.left-sidebar--sticky-container:not(.left-sidebar__fake-sticky)::-webkit-scrollbar-corner{background-color:transparent;border-color:transparent}html.html__unpinned-leftnav .left-sidebar--sticky-container:not(.left-sidebar__fake-sticky){max-height:calc(100vh - 50px)}}.nav-links .nav-links--link.-link__with-icon .svg-icon{flex-shrink:0;margin-top:-1px;margin-right:4px}.nav-links .nav-links--link.-link__with-icon:hover .svg-icon,.nav-links .nav-links--link.-link__with-icon:focus .svg-icon,.nav-links .nav-links--link.-link__with-icon:active .svg-icon{color:var(--black-900)}.nav-links .youarehere .nav-links--link .svg-icon{color:var(--black-900)}</style>
+<link rel=alternate type=application/atom+xml title="Feed for question 'How to map Alt key?'" href=https://vi.stackexchange.com/feeds/question/2350>
+<meta name=twitter:app:country content=US>
+<meta name=twitter:app:name:iphone content="Stack Exchange iOS">
+<meta name=twitter:app:id:iphone content=871299723>
+<meta name=twitter:app:url:iphone content=se-zaphod://vi.stackexchange.com/questions/2350/how-to-map-alt-key>
+<meta name=twitter:app:name:ipad content="Stack Exchange iOS">
+<meta name=twitter:app:id:ipad content=871299723>
+<meta name=twitter:app:url:ipad content=se-zaphod://vi.stackexchange.com/questions/2350/how-to-map-alt-key>
+<meta name=twitter:app:name:googleplay content="Stack Exchange Android">
+<meta name=twitter:app:url:googleplay content=https://vi.stackexchange.com/questions/2350/how-to-map-alt-key>
+<meta name=twitter:app:id:googleplay content=com.stackexchange.marvin>
+<style>@keyframes researchshow{0%{transform:translate3d(0,300px,0);opacity:0}25%{transform:translate3d(0,-12px,0);opacity:1}40%{transform:translate3d(0,-2px,0)}100%{transform:translate3d(0,0,0);opacity:1}}@keyframes researchhide{0%,50%{transform:translate3d(0,0,0);opacity:1}75%{transform:translate3d(0,-12px,0);opacity:1}100%{transform:translate3d(0,300px,0);opacity:0}}</style>
+<noscript id=noscript-css><style>body,.top-bar{margin-top:1.9em}</style></noscript>
+<link rel="shortcut icon" href=data:image/x-icon;base64,AAABAAIAEBAAAAEAIABoBAAAJgAAACAgAAABACAAqBAAAI4EAAAoAAAAEAAAACAAAAABACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADfsGL/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA37Bi/9+wYv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN+wYv/fsGL/37Bi/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv8AAAAAAAAAAAAAAADfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/wAAAAAAAAAA37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv8AAAAAAAAAAN+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/AAAAAAAAAADfsGL/37Bi/9+wYv/fsGL/37Bi///////fsGL/37Bi/9+wYv/fsGL//////9+wYv/fsGL/37Bi/wAAAAAAAAAA37Bi/9+wYv/fsGL/37Bi///////fsGL//////9+wYv/fsGL/37Bi///////fsGL/37Bi/9+wYv8AAAAAAAAAAN+wYv/fsGL/37Bi/9+wYv//////37Bi///////fsGL/37Bi/9+wYv//////37Bi/9+wYv/fsGL/AAAAAAAAAADfsGL/37Bi/9+wYv//////37Bi/9+wYv/fsGL//////9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/wAAAAAAAAAA37Bi/9+wYv/fsGL//////9+wYv/fsGL/37Bi///////fsGL/37Bi///////fsGL/37Bi/9+wYv8AAAAAAAAAAN+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/AAAAAAAAAADfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/wAAAAAAAAAA37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv8AAAAAAAAAAAAAAADfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv8AAAAAAAAAAP9/AAD/PwAA/x8AAMADAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAMADAAAoAAAAIAAAAEAAAAABACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA37Bi/96tYx8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADfsGL/37Bi5NyxYyQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN+wYv/fsGL/37Bi6d2wYC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA37Bi/9+wYv/fsGL/3rBi696vYzYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADfsGL/37Bi/9+wYv/fsGL/37Bi8eCwYToAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi9uCwYnoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3q9hXN+wYvDfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi8N6vYVwAAAAAAAAAAAAAAAAAAAAAAAAAAN+xY0jfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+xY0gAAAAAAAAAAAAAAAAAAAAA369iyt+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/369iygAAAAAAAAAAAAAAAAAAAADfsGL937Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL8AAAAAAAAAAAAAAAAAAAAAN+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv8AAAAAAAAAAAAAAAAAAAAA37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/wAAAAAAAAAAAAAAAAAAAADfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/AAAAAAAAAAAAAAAAAAAAAN+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv8AAAAAAAAAAAAAAAAAAAAA37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/79Or/+e/g/9+wYv/fsGL/37Bi/+jFjP//////7tWr/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/wAAAAAAAAAAAAAAAAAAAADfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/5cCB////////////47t3/9+wYv/fsGL/6MWM///////u1av/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/AAAAAAAAAAAAAAAAAAAAAN+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/y38D////////////w2rb/37Bi/9+wYv/oxYz//////+7Vq//fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv8AAAAAAAAAAAAAAAAAAAAA37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi//369f/05cv/+e/g//v06v/fsGL/37Bi/+jFjP//////7tWr/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/wAAAAAAAAAAAAAAAAAAAADfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/qypb//////+zQof/u1av//////+XAgf/fsGL/6MWM///////u1av/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/AAAAAAAAAAAAAAAAAAAAAN+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi//LfwP//////4bVs/+O7d///////8Nq2/9+wYv/oxYz//////+7Vq//fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv8AAAAAAAAAAAAAAAAAAAAA37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/htWz///////Tly//fsGL/37Bi//nv4P/9+vX/37Bi/+jFjP//////7tWr/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/wAAAAAAAAAAAAAAAAAAAADfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/4bVs/+jFjP/ju3f/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/AAAAAAAAAAAAAAAAAAAAAN+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/oxYz//////+7Vq//fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv8AAAAAAAAAAAAAAAAAAAAA37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/+G1bP/oxYz/47t3/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/wAAAAAAAAAAAAAAAAAAAADfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/AAAAAAAAAAAAAAAAAAAAAN+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv8AAAAAAAAAAAAAAAAAAAAA37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/wAAAAAAAAAAAAAAAAAAAADfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/AAAAAAAAAAAAAAAAAAAAAN+wYvHfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYvEAAAAAAAAAAAAAAAAAAAAA369hoN+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/369hoAAAAAAAAAAAAAAAAAAAAADgrWYZ37Bi4N+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYuDgrWYZAAAAAAAAAAAAAAAAAAAAAAAAAADcrl0W37Bil96wYuvfsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/9+wYv/fsGL/37Bi/96wYuvfsGKX26phFQAAAAAAAAAAAAAAAP//z////8f////D////wf///8D////Af+AAAAfAAAADwAAAA8AAAAPAAAADwAAAA8AAAAPAAAADwAAAA8AAAAPAAAADwAAAA8AAAAPAAAADwAAAA8AAAAPAAAADwAAAA8AAAAPAAAADwAAAA8AAAAPAAAADwAAAA8AAAAPgAAAH><style>.sf-hidden{display:none!important}</style><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;"></head>
+ <body class="question-page unified-theme" data-new-gr-c-s-check-loaded=14.1052.0 data-gr-ext-installed>
+ <div id=notify-container style=display:none!important></div>
+ <div id=custom-header style=display:none!important></div>
+ 
+<header class="top-bar js-top-bar top-bar__network" style=display:none!important>
+ <div class="wmx12 mx-auto d-flex ai-center h100" role=menubar style=display:none!important>
+ <div class="-main flex--item" style=display:none!important>
+ 
+ 
+ <a href=# class="-logo js-gps-track js-network-logo network-logo" data-gps-track=stack_exchange_popup.show role=menuitem aria-haspopup=true aria-controls=topbar-network-logo-dialog aria-expanded=false style=display:none!important>
+ <svg aria-hidden=true class="native mtn1 svg-icon iconLogoSEAlternativeSm" width=107 height=15 viewBox="0 0 107 15"><path d="m48.41 11.93-1.96-3.2-1.04 1.16v2.04h-1.42V2.18h1.42v6.01L48.14 5h1.72l-2.44 2.7 2.74 4.22h-1.75Zm-7.06.08c-1.59 0-3.14-.96-3.14-3.56s1.55-3.54 3.14-3.54c.97 0 1.65.27 2.31.97l-.97.93c-.44-.48-.79-.66-1.34-.66s-1 .22-1.3.62c-.31.38-.42.87-.42 1.68 0 .81.1 1.32.41 1.7.3.4.76.62 1.3.62.56 0 .9-.18 1.35-.66l.97.92c-.66.7-1.34.98-2.31.98Zm-5.66-3.15h-1.65c-.83 0-1.26.37-1.26 1s.4.99 1.3.99c.53 0 .93-.04 1.3-.4.22-.2.31-.53.31-1.03v-.56Zm.03 3.07v-.63c-.51.5-1 .71-1.87.71-.87 0-1.46-.2-1.89-.63a2.1 2.1 0 0 1-.55-1.49c0-1.16.82-2 2.42-2h1.86v-.5c0-.87-.44-1.3-1.54-1.3-.77 0-1.15.18-1.54.68l-.92-.86c.66-.77 1.35-1 2.52-1 1.93 0 2.9.8 2.9 2.38v4.64h-1.39Zm-5.9 0c-1.32 0-1.93-.93-1.93-1.93V6.18h-.8V5.1h.8V3h1.41v2.1h1.36v1.07H29.3v3.75c0 .5.25.81.78.81h.58v1.2h-.85Zm-6.33.08c-1.48 0-2.55-.34-3.49-1.28l1-.98c.72.72 1.51.94 2.52.94 1.3 0 2.04-.55 2.04-1.5 0-.42-.13-.78-.39-1.01-.25-.23-.5-.33-1.08-.41l-1.16-.17a3.4 3.4 0 0 1-1.88-.78 2.41 2.41 0 0 1-.72-1.86c0-1.7 1.25-2.86 3.3-2.86 1.3 0 2.22.33 3.07 1.1l-.96.94a2.92 2.92 0 0 0-2.15-.75c-1.16 0-1.8.65-1.8 1.52 0 .35.1.67.37.9.25.22.65.38 1.11.45l1.13.17c.91.13 1.42.35 1.84.72.54.47.8 1.17.8 2 0 1.8-1.48 2.86-3.55 2.86Z" fill=#FEFEFE></path><path d="M104.16 7.09c-.2-.42-.6-.74-1.2-.74s-.99.32-1.18.74c-.1.25-.15.44-.16.75h2.7a2 2 0 0 0-.16-.75Zm-2.54 1.96c0 .9.56 1.57 1.55 1.57.78 0 1.16-.21 1.61-.66l1.08 1.04a3.4 3.4 0 0 1-2.7 1.11c-1.68 0-3.29-.76-3.29-3.62 0-2.3 1.26-3.6 3.1-3.6 1.97 0 3.1 1.44 3.1 3.37v.79h-4.45Zm-5.48-2.57C95.1 6.48 95 7.37 95 8.3c0 .94.1 1.85 1.15 1.85 1.05 0 1.18-.91 1.18-1.85 0-.93-.13-1.82-1.18-1.82Zm-.17 8.22c-1.1 0-1.84-.21-2.58-.92l1.1-1.11c.4.38.8.54 1.4.54 1.06 0 1.43-.74 1.43-1.46v-.72c-.47.51-1 .7-1.7.7-.69 0-1.29-.23-1.68-.62-.67-.66-.73-1.57-.73-2.8 0-1.24.06-2.13.73-2.8.4-.39 1-.62 1.7-.62.75 0 1.24.2 1.73.75v-.67h1.72v6.8c0 1.7-1.21 2.93-3.12 2.93Zm-5.76-2.67V7.76c0-.96-.61-1.28-1.17-1.28-.56 0-1.18.32-1.18 1.28v4.27h-1.78V4.97h1.73v.65a2.44 2.44 0 0 1 1.78-.73c.7 0 1.28.23 1.67.62.58.57.73 1.24.73 2v4.52H90.2Zm-7.1-2.98h-1.4c-.64 0-1 .3-1 .8 0 .49.33.81 1.02.81.5 0 .8-.04 1.12-.34.2-.17.26-.46.26-.89v-.38Zm.04 2.98v-.6c-.48.47-.93.67-1.74.67-.8 0-1.4-.2-1.82-.62-.38-.4-.58-.97-.58-1.59 0-1.12.77-2.05 2.42-2.05h1.68V7.5c0-.77-.38-1.11-1.32-1.11-.68 0-1 .16-1.37.58l-1.13-1.1c.7-.75 1.38-.97 2.57-.97 1.99 0 3.02.84 3.02 2.5v4.64h-1.73Zm-6.93 0v-4.3c0-.94-.6-1.25-1.15-1.25-.56 0-1.15.32-1.15 1.24v4.31h-1.77V2.38h1.77v3.24a2.35 2.35 0 0 1 1.7-.73c1.56 0 2.38 1.08 2.38 2.57v4.57h-1.78Zm-6.96.08c-1.42 0-3.18-.76-3.18-3.62 0-2.85 1.76-3.6 3.18-3.6.98 0 1.72.3 2.34.95l-1.2 1.2c-.36-.4-.68-.56-1.14-.56-.42 0-.75.14-1.01.46-.27.33-.4.8-.4 1.55s.13 1.24.4 1.58c.26.3.59.46 1 .46.47 0 .79-.16 1.15-.56l1.2 1.18c-.62.65-1.36.96-2.34.96Zm-5.53-.08-1.3-2.11-1.3 2.11H59l2.45-3.6-2.35-3.46h2.12L62.42 7l1.21-2.02h2.13L63.4 8.43l2.46 3.6h-2.13Zm-11.75 0V2.06h6.6V3.8h-4.65v2.33h3.96v1.74h-3.96v2.42h4.65v1.74h-6.6Z" fill=#2F96E8></path><path d="M0 3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2H0Z" fill=#8FD8F7></path><path d="M12 10H0c0 1.1.9 2 2 2h5v3l3-3a2 2 0 0 0 2-2Z" fill=#155397></path><path fill=#46A2D9 d="M0 4h12v2H0z"></path><path fill=#2D6DB5 d="M0 7h12v2H0z"></path></svg>
+ </a>
+ <div class="topbar-dialog network-logo-dialog js-network-logo-dialog dno" id=topbar-network-logo-dialog role=dialog aria-labelledby=topbar-network-logo-dialog-title aria-describedby=topbar-network-logo-dialog-body style=display:none!important>
+ 
+ </div>
+ </div>
+ <form id=search role=search action=/search class="flex--item fl-grow1 searchbar px12 js-searchbar" autocomplete=off style=display:none!important>
+ <div class=ps-relative style=display:none!important>
+ 
+ <svg aria-hidden=true class="s-input-icon s-input-icon__search svg-icon iconSearch" width=18 height=18 viewBox="0 0 18 18"><path d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z"></path></svg>
+ 
+ </div>
+ </form>
+ 
+ 
+<ol class="overflow-x-auto ml-auto -secondary d-flex ai-center list-reset h100 user-logged-out" role=presentation style=display:none!important>
+ <li class="-item searchbar-trigger" style=display:none!important></li>
+ <li class="-item inbox-button-item" style=display:none!important>
+ <a href=# class="-link js-inbox-button" aria-label=Inbox title="Recent inbox messages" role=menuitem aria-haspopup=true aria-expanded=false data-unread-count=0 style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconInbox" width=20 height=18 viewBox="0 0 20 18"><path d="M4.63 1h10.56a2 2 0 0 1 1.94 1.35L20 10.79V15a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-4.21l2.78-8.44c.25-.8 1-1.36 1.85-1.35Zm8.28 12 2-2h2.95l-2.44-7.32a1 1 0 0 0-.95-.68H5.35a1 1 0 0 0-.95.68L1.96 11h2.95l2 2h6Z"></path></svg>
+ 
+ </a>
+ </li>
+ <li class="-item achievements-button-item" style=display:none!important>
+ <a href=# class="-link js-achievements-button" data-unread-class=_highlighted-positive aria-label=Achievements title="Recent achievements: reputation, badges, and privileges earned" role=menuitem aria-haspopup=true aria-expanded=false data-unread-count=0 data-lit-up=false style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconAchievements" width=18 height=18 viewBox="0 0 18 18"><path d="M15 2V1H3v1H0v4c0 1.6 1.4 3 3 3v1c.4 1.5 3 2.6 5 3v2H5s-1 1.5-1 2h10c0-.4-1-2-1-2h-3v-2c2-.4 4.6-1.5 5-3V9c1.6-.2 3-1.4 3-3V2h-3ZM3 7c-.5 0-1-.5-1-1V4h1v3Zm8.4 2.5L9 8 6.6 9.4l1-2.7L5 5h3l1-2.7L10 5h2.8l-2.3 1.8 1 2.7h-.1ZM16 6c0 .5-.5 1-1 1V4h1v2Z"></path></svg>
+ 
+ </a>
+ </li>
+ <li class="-item help-button-item" style=display:none!important>
+ <a href=# class="-link js-help-button" title="Help Center and other resources" role=menuitem aria-haspopup=true aria-controls=topbar-help-dialog data-ga='["top navigation","help menu click",null,null,null]' aria-expanded=false style=display:none!important><svg aria-hidden=true class="svg-icon iconHelp" width=18 height=18 viewBox="0 0 18 18"><path d="M9 1C4.64 1 1 4.64 1 9c0 4.36 3.64 8 8 8 4.36 0 8-3.64 8-8 0-4.36-3.64-8-8-8Zm.81 12.13c-.02.71-.55 1.15-1.24 1.13-.66-.02-1.17-.49-1.15-1.2.02-.72.56-1.18 1.22-1.16.7.03 1.2.51 1.17 1.23ZM11.77 8c-.59.66-1.78 1.09-2.05 1.97a4 4 0 0 0-.09.75c0 .05-.03.16-.18.16H7.88c-.16 0-.18-.1-.18-.15.06-1.35.66-2.2 1.83-2.88.39-.29.7-.75.7-1.24.01-1.24-1.64-1.82-2.35-.72-.21.33-.18.73-.18 1.1H5.75c0-1.97 1.03-3.26 3.03-3.26 1.75 0 3.47.87 3.47 2.83 0 .57-.2 1.05-.48 1.44Z"></path></svg></a>
+ </li>
+ 
+ <li class="-item site-switcher-item" style=display:none!important>
+ <a href=https://stackexchange.com/ class="-link js-site-switcher-button js-gps-track" data-gps-track=site_switcher.show aria-label="Site switcher" title="A list of all 179 Stack Exchange sites" role=menuitem aria-haspopup=true aria-expanded=false data-ga='["top navigation","stack exchange click",null,null,null]' style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconStackExchange" width=18 height=18 viewBox="0 0 18 18"><path d="M15 1H3a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2ZM1 13c0 1.1.9 2 2 2h8v3l3-3h1a2 2 0 0 0 2-2v-2H1v2Zm16-7H1v4h16V6Z"></path></svg>
+ </a>
+ </li>
+ 
+ <li class=js-topbar-dialog-corral role=presentation style=display:none!important>
+ 
+ <div class="topbar-dialog siteSwitcher-dialog dno" role=menu style=display:none!important>
+ 
+ 
+ 
+ 
+ 
+ 
+ </div>
+ </li>
+</ol>
+ </div>
+</header>
+ 
+ 
+ 
+ 
+<div class="sm:d-none py24 bg-black-750 fc-black-200 ps-relative js-dismissable-hero" style=display:none!important>
+ <div class="px12 d-flex ai-center jc-center mx-auto wmx12" style=display:none!important>
+ 
+ 
+ <div class="flex--item as-start md:ps-absolute t8 r8" style=display:none!important>
+ <button class="s-btn s-btn__muted p8 js-dismiss" style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconClear" width=18 height=18 viewBox="0 0 18 18"><path d="M15 4.41 13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41Z"></path></svg>
+ </button>
+ </div>
+ </div>
+</div>
+ <header class=site-header style=display:none!important>
+ 
+ </header>
+ <div class=container>
+ 
+<div id=left-sidebar data-is-here-when="md lg" class="left-sidebar js-pinned-left-sidebar ps-relative" style=display:none!important>
+ <div class="left-sidebar--sticky-container js-sticky-leftnav" style=display:none!important>
+ <nav role=navigation style=display:none!important>
+ <ol class=nav-links style=display:none!important>
+ 
+ <li style=display:none!important>
+ <ol class=nav-links style=display:none!important>
+ 
+ 
+<li class="ps-relative youarehere" style=display:none!important>
+ <a id=nav-questions href=https://vi.stackexchange.com/questions class="pl8 js-gps-track nav-links--link -link__with-icon" data-gps-track="top_nav.click({is_current:true, location:2, destination:1})" aria-controls data-controller data-s-popover-placement=right data-s-popover-auto-show=true data-s-popover-hide-on-outside-click=never style=display:none!important>
+<svg aria-hidden=true class="svg-icon iconGlobe" width=18 height=18 viewBox="0 0 18 18"><path d="M9 1C4.64 1 1 4.64 1 9c0 4.36 3.64 8 8 8 4.36 0 8-3.64 8-8 0-4.36-3.64-8-8-8ZM8 15.32a6.46 6.46 0 0 1-4.3-2.74 6.46 6.46 0 0 1-.93-5.01L7 11.68v.8c0 .88.12 1.32 1 1.32v1.52Zm5.72-2c-.2-.66-1-1.32-1.72-1.32h-1v-2c0-.44-.56-1-1-1H6V7h1c.44 0 1-.56 1-1V5h2c.88 0 1.4-.72 1.4-1.6v-.33a6.45 6.45 0 0 1 3.83 4.51 6.45 6.45 0 0 1-1.51 5.73v.01Z"></path></svg> 
+ </a>
+</li>
+ 
+ 
+ 
+ 
+ 
+ 
+ </ol>
+ </li>
+ 
+<li style=display:none!important>
+ <ol class=nav-links style=display:none!important>
+ 
+ <li class="d-flex ai-center jc-space-between ml8 mt24 mb4 js-create-team-cta d-none" style=display:none!important>
+ 
+ 
+ </li>
+ <li class="ps-relative js-create-team-cta d-none" style=display:none!important>
+ 
+ </li>
+ </ol>
+</li> 
+ </ol>
+ </nav>
+ </div>
+ <div class=s-popover id=popover-teams-create-cta role=menu aria-hidden=true style=display:none!important>
+ 
+ 
+ 
+ </div>
+</div>
+ <div id=content>
+ 
+<div itemprop=mainEntity itemscope itemtype=https://schema.org/Question>
+ <link itemprop=image href="https://cdn.sstatic.net/Sites/vi/Img/apple-touch-icon.png?v=1f04b3f6e8f4" class=sf-hidden>
+ <div class="inner-content clearfix">
+ 
+ <div id=question-header class="d-flex sm:fd-column" style=display:none!important>
+ 
+ 
+ </div>
+ <div class="d-flex fw-wrap pb8 mb16 bb bc-black-075" style=display:none!important>
+ 
+ 
+ 
+ </div>
+ <div id=mainbar role=main aria-label="question and answers">
+ 
+<div class=question data-questionid=2350 data-position-on-page=0 data-score=61 id=question style=display:none!important>
+ 
+ <div class=post-layout style=display:none!important>
+ <div class="votecell post-layout--left" style=display:none!important>
+ <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id=2350 style=display:none!important>
+ <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Up vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-9l8vr594 style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowUpLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+ </button>
+ 
+ <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Down vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-6q8y0qfk style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowDownLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+ </button>
+ <button class="js-bookmark-btn s-btn s-btn__unset c-pointer py4 js-gps-track" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Bookmark (27)" data-selected-classes=fc-yellow-600 data-gps-track="post.click({ item: 1, priv: 0, post_type: 1 })" aria-describedby=--stacks-s-tooltip-kjius0ig style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconBookmark" width=18 height=18 viewBox="0 0 18 18"><path d="M6 1a2 2 0 0 0-2 2v14l5-4 5 4V3a2 2 0 0 0-2-2H6Zm3.9 3.83h2.9l-2.35 1.7.9 2.77L9 7.59l-2.35 1.7.9-2.76-2.35-1.7h2.9L9 2.06l.9 2.77Z"></path></svg>
+ 
+ </button>
+ 
+ 
+ <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href=https://vi.stackexchange.com/posts/2350/timeline data-shortcut=T data-ks-title=timeline data-controller=s-tooltip data-s-tooltip-placement=right aria-label=Timeline aria-describedby=--stacks-s-tooltip-clek4rng style=display:none!important><svg aria-hidden=true class="mln2 mr0 svg-icon iconHistory" width=19 height=18 viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+ </div>
+ 
+ 
+ <div class="post-layout--right js-post-comments-component" style=display:none!important>
+ <div id=comments-2350 class="comments js-comments-container bt bc-black-075 mt12" data-post-id=2350 data-min-length=15 style=display:none!important>
+ <ul class="comments-list js-comments-list" data-remaining-comments-count=0 data-canpost=false data-cansee=true data-comments-unavailable=false data-addlink-disabled=true style=display:none!important>
+ 
+ <li id=comment-2108 class="comment js-comment" data-comment-id=2108 data-comment-owner-id=467 data-comment-score=0 style=display:none!important>
+ 
+ <div class="comment-text js-comment-text-and-form" style=display:none!important>
+ <div class="comment-body js-comment-edit-hide" style=display:none!important>
+ 
+ 
+ 
+ 
+ 
+ <span title="this comment was edited 1 time" style=display:none!important>
+ <svg aria-hidden=true class="va-text-bottom o50 svg-icon iconPencilSm" width=14 height=14 viewBox="0 0 14 14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0ZM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88Z"></path></svg>
+ </span>
+ </div>
+ </div>
+ </li>
+ 
+ </ul>
+ </div>
+ 
+ </div>
+ </div>
+</div>
+ <div id=answers>
+ <a name=tab-top style=display:none!important></a>
+ <div id=answers-header style=display:none!important>
+ 
+ </div>
+ 
+<a name=2363 style=display:none!important></a>
+<div id=answer-2363 class="answer js-answer accepted-answer" data-answerid=2363 data-score=71 data-position-on-page=1 data-highest-scored=1 data-question-has-accepted-highest-score=1 itemprop=acceptedAnswer itemscope itemtype=https://schema.org/Answer>
+ <div class=post-layout>
+ <div class="votecell post-layout--left" style=display:none!important>
+ <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id=2363 style=display:none!important>
+ <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Up vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-miy2vxvd style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowUpLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+ </button>
+ 
+ <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Down vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-io5ps757 style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowDownLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+ </button>
+ 
+ <div class="js-accepted-answer-indicator flex--item fc-green-500 py6 mtn8" data-s-tooltip-placement=right title="Loading when this answer was accepted…" tabindex=0 role=note aria-label=Accepted style=display:none!important>
+ <div class=ta-center style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconCheckmarkLg" width=36 height=36 viewBox="0 0 36 36"><path d="m6 14 8 8L30 6v8L14 30l-8-8v-8Z"></path></svg>
+ </div>
+ </div>
+ 
+ <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href=https://vi.stackexchange.com/posts/2363/timeline data-shortcut=T data-ks-title=timeline data-controller=s-tooltip data-s-tooltip-placement=right aria-label=Timeline aria-describedby=--stacks-s-tooltip-9nq5cua7 style=display:none!important><svg aria-hidden=true class="mln2 mr0 svg-icon iconHistory" width=19 height=18 viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+ </div>
+ 
+<div class="answercell post-layout--right">
+ 
+ <div class="s-prose js-post-body" itemprop=text>
+<p>That's how I do it on Linux or Cygwin:</p>
+<p>First check what chars are sent by your terminal when you press <kbd>ALT</kbd>+<kbd>J</kbd>:</p>
+<p>In order to do this I go to console and run <code>sed -n l</code> (you can also use <code>cat</code> for it). Then I press <kbd>ALT</kbd>+<kbd>J</kbd> and see that the chars on the screen are <code>^[j</code> .</p>
+<p>I replace <code>^[</code> with <code>\e</code> (because that's what is sent by my terminal when I press <kbd>esc</kbd>) and the final string for me is <code>\ej</code>.</p>
+<p>Then I write it to my <code>.vimrc</code>:</p>
+<pre><code>execute "set &lt;M-j&gt;=\ej"
+nnoremap &lt;M-j&gt; j
+</code></pre>
+<p>And the mapping works.</p>
+ </div>
+ <div class=mt24>
+ <div class="d-flex fw-wrap ai-start jc-end gs8 gsy">
+ <time itemprop=dateCreated datetime=2015-03-04T18:25:14></time>
+ <div class="flex--item mr16" style="flex:1 1 100px">
+ 
+<div class="js-post-menu pt2" data-post-id=2363>
+ <div class="d-flex gs8 s-anchors s-anchors__muted fw-wrap">
+ <div class=flex--item>
+ <a href=https://vi.stackexchange.com/a/2363 rel=nofollow itemprop=url class="js-share-link js-gps-track" title="Short permalink to this answer" data-gps-track="post.click({ item: 2, priv: 0, post_type: 2 })" data-controller="se-share-sheet s-popover" data-se-share-sheet-title="Share a link to this answer" data-se-share-sheet-subtitle data-se-share-sheet-post-type=answer data-se-share-sheet-social="facebook twitter " data-se-share-sheet-location=2 data-se-share-sheet-license-url=https%3a%2f%2fcreativecommons.org%2flicenses%2fby-sa%2f4.0%2f data-se-share-sheet-license-name="CC BY-SA 4.0" data-s-popover-placement=bottom-start aria-controls=se-share-sheet-1 data-action=" s-popover#toggle se-share-sheet#preventNavigation s-popover:show->se-share-sheet#willShow s-popover:shown->se-share-sheet#didShow">Share</a><div class="s-popover z-dropdown s-anchors s-anchors__default sf-hidden" style=width:unset;max-width:28em id=se-share-sheet-1></div>
+ </div>
+ <div class=flex--item>
+ <a href=https://vi.stackexchange.com/posts/2363/edit class="js-suggest-edit-post js-gps-track" data-gps-track="post.click({ item: 6, priv: 0, post_type: 2 })" title>Improve this answer</a>
+ </div>
+ <div class=flex--item>
+ <button type=button id=btnFollowPost-2363 class="s-btn s-btn__link js-follow-post js-follow-answer js-gps-track" data-gps-track="post.click({ item: 14, priv: 0, post_type: 2 })" data-controller="s-tooltip " data-s-tooltip-placement=bottom data-s-popover-placement=bottom aria-controls aria-describedby=--stacks-s-tooltip-1gdqxc68>
+ Follow
+ </button><div id=--stacks-s-tooltip-1gdqxc68 class="s-popover s-popover__tooltip pe-none sf-hidden" aria-hidden=true role=tooltip>Follow this answer to receive notifications</div>
+ </div>
+ </div>
+ 
+</div>
+ </div>
+ 
+ 
+ </div>
+ 
+ 
+ </div>
+ 
+</div>
+ 
+ <div class="post-layout--right js-post-comments-component" style=display:none!important>
+ <div id=comments-2363 class="comments js-comments-container bt bc-black-075 mt12" data-post-id=2363 data-min-length=15 style=display:none!important>
+ <ul class="comments-list js-comments-list" data-remaining-comments-count=3 data-canpost=false data-cansee=true data-comments-unavailable=false data-addlink-disabled=true style=display:none!important> 
+ 
+ 
+ 
+ 
+ <li id=comment-53685 class="comment js-comment" data-comment-id=53685 data-comment-owner-id=33692 data-comment-score=0 style=display:none!important>
+ 
+ <div class="comment-text js-comment-text-and-form" style=display:none!important>
+ <div class="comment-body js-comment-edit-hide" style=display:none!important>
+ 
+ 
+ 
+ 
+ 
+ <span title="this comment was edited 1 time" style=display:none!important>
+ <svg aria-hidden=true class="va-text-bottom o50 svg-icon iconPencilSm" width=14 height=14 viewBox="0 0 14 14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0ZM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88Z"></path></svg>
+ </span>
+ </div>
+ </div>
+ </li>
+ 
+ 
+</ul>
+ </div>
+ 
+ </div>
+ </div>
+</div>
+ 
+<div id=answer-2361 class="answer js-answer" data-answerid=2361 data-score=19 data-position-on-page=2 data-highest-scored=0 data-question-has-accepted-highest-score=1 itemprop=suggestedAnswer itemscope itemtype=https://schema.org/Answer style=display:none!important>
+ <div class=post-layout style=display:none!important>
+ <div class="votecell post-layout--left" style=display:none!important>
+ <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id=2361 style=display:none!important>
+ <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Up vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-x55qlr0g style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowUpLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+ </button>
+ 
+ <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Down vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-d2s6ay1b style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowDownLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+ </button>
+ 
+ <div class="js-accepted-answer-indicator flex--item fc-green-500 py6 mtn8 d-none" data-s-tooltip-placement=right title="Loading when this answer was accepted…" tabindex=0 role=note aria-label=Accepted style=display:none!important>
+ 
+ </div>
+ 
+ <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href=https://vi.stackexchange.com/posts/2361/timeline data-shortcut=T data-ks-title=timeline data-controller=s-tooltip data-s-tooltip-placement=right aria-label=Timeline aria-describedby=--stacks-s-tooltip-b30mum0t style=display:none!important><svg aria-hidden=true class="mln2 mr0 svg-icon iconHistory" width=19 height=18 viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+ </div>
+ 
+ 
+ 
+ </div>
+</div>
+ 
+<div id=answer-18080 class="answer js-answer" data-answerid=18080 data-score=11 data-position-on-page=3 data-highest-scored=0 data-question-has-accepted-highest-score=1 itemprop=suggestedAnswer itemscope itemtype=https://schema.org/Answer style=display:none!important>
+ <div class=post-layout style=display:none!important>
+ <div class="votecell post-layout--left" style=display:none!important>
+ <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id=18080 style=display:none!important>
+ <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Up vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-99e2l4a0 style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowUpLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+ </button>
+ 
+ <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Down vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-2lla7ukq style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowDownLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+ </button>
+ 
+ <div class="js-accepted-answer-indicator flex--item fc-green-500 py6 mtn8 d-none" data-s-tooltip-placement=right title="Loading when this answer was accepted…" tabindex=0 role=note aria-label=Accepted style=display:none!important>
+ 
+ </div>
+ 
+ <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href=https://vi.stackexchange.com/posts/18080/timeline data-shortcut=T data-ks-title=timeline data-controller=s-tooltip data-s-tooltip-placement=right aria-label=Timeline aria-describedby=--stacks-s-tooltip-g2qusnl1 style=display:none!important><svg aria-hidden=true class="mln2 mr0 svg-icon iconHistory" width=19 height=18 viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+ </div>
+ 
+ 
+ <div class="post-layout--right js-post-comments-component" style=display:none!important>
+ <div id=comments-18080 class="comments js-comments-container bt bc-black-075 mt12" data-post-id=18080 data-min-length=15 style=display:none!important>
+ <ul class="comments-list js-comments-list" data-remaining-comments-count=0 data-canpost=false data-cansee=true data-comments-unavailable=false data-addlink-disabled=true style=display:none!important>
+ 
+ 
+ <li id=comment-53535 class="comment js-comment" data-comment-id=53535 data-comment-owner-id=33463 data-comment-score=0 style=display:none!important>
+ 
+ <div class="comment-text js-comment-text-and-form" style=display:none!important>
+ <div class="comment-body js-comment-edit-hide" style=display:none!important>
+ 
+ 
+ 
+ 
+ 
+ <span title="this comment was edited 1 time" style=display:none!important>
+ <svg aria-hidden=true class="va-text-bottom o50 svg-icon iconPencilSm" width=14 height=14 viewBox="0 0 14 14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0ZM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88Z"></path></svg>
+ </span>
+ </div>
+ </div>
+ </li>
+ 
+ </ul>
+ </div>
+ 
+ </div>
+ </div>
+</div>
+ 
+<div id=answer-10506 class="answer js-answer" data-answerid=10506 data-score=3 data-position-on-page=4 data-highest-scored=0 data-question-has-accepted-highest-score=1 itemprop=suggestedAnswer itemscope itemtype=https://schema.org/Answer style=display:none!important>
+ <div class=post-layout style=display:none!important>
+ <div class="votecell post-layout--left" style=display:none!important>
+ <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id=10506 style=display:none!important>
+ <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Up vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-75a4lqgr style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowUpLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+ </button>
+ 
+ <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Down vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-52y9m586 style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowDownLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+ </button>
+ 
+ <div class="js-accepted-answer-indicator flex--item fc-green-500 py6 mtn8 d-none" data-s-tooltip-placement=right title="Loading when this answer was accepted…" tabindex=0 role=note aria-label=Accepted style=display:none!important>
+ 
+ </div>
+ 
+ <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href=https://vi.stackexchange.com/posts/10506/timeline data-shortcut=T data-ks-title=timeline data-controller=s-tooltip data-s-tooltip-placement=right aria-label=Timeline aria-describedby=--stacks-s-tooltip-elvuzm9p style=display:none!important><svg aria-hidden=true class="mln2 mr0 svg-icon iconHistory" width=19 height=18 viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+ </div>
+ 
+ 
+ 
+ </div>
+</div>
+ 
+<div id=answer-11492 class="answer js-answer" data-answerid=11492 data-score=3 data-position-on-page=5 data-highest-scored=0 data-question-has-accepted-highest-score=1 itemprop=suggestedAnswer itemscope itemtype=https://schema.org/Answer style=display:none!important>
+ <div class=post-layout style=display:none!important>
+ <div class="votecell post-layout--left" style=display:none!important>
+ <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id=11492 style=display:none!important>
+ <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Up vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-ku6rp4ov style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowUpLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+ </button>
+ 
+ <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Down vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-dp49xn8n style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowDownLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+ </button>
+ 
+ <div class="js-accepted-answer-indicator flex--item fc-green-500 py6 mtn8 d-none" data-s-tooltip-placement=right title="Loading when this answer was accepted…" tabindex=0 role=note aria-label=Accepted style=display:none!important>
+ 
+ </div>
+ 
+ <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href=https://vi.stackexchange.com/posts/11492/timeline data-shortcut=T data-ks-title=timeline data-controller=s-tooltip data-s-tooltip-placement=right aria-label=Timeline aria-describedby=--stacks-s-tooltip-0joykufi style=display:none!important><svg aria-hidden=true class="mln2 mr0 svg-icon iconHistory" width=19 height=18 viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+ </div>
+ 
+ 
+ 
+ </div>
+</div>
+ 
+<div id=answer-29538 class="answer js-answer" data-answerid=29538 data-score=0 data-position-on-page=6 data-highest-scored=0 data-question-has-accepted-highest-score=1 itemprop=suggestedAnswer itemscope itemtype=https://schema.org/Answer style=display:none!important>
+ <div class=post-layout style=display:none!important>
+ <div class="votecell post-layout--left" style=display:none!important>
+ <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id=29538 style=display:none!important>
+ <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Up vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-1dwiceu0 style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowUpLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+ </button>
+ 
+ <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Down vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-xjftc0nj style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowDownLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+ </button>
+ 
+ <div class="js-accepted-answer-indicator flex--item fc-green-500 py6 mtn8 d-none" data-s-tooltip-placement=right title="Loading when this answer was accepted…" tabindex=0 role=note aria-label=Accepted style=display:none!important>
+ 
+ </div>
+ 
+ <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href=https://vi.stackexchange.com/posts/29538/timeline data-shortcut=T data-ks-title=timeline data-controller=s-tooltip data-s-tooltip-placement=right aria-label=Timeline aria-describedby=--stacks-s-tooltip-fp3mqb68 style=display:none!important><svg aria-hidden=true class="mln2 mr0 svg-icon iconHistory" width=19 height=18 viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+ </div>
+ 
+ 
+ 
+ </div>
+</div>
+ 
+<div id=answer-29537 class="answer js-answer" data-answerid=29537 data-score=0 data-position-on-page=7 data-highest-scored=0 data-question-has-accepted-highest-score=1 itemprop=suggestedAnswer itemscope itemtype=https://schema.org/Answer style=display:none!important>
+ <div class=post-layout style=display:none!important>
+ <div class="votecell post-layout--left" style=display:none!important>
+ <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id=29537 style=display:none!important>
+ <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Up vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-i5qpt7xu style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowUpLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+ </button>
+ 
+ <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Down vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-jbsvnuum style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowDownLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+ </button>
+ 
+ <div class="js-accepted-answer-indicator flex--item fc-green-500 py6 mtn8 d-none" data-s-tooltip-placement=right title="Loading when this answer was accepted…" tabindex=0 role=note aria-label=Accepted style=display:none!important>
+ 
+ </div>
+ 
+ <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href=https://vi.stackexchange.com/posts/29537/timeline data-shortcut=T data-ks-title=timeline data-controller=s-tooltip data-s-tooltip-placement=right aria-label=Timeline aria-describedby=--stacks-s-tooltip-xgokhxeu style=display:none!important><svg aria-hidden=true class="mln2 mr0 svg-icon iconHistory" width=19 height=18 viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+ </div>
+ 
+ 
+ 
+ </div>
+</div>
+ 
+ <form id=post-form action=/questions/2350/answer/submit method=post class="js-add-answer-component post-form" style=display:none!important>
+ 
+ 
+ 
+ 
+ 
+<div id=post-editor class="post-editor js-post-editor" style=display:none!important>
+ 
+ <aside class="d-flex ai-start jc-space-between js-answer-help s-notice s-notice__warning pb0 pr4 pt4 mb8 d-none" role=status aria-hidden=true style=display:none!important>
+ 
+ 
+</aside>
+ 
+ 
+ 
+ 
+</div>
+ <div class=ps-relative style=display:none!important>
+ <div class="form-item new-post-login p0 my16" style=display:none!important>
+ <div class="d-flex gs16 md:fd-column new-login-form" style=display:none!important>
+ <div class="d-flex fd-column w50 md:w-auto gsy gs8 jc-space-between new-login-left" style=display:none!important>
+ 
+ 
+ <div class="flex--item s-btn s-btn__muted s-btn__outlined s-btn__icon google-login" data-ga='["sign up","Sign Up Started - Google","New Post",null,null]' style=display:none!important>
+ <svg aria-hidden=true class="native svg-icon iconGoogle" width=18 height=18 viewBox="0 0 18 18"><path d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18Z" fill=#4285F4></path><path d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17Z" fill=#34A853></path><path d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07Z" fill=#FBBC05></path><path d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3Z" fill=#EA4335></path></svg> Sign up using Google
+ </div>
+ <div class="flex--item s-btn s-btn__muted s-btn__icon facebook-login" data-ga='["sign up","Sign Up Started - Facebook","New Post",null,null]' style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconFacebook" width=18 height=18 viewBox="0 0 18 18"><path d="M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm6.55 16v-6.2H7.46V8.4h2.09V6.61c0-2.07 1.26-3.2 3.1-3.2.88 0 1.64.07 1.87.1v2.16h-1.29c-1 0-1.19.48-1.19 1.18V8.4h2.39l-.31 2.42h-2.08V17h-2.5Z" fill=#4167B2></path></svg> Sign up using Facebook
+ </div>
+ <div class="flex--item s-btn s-btn__muted s-btn__outlined s-btn__icon stackexchange-login" data-ga='["sign up","Sign Up Navigation","New Post",null,null]' style=display:none!important>
+ <svg aria-hidden=true class="native svg-icon iconLogoGlyphXSm" width=18 height=18 viewBox="0 0 18 18"><path d="M14 16v-5h2v7H2v-7h2v5h10Z" fill=#BCBBBB></path><path d="m12.09.72-1.21.9 4.5 6.07 1.22-.9L12.09.71ZM5 15h8v-2H5v2Zm9.15-5.87L8.35 4.3l.96-1.16 5.8 4.83-.96 1.16Zm-7.7-1.47 6.85 3.19.63-1.37-6.85-3.2-.63 1.38Zm6.53 5L5.4 11.39l.38-1.67 7.42 1.48-.22 1.46Z" fill=#F48024></path></svg> Sign up using Email and Password
+ </div>
+ </div>
+ 
+ 
+ 
+ 
+ </div>
+ </div>
+ 
+ 
+ </div>
+ 
+ 
+ </form>
+ 
+ </div>
+ </div>
+ <div id=sidebar class=show-votes role=complementary aria-label=sidebar style=display:none!important>
+ 
+ 
+<div class="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16" data-tracker="cb=1" style=display:none!important>
+ <ul class="d-block p0 m0" style=display:none!important>
+ 
+ <li class="s-sidebarwidget--item d-flex px16" style=display:none!important>
+ <div class="flex--item1 fl-shrink0" style=display:none!important>
+<svg aria-hidden=true class="va-text-top svg-icon iconPencilSm" width=14 height=14 viewBox="0 0 14 14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0ZM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88Z"></path></svg> </div>
+ 
+ </li>
+ <li class="s-sidebarwidget--item d-flex px16" style=display:none!important>
+ <div class="flex--item1 fl-shrink0" style=display:none!important>
+<svg aria-hidden=true class="va-text-top svg-icon iconPencilSm" width=14 height=14 viewBox="0 0 14 14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0ZM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88Z"></path></svg> </div>
+ 
+ </li>
+ 
+ 
+ 
+ </ul>
+</div>
+ 
+ 
+ 
+ <div id=feed-link class=js-feed-link style=display:none!important>
+ <a href=https://vi.stackexchange.com/feeds/question/2350 title="Feed of this question and its answers" style=display:none!important>
+ <svg aria-hidden=true class="fc-orange-400 svg-icon iconRss" width=18 height=18 viewBox="0 0 18 18"><path d="M1 3c0-1.1.9-2 2-2h12c1.09 0 2 .91 2 2v12c0 1.09-.91 2-2 2H3c-1.09 0-2-.91-2-2V3Zm14.5 12C15.5 8.1 9.9 2.5 3 2.5V5a10 10 0 0 1 10 10h2.5Zm-5 0A7.5 7.5 0 0 0 3 7.5V10a5 5 0 0 1 5 5h2.5Zm-5 0A2.5 2.5 0 0 0 3 12.5V15h2.5Z"></path></svg>
+ Question feed
+ </a>
+ </div>
+ <aside class="s-modal js-feed-link-modal" tabindex=-1 role=dialog aria-labelledby=feed-modal-title aria-describedby=feed-modal-description aria-hidden=true style=display:none!important>
+ <div class="s-modal--dialog js-modal-dialog wmx4" role=document data-controller=se-draggable style=display:none!important>
+ 
+ <div class="d-flex gs4 gsy fd-column" style=display:none!important>
+ 
+ <div class="d-flex ps-relative" style=display:none!important>
+ 
+ <svg aria-hidden=true class="s-input-icon fc-orange-400 svg-icon iconRss" width=18 height=18 viewBox="0 0 18 18"><path d="M1 3c0-1.1.9-2 2-2h12c1.09 0 2 .91 2 2v12c0 1.09-.91 2-2 2H3c-1.09 0-2-.91-2-2V3Zm14.5 12C15.5 8.1 9.9 2.5 3 2.5V5a10 10 0 0 1 10 10h2.5Zm-5 0A7.5 7.5 0 0 0 3 7.5V10a5 5 0 0 1 5 5h2.5Zm-5 0A2.5 2.5 0 0 0 3 12.5V15h2.5Z"></path></svg>
+ </div>
+ </div>
+ <a class="s-modal--close s-btn s-btn__muted js-modal-close js-last-tabbable" href=# aria-label=Close style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconClearSm" width=14 height=14 viewBox="0 0 14 14"><path d="M12 3.41 10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7 12 3.41Z"></path></svg>
+ </a>
+ </div>
+ </aside>
+ </div>
+ </div>
+</div>
+ </div>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<grammarly-desktop-integration data-grammarly-shadow-root=true style=display:none!important><template shadowmode=open style=display:none!important><style class=sf-hidden>div.grammarly-desktop-integration{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}div.grammarly-desktop-integration:before{content:attr(data-content)}</style></template></grammarly-desktop-integration><script>document.currentScript.remove();!function(){"use strict";(t=>{const n="singlefile-infobar",e="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8H+DhhoQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJJJREFUOI3t070NRCEMA2CnYAOyDyPwpHj/Va7hJ3FzV7zy3ET5JIwoAF6Jk4wzAJAkzxAYG9YRTgB+24wBgKmfrGAKTcEfAY4KRlRoIeBTgKOCERVaCPgU4Khge2GqKOBTgKOCERVaAEC/4PNcnyoSWHpjqkhwKxbcig0Q6AorXYF/+A6eIYD1lVbwG/jdA6/kA2THRAURVubcAAAAAElFTkSuQmCC",o="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8VC4EQ6QAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJtJREFUOI3NkrsBgCAMRLFwBPdxBArcfxXFkO8rbKWAAJfHJ9faf9vuYX/749T5NmShm3bEwbe2SxeuM4+2oxDL1cDoKtVUjRy+tH78Cv2CS+wIiQNC1AEhk4AQeUTMWUJMfUJMSEJMSEY8kIx4IONroaYAimNxsXp1PA7PxwfVL8QnowwoVC0lig07wDDVUjAdbAnjwtow/z/bDW7eI4M2KruJAAAAAElFTkSuQmCC",i="SingleFile",A="single-file-ui-element",r="\n\t.infobar {\n\t\tbackground-color: #737373;\n\t\tcolor: white;\n\t\tdisplay: flex;\n\t\tposition: fixed;\n\t\ttop: 16px;\n\t\tright: 16px;\n\t\theight: auto;\n\t\twidth: auto;\n\t\tmin-height: 24px;\n\t\tmin-width: 24px;\n\t\tbackground-position: center;\n\t\tbackground-repeat: no-repeat;\n\t\tz-index: 2147483647;\n\t\tmargin: 0 0 0 16px;\n\t\tbackground-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHADIRLMaOHwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAPUExURQAAAIqKioyNjY2OjvDw8L2y1DEAAAABdFJOUwBA5thmAAAAAWJLR0QB/wIt3gAAAGNJREFUSMdjYCAJsLi4OBCQx6/CBQwIGIDPCBcXAkYQUsACU+AwlBVQHg6Eg5pgZBGOboIJZugDFwRwoJECJCUOhJI1wZwzqmBUwagCuipgIqTABG9h7YIKaKGAURAFEF/6AQAO4HqSoDP8bgAAAABJRU5ErkJggg==);\n\t\tborder-radius: 16px;\n\t\tuser-select: none;\n\t\t-moz-user-select: none;\n\t\topacity: .7;\n\t\tcursor: pointer;\n\t\tpadding-left: 0;\n\t\tpadding-right: 0;\n\t\tpadding-top: 0;\n\t\tpadding-bottom: 0;\n\t\tborder: 2px solid #eee;\n\t\tbackground-size: 70% 70%;\n\t\ttransition: all 250ms;\n\t\tfont-size: 13px;\n\t}\n\t.infobar:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open {\n\t\topacity: 1;\n\t\tbackground-color: #f9f9f9;\n\t\tcursor: auto;\n\t\tcolor: #2d2d2d;\n\t\tpadding-top: 2px;\n\t\tpadding-bottom: 2px;\n\t\tborder: 2px solid #878787;\n\t\tbackground-image: none;\n\t\tborder-radius: 8px;\n\t\tuser-select: initial;\n\t\t-moz-user-select: initial;\n\t}\n\t.infobar-close-button {\n\t\tdisplay: none;\n\t\topacity: .7;\n\t\tpadding-top: 4px;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tcursor: pointer;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-close-button:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-content {\n\t\tdisplay: none;\n\t\tfont-family: Arial;\n\t\tfont-size: 14px;\n\t\tline-height: 22px;\n\t\tword-break: break-word;\n\t\twhite-space: pre-wrap;\n\t\tposition: relative;\n\t\ttop: 1px;\n\t\ttext-align: left;\n\t}\n\t.infobar-link {\n\t\tdisplay: none;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tline-height: 11px;\n\t\tcursor: pointer;\n\t\tuser-select: none;\n\t\toutline: 0;\n\t}\n\t.infobar-link-icon {\n\t\tpadding-top: 4px;\n\t\tpadding-left: 2px;\n\t\tcursor: pointer;\n\t\topacity: .7;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-link-icon:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open .infobar-close-button, .infobar-open .infobar-content, .infobar-open .infobar-link {\n\t\tdisplay: inline-block;\n\t}";let a=!0;const c=t.browser;async function s(){const t=document.evaluate("//comment()",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);let s=t&&t.singleNodeValue;if(s&&((p=s).nodeType==Node.COMMENT_NODE&&p.textContent.includes(i))){const t=s.textContent.split("\n"),[,,i,p,...g]=t;if(i&&p){let t;t=c&&c.runtime&&c.runtime.sendMessage?await c.runtime.sendMessage({method:"tabs.getOptions",url:i}):{displayInfobar:!0},t.displayInfobar&&await async function(t,i,c){let s=document.querySelector(n);if(!s){if(t=t.split("url: ")[1],i=i.split("saved date: ")[1],c&&c.length>1){let t=c[0].split("info: ")[1].trim();for(let n=1;n<c.length-1;n++)t+="\n"+c[n].trim();c=t.trim()}else c=i;s=d(n,document.body),s.className=A;const p=await async function(t){if(t.attachShadow)return t.attachShadow({mode:"open"});{a=!1;const n=d("iframe",t);return n.style.setProperty("background-color","transparent","important"),n.style.setProperty("position","fixed","important"),n.style.setProperty("top",0,"important"),n.style.setProperty("right",0,"important"),n.style.setProperty("width","44px","important"),n.style.setProperty("height","48px","important"),n.style.setProperty("z-index",2147483647,"important"),new Promise((t=>{n.contentDocument.body.style.setProperty("margin",0),n.onload=()=>t(n.contentDocument.body)}))}}(s),g=document.createElement("style");g.textContent=r,p.appendChild(g);const u=document.createElement("div");u.classList.add("infobar"),p.appendChild(u);const h=document.createElement("img");h.classList.add("infobar-close-button"),u.appendChild(h),h.src=o,h.onclick=t=>{0===t.button&&s.remove()};const m=document.createElement("span");u.appendChild(m),m.classList.add("infobar-content"),m.textContent=c;const b=document.createElement("a");b.classList.add("infobar-link"),u.appendChild(b),b.target="_blank",b.rel="noopener noreferrer",b.title="Open source URL: "+t,b.href=t;const f=document.createElement("img");f.classList.add("infobar-link-icon"),b.appendChild(f),f.src=e,l(u),document.addEventListener("click",(t=>{if(0===t.button){let n=t.target;for(;n&&n!=s;)n=n.parentElement;n!=s&&l(u)}}))}}(i,p,g)}}var p}function l(t){if(t.classList.remove("infobar-open"),t.onclick=e=>{if(0===e.button)return function(t){a||document.querySelector(n).childNodes[0].contentWindow.getSelection().removeAllRanges();if(t.classList.add("infobar-open"),t.onclick=null,t.onmouseout=null,!a){const e=document.querySelector(n).childNodes[0];e.style.setProperty("width","100vw","important"),e.style.setProperty("height","100vh","important"),e.style.setProperty("width",t.getBoundingClientRect().width+33+"px","important"),e.style.setProperty("height",t.getBoundingClientRect().height+21+"px","important")}}(t),!1},!a){const t=document.querySelector(n).childNodes[0];t.style.setProperty("width","44px","important"),t.style.setProperty("height","48px","important")}}function d(t,n){const e=document.createElement(t);return n.appendChild(e),Array.from(getComputedStyle(e)).forEach((t=>e.style.setProperty(t,"initial","important"))),e}t.window==t.top&&("loading"==document.readyState?document.addEventListener("DOMContentLoaded",s,!1):s())})("object"==typeof globalThis?globalThis:window)}();</script>

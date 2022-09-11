@@ -1,0 +1,72 @@
+# stop x
+pkill xinit
+# unbind from virtual consoles
+echo 0 > /sys/class/vtconsole/vtcon0/bind
+echo 0 > /sys/class/vtconsole/vtcon1/bind
+
+# unbind from efi-frambuffer
+echo 'efi-frambuffer.0' > /sys/bus/platform/drivers/efi-framebuffer/unbind
+
+rmmod -f nvidia_drm
+rmmod -f nvidia_modeset
+rmmod -f nvidia
+
+# release nvidia card back to nvidia driver for linux
+echo 1 > /sys/bus/pci/devices/0000:01:00.0/remove
+echo 1 > /sys/bus/pci/devices/0000:01:00.1/remove
+echo 1 > /sys/bus/pci/rescan
+
+# reload nvidia driver
+modprobe -a nvidia_drm
+modprobe -a nvidia_modeset
+modprobe -a nvidia
+modprobe -r nvidia_uvm
+
+virsh nodedev-detach $VIRSH_GPU_VIDEO
+
+modprobe vfio
+modprobe vfio_pci
+modprobe vfio_iommu_type1
+
+modprobe -r vfio
+modprobe -r vfio_pci
+modprobe -r vfio_iommu_type1
+
+virsh nodedev-reattach $VIRSH_GPU_VIDEO
+
+nvidia-xconfig --query-gpu-info
+
+echo "efi-framebuffer.0" > /sys/bus/platform/drivers/efi-framebuffer/bind
+
+sleep 10
+
+modprobe nvidia_drm
+modprobe nvidia_modeset
+modprobe nvidia
+modprobe nvidia_uvm
+
+# attempt rebind to virtual consoles
+echo 1 > /sys/class/vtconsole/vtcon0/bind
+echo 1 > /sys/class/vtconsole/vtcon1/bind
+
+#possibly helpful. https://github.com/andre-richter/vfio-pci-bind/blob/master/vfio-pci-bind.sh
+modprobe -i vfio-pci
+echo "vfio-pci" > "$dsp/driver_override"
+echo $dbdf > /sys/bus/pci/drivers_probe
+
+
+/sys/bus/pci/drivers/vfio-pci/new_id
+sudo rmmod vfio-pci
+echo "0000:01:00.0" | sudo tee /sys/bus/pci/drivers/nvidia/bind 
+echo "0000:01:00.1" | sudo tee /sys/bus/pci/drivers/snd_hda_intel/bind
+
+vendor=$(cat /sys/bus/pci/devices/$dev/vendor)
+device=$(cat /sys/bus/pci/devices/$dev/device)
+echo "${vendor} ${device}" > /sys/bus/pci/drivers/vfio-pci/remove_id
+
+# Bind GPU to nvidia driver
+#sudo tee /sys/bus/pci/devices/0000:01:00.0/remove <<< '1'
+#sudo tee /sys/bus/pci/devices/0000:01:00.1/remove <<< '1'
+#sudo tee /sys/bus/pci/rescan <<< '1'
+sudo modprobe nvidia nvidia_modeset nvidia_drm snd_hda_intel
+

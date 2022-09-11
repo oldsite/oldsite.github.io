@@ -1,0 +1,164 @@
+<!DOCTYPE html> <html xmlns=http://www.w3.org/1999/xhtml lang=en data-darkreader-mode=dynamic data-darkreader-scheme=dark><!--
+ Page saved with SingleFile 
+ url: https://cweiske.de/tagebuch/dreambox-ext4-mount.htm 
+ saved date: Sun Apr 24 2022 22:24:37 GMT+0530 (India Standard Time)
+--><head profile="http://microformats.org/profile/rel-tag http://microformats.org/profile/h-entry" class=sf-hidden><meta charset=utf-8>
+<link type=image/x-icon rel="shortcut icon" href="data:image/vnd.microsoft.icon;base64,AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8ZAID/ngCA/+wAgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP/sAID/ngCA/xkAgP8AAID/GQCA/+IAgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID/4gCA/xkAgP+eAID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID/ngCA/+wAgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP/sAID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8DePH/LkeP/1EfPv9YFiz/RihU/xlfv/8AgP//AID//wCA//8AgP//AID//wCA//8AgP//A3jx/0EvYf8AgP//AID//wCA//8AgP//EGrU/zw1bP8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//A3jx/1EfPv9pAAX/aQAF/2kABf9pAAX/aQAF/y5Hj/8AgP//AID//wCA//8AgP//AID//wCA//81P33/aQAF/xlfv/8AgP//AID//wCA//88NWz/aQAF/xBq1P8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//88NWz/aQAF/2kABf9mBgf/NT99/y5Hj/9GKFT/aQAF/yFWrP8AgP//AID//wCA//8AgP//AID//18NGv9pAAX/UR8+/wCA//8AgP//A3jx/18NGv9pAAX/PDVs/wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//A3jx/2YGB/9pAAX/ZgYH/xBq1P8AgP//AID//wCA//8uR4//Xw0a/wN48f8AgP//AID//wCA//8hVqz/aQAF/2kABf9pAAX/EGrU/wCA//8hVqz/aQAF/2kABf9fDRr/A3jx/wCA//8AgP//AID//wCA//8AgP//AID//wCA//8hVqz/aQAF/2kABf8uR4//AID//wCA//8AgP//AID//wCA//81P33/EGrU/wCA//8AgP//AID//0YoVP9pAAX/WBYs/18NGv9BL2H/AID//1EfPv9pAAX/WBYs/2kABf8hVqz/AID//wCA//8AgP//AID//wCA//8AgP//AID//y5Hj/9pAAX/aQAF/xBq1P8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8QatT/aQAF/2kABf8nTZr/LkeP/2kABf8ZX7//aQAF/2kABf8hVqz/UR8+/1EfPv8AgP//AID//wCA//8AgP//AID//wCA//8AgP//J02a/2kABf9pAAX/AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//zU/ff9pAAX/ZgYH/wN48f8DePH/ZgYH/2YGB/9pAAX/Xw0a/wN48f8hVqz/aQAF/xBq1P8AgP//AID//wCA//8AgP//AID//wCA//8ZX7//aQAF/2kABf8DePH/AID//wCA//8AgP//AID//wN48f8AgP//AID//wCA//8AgP//Xw0a/2kABf9BL2H/AID//wCA//88NWz/aQAF/2kABf88NWz/AID//wN48f9fDRr/PDVs/wCA//8AgP//AID//wCA//8AgP//AID//wCA//9fDRr/aQAF/xlfv/8AgP//AID//wCA//8uR4//aQAF/0EvYf8AgP//AID//yFWrP9pAAX/aQAF/xlfv/8AgP//AID//ydNmv9pAAX/aQAF/xBq1P8AgP//AID//zU/ff9fDRr/A3jx/wCA//8AgP//AID//wCA//8AgP//AID//ydNmv9pAAX/UR8+/wCA//8AgP//AID//1EfPv9pAAX/Xw0a/wCA//8AgP//UR8+/2kABf9fDRr/AID//wCA//8AgP//UR8+/2kABf9YFiz/AID//wCA//8AgP//EGrU/2kABf8nTZr/AID//wCA//8AgP//AID//wCA//8AgP//AID//zw1bP9pAAX/UR8+/y5Hj/88NWz/aQAF/2kABf8uR4//AID//y5Hj/9pAAX/aQAF/1gWLP8hVqz/EGrU/zU/ff9pAAX/aQAF/18NGv8nTZr/AID//wCA//8uR4//aQAF/18NGv8QatT/AID//wCA//8AgP//AID//wCA//8AgP//AID//xlfv/9BL2H/UR8+/1gWLP9BL2H/GV+//wCA//8AgP//PDVs/zw1bP88NWz/PDVs/zU/ff8QatT/PDVs/zw1bP88NWz/PDVs/zw1bP8AgP//AID//zw1bP88NWz/PDVs/xlfv/8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP/sAID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID/7ACA/54AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP+eAID/GQCA/+IAgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID/4gCA/xkAgP8AAID/GQCA/54AgP/sAID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID//wCA//8AgP//AID/7ACA/54AgP8ZAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8AAID/AACA/wAAgP8A/////////////////////8AAAAOAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABwAAAA/////////////////////8="><style>.sf-hidden{display:none!important}</style><link rel=canonical href=https://cweiske.de/tagebuch/dreambox-ext4-mount.htm><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;"></head>
+ <body class="h-entry hentry" data-new-gr-c-s-check-loaded=14.1057.0 data-gr-ext-installed>
+ <div class=sidebar>
+ <div class=search>
+ <form action=//search.cweiske.de/>
+ 
+ <input type=text name=q placeholder=Search... value><input type=submit value>
+ </form>
+ </div>
+ 
+ <p>
+ <span class="dt-published published dt-updated updated"><abbr class=value title=2019-08-06T16:12:22+02:00>
+ August 6, 2019 </abbr></span>
+ </p>
+ <ul class=prevnext>
+ <li class=next><a href=https://cweiske.de/tagebuch/glasfaser-streuben.htm>Glasfaser in Streuben</a></li>
+ <li><a href=https://cweiske.de/tagebuch/amazon-pay-error.htm>Amazon Pay blockiert durch Browsereinstellungen</a></li>
+ <li class=up><a href=https://cweiske.de/tagebuch/>Tagebuch</a></li>
+ </ul>
+ <h3>Tags</h3>
+ <ul class=tags>
+ <li><a rel=tag class=p-category href=https://cweiske.de/tagebuch/tag/dreambox>dreambox</a>
+ <ul>
+ <li class=next><a href=https://cweiske.de/tagebuch/stereo-shelly-dreambox.htm>Stereoanlage mit Dreambox anschalten</a></li>
+ <li><a href=https://cweiske.de/tagebuch/dreambox-video-firefox.htm>Play videos from Firefox on your Dreambox</a></li>
+ </ul>
+ </li>
+ <li><a rel=tag class=p-category href=https://cweiske.de/tagebuch/tag/linux>linux</a>
+ <ul>
+ <li class=next><a href=https://cweiske.de/tagebuch/gpg-default-key-ignored.htm>GPG: --default-key ignored</a></li>
+ <li><a href=https://cweiske.de/tagebuch/nfs-showmount-not-registered.htm>showmount: clnt_create: RPC: Program not registered</a></li>
+ </ul>
+ </li>
+ </ul>
+ </div>
+ <div class=frame>
+ <h1 class="p-name entry-title">Problems mounting ext4 disk on a Dreambox</h1>
+ <div id=content class="e-content entry-content">
+ <p id=p1>
+ I wanted to copy some movies to an external disk in preparation for our
+ summer vacation, and attached an external USB3 disk to our Dreambox satellite
+ receiver.
+ <a class=anchorlink href=#p1>​</a></p>
+ <h2 id=meta>Metadata<a class=anchorlink href=#meta>​</a></h2>
+ <p id=meta-p1>
+ Nothing happened; the disk did not get automatically mounted.
+ Manually mounting also failed.
+ <tt>dmesg</tt> told me:
+ <a class=anchorlink href=#meta-p1>​</a></p>
+ <pre id=meta-c1>usb 10-2: new SuperSpeed USB device number 2 using xhci_hcd
+scsi2 : usb-storage 10-2:1.0
+scsi 2:0:0:0: Direct-Access     TOSHIBA  External USB 3.0 0    PQ: 0 ANSI: 6
+sd 2:0:0:0: [sdb] 1953525168 512-byte logical blocks: (1.00 TB/931 GiB)
+sd 2:0:0:0: [sdb] Write Protect is off
+sd 2:0:0:0: [sdb] Mode Sense: 43 00 00 00
+sd 2:0:0:0: [sdb] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+ sdb: sdb1
+sd 2:0:0:0: [sdb] Attached SCSI disk
+EXT4-fs (sdb1): couldn't mount RDWR because of unsupported optional features (400)<a class=anchorlink href=#meta-c1>​</a></pre>
+ <p id=meta-p2>
+ I formatted the disk on a Debian unstable (kernel 4.19),
+ and it enabled the metadata checksum feature that is not supported
+ by the DreamOS 2.6's kernel (<tt>3.4-4.0-dm7080</tt>).
+ I had to disable that feature on the disk with my laptop:
+ <a class=anchorlink href=#meta-p2>​</a></p>
+ <pre id=meta-c2>$ e2fsck -f /dev/sdb1
+$ tune2fs -O ^metadata_csum /dev/sdb1<a class=anchorlink href=#meta-c2>​</a></pre>
+ <p id=meta-p3>
+ Source:
+ <a href=https://unix.stackexchange.com/questions/287159/#359105>Couldn't mount RDWR because of unsupported optional features (400)</a>
+ <a class=anchorlink href=#meta-p3>​</a></p>
+ 
+ <h2 id=journal>Journal<a class=anchorlink href=#journal>​</a></h2>
+ <p id=journal-p1>
+ The next mount try also resulted in an error:
+ <a class=anchorlink href=#journal-p1>​</a></p>
+ <pre id=journal-c1>usb 10-2: new SuperSpeed USB device number 3 using xhci_hcd
+scsi3 : usb-storage 10-2:1.0
+scsi 3:0:0:0: Direct-Access     TOSHIBA  External USB 3.0 0    PQ: 0 ANSI: 6
+sd 3:0:0:0: [sdb] 1953525168 512-byte logical blocks: (1.00 TB/931 GiB)
+sd 3:0:0:0: [sdb] Write Protect is off
+sd 3:0:0:0: [sdb] Mode Sense: 43 00 00 00
+sd 3:0:0:0: [sdb] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+ sdb: sdb1
+sd 3:0:0:0: [sdb] Attached SCSI disk
+JBD2: Unrecognised features on journal
+EXT4-fs (sdb1): error loading journal<a class=anchorlink href=#journal-c1>​</a></pre>
+ <p id=journal-p2>
+ So kernel 4.19 also adds new journal data.
+ <a class=anchorlink href=#journal-p2>​</a></p>
+ <pre id=journal-c2>$ tune2fs -l /dev/sdb1
+tune2fs 1.43-WIP (18-May-2015)
+Filesystem volume name:   videos
+Last mounted on:          /media/cweiske/videos
+Filesystem UUID:          7e07e565-99c7-4ea9-b2a3-1eb02ba23572
+Filesystem magic number:  0xEF53
+Filesystem revision #:    1 (dynamic)
+Filesystem features:      has_journal ext_attr resize_inode dir_index filetype extent flex_bg sparse_super large_file huge_file uninit_bg dir_nlink extra_isize
+Filesystem flags:         signed_directory_hash
+Default mount options:    user_xattr acl
+Filesystem state:         clean
+Errors behavior:          Continue
+Filesystem OS type:       Linux
+Inode count:              61054976
+Block count:              244190208
+Reserved block count:     12209510
+Free blocks:              210555405
+Free inodes:              61042713
+First block:              0
+Block size:               4096
+Fragment size:            4096
+Reserved GDT blocks:      965
+Blocks per group:         32768
+Fragments per group:      32768
+Inodes per group:         8192
+Inode blocks per group:   512
+Flex block group size:    16
+Filesystem created:       Fri Feb 15 20:05:55 2019
+Last mount time:          Sat Jul 13 10:51:53 2019
+Last write time:          Sat Jul 13 11:02:12 2019
+Mount count:              0
+Maximum mount count:      -1
+Last checked:             Sat Jul 13 11:02:12 2019
+Check interval:           0 (&lt;none&gt;)
+Lifetime writes:          121 GB
+Reserved blocks uid:      0 (user root)
+Reserved blocks gid:      0 (group root)
+First inode:              11
+Inode size:	          256
+Required extra isize:     32
+Desired extra isize:      32
+Journal inode:            8
+Default directory hash:   half_md4
+Directory Hash Seed:      83196fde-051e-43c5-967c-7aa3935c571e
+Journal backup:           inode blocks<a class=anchorlink href=#journal-c2>​</a></pre>
+ <p id=journal-p3>
+ Instead of finding out which journal feature I had to disable, I disabled the
+ whole journal:
+ <a class=anchorlink href=#journal-p3>​</a></p>
+ <pre id=journal-c3>$ tune2fs -O ^has_journal /dev/sdb1<a class=anchorlink href=#journal-c3>​</a></pre>
+ <p id=journal-p4>
+ I could now finally mount the disk on the Dreambox.
+ <a class=anchorlink href=#journal-p4>​</a></p>
+ <p id=journal-p5>
+ Source: <a href="http://forums.debian.net/viewtopic.php?f=5&amp;t=138756">Debian User Forums: Boot failing: No init found</a>
+ <a class=anchorlink href=#journal-p5>​</a></p>
+ 
+ </div>
+ <div class=about>
+ <p>
+ Written by <a class="p-author h-card fn reviewer silent" href=https://cweiske.de/>Christian Weiske</a>.
+ </p>
+ <p>
+ Comments? Please
+ <a href="mailto:Christian%20Weiske%20%3Ccweiske@cweiske.de%3E?subject=Re:%20Problems%20mounting%20ext4%20disk%20on%20a%20Dreambox">send an e-mail</a>.
+ </p>
+ </div>
+ </div>
+<grammarly-desktop-integration data-grammarly-shadow-root=true><template shadowmode=open><style xmlns=http://www.w3.org/1999/xhtml class="darkreader darkreader--inline sf-hidden" media=screen>[data-darkreader-inline-bgcolor]{background-color:var(--darkreader-inline-bgcolor)!important}[data-darkreader-inline-bgimage]{background-image:var(--darkreader-inline-bgimage)!important}[data-darkreader-inline-border]{border-color:var(--darkreader-inline-border)!important}[data-darkreader-inline-border-bottom]{border-bottom-color:var(--darkreader-inline-border-bottom)!important}[data-darkreader-inline-border-left]{border-left-color:var(--darkreader-inline-border-left)!important}[data-darkreader-inline-border-right]{border-right-color:var(--darkreader-inline-border-right)!important}[data-darkreader-inline-border-top]{border-top-color:var(--darkreader-inline-border-top)!important}[data-darkreader-inline-boxshadow]{box-shadow:var(--darkreader-inline-boxshadow)!important}[data-darkreader-inline-color]{color:var(--darkreader-inline-color)!important}[data-darkreader-inline-fill]{fill:var(--darkreader-inline-fill)!important}[data-darkreader-inline-stroke]{stroke:var(--darkreader-inline-stroke)!important}[data-darkreader-inline-outline]{outline-color:var(--darkreader-inline-outline)!important}[data-darkreader-inline-stopcolor]{stop-color:var(--darkreader-inline-stopcolor)!important}</style><style xmlns=http://www.w3.org/1999/xhtml class="darkreader darkreader--override sf-hidden" media=screen>.vimvixen-hint{background-color:#7b5300!important;border-color:#d8b013!important;color:#f3e8c8!important}::placeholder{opacity:0.5!important}#edge-translate-panel-body,.MuiTypography-body1{color:var(--darkreader-neutral-text)!important}gr-main-header{background-color:#0f3a48!important}embed[type="application/pdf"][src="about:blank"]{filter:invert(100%) contrast(90%)}</style><style xmlns=http://www.w3.org/1999/xhtml class="darkreader darkreader--invert sf-hidden" media=screen>.jfk-bubble.gtx-bubble, .captcheck_answer_label &gt; input + img, span#closed_text &gt; img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] &gt; #icon, #bit-notification-bar-iframe, ::-webkit-calendar-picker-indicator{filter:invert(100%) hue-rotate(180deg) contrast(90%)!important}</style><style xmlns=http://www.w3.org/1999/xhtml class=sf-hidden>div.grammarly-desktop-integration{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}div.grammarly-desktop-integration:before{content:attr(data-content)}</style><div xmlns=http://www.w3.org/1999/xhtml aria-label=grammarly-integration role=group tabindex=-1 class=grammarly-desktop-integration data-content='{"mode":"full","isActive":true,"isUserDisabled":false}'></div></template></grammarly-desktop-integration><script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowmode"),delegatesFocus:Boolean(element.getAttribute("delegatesfocus"))});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script><script>document.currentScript.remove();!function(){"use strict";(t=>{const n="singlefile-infobar",e="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8H+DhhoQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJJJREFUOI3t070NRCEMA2CnYAOyDyPwpHj/Va7hJ3FzV7zy3ET5JIwoAF6Jk4wzAJAkzxAYG9YRTgB+24wBgKmfrGAKTcEfAY4KRlRoIeBTgKOCERVaCPgU4Khge2GqKOBTgKOCERVaAEC/4PNcnyoSWHpjqkhwKxbcig0Q6AorXYF/+A6eIYD1lVbwG/jdA6/kA2THRAURVubcAAAAAElFTkSuQmCC",o="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8VC4EQ6QAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJtJREFUOI3NkrsBgCAMRLFwBPdxBArcfxXFkO8rbKWAAJfHJ9faf9vuYX/749T5NmShm3bEwbe2SxeuM4+2oxDL1cDoKtVUjRy+tH78Cv2CS+wIiQNC1AEhk4AQeUTMWUJMfUJMSEJMSEY8kIx4IONroaYAimNxsXp1PA7PxwfVL8QnowwoVC0lig07wDDVUjAdbAnjwtow/z/bDW7eI4M2KruJAAAAAElFTkSuQmCC",i="SingleFile",A="single-file-ui-element",r="\n\t.infobar {\n\t\tbackground-color: #737373;\n\t\tcolor: white;\n\t\tdisplay: flex;\n\t\tposition: fixed;\n\t\ttop: 16px;\n\t\tright: 16px;\n\t\theight: auto;\n\t\twidth: auto;\n\t\tmin-height: 24px;\n\t\tmin-width: 24px;\n\t\tbackground-position: center;\n\t\tbackground-repeat: no-repeat;\n\t\tz-index: 2147483647;\n\t\tmargin: 0 0 0 16px;\n\t\tbackground-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHADIRLMaOHwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAPUExURQAAAIqKioyNjY2OjvDw8L2y1DEAAAABdFJOUwBA5thmAAAAAWJLR0QB/wIt3gAAAGNJREFUSMdjYCAJsLi4OBCQx6/CBQwIGIDPCBcXAkYQUsACU+AwlBVQHg6Eg5pgZBGOboIJZugDFwRwoJECJCUOhJI1wZwzqmBUwagCuipgIqTABG9h7YIKaKGAURAFEF/6AQAO4HqSoDP8bgAAAABJRU5ErkJggg==);\n\t\tborder-radius: 16px;\n\t\tuser-select: none;\n\t\t-moz-user-select: none;\n\t\topacity: .7;\n\t\tcursor: pointer;\n\t\tpadding-left: 0;\n\t\tpadding-right: 0;\n\t\tpadding-top: 0;\n\t\tpadding-bottom: 0;\n\t\tborder: 2px solid #eee;\n\t\tbackground-size: 70% 70%;\n\t\ttransition: all 250ms;\n\t\tfont-size: 13px;\n\t}\n\t.infobar:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open {\n\t\topacity: 1;\n\t\tbackground-color: #f9f9f9;\n\t\tcursor: auto;\n\t\tcolor: #2d2d2d;\n\t\tpadding-top: 2px;\n\t\tpadding-bottom: 2px;\n\t\tborder: 2px solid #878787;\n\t\tbackground-image: none;\n\t\tborder-radius: 8px;\n\t\tuser-select: initial;\n\t\t-moz-user-select: initial;\n\t}\n\t.infobar-close-button {\n\t\tdisplay: none;\n\t\topacity: .7;\n\t\tpadding-top: 4px;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tcursor: pointer;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-close-button:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-content {\n\t\tdisplay: none;\n\t\tfont-family: Arial;\n\t\tfont-size: 14px;\n\t\tline-height: 22px;\n\t\tword-break: break-word;\n\t\twhite-space: pre-wrap;\n\t\tposition: relative;\n\t\ttop: 1px;\n\t\ttext-align: left;\n\t}\n\t.infobar-link {\n\t\tdisplay: none;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tline-height: 11px;\n\t\tcursor: pointer;\n\t\tuser-select: none;\n\t\toutline: 0;\n\t}\n\t.infobar-link-icon {\n\t\tpadding-top: 4px;\n\t\tpadding-left: 2px;\n\t\tcursor: pointer;\n\t\topacity: .7;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-link-icon:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open .infobar-close-button, .infobar-open .infobar-content, .infobar-open .infobar-link {\n\t\tdisplay: inline-block;\n\t}";let a=!0;const c=t.browser;async function s(){const t=document.evaluate("//comment()",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);let s=t&&t.singleNodeValue;if(s&&((p=s).nodeType==Node.COMMENT_NODE&&p.textContent.includes(i))){const t=s.textContent.split("\n"),[,,i,p,...g]=t;if(i&&p){let t;t=c&&c.runtime&&c.runtime.sendMessage?await c.runtime.sendMessage({method:"tabs.getOptions",url:i}):{displayInfobar:!0},t.displayInfobar&&await async function(t,i,c){let s=document.querySelector(n);if(!s){if(t=t.split("url: ")[1],i=i.split("saved date: ")[1],c&&c.length>1){let t=c[0].split("info: ")[1].trim();for(let n=1;n<c.length-1;n++)t+="\n"+c[n].trim();c=t.trim()}else c=i;s=d(n,document.body),s.className=A;const p=await async function(t){if(t.attachShadow)return t.attachShadow({mode:"open"});{a=!1;const n=d("iframe",t);return n.style.setProperty("background-color","transparent","important"),n.style.setProperty("position","fixed","important"),n.style.setProperty("top",0,"important"),n.style.setProperty("right",0,"important"),n.style.setProperty("width","44px","important"),n.style.setProperty("height","48px","important"),n.style.setProperty("z-index",2147483647,"important"),new Promise((t=>{n.contentDocument.body.style.setProperty("margin",0),n.onload=()=>t(n.contentDocument.body)}))}}(s),g=document.createElement("style");g.textContent=r,p.appendChild(g);const u=document.createElement("div");u.classList.add("infobar"),p.appendChild(u);const h=document.createElement("img");h.classList.add("infobar-close-button"),u.appendChild(h),h.src=o,h.onclick=t=>{0===t.button&&s.remove()};const m=document.createElement("span");u.appendChild(m),m.classList.add("infobar-content"),m.textContent=c;const b=document.createElement("a");b.classList.add("infobar-link"),u.appendChild(b),b.target="_blank",b.rel="noopener noreferrer",b.title="Open source URL: "+t,b.href=t;const f=document.createElement("img");f.classList.add("infobar-link-icon"),b.appendChild(f),f.src=e,l(u),document.addEventListener("click",(t=>{if(0===t.button){let n=t.target;for(;n&&n!=s;)n=n.parentElement;n!=s&&l(u)}}))}}(i,p,g)}}var p}function l(t){if(t.classList.remove("infobar-open"),t.onclick=e=>{if(0===e.button)return function(t){a||document.querySelector(n).childNodes[0].contentWindow.getSelection().removeAllRanges();if(t.classList.add("infobar-open"),t.onclick=null,t.onmouseout=null,!a){const e=document.querySelector(n).childNodes[0];e.style.setProperty("width","100vw","important"),e.style.setProperty("height","100vh","important"),e.style.setProperty("width",t.getBoundingClientRect().width+33+"px","important"),e.style.setProperty("height",t.getBoundingClientRect().height+21+"px","important")}}(t),!1},!a){const t=document.querySelector(n).childNodes[0];t.style.setProperty("width","44px","important"),t.style.setProperty("height","48px","important")}}function d(t,n){const e=document.createElement(t);return n.appendChild(e),Array.from(getComputedStyle(e)).forEach((t=>e.style.setProperty(t,"initial","important"))),e}t.window==t.top&&("loading"==document.readyState?document.addEventListener("DOMContentLoaded",s,!1):s())})("object"==typeof globalThis?globalThis:window)}();</script>

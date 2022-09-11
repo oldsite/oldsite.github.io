@@ -1,0 +1,433 @@
+<!DOCTYPE html> <html itemscope itemtype=https://schema.org/QAPage class=html__responsive style><!--
+ Page saved with SingleFile 
+ url: https://stackoverflow.com/questions/23546025/how-can-i-map-ctrl-semicolon-to-add-a-semicolon-to-the-end-of-the-line 
+ saved date: Sun Mar 20 2022 11:00:57 GMT+0530 (India Standard Time)
+--><meta charset=utf-8>
+<title>vim - How can I map Ctrl + semicolon to add a semicolon to the end of the line? - Stack Overflow</title>
+<link rel=image_src href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a">
+<link rel=search type=application/opensearchdescription+xml title="Stack Overflow" href=https://stackoverflow.com/opensearch.xml>
+<link rel=canonical href=https://stackoverflow.com/questions/23546025/how-can-i-map-ctrl-semicolon-to-add-a-semicolon-to-the-end-of-the-line>
+<meta name=viewport content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+<meta property=og:type content=website>
+<meta property=og:url content=https://stackoverflow.com/questions/23546025/how-can-i-map-ctrl-semicolon-to-add-a-semicolon-to-the-end-of-the-line>
+<meta property=og:site_name content="Stack Overflow">
+<meta property=og:image itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon@2.png?v=73d79a89bded">
+<meta name=twitter:card content=summary>
+<meta name=twitter:domain content=stackoverflow.com>
+<meta name=twitter:title property=og:title itemprop=name content="How can I map Ctrl + semicolon to add a semicolon to the end of the line?">
+<meta name=twitter:description property=og:description itemprop=description content="I'm trying to map pressing [ctrl] + [semicolon] in insert mode to move to the end of the line and add a semicolon. It's something I find myself doing a lot after installing the surround plugin.
+
+I ...">
+<style>html,body,div,p,pre,a,code{margin:0;padding:0;border:0;font:inherit;font-size:100%;vertical-align:baseline}.svg-icon:not(.native) *,.svg-spot:not(.native) *{fill:currentColor}@supports ((-webkit-clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%)) or (clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%))){.s-expandable:not(.is-expanded) .s-expandable--content{opacity:1;-webkit-transform:none;transform:none}}@supports (-webkit-overflow-scrolling:touch){.s-input,.s-textarea{font-size:16px;padding:.36em .55em}.s-input::-webkit-input-placeholder,.s-textarea::-webkit-input-placeholder{line-height:normal!important}}@supports (-webkit-overflow-scrolling:touch){.s-select>select{font-size:16px;padding:.4em .55em}}@supports ((-webkit-appearance:none) or (-moz-appearance:none) or (appearance:none)){.s-checkbox,.s-radio{-webkit-appearance:none;-moz-appearance:none;appearance:none;margin:0;width:1em;height:1em;border:1px solid var(--bc-darker);background-color:var(--white);outline:0;font-size:inherit;vertical-align:middle;cursor:pointer}.s-checkbox::-ms-check,.s-radio::-ms-check{display:none}}@supports ((-webkit-appearance:none) or (-moz-appearance:none) or (appearance:none)){.s-checkbox{border-radius:3px;background-position:center center;background-repeat:no-repeat;background-size:contain}.s-checkbox:checked{border-color:var(--theme-secondary-400)!important;background-color:var(--theme-secondary-400);background-image:url("data:image/svg+xml,%3Csvg width='11' height='11' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 3.41L8.59 2 4 6.59 2.41 5 1 6.41l3 3z' fill='%23fff'/%3E%3C/svg%3E")}@media (prefers-color-scheme:dark){body.theme-highcontrast.theme-system .s-checkbox:checked{border-color:var(--blue-700)!important;background-color:var(--blue-300)}}body.theme-highcontrast.theme-dark .s-checkbox:checked{border-color:var(--blue-700)!important;background-color:var(--blue-300)}.s-checkbox:checked:focus{border-color:var(--theme-secondary-400)}.s-checkbox:focus{border-color:var(--theme-secondary-300);box-shadow:0 0 0 4px var(--focus-ring)}}@supports ((-webkit-appearance:none) or (-moz-appearance:none) or (appearance:none)){.s-radio{border-radius:50%}.s-radio:checked{border-color:var(--theme-secondary-400);border-width:.30769231em;background-color:hsl(0,0%,100%)}@media (prefers-color-scheme:dark){body.theme-highcontrast.theme-system .s-radio:checked{border-color:var(--blue-300);outline:1px solid var(--black)}}body.theme-highcontrast.theme-dark .s-radio:checked{border-color:var(--blue-300);outline:1px solid var(--black)}.s-radio:focus{box-shadow:0 0 0 4px var(--focus-ring)}}.s-input-icon{position:absolute;top:50%;right:.7em;margin-top:-9px;pointer-events:none}.s-input-icon.s-input-icon__search{right:auto;left:.7em;color:var(--black-200)}@supports (-webkit-overflow-scrolling:touch){.s-input__md,.s-textarea__md{font-size:17px;padding-top:.4em;padding-bottom:.4em}}.s-modal--close .svg-icon{margin:0!important}.s-prose{--s-prose-line-height:1.5;--s-prose-spacing:1.1em;--s-prose-spacing-condensed:calc(var(--s-prose-spacing) / 2);font-size:15px;line-height:var(--s-prose-line-height);word-wrap:break-word}.s-prose p{margin-bottom:var(--s-prose-spacing)}.s-prose pre{word-wrap:normal}.s-prose code{font-size:13px;font-family:var(--ff-mono)}.s-prose p:last-child,.s-prose dl:last-child,.s-prose blockquote:last-child,.s-prose table:last-child,.s-prose .s-table-container:last-child,.s-prose .s-link-preview:last-child,.s-prose hr:last-child,.s-prose ol:last-child,.s-prose ul:last-child,.s-prose img:last-child,.s-prose pre:last-child,.s-prose h1:last-child,.s-prose h2:last-child,.s-prose h3:last-child,.s-prose h4:last-child,.s-prose h5:last-child,.s-prose h6:last-child,.s-prose p:only-child,.s-prose dl:only-child,.s-prose blockquote:only-child,.s-prose table:only-child,.s-prose .s-table-container:only-child,.s-prose .s-link-preview:only-child,.s-prose hr:only-child,.s-prose ol:only-child,.s-prose ul:only-child,.s-prose img:only-child,.s-prose pre:only-child,.s-prose h1:only-child,.s-prose h2:only-child,.s-prose h3:only-child,.s-prose h4:only-child,.s-prose h5:only-child,.s-prose h6:only-child{margin-bottom:0}.s-prose *:not(.s-code-block)>code{padding:2px 4px;color:var(--black-800);background-color:var(--black-075);border-radius:3px}.s-prose pre{margin-top:0;margin-bottom:calc(var(--s-prose-spacing) + .4em)}.s-prose pre:not(.s-code-block){padding:12px;color:var(--highlight-color);width:auto;max-height:600px;overflow:auto;font-size:13px;line-height:1.30769231;background-color:var(--highlight-bg);border-radius:5px;scrollbar-color:var(--scrollbar) transparent}.s-prose pre:not(.s-code-block) code{background-color:transparent;padding:0;border-radius:0}.s-prose pre:not(.s-code-block)::-webkit-scrollbar{width:10px;height:10px;background-color:transparent}.s-prose pre:not(.s-code-block)::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.s-prose pre:not(.s-code-block)::-webkit-scrollbar-thumb{border-radius:10px;background-color:var(--scrollbar)}.s-prose pre:not(.s-code-block)::-webkit-scrollbar-corner{background-color:transparent;border-color:transparent}@media not all and (min-resolution:.001dpcm){@supports (-webkit-appearance:none) and (stroke-color:transparent){.s-spinner,.s-spinner:before,.s-spinner:after{box-shadow:0 0 0 2px transparent}}}@keyframes s-spinner-rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}@supports ((-webkit-clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%)) or (clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%))) or (-webkit-clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%)){.s-sidebarwidget:after{-webkit-clip-path:polygon(0% 0%,100% 0%,100% 50%,0% 50%);clip-path:polygon(0% 0%,100% 0%,100% 50%,0% 50%);border:1px solid var(--bc-medium)}}body{--ff-sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Liberation Sans",sans-serif;--ff-serif:Georgia,Cambria,"Times New Roman",Times,serif;--ff-mono:ui-monospace,"Cascadia Mono","Segoe UI Mono","Liberation Mono",Menlo,Monaco,Consolas,monospace}body{--theme-button-background-color:transparent;--theme-button-primary-color:var(--white);--theme-button-primary-hover-color:var(--white);--theme-button-primary-selected-color:var(--white);--theme-button-primary-number-color:var(--theme-secondary-900);--theme-topbar-height:48px;--theme-topbar-background-color:var(--black-025);--theme-topbar-search-color:var(--black-700);--theme-topbar-search-background:var(--white);--theme-topbar-search-placeholder:var(--black-200);--theme-topbar-search-border:var(--black-200);--theme-topbar-search-border-focus:var(--blue-300);--theme-topbar-search-shadow-focus:0 0 0 4px var(--focus-ring);--theme-topbar-select-color:var(--black-700);--theme-topbar-select-background:var(--black-075);--theme-topbar-item-color:var(--black-600);--theme-topbar-item-color-hover:var(--black-800);--theme-topbar-item-background-hover:var(--black-075);--theme-topbar-item-color-current:var(--black);--theme-topbar-item-border-current:var(--theme-primary-color);--theme-topbar-accent-border:3px solid var(--theme-primary-color)}:root{--theme-base-primary-color-h:27;--theme-base-primary-color-s:90%;--theme-base-primary-color-l:55%;--theme-base-primary-color-r:243.525;--theme-base-primary-color-g:129.9225;--theme-base-primary-color-b:36.975;--theme-base-secondary-color-h:206;--theme-base-secondary-color-s:100%;--theme-base-secondary-color-l:40%;--theme-base-secondary-color-r:0;--theme-base-secondary-color-g:115.6;--theme-base-secondary-color-b:204}body:not(.theme-dark),body.theme-dark .theme-light__forced,body.theme-system .theme-light__forced{--white:hsl(0,0%,100%);--black:hsl(210,8%,5%);--orange:hsl(27,90%,55%);--yellow:hsl(47,83%,91%);--green:hsl(140,40%,55%);--blue:hsl(206,100%,40%);--powder:hsl(205,46%,92%);--red:hsl(358,62%,52%);--black-025:hsl(210,8%,97.5%);--black-050:hsl(210,8%,95%);--black-075:hsl(210,8%,90%);--black-100:hsl(210,8%,85%);--black-150:hsl(210,8%,80%);--black-200:hsl(210,8%,75%);--black-300:hsl(210,8%,65%);--black-350:hsl(210,8%,60%);--black-400:hsl(210,8%,55%);--black-500:hsl(210,8%,45%);--black-600:hsl(210,8%,35%);--black-700:hsl(210,8%,25%);--black-750:hsl(210,8%,20%);--black-800:hsl(210,8%,15%);--black-900:hsl(210,8%,5%);--orange-050:hsl(27,100%,97%);--orange-100:hsl(27,95%,90%);--orange-200:hsl(27,90%,83%);--orange-300:hsl(27,90%,70%);--orange-400:hsl(27,90%,55%);--orange-500:hsl(27,90%,50%);--orange-600:hsl(27,90%,45%);--orange-700:hsl(27,90%,39%);--orange-800:hsl(27,87%,35%);--orange-900:hsl(27,80%,30%);--blue-050:hsl(206,100%,97%);--blue-100:hsl(206,96%,90%);--blue-200:hsl(206,93%,83.5%);--blue-300:hsl(206,90%,69.5%);--blue-400:hsl(206,85%,57.5%);--blue-500:hsl(206,100%,52%);--blue-600:hsl(206,100%,40%);--blue-700:hsl(209,100%,37.5%);--blue-800:hsl(209,100%,32%);--blue-900:hsl(209,100%,26%);--powder-050:hsl(205,47%,97%);--powder-100:hsl(205,46%,92%);--powder-200:hsl(205,53%,88%);--powder-300:hsl(205,57%,81%);--powder-400:hsl(205,56%,76%);--powder-500:hsl(205,41%,63%);--powder-600:hsl(205,36%,53%);--powder-700:hsl(205,47%,42%);--powder-800:hsl(205,46%,32%);--powder-900:hsl(205,46%,22%);--green-025:hsl(140,42%,95%);--green-050:hsl(140,40%,90%);--green-100:hsl(140,40%,85%);--green-200:hsl(140,40%,75%);--green-300:hsl(140,40%,65%);--green-400:hsl(140,40%,55%);--green-500:hsl(140,40%,47%);--green-600:hsl(140,40%,40%);--green-700:hsl(140,41%,31%);--green-800:hsl(140,40%,27%);--green-900:hsl(140,40%,20%);--yellow-050:hsl(47,87%,94%);--yellow-100:hsl(47,83%,91%);--yellow-200:hsl(47,65%,84%);--yellow-300:hsl(47,69%,69%);--yellow-400:hsl(47,79%,58%);--yellow-500:hsl(47,73%,50%);--yellow-600:hsl(47,76%,46%);--yellow-700:hsl(47,79%,40%);--yellow-800:hsl(47,82%,34%);--yellow-900:hsl(47,84%,28%);--red-050:hsl(358,75%,97%);--red-100:hsl(358,76%,90%);--red-200:hsl(358,74%,83%);--red-300:hsl(358,70%,70%);--red-400:hsl(358,68%,59%);--red-500:hsl(358,62%,52%);--red-600:hsl(358,62%,47%);--red-700:hsl(358,64%,41%);--red-800:hsl(358,64%,35%);--red-900:hsl(358,67%,29%);--gold:hsl(48,100%,50%);--gold-lighter:hsl(48,100%,91%);--gold-darker:hsl(45,100%,47%);--silver:hsl(210,6%,72%);--silver-lighter:hsl(0,0%,91%);--silver-darker:hsl(210,3%,61%);--bronze:hsl(28,38%,67%);--bronze-lighter:hsl(28,40%,92%);--bronze-darker:hsl(28,31%,52%);--bc-lightest:var(--black-025);--bc-lighter:var(--black-050);--bc-light:var(--black-075);--bc-medium:var(--black-100);--bc-dark:var(--black-150);--bc-darker:var(--black-200);--fc-dark:hsl(210,8%,5%);--fc-medium:hsl(210,8%,25%);--fc-light:hsl(210,8%,45%);--focus-ring-success:hsla(140,40%,75%,0.4);--focus-ring-warning:hsla(47,79%,58%,0.4);--focus-ring-error:hsla(358,62%,47%,0.15);--focus-ring-muted:hsla(210,8%,15%,0.1);--bs-sm:0 1px 2px hsla(0,0%,0%,0.05),0 1px 4px hsla(0,0%,0%,0.05),0 2px 8px hsla(0,0%,0%,0.05);--bs-md:0 1px 3px hsla(0,0%,0%,0.06),0 2px 6px hsla(0,0%,0%,0.06),0 3px 8px hsla(0,0%,0%,0.09);--bs-lg:0 1px 4px hsla(0,0%,0%,0.09),0 3px 8px hsla(0,0%,0%,0.09),0 4px 13px hsla(0,0%,0%,0.13);--scrollbar:hsla(0,0%,0%,0.2);--highlight-bg:hsl(0,0%,96.5%);--highlight-color:var(--black-750);--highlight-comment:hsl(210,8%,43.5%);--highlight-punctuation:var(--black-600);--highlight-namespace:hsl(27,99%,36%);--highlight-attribute:hsl(206,98.5%,29%);--highlight-literal:hsl(27,99%,36%);--highlight-symbol:hsl(306,43%,35%);--highlight-keyword:hsl(206,98.5%,29%);--highlight-variable:hsl(80,80.5%,26.5%);--highlight-addition:var(--green-700);--highlight-deletion:var(--red-600)}body:not(.theme-dark),body.theme-dark .theme-light__forced,body.theme-system .theme-light__forced,body:not(.theme-dark) .themed,body.theme-dark .theme-light__forced .themed,body.theme-system .theme-light__forced .themed{--theme-primary-color-h:var(--theme-light-primary-color-h, var(--theme-base-primary-color-h));--theme-primary-color-s:var(--theme-light-primary-color-s, var(--theme-base-primary-color-s));--theme-primary-color-l:var(--theme-light-primary-color-l, var(--theme-base-primary-color-l));--theme-primary-color-r:var(--theme-light-primary-color-r, var(--theme-base-primary-color-r));--theme-primary-color-g:var(--theme-light-primary-color-g, var(--theme-base-primary-color-g));--theme-primary-color-b:var(--theme-light-primary-color-b, var(--theme-base-primary-color-b));--theme-secondary-color-h:var(--theme-light-secondary-color-h, var(--theme-base-secondary-color-h));--theme-secondary-color-s:var(--theme-light-secondary-color-s, var(--theme-base-secondary-color-s));--theme-secondary-color-l:var(--theme-light-secondary-color-l, var(--theme-base-secondary-color-l));--theme-secondary-color-r:var(--theme-light-secondary-color-r, var(--theme-base-secondary-color-r));--theme-secondary-color-g:var(--theme-light-secondary-color-g, var(--theme-base-secondary-color-g));--theme-secondary-color-b:var(--theme-light-secondary-color-b, var(--theme-base-secondary-color-b));--theme-primary-color:hsl(var(--theme-primary-color-h),var(--theme-primary-color-s),var(--theme-primary-color-l));--theme-primary-900:hsl(var(--theme-primary-color-h),var(--theme-primary-color-s),calc(var(--theme-primary-color-l) - 26%));--theme-primary-800:hsl(var(--theme-primary-color-h),var(--theme-primary-color-s),calc(var(--theme-primary-color-l) - 21%));--theme-primary-700:hsl(var(--theme-primary-color-h),var(--theme-primary-color-s),calc(var(--theme-primary-color-l) - 16%));--theme-primary-600:hsl(var(--theme-primary-color-h),var(--theme-primary-color-s),calc(var(--theme-primary-color-l) - 10%));--theme-primary-500:hsl(var(--theme-primary-color-h),var(--theme-primary-color-s),calc(var(--theme-primary-color-l) - 5%));--theme-primary-400:var(--theme-primary-color);--theme-primary-350:rgb(calc(51 + var(--theme-primary-color-r) * .8),calc(51 + var(--theme-primary-color-g) * .8),calc(51 + var(--theme-primary-color-b) * .8));--theme-primary-300:rgb(calc(89.25 + var(--theme-primary-color-r) * .65),calc(89.25 + var(--theme-primary-color-g) * .65),calc(89.25 + var(--theme-primary-color-b) * .65));--theme-primary-200:rgb(calc(122.4 + var(--theme-primary-color-r) * .52),calc(122.4 + var(--theme-primary-color-g) * .52),calc(122.4 + var(--theme-primary-color-b) * .52));--theme-primary-150:rgb(calc(165.75 + var(--theme-primary-color-r) * .35),calc(165.75 + var(--theme-primary-color-g) * .35),calc(165.75 + var(--theme-primary-color-b) * .35));--theme-primary-100:rgb(calc(198.9 + var(--theme-primary-color-r) * .22),calc(198.9 + var(--theme-primary-color-g) * .22),calc(198.9 + var(--theme-primary-color-b) * .22));--theme-primary-075:rgb(calc(216.75 + var(--theme-primary-color-r) * .15),calc(216.75 + var(--theme-primary-color-g) * .15),calc(216.75 + var(--theme-primary-color-b) * .15));--theme-primary-050:rgb(calc(234.6 + var(--theme-primary-color-r) * .08),calc(234.6 + var(--theme-primary-color-g) * .08),calc(234.6 + var(--theme-primary-color-b) * .08));--theme-primary-025:rgb(calc(244.8 + var(--theme-primary-color-r) * .04),calc(244.8 + var(--theme-primary-color-g) * .04),calc(244.8 + var(--theme-primary-color-b) * .04));--theme-secondary-color:hsl(var(--theme-secondary-color-h),var(--theme-secondary-color-s),var(--theme-secondary-color-l));--theme-secondary-900:hsl(var(--theme-secondary-color-h),var(--theme-secondary-color-s),calc(var(--theme-secondary-color-l) - 26%));--theme-secondary-800:hsl(var(--theme-secondary-color-h),var(--theme-secondary-color-s),calc(var(--theme-secondary-color-l) - 21%));--theme-secondary-700:hsl(var(--theme-secondary-color-h),var(--theme-secondary-color-s),calc(var(--theme-secondary-color-l) - 16%));--theme-secondary-600:hsl(var(--theme-secondary-color-h),var(--theme-secondary-color-s),calc(var(--theme-secondary-color-l) - 10%));--theme-secondary-500:hsl(var(--theme-secondary-color-h),var(--theme-secondary-color-s),calc(var(--theme-secondary-color-l) - 5%));--theme-secondary-400:var(--theme-secondary-color);--theme-secondary-350:rgb(calc(51 + var(--theme-secondary-color-r) * .8),calc(51 + var(--theme-secondary-color-g) * .8),calc(51 + var(--theme-secondary-color-b) * .8));--theme-secondary-300:rgb(calc(89.25 + var(--theme-secondary-color-r) * .65),calc(89.25 + var(--theme-secondary-color-g) * .65),calc(89.25 + var(--theme-secondary-color-b) * .65));--theme-secondary-200:rgb(calc(122.4 + var(--theme-secondary-color-r) * .52),calc(122.4 + var(--theme-secondary-color-g) * .52),calc(122.4 + var(--theme-secondary-color-b) * .52));--theme-secondary-150:rgb(calc(165.75 + var(--theme-secondary-color-r) * .35),calc(165.75 + var(--theme-secondary-color-g) * .35),calc(165.75 + var(--theme-secondary-color-b) * .35));--theme-secondary-100:rgb(calc(198.9 + var(--theme-secondary-color-r) * .22),calc(198.9 + var(--theme-secondary-color-g) * .22),calc(198.9 + var(--theme-secondary-color-b) * .22));--theme-secondary-075:rgb(calc(216.75 + var(--theme-secondary-color-r) * .15),calc(216.75 + var(--theme-secondary-color-g) * .15),calc(216.75 + var(--theme-secondary-color-b) * .15));--theme-secondary-050:rgb(calc(234.6 + var(--theme-secondary-color-r) * .08),calc(234.6 + var(--theme-secondary-color-g) * .08),calc(234.6 + var(--theme-secondary-color-b) * .08));--theme-secondary-025:rgb(calc(244.8 + var(--theme-secondary-color-r) * .04),calc(244.8 + var(--theme-secondary-color-g) * .04),calc(244.8 + var(--theme-secondary-color-b) * .04));--focus-ring:hsla(var(--theme-secondary-color-h),var(--theme-secondary-color-s),var(--theme-secondary-color-l),.15);--theme-body-font-color:var(--black-800)}.fc-black-500{color:var(--black-500)!important}.fc-black-200{color:var(--black-200)!important}.fc-orange-400{color:var(--orange-400)!important}.gs4{margin:-2px}.gs4>.flex--item{margin:2px}.fd-column{flex-direction:column!important}.jc-center{justify-content:center!important}.ai-center{align-items:center!important}.ai-stretch{align-items:stretch!important}.m0{margin:0!important}.mt-auto{margin-top:auto!important}.mr0{margin-right:0!important}.mln2{margin-left:-2px!important}.mx-auto{margin-left:auto!important;margin-right:auto!important}.py6{padding-top:6px!important;padding-bottom:6px!important}.fs-title{font-size:1.61538462rem!important}@media (max-width:640px){html.html__responsive:not(.html__unpinned-leftnav) .fs-title{font-size:1.8rem!important}}.d-flex{display:flex!important}.c-pointer{cursor:pointer!important}.clearfix:before,.clearfix:after{content:"";display:table}.clearfix:after{clear:both}.va-text-top{vertical-align:text-top!important}body{--theme-base-primary-color-h:27;--theme-base-primary-color-s:90%;--theme-base-primary-color-l:55%;--theme-base-primary-color-r:243.525;--theme-base-primary-color-g:129.9225;--theme-base-primary-color-b:36.975;--theme-button-color:var(--blue-600);--theme-button-hover-color:var(--blue-700);--theme-button-hover-background-color:var(--blue-050);--theme-button-active-background-color:var(--blue-100);--theme-button-selected-color:var(--blue-900);--theme-button-selected-background-color:var(--blue-200);--theme-button-filled-color:var(--powder-700);--theme-button-filled-background-color:var(--powder-100);--theme-button-filled-border-color:var(--powder-500);--theme-button-filled-hover-color:var(--powder-800);--theme-button-filled-hover-background-color:var(--powder-300);--theme-button-filled-active-background-color:var(--powder-400);--theme-button-filled-active-border-color:var(--powder-600);--theme-button-filled-selected-color:var(--powder-900);--theme-button-filled-selected-background-color:var(--powder-500);--theme-button-filled-selected-border-color:var(--powder-700);--theme-button-outlined-border-color:var(--blue-400);--theme-button-outlined-selected-border-color:var(--blue-600);--theme-button-primary-background-color:var(--blue-500);--theme-button-primary-hover-background-color:var(--blue-600);--theme-button-primary-active-background-color:var(--blue-700);--theme-button-primary-selected-background-color:var(--blue-800);--theme-background-color:var(--white);--theme-background-position:top left;--theme-background-repeat:repeat;--theme-background-size:auto;--theme-background-attachment:auto;--theme-content-background-color:var(--white);--theme-content-border-color:var(--black-100);--theme-header-background-color:var(--theme-primary-color);--theme-header-background-position:center left;--theme-header-background-repeat:repeat;--theme-header-background-size:auto;--theme-header-background-border-bottom:0;--theme-header-link-color:var(--theme-primary-color);--theme-header-sponsored-color:hsla(0,0%,100%,0.4);--theme-header-foreground-color:transparent;--theme-header-foreground-position:bottom right;--theme-header-foreground-repeat:no-repeat;--theme-header-foreground-size:auto;--theme-footer-background-color:hsl(210,8%,15%);--theme-footer-background-position:top left;--theme-footer-background-repeat:no-repeat;--theme-footer-background-size:auto;--theme-footer-background-border-top:0;--theme-footer-title-color:hsl(210,8%,75%);--theme-footer-text-color:hsl(210,8%,45%);--theme-footer-link-color:hsl(210,8%,55%);--theme-footer-link-color-hover:hsl(210,8%,65%);--theme-footer-link-color-active:hsl(27,90%,55%);--theme-footer-link-caret-color:var(--theme-footer-background-color);--theme-footer-divider-color:hsl(210,8%,25%);--theme-footer-padding-top:0;--theme-footer-padding-bottom:0;--theme-link-color:var(--blue-600);--theme-link-color-hover:var(--blue-500);--theme-link-color-visited:var(--blue-700);--theme-tag-color:var(--powder-700);--theme-tag-background-color:var(--powder-100);--theme-tag-border-color:transparent;--theme-tag-hover-color:var(--powder-800);--theme-tag-hover-background-color:var(--powder-200);--theme-tag-hover-border-color:transparent;--theme-body-font-family:var(--ff-sans);--theme-body-font-color:var(--black-800);--theme-question-title-font-family:var(--ff-sans);--theme-question-title-color:var(--theme-link-color);--theme-question-title-color-hover:var(--theme-link-color-hover);--theme-question-title-color-visited:var(--theme-link-color-visited);--theme-question-body-font-family:var(--ff-sans);--theme-post-owner-background-color:var(--theme-secondary-075);--theme-post-owner-new-background-color:var(--powder-200)}html,body{color:var(--theme-body-font-color);font-family:var(--theme-body-font-family);font-size:13px;line-height:1.30769231}@media (max-width:640px){html.html__responsive:not(.html__unpinned-leftnav),html.html__responsive:not(.html__unpinned-leftnav) body{font-size:11px}}body{box-sizing:border-box}body *,body *:before,body *:after{box-sizing:inherit}.s-btn{position:relative;display:inline-block;background-color:transparent;font-family:inherit;font-size:13px;font-weight:normal;line-height:1.15384615;text-align:center;text-decoration:none}.s-btn:hover,.s-btn:focus,.s-btn:active{color:var(--theme-button-hover-color);background:var(--theme-button-hover-background-color);text-decoration:none}.s-btn:active{background:var(--theme-button-active-background-color)}.s-btn:focus{outline:none;box-shadow:0 0 0 4px var(--focus-ring)}.s-btn__unset,.s-btn__unset:hover,.s-btn__unset:active,.s-btn__unset:focus{padding:0;border:none;outline:none;font:unset;border-radius:0;color:unset;background:none;box-shadow:none;cursor:default;user-select:auto}.s-btn__icon .svg-icon{vertical-align:baseline;margin-top:-0.3em;margin-bottom:-0.3em;transition:opacity 200ms cubic-bezier(.165,.84,.44,1)}a:hover,.s-link:hover,a.s-link__visited:hover,.s-link.s-link__visited:hover,a:active,.s-link:active,a.s-link__visited:active,.s-link.s-link__visited:active{color:var(--theme-link-color-hover)}.svg-icon{vertical-align:bottom}.svg-icon:not(.native) *{fill:currentColor}a:hover,a:active{color:var(--theme-link-color-hover);text-decoration:none}p{clear:both;margin-top:0}p code{padding:1px 5px}code{background-color:var(--black-075)}pre{padding:12px;width:auto;max-height:600px;overflow:auto;font-family:var(--ff-mono);font-size:13px;background-color:var(--black-050);border-radius:3px}pre code{background-color:transparent}pre::-webkit-scrollbar{width:10px;height:10px;background-color:transparent}pre::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}pre::-webkit-scrollbar-thumb{border-radius:10px;background-color:var(--scrollbar)}pre::-webkit-scrollbar-corner{background-color:transparent;border-color:transparent}.s-prose{font-family:var(--theme-question-body-font-family)}@keyframes spinnerRotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes blink{50%{background-color:transparent}}.post-layout{display:grid;grid-template-columns:-webkit-max-content 1fr;grid-template-columns:max-content 1fr}.post-layout--left{grid-column:1}.post-layout--left.votecell{width:auto;padding-right:16px}.post-layout--right{padding-right:16px;grid-column:2;width:auto;min-width:0}.post-layout--right .s-prose{width:100%}@media not all and (min-resolution:.001dpcm){@supports (-webkit-appearance:none) and (stroke-color:transparent){.s-editor-shadow:after{transition:none}}}html{--top-bar-allocated-space:50px}.top-bar~#announcement-banner~.container{margin-top:0}.top-bar *{box-sizing:border-box}.site-footer *,.site-footer *:before,.site-footer *:after{box-sizing:border-box}@supports (display:grid){ul.comments-list .comment-actions{display:grid;grid-template-columns:repeat(2,max-content);align-content:flex-start;width:37px;width:calc(2ch + 16px + 4px + 2px)}ul.comments-list .comment-flagging:nth-child(3){grid-column:2}}@supports (display:grid) and (display:contents) and (not (-apple-trailing-word:auto)){body:not(.no-grid-comments) ul.comments-list{display:grid;grid-template-columns:max-content 1fr}body:not(.no-grid-comments) ul.comments-list .comment-score{width:auto;min-width:16px}body:not(.no-grid-comments) ul.comments-list .comment-score>span{min-width:0;float:none}body:not(.no-grid-comments) ul.comments-list .comment-actions{width:auto}body:not(.no-grid-comments) ul.comments-list .comment{display:contents}body:not(.no-grid-comments) ul.comments-list .comment__highlight .comment-actions{transition:none;background-color:var(--yellow-100)}}html{height:100%}body{min-height:100%;display:flex;flex-direction:column;background-color:var(--theme-background-color);background-image:none;background-position:var(--theme-background-position);background-repeat:var(--theme-background-repeat);background-size:var(--theme-background-size);background-attachment:var(--theme-background-attachment);--mp-alt-row-color:var(--black-050);--mp-critical-color:var(--red-600);--mp-duration-color:var(--black-800);--mp-gap-bg-color:var(--black-025);--mp-gap-font-color:var(--black-700);--mp-highlight-default-color:var(--fc-dark);--mp-highlight-fade-color:var(--yellow-300);--mp-highlight-keyword-color:var(--blue-700);--mp-highlight-literal-color:var(--green-500);--mp-label-color:var(--black-700);--mp-link-color:var(--blue-700);--mp-main-bg-color:var(--white);--mp-muted-color:var(--black-300);--mp-popup-shadow:var(--bs-sm);--mp-query-border-color:var(--black-100);--mp-result-border:solid .5px var(--black-300);--mp-warning-color:var(--red-600)}.container{position:relative;flex:1 0 auto;text-align:left}#content{margin:0 auto}#content:before,#content:after{content:"";display:table}#content:after{clear:both}#answers{clear:both}#answers{padding-top:10px}.question-page #answers .answer{border-bottom:1px solid var(--black-075)}.votecell{vertical-align:top}.answer{padding-bottom:16px;padding-top:16px}#mainbar{float:left;margin:0;padding:0}code{white-space:pre-wrap}pre code{white-space:inherit;padding:0}@keyframes highlighted-post-fade{0%{background-color:var(--yellow-100)}100%{background-color:rgba(0,0,0,0)}}@keyframes blinking{from{background:#f4a83d}to{background:rgba(244,168,61,0)}}html.html__responsive,html.html__responsive body{min-width:auto}body{padding-top:50px}body>.container{max-width:1264px;width:100%;background:none;display:flex;justify-content:space-between;margin:0 auto}body>.container:after,body>.container:before{display:none}#content{max-width:1100px;width:calc(100% - 164px);background-color:var(--theme-content-background-color);border-radius:0;border:1px solid var(--theme-content-border-color);border-top-width:0;border-bottom-width:0;border-left-width:1px;border-right-width:0;padding:24px;box-sizing:border-box}@media screen and (max-width:640px){html.html__responsive #content{border-left:0;border-right:0}}@media screen and (max-width:980px){html.html__responsive:not(.html__unpinned-leftnav) #content{padding-left:16px;padding-right:16px}}@media screen and (max-width:640px){html.html__responsive #content{padding-left:12px;padding-right:12px;width:100%}}#mainbar{width:calc(100% - 300px - 24px)}@media screen and (max-width:980px){html.html__responsive:not(.html__unpinned-leftnav) #mainbar,html.html__responsive:not(.html__unpinned-leftnav) .mainbar{width:100%;float:none}}#answers{width:auto;float:none}.answer{width:100%}.left-sidebar *,.left-sidebar *:after,.left-sidebar *:before{box-sizing:border-box}@supports (position:sticky) or (position:-webkit-sticky){.left-sidebar--sticky-container:not(.left-sidebar__fake-sticky){position:-webkit-sticky;position:sticky;width:auto;top:0;margin-bottom:8px;max-height:calc(100vh);overflow-y:auto;scrollbar-color:var(--scrollbar) transparent;top:var(--top-bar-allocated-space);max-height:calc(100vh - var(--top-bar-allocated-space))}.left-sidebar--sticky-container:not(.left-sidebar__fake-sticky)::-webkit-scrollbar{width:10px;height:10px;background-color:transparent}.left-sidebar--sticky-container:not(.left-sidebar__fake-sticky)::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.left-sidebar--sticky-container:not(.left-sidebar__fake-sticky)::-webkit-scrollbar-thumb{border-radius:10px;background-color:var(--scrollbar)}.left-sidebar--sticky-container:not(.left-sidebar__fake-sticky)::-webkit-scrollbar-corner{background-color:transparent;border-color:transparent}html.html__unpinned-leftnav .left-sidebar--sticky-container:not(.left-sidebar__fake-sticky){max-height:calc(100vh - 50px)}}.nav-links .nav-links--link.-link__with-icon .svg-icon{flex-shrink:0;margin-top:-1px;margin-right:4px;color:var(--black-400)}.nav-links .nav-links--link.-link__with-icon:hover .svg-icon,.nav-links .nav-links--link.-link__with-icon:focus .svg-icon,.nav-links .nav-links--link.-link__with-icon:active .svg-icon{color:var(--black-900)}.nav-links .youarehere .nav-links--link .svg-icon{color:var(--black-900)}</style>
+<link rel=alternate type=application/atom+xml title="Feed for question 'How can I map Ctrl + semicolon to add a semicolon to the end of the line?'" href=https://stackoverflow.com/feeds/question/23546025>
+<meta name=twitter:app:country content=US>
+<meta name=twitter:app:name:iphone content="Stack Exchange iOS">
+<meta name=twitter:app:id:iphone content=871299723>
+<meta name=twitter:app:url:iphone content=se-zaphod://stackoverflow.com/questions/23546025/how-can-i-map-ctrl-semicolon-to-add-a-semicolon-to-the-end-of-the-line>
+<meta name=twitter:app:name:ipad content="Stack Exchange iOS">
+<meta name=twitter:app:id:ipad content=871299723>
+<meta name=twitter:app:url:ipad content=se-zaphod://stackoverflow.com/questions/23546025/how-can-i-map-ctrl-semicolon-to-add-a-semicolon-to-the-end-of-the-line>
+<meta name=twitter:app:name:googleplay content="Stack Exchange Android">
+<meta name=twitter:app:url:googleplay content=https://stackoverflow.com/questions/23546025/how-can-i-map-ctrl-semicolon-to-add-a-semicolon-to-the-end-of-the-line>
+<meta name=twitter:app:id:googleplay content=com.stackexchange.marvin>
+<style>@keyframes researchshow{0%{transform:translate3d(0,300px,0);opacity:0}25%{transform:translate3d(0,-12px,0);opacity:1}40%{transform:translate3d(0,-2px,0)}100%{transform:translate3d(0,0,0);opacity:1}}@keyframes researchhide{0%,50%{transform:translate3d(0,0,0);opacity:1}75%{transform:translate3d(0,-12px,0);opacity:1}100%{transform:translate3d(0,300px,0);opacity:0}}</style>
+<noscript id=noscript-css><style>body,.top-bar{margin-top:1.9em}</style></noscript>
+<link rel="shortcut icon" href=data:image/x-icon;base64,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/wMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACKI7g8kgPTvJID0/ySA89sggO8QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACKA9TQkgPPII4DzLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP////////////////wAAD/8AAA//P//P/z//z/8wAM//MADP/z//z/8/4E//+AB///AAf//wBD//8OA///+AH//+AA//+AQH//gYA//8cAP//8CD//+BB///Ag///4wf//+cP///+D////B////4///////////////////////><style>.sf-hidden{display:none!important}</style><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;"></head>
+ <body class="question-page unified-theme" data-new-gr-c-s-check-loaded=14.1052.0 data-gr-ext-installed>
+ <div id=notify-container style=display:none!important></div>
+ <div id=custom-header style=display:none!important></div>
+ 
+<header class="top-bar js-top-bar top-bar__network" style=display:none!important>
+ <div class="wmx12 mx-auto d-flex ai-center h100" role=menubar style=display:none!important>
+ 
+ 
+ 
+ <form id=search role=search action=/search class="flex--item fl-grow1 searchbar px12 js-searchbar" autocomplete=off style=display:none!important>
+ <div class=ps-relative style=display:none!important>
+ 
+ <svg aria-hidden=true class="s-input-icon s-input-icon__search svg-icon iconSearch" width=18 height=18 viewBox="0 0 18 18"><path d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z"></path></svg>
+ 
+ </div>
+ </form>
+ 
+ 
+<ol class="overflow-x-auto ml-auto -secondary d-flex ai-center list-reset h100 user-logged-out" role=presentation style=display:none!important>
+ <li class="-item searchbar-trigger" style=display:none!important></li>
+ 
+ <li class=js-topbar-dialog-corral role=presentation style=display:none!important>
+ 
+ <div class="topbar-dialog siteSwitcher-dialog dno" role=menu style=display:none!important>
+ 
+ 
+ 
+ 
+ 
+ 
+ </div>
+ </li>
+</ol>
+ </div>
+</header>
+ 
+ 
+ <div id=announcement-banner class="js-announcement-banner bg-blue-500 fc-white ff-sans fs-body2 py2" data-cookie=notice-ssb data-expire-date=1656220189852 data-is-site-sat=true style=display:none!important>
+ <div class="d-flex jc-space-between wmx12 mx-auto px16 py8" style=display:none!important>
+ 
+ <a class="flex--item fc-white js-dismiss js-gps-track" href=# title=dismiss style=display:none!important><svg aria-hidden=true class="m0 svg-icon iconClear" width=18 height=18 viewBox="0 0 18 18"><path d="M15 4.41 13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41Z"></path></svg></a>
+ </div>
+ </div>
+ 
+ 
+ 
+ 
+<div class="bg-black-025 bs-sm bt bc-black-100 ps-fixed l0 r0 b0 z-nav js-dismissable-hero" data-campaign-name=stk style=display:none!important>
+ <div class="d-flex wmx12 mx-auto px8 py12 jc-space-between ai-center lg:pl24 lg:pr24 md:fd-column sm:fd-row sm:ai-center" style=display:none!important>
+ 
+ <div id=openid-buttons class="d-flex gs8 gsx ai-center sm:jc-space-between" style=display:none!important>
+ 
+ <button class="flex--item ws-nowrap s-btn s-btn__icon s-btn__google ta-center js-major-provider sm:d-none" data-provider=google data-oauthserver=https://accounts.google.com/o/oauth2/auth data-oauthversion=2.0 data-ga='["sign up","Sign Up Started - Google","Question Hero",null,null]' style=display:none!important>
+ <svg aria-hidden=true class="native svg-icon iconGoogle" width=18 height=18 viewBox="0 0 18 18"><path d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18Z" fill=#4285F4></path><path d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17Z" fill=#34A853></path><path d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07Z" fill=#FBBC05></path><path d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3Z" fill=#EA4335></path></svg>
+ Sign up with Google
+ </button>
+ <button class="flex--item ws-nowrap s-btn s-btn__icon s-btn__github ta-center js-major-provider sm:d-none" data-provider=github data-oauthserver=https://github.com/login/oauth/authorize data-oauthversion=2.0 data-ga='["sign up","Sign Up Started - GitHub","Question Hero",null,null]' style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconGitHub" width=18 height=18 viewBox="0 0 18 18"><path d="M9 1a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38l-.01-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 9 1Z" fill=#010101></path></svg>
+ Sign up with GitHub
+ </button>
+ <button class="flex--item ws-nowrap s-btn s-btn__icon s-btn__facebook ta-center js-major-provider sm:d-none" data-provider=facebook data-oauthserver=https://www.facebook.com/v2.0/dialog/oauth data-oauthversion=2.0 data-ga='["sign up","Sign Up Started - Facebook","Question Hero",null,null]' style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconFacebook" width=18 height=18 viewBox="0 0 18 18"><path d="M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm6.55 16v-6.2H7.46V8.4h2.09V6.61c0-2.07 1.26-3.2 3.1-3.2.88 0 1.64.07 1.87.1v2.16h-1.29c-1 0-1.19.48-1.19 1.18V8.4h2.39l-.31 2.42h-2.08V17h-2.5Z" fill=#4167B2></path></svg>
+ Sign up with Facebook
+ </button>
+ <button class="flex--item s-btn s-btn__muted s-btn__icon px8 js-dismiss" title=Dismiss style=display:none!important><svg aria-hidden=true class="svg-icon iconClear" width=18 height=18 viewBox="0 0 18 18"><path d="M15 4.41 13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41Z"></path></svg></button>
+ </div>
+ 
+ 
+ </div>
+</div>
+ <div class=container>
+ 
+<div id=left-sidebar data-is-here-when="md lg" class="left-sidebar js-pinned-left-sidebar ps-relative" style=display:none!important>
+ <div class="left-sidebar--sticky-container js-sticky-leftnav" style=display:none!important>
+ <nav role=navigation style=display:none!important>
+ <ol class=nav-links style=display:none!important>
+ 
+ <li style=display:none!important>
+ <ol class=nav-links style=display:none!important>
+ 
+ 
+<li class="ps-relative youarehere" style=display:none!important>
+ <a id=nav-questions href=https://stackoverflow.com/questions class="pl8 js-gps-track nav-links--link -link__with-icon" data-gps-track="top_nav.click({is_current:true, location:2, destination:1})" aria-controls data-controller data-s-popover-placement=right data-s-popover-auto-show=true data-s-popover-hide-on-outside-click=never style=display:none!important>
+<svg aria-hidden=true class="svg-icon iconGlobe" width=18 height=18 viewBox="0 0 18 18"><path d="M9 1C4.64 1 1 4.64 1 9c0 4.36 3.64 8 8 8 4.36 0 8-3.64 8-8 0-4.36-3.64-8-8-8ZM8 15.32a6.46 6.46 0 0 1-4.3-2.74 6.46 6.46 0 0 1-.93-5.01L7 11.68v.8c0 .88.12 1.32 1 1.32v1.52Zm5.72-2c-.2-.66-1-1.32-1.72-1.32h-1v-2c0-.44-.56-1-1-1H6V7h1c.44 0 1-.56 1-1V5h2c.88 0 1.4-.72 1.4-1.6v-.33a6.45 6.45 0 0 1 3.83 4.51 6.45 6.45 0 0 1-1.51 5.73v.01Z"></path></svg> 
+ </a>
+</li>
+ 
+ 
+ <li class="d-flex ml8 mt16 mb4 jc-space-between" style=display:none!important>
+ 
+ <div class="flex--item fs-fine fc-light" style=display:none!important>
+ <a href=https://stackoverflow.com/questions/23546025/how-can-i-map-ctrl-semicolon-to-add-a-semicolon-to-the-end-of-the-line class="s-link s-link__inherit mr8 js-gps-track" role=button aria-controls=popover-discover-collectives data-controller=s-popover data-action=s-popover#toggle data-s-popover-placement=top data-s-popover-toggle-class=is-selected data-gps-track="top_nav.click({is_current:false, location:2, destination:17})" style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconInfoSm" width=14 height=14 viewBox="0 0 14 14"><path d="M7 1a6 6 0 1 1 0 12A6 6 0 0 1 7 1Zm1 10V6H6v5h2Zm0-6V3H6v2h2Z"></path></svg>
+ </a>
+ </div>
+ </li>
+ 
+<li class=ps-relative style=display:none!important>
+ <a id=nav-collective-discover href=https://stackoverflow.com/collectives class="pl8 ai-center js-gps-track nav-links--link -link__with-icon" data-gps-track="top_nav.click({is_current:false, location:2, destination:18})" aria-controls data-controller data-s-popover-placement=right data-s-popover-auto-show=true data-s-popover-hide-on-outside-click=never style=display:none!important>
+<svg aria-hidden=true class="mt-auto fc-orange-400 svg-icon iconStarVerified" width=18 height=18 viewBox="0 0 18 18"><path d="M9.86.89a1.14 1.14 0 0 0-1.72 0l-.5.58c-.3.35-.79.48-1.23.33l-.72-.25a1.14 1.14 0 0 0-1.49.85l-.14.76c-.1.45-.45.8-.9.9l-.76.14c-.67.14-1.08.83-.85 1.49l.25.72c.15.44.02.92-.33 1.23l-.58.5a1.14 1.14 0 0 0 0 1.72l.58.5c.35.3.48.79.33 1.23l-.25.72c-.23.66.18 1.35.85 1.49l.76.14c.45.1.8.45.9.9l.14.76c.14.67.83 1.08 1.49.85l.72-.25c.44-.15.92-.02 1.23.33l.5.58c.46.52 1.26.52 1.72 0l.5-.58c.3-.35.79-.48 1.23-.33l.72.25c.66.23 1.35-.18 1.49-.85l.14-.76c.1-.45.45-.8.9-.9l.76-.14c.67-.14 1.08-.83.85-1.49l-.25-.72c-.15-.44-.02-.92.33-1.23l.58-.5c.52-.46.52-1.26 0-1.72l-.58-.5c-.35-.3-.48-.79-.33-1.23l.25-.72a1.14 1.14 0 0 0-.85-1.49l-.76-.14c-.45-.1-.8-.45-.9-.9l-.14-.76a1.14 1.14 0 0 0-1.49-.85l-.72.25c-.44.15-.92.02-1.23-.33l-.5-.58Zm-.49 2.67L10.6 6.6c.05.15.19.24.34.25l3.26.22c.36.03.5.48.23.71l-2.5 2.1a.4.4 0 0 0-.14.4l.8 3.16a.4.4 0 0 1-.6.44L9.2 12.13a.4.4 0 0 0-.42 0l-2.77 1.74a.4.4 0 0 1-.6-.44l.8-3.16a.4.4 0 0 0-.13-.4l-2.5-2.1a.4.4 0 0 1 .22-.7l3.26-.23a.4.4 0 0 0 .34-.25l1.22-3.03a.4.4 0 0 1 .74 0Z"></path></svg> 
+ </a>
+</li>
+ 
+ 
+ 
+ </ol>
+ </li>
+ 
+<li style=display:none!important>
+ <ol class=nav-links style=display:none!important>
+ 
+ <li class="d-flex ai-center jc-space-between ml8 mt24 mb4 js-create-team-cta d-none" style=display:none!important>
+ 
+ 
+ </li>
+ <li class="ps-relative js-create-team-cta d-none" style=display:none!important>
+ 
+ </li>
+ </ol>
+</li> 
+ </ol>
+ </nav>
+ </div>
+ <div class="s-popover ws2" id=popover-discover-collectives role=menu aria-hidden=true style=display:none!important>
+ 
+ 
+ </div>
+ <div class=s-popover id=popover-teams-create-cta role=menu aria-hidden=true style=display:none!important>
+ 
+ 
+ 
+ </div>
+ <div class="js-notice-sidebar-popover ps-fixed b32 l8 sm:d-none ws2 s-card bar-md bs-sm h:bs-lg baw0 bt btw3 bc-orange-400 p0" data-cookie=notice-ssb data-expire-date=1656220189852 data-is-site-sat=true style=bottom:426.875px!important;left:160px!important;display:none!important>
+ 
+ <button aria-label=dismiss class="ps-absolute s-btn s-btn__unset t2 r2 p2 z-banner js-dismiss fc-black-400 h:fc-black-900" role=button style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconClearSm" width=14 height=14 viewBox="0 0 14 14"><path d="M12 3.41 10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7 12 3.41Z"></path></svg>
+ </button>
+ </div>
+ 
+</div>
+ <div id=content class=snippet-hidden>
+ 
+<div itemprop=mainEntity itemscope itemtype=https://schema.org/Question>
+ <link itemprop=image href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a" class=sf-hidden>
+ <div class="inner-content clearfix">
+ 
+ <div id=question-header class="d-flex sm:fd-column" style=display:none!important>
+ 
+ 
+ </div>
+ <div class="d-flex fw-wrap pb8 mb16 bb bc-black-075" style=display:none!important>
+ 
+ 
+ 
+ </div>
+ <div id=mainbar role=main aria-label="question and answers">
+ 
+<div class=question data-questionid=23546025 data-position-on-page=0 data-score=16 id=question style=display:none!important>
+ 
+ <div class=post-layout style=display:none!important>
+ <div class="votecell post-layout--left" style=display:none!important>
+ <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id=23546025 style=display:none!important>
+ <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Up vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-28tvlwh6 style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowUpLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+ </button>
+ 
+ <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Down vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-widmtqei style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowDownLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+ </button>
+ <button class="js-bookmark-btn s-btn s-btn__unset c-pointer py4 js-gps-track" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label=Bookmark data-selected-classes=fc-yellow-600 data-gps-track="post.click({ item: 1, priv: 0, post_type: 1 })" aria-describedby=--stacks-s-tooltip-mc993ie5 style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconBookmark" width=18 height=18 viewBox="0 0 18 18"><path d="M6 1a2 2 0 0 0-2 2v14l5-4 5 4V3a2 2 0 0 0-2-2H6Zm3.9 3.83h2.9l-2.35 1.7.9 2.77L9 7.59l-2.35 1.7.9-2.76-2.35-1.7h2.9L9 2.06l.9 2.77Z"></path></svg>
+ 
+ </button>
+ 
+ 
+ <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href=https://stackoverflow.com/posts/23546025/timeline data-shortcut=T data-ks-title=timeline data-controller=s-tooltip data-s-tooltip-placement=right aria-label=Timeline aria-describedby=--stacks-s-tooltip-xkrs0i1y style=display:none!important><svg aria-hidden=true class="mln2 mr0 svg-icon iconHistory" width=19 height=18 viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+ </div>
+ 
+ 
+ 
+ </div>
+</div>
+<div class="js-zone-container zone-container-responsive" style=display:none!important>
+ 
+ 
+</div>
+ <div id=answers>
+ <a name=tab-top style=display:none!important></a>
+ <div id=answers-header style=display:none!important>
+ 
+ 
+ </div>
+ 
+<a name=23546206 style=display:none!important></a>
+<div id=answer-23546206 class="answer js-answer accepted-answer" data-answerid=23546206 data-score=11 data-position-on-page=1 data-highest-scored=1 data-question-has-accepted-highest-score=1 itemprop=acceptedAnswer itemscope itemtype=https://schema.org/Answer style=display:none!important>
+ <div class=post-layout style=display:none!important>
+ <div class="votecell post-layout--left" style=display:none!important>
+ <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id=23546206 style=display:none!important>
+ <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Up vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-thdlvrdi style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowUpLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+ </button>
+ 
+ <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Down vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-dgzefpqg style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowDownLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+ </button>
+ 
+ <div class="js-accepted-answer-indicator flex--item fc-green-500 py6 mtn8" data-s-tooltip-placement=right title="Loading when this answer was accepted…" tabindex=0 role=note aria-label=Accepted style=display:none!important>
+ <div class=ta-center style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconCheckmarkLg" width=36 height=36 viewBox="0 0 36 36"><path d="m6 14 8 8L30 6v8L14 30l-8-8v-8Z"></path></svg>
+ </div>
+ </div>
+ 
+ <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href=https://stackoverflow.com/posts/23546206/timeline data-shortcut=T data-ks-title=timeline data-controller=s-tooltip data-s-tooltip-placement=right aria-label=Timeline aria-describedby=--stacks-s-tooltip-4435dmqi style=display:none!important><svg aria-hidden=true class="mln2 mr0 svg-icon iconHistory" width=19 height=18 viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+ </div>
+ 
+ 
+ 
+ </div>
+</div>
+<div class="js-zone-container zone-container-main" style=display:none!important>
+ 
+ 
+</div>
+ 
+<a name=28276482 style=display:none!important></a>
+<div id=answer-28276482 class="answer js-answer" data-answerid=28276482 data-score=5 data-position-on-page=2 data-highest-scored=0 data-question-has-accepted-highest-score=1 itemprop=suggestedAnswer itemscope itemtype=https://schema.org/Answer>
+ <div class=post-layout>
+ <div class="votecell post-layout--left">
+ <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id=28276482>
+ <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Up vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-8cv411bb style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconArrowUpLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+ </button><div id=--stacks-s-tooltip-8cv411bb class="s-popover s-popover__tooltip pe-none" aria-hidden=true role=tooltip style=display:none!important>This answer is useful</div>
+ <div class="js-vote-count flex--item d-flex fd-column ai-center fc-black-500 fs-title" itemprop=upvoteCount data-value=5>
+ 5
+ </div>
+ <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer" data-controller=s-tooltip data-s-tooltip-placement=right aria-pressed=false aria-label="Down vote" data-selected-classes=fc-theme-primary data-unselected-classes aria-describedby=--stacks-s-tooltip-x246s9f1>
+ <svg aria-hidden=true class="svg-icon iconArrowDownLg" width=36 height=36 viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+ </button><div id=--stacks-s-tooltip-x246s9f1 class="s-popover s-popover__tooltip pe-none sf-hidden" aria-hidden=true role=tooltip>This answer is not useful</div>
+ 
+ <div class="js-accepted-answer-indicator flex--item fc-green-500 py6 mtn8 d-none sf-hidden" data-s-tooltip-placement=right title="Loading when this answer was accepted…" tabindex=0 role=note aria-label=Accepted>
+ 
+ </div>
+ 
+ <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href=https://stackoverflow.com/posts/28276482/timeline data-shortcut=T data-ks-title=timeline data-controller=s-tooltip data-s-tooltip-placement=right aria-label=Timeline aria-describedby=--stacks-s-tooltip-h8ldh10x><svg aria-hidden=true class="mln2 mr0 svg-icon iconHistory" width=19 height=18 viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a><div id=--stacks-s-tooltip-h8ldh10x class="s-popover s-popover__tooltip pe-none sf-hidden" aria-hidden=true role=tooltip>Show activity on this post.</div>
+</div>
+ </div>
+ 
+<div class="answercell post-layout--right">
+ 
+ <div class="s-prose js-post-body" itemprop=text>
+<p>Depending on your terminal it is possible to set up mappings. For example if you use urxvt, in <code>~/.Xresources</code> add:</p>
+<pre><code>URxvt.keysym.C-semicolon:   \033[;
+</code></pre>
+<p>And in <code>~/.vimrc</code> add:</p>
+<pre><code>map  &lt;Esc&gt;[; &lt;C-Semicolon&gt;
+map! &lt;Esc&gt;[; &lt;C-Semicolon&gt;
+</code></pre>
+<p>Then you should be able to map it like this (not tested):</p>
+<pre><code>inoremap &lt;c-Semicolon&gt; &lt;Esc&gt;A;&lt;Esc&gt;
+</code></pre>
+<p>I use this to map split window movement like this (this works for me):</p>
+<pre><code>noremap &lt;C-Semicolon&gt; &lt;C-w&gt;l
+</code></pre>
+ </div>
+ 
+ 
+</div>
+ 
+ 
+ </div>
+</div>
+ 
+ <form id=post-form action=/questions/23546025/answer/submit method=post class="js-add-answer-component post-form" style=display:none!important>
+ 
+ 
+ 
+ 
+ 
+ 
+<div id=post-editor class="post-editor js-post-editor" style=display:none!important>
+ 
+ <aside class="d-flex ai-start jc-space-between js-answer-help s-notice s-notice__warning pb0 pr4 pt4 mb8 d-none" role=status aria-hidden=true style=display:none!important>
+ 
+ 
+</aside>
+ 
+ 
+ 
+ 
+</div>
+ <div class=ps-relative style=display:none!important>
+ <div class="form-item new-post-login p0 my16" style=display:none!important>
+ <div class="d-flex gs16 md:fd-column new-login-form" style=display:none!important>
+ <div class="d-flex fd-column w50 md:w-auto gsy gs8 jc-space-between new-login-left" style=display:none!important>
+ 
+ 
+ <div class="flex--item s-btn s-btn__muted s-btn__outlined s-btn__icon google-login" data-ga='["sign up","Sign Up Started - Google","New Post",null,null]' style=display:none!important>
+ <svg aria-hidden=true class="native svg-icon iconGoogle" width=18 height=18 viewBox="0 0 18 18"><path d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18Z" fill=#4285F4></path><path d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17Z" fill=#34A853></path><path d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07Z" fill=#FBBC05></path><path d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3Z" fill=#EA4335></path></svg> Sign up using Google
+ </div>
+ <div class="flex--item s-btn s-btn__muted s-btn__icon facebook-login" data-ga='["sign up","Sign Up Started - Facebook","New Post",null,null]' style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconFacebook" width=18 height=18 viewBox="0 0 18 18"><path d="M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm6.55 16v-6.2H7.46V8.4h2.09V6.61c0-2.07 1.26-3.2 3.1-3.2.88 0 1.64.07 1.87.1v2.16h-1.29c-1 0-1.19.48-1.19 1.18V8.4h2.39l-.31 2.42h-2.08V17h-2.5Z" fill=#4167B2></path></svg> Sign up using Facebook
+ </div>
+ <div class="flex--item s-btn s-btn__muted s-btn__outlined s-btn__icon stackexchange-login" data-ga='["sign up","Sign Up Navigation","New Post",null,null]' style=display:none!important>
+ <svg aria-hidden=true class="native svg-icon iconLogoGlyphXSm" width=18 height=18 viewBox="0 0 18 18"><path d="M14 16v-5h2v7H2v-7h2v5h10Z" fill=#BCBBBB></path><path d="m12.09.72-1.21.9 4.5 6.07 1.22-.9L12.09.71ZM5 15h8v-2H5v2Zm9.15-5.87L8.35 4.3l.96-1.16 5.8 4.83-.96 1.16Zm-7.7-1.47 6.85 3.19.63-1.37-6.85-3.2-.63 1.38Zm6.53 5L5.4 11.39l.38-1.67 7.42 1.48-.22 1.46Z" fill=#F48024></path></svg> Sign up using Email and Password
+ </div>
+ </div>
+ 
+ 
+ 
+ 
+ </div>
+ </div>
+ 
+ 
+ </div>
+ 
+ 
+ </form>
+ 
+ </div>
+ </div>
+ <div id=sidebar class=show-votes role=complementary aria-label=sidebar style=display:none!important>
+ 
+ 
+<div class="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16" data-tracker="cb=1" style=display:none!important>
+ <ul class="d-block p0 m0" style=display:none!important>
+ 
+ <li class="s-sidebarwidget--item d-flex px16" style=display:none!important>
+ <div class="flex--item1 fl-shrink0" style=display:none!important>
+<svg aria-hidden=true class="va-text-top svg-icon iconPencilSm" width=14 height=14 viewBox="0 0 14 14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0ZM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88Z"></path></svg> </div>
+ 
+ </li>
+ <li class="s-sidebarwidget--item d-flex px16" style=display:none!important>
+ <div class="flex--item1 fl-shrink0" style=display:none!important>
+<svg aria-hidden=true class="va-text-top svg-icon iconPencilSm" width=14 height=14 viewBox="0 0 14 14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0ZM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88Z"></path></svg> </div>
+ 
+ </li>
+ 
+ 
+ 
+ 
+ 
+ </ul>
+</div>
+ 
+ 
+ 
+ <div id=feed-link class=js-feed-link style=display:none!important>
+ <a href=https://stackoverflow.com/feeds/question/23546025 title="Feed of this question and its answers" style=display:none!important>
+ <svg aria-hidden=true class="fc-orange-400 svg-icon iconRss" width=18 height=18 viewBox="0 0 18 18"><path d="M1 3c0-1.1.9-2 2-2h12c1.09 0 2 .91 2 2v12c0 1.09-.91 2-2 2H3c-1.09 0-2-.91-2-2V3Zm14.5 12C15.5 8.1 9.9 2.5 3 2.5V5a10 10 0 0 1 10 10h2.5Zm-5 0A7.5 7.5 0 0 0 3 7.5V10a5 5 0 0 1 5 5h2.5Zm-5 0A2.5 2.5 0 0 0 3 12.5V15h2.5Z"></path></svg>
+ Question feed
+ </a>
+ </div>
+ <aside class="s-modal js-feed-link-modal" tabindex=-1 role=dialog aria-labelledby=feed-modal-title aria-describedby=feed-modal-description aria-hidden=true style=display:none!important>
+ <div class="s-modal--dialog js-modal-dialog wmx4" role=document data-controller=se-draggable style=display:none!important>
+ 
+ <div class="d-flex gs4 gsy fd-column" style=display:none!important>
+ 
+ <div class="d-flex ps-relative" style=display:none!important>
+ 
+ <svg aria-hidden=true class="s-input-icon fc-orange-400 svg-icon iconRss" width=18 height=18 viewBox="0 0 18 18"><path d="M1 3c0-1.1.9-2 2-2h12c1.09 0 2 .91 2 2v12c0 1.09-.91 2-2 2H3c-1.09 0-2-.91-2-2V3Zm14.5 12C15.5 8.1 9.9 2.5 3 2.5V5a10 10 0 0 1 10 10h2.5Zm-5 0A7.5 7.5 0 0 0 3 7.5V10a5 5 0 0 1 5 5h2.5Zm-5 0A2.5 2.5 0 0 0 3 12.5V15h2.5Z"></path></svg>
+ </div>
+ </div>
+ <a class="s-modal--close s-btn s-btn__muted js-modal-close js-last-tabbable" href=# aria-label=Close style=display:none!important>
+ <svg aria-hidden=true class="svg-icon iconClearSm" width=14 height=14 viewBox="0 0 14 14"><path d="M12 3.41 10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7 12 3.41Z"></path></svg>
+ </a>
+ </div>
+ </aside>
+ </div>
+ </div>
+</div>
+ </div>
+ </div>
+ 
+ <footer id=footer class="site-footer js-footer" role=contentinfo style=display:none!important>
+ <div class=site-footer--container style=display:none!important>
+ <div class=site-footer--logo style=display:none!important>
+ 
+ <a href=https://stackoverflow.com/ style=display:none!important><svg aria-hidden=true class="native svg-icon iconLogoGlyphMd" width=32 height=37 viewBox="0 0 32 37"><path d="M26 33v-9h4v13H0V24h4v9h22Z" fill=#BCBBBB></path><path d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5 0ZM26 18.4 13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5ZM9.1 15.2l15 7 1.4-3-15-7-1.4 3Zm14 10.79.68-2.95-16.1-3.35L7 23l16.1 2.99ZM23 30H7v-3h16v3Z" fill=#F48024></path></svg></a>
+ </div>
+ 
+ 
+ </div>
+ </footer>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<grammarly-desktop-integration data-grammarly-shadow-root=true style=display:none!important><template shadowmode=open style=display:none!important><style class=sf-hidden>div.grammarly-desktop-integration{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}div.grammarly-desktop-integration:before{content:attr(data-content)}</style></template></grammarly-desktop-integration><script>document.currentScript.remove();!function(){"use strict";(t=>{const n="singlefile-infobar",e="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8H+DhhoQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJJJREFUOI3t070NRCEMA2CnYAOyDyPwpHj/Va7hJ3FzV7zy3ET5JIwoAF6Jk4wzAJAkzxAYG9YRTgB+24wBgKmfrGAKTcEfAY4KRlRoIeBTgKOCERVaCPgU4Khge2GqKOBTgKOCERVaAEC/4PNcnyoSWHpjqkhwKxbcig0Q6AorXYF/+A6eIYD1lVbwG/jdA6/kA2THRAURVubcAAAAAElFTkSuQmCC",o="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8VC4EQ6QAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJtJREFUOI3NkrsBgCAMRLFwBPdxBArcfxXFkO8rbKWAAJfHJ9faf9vuYX/749T5NmShm3bEwbe2SxeuM4+2oxDL1cDoKtVUjRy+tH78Cv2CS+wIiQNC1AEhk4AQeUTMWUJMfUJMSEJMSEY8kIx4IONroaYAimNxsXp1PA7PxwfVL8QnowwoVC0lig07wDDVUjAdbAnjwtow/z/bDW7eI4M2KruJAAAAAElFTkSuQmCC",i="SingleFile",A="single-file-ui-element",r="\n\t.infobar {\n\t\tbackground-color: #737373;\n\t\tcolor: white;\n\t\tdisplay: flex;\n\t\tposition: fixed;\n\t\ttop: 16px;\n\t\tright: 16px;\n\t\theight: auto;\n\t\twidth: auto;\n\t\tmin-height: 24px;\n\t\tmin-width: 24px;\n\t\tbackground-position: center;\n\t\tbackground-repeat: no-repeat;\n\t\tz-index: 2147483647;\n\t\tmargin: 0 0 0 16px;\n\t\tbackground-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHADIRLMaOHwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAPUExURQAAAIqKioyNjY2OjvDw8L2y1DEAAAABdFJOUwBA5thmAAAAAWJLR0QB/wIt3gAAAGNJREFUSMdjYCAJsLi4OBCQx6/CBQwIGIDPCBcXAkYQUsACU+AwlBVQHg6Eg5pgZBGOboIJZugDFwRwoJECJCUOhJI1wZwzqmBUwagCuipgIqTABG9h7YIKaKGAURAFEF/6AQAO4HqSoDP8bgAAAABJRU5ErkJggg==);\n\t\tborder-radius: 16px;\n\t\tuser-select: none;\n\t\t-moz-user-select: none;\n\t\topacity: .7;\n\t\tcursor: pointer;\n\t\tpadding-left: 0;\n\t\tpadding-right: 0;\n\t\tpadding-top: 0;\n\t\tpadding-bottom: 0;\n\t\tborder: 2px solid #eee;\n\t\tbackground-size: 70% 70%;\n\t\ttransition: all 250ms;\n\t\tfont-size: 13px;\n\t}\n\t.infobar:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open {\n\t\topacity: 1;\n\t\tbackground-color: #f9f9f9;\n\t\tcursor: auto;\n\t\tcolor: #2d2d2d;\n\t\tpadding-top: 2px;\n\t\tpadding-bottom: 2px;\n\t\tborder: 2px solid #878787;\n\t\tbackground-image: none;\n\t\tborder-radius: 8px;\n\t\tuser-select: initial;\n\t\t-moz-user-select: initial;\n\t}\n\t.infobar-close-button {\n\t\tdisplay: none;\n\t\topacity: .7;\n\t\tpadding-top: 4px;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tcursor: pointer;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-close-button:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-content {\n\t\tdisplay: none;\n\t\tfont-family: Arial;\n\t\tfont-size: 14px;\n\t\tline-height: 22px;\n\t\tword-break: break-word;\n\t\twhite-space: pre-wrap;\n\t\tposition: relative;\n\t\ttop: 1px;\n\t\ttext-align: left;\n\t}\n\t.infobar-link {\n\t\tdisplay: none;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tline-height: 11px;\n\t\tcursor: pointer;\n\t\tuser-select: none;\n\t\toutline: 0;\n\t}\n\t.infobar-link-icon {\n\t\tpadding-top: 4px;\n\t\tpadding-left: 2px;\n\t\tcursor: pointer;\n\t\topacity: .7;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-link-icon:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open .infobar-close-button, .infobar-open .infobar-content, .infobar-open .infobar-link {\n\t\tdisplay: inline-block;\n\t}";let a=!0;const c=t.browser;async function s(){const t=document.evaluate("//comment()",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);let s=t&&t.singleNodeValue;if(s&&((p=s).nodeType==Node.COMMENT_NODE&&p.textContent.includes(i))){const t=s.textContent.split("\n"),[,,i,p,...g]=t;if(i&&p){let t;t=c&&c.runtime&&c.runtime.sendMessage?await c.runtime.sendMessage({method:"tabs.getOptions",url:i}):{displayInfobar:!0},t.displayInfobar&&await async function(t,i,c){let s=document.querySelector(n);if(!s){if(t=t.split("url: ")[1],i=i.split("saved date: ")[1],c&&c.length>1){let t=c[0].split("info: ")[1].trim();for(let n=1;n<c.length-1;n++)t+="\n"+c[n].trim();c=t.trim()}else c=i;s=d(n,document.body),s.className=A;const p=await async function(t){if(t.attachShadow)return t.attachShadow({mode:"open"});{a=!1;const n=d("iframe",t);return n.style.setProperty("background-color","transparent","important"),n.style.setProperty("position","fixed","important"),n.style.setProperty("top",0,"important"),n.style.setProperty("right",0,"important"),n.style.setProperty("width","44px","important"),n.style.setProperty("height","48px","important"),n.style.setProperty("z-index",2147483647,"important"),new Promise((t=>{n.contentDocument.body.style.setProperty("margin",0),n.onload=()=>t(n.contentDocument.body)}))}}(s),g=document.createElement("style");g.textContent=r,p.appendChild(g);const u=document.createElement("div");u.classList.add("infobar"),p.appendChild(u);const h=document.createElement("img");h.classList.add("infobar-close-button"),u.appendChild(h),h.src=o,h.onclick=t=>{0===t.button&&s.remove()};const m=document.createElement("span");u.appendChild(m),m.classList.add("infobar-content"),m.textContent=c;const b=document.createElement("a");b.classList.add("infobar-link"),u.appendChild(b),b.target="_blank",b.rel="noopener noreferrer",b.title="Open source URL: "+t,b.href=t;const f=document.createElement("img");f.classList.add("infobar-link-icon"),b.appendChild(f),f.src=e,l(u),document.addEventListener("click",(t=>{if(0===t.button){let n=t.target;for(;n&&n!=s;)n=n.parentElement;n!=s&&l(u)}}))}}(i,p,g)}}var p}function l(t){if(t.classList.remove("infobar-open"),t.onclick=e=>{if(0===e.button)return function(t){a||document.querySelector(n).childNodes[0].contentWindow.getSelection().removeAllRanges();if(t.classList.add("infobar-open"),t.onclick=null,t.onmouseout=null,!a){const e=document.querySelector(n).childNodes[0];e.style.setProperty("width","100vw","important"),e.style.setProperty("height","100vh","important"),e.style.setProperty("width",t.getBoundingClientRect().width+33+"px","important"),e.style.setProperty("height",t.getBoundingClientRect().height+21+"px","important")}}(t),!1},!a){const t=document.querySelector(n).childNodes[0];t.style.setProperty("width","44px","important"),t.style.setProperty("height","48px","important")}}function d(t,n){const e=document.createElement(t);return n.appendChild(e),Array.from(getComputedStyle(e)).forEach((t=>e.style.setProperty(t,"initial","important"))),e}t.window==t.top&&("loading"==document.readyState?document.addEventListener("DOMContentLoaded",s,!1):s())})("object"==typeof globalThis?globalThis:window)}();</script>

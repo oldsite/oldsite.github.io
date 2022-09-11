@@ -1,0 +1,242 @@
+<!DOCTYPE html> <html lang=en><!--
+ Page saved with SingleFile 
+ url: https://notes.burke.libbey.me/ansi-escape-codes/ 
+ saved date: Sun Mar 20 2022 11:56:10 GMT+0530 (India Standard Time)
+--><meta charset=utf-8>
+<meta name=generator content=pandoc>
+<meta name=viewport content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name=author content="Burke Libbey">
+<meta name=dcterms.date content=2019-02-13>
+<title>Everything you never wanted to know about ANSI escape codes</title>
+<style>html{font-size:100%;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{color:#444;font-family:'Baskerville',Georgia,Palatino,'Palatino Linotype',Times,'Times New Roman',serif;font-weight:300;font-size:10px;line-height:1.5;padding:1em 2em;margin:auto;max-width:38em;background:#fefefe}a,a:visited{color:#3097ff;text-decoration:none}a:hover{border-bottom:1px dotted #3097ff}a:active{border-bottom:1px dotted #0c69ff;color;#0c69ff;}a:focus{outline:thin dotted}*::selection{background:rgba(255,255,0,0.3);color:#000}a::selection{background:rgba(255,255,0,0.3);color:#0645ad}p{margin:1em 0}header{position:relative}h1,h3{color:#111;line-height:125%;margin-top:2em;font-weight:normal}h1{font-size:2.5em}h3{font-size:1.5em}code{margin:0 0.1em;white-space:pre}pre code{margin:auto}pre:not(.sourceCode),code{color:#282;font-family:Monaco,'Andale Mono','courier new',monospace;font-size:0.90em}div.sourceCode,pre:not(.sourceCode){padding-left:1em;margin-left:-1.5em;border-left:0.5em #EEE solid}pre:not(.sourceCode){margin-top:0;margin-bottom:0;padding-top:1em;padding-bottom:1em}pre{white-space:pre-wrap;word-wrap:break-word}strong{font-weight:bold}ul{margin:1em 0;padding:0 0 0 2em}table{margin-bottom:2em;border-bottom:1px solid #ddd;border-right:1px solid #ddd;border-spacing:0;border-collapse:collapse}table th{padding:.2em 1em;background-color:#eee;border-top:1px solid #ddd;border-left:1px solid #ddd}table td{padding:.2em 1em;border-top:1px solid #ddd;border-left:1px solid #ddd;vertical-align:top}.date{font-size:1.2em;position:absolute;color:#999;top:-3.7em;right:0}footer{text-align:center;font-size:2em;color:#666;margin-bottom:2em}@media only screen and (min-width:480px){body{font-size:16px}}@media only screen and (min-width:768px){body{font-size:19px}}</style><link rel=icon href="data:;base64,="><style>.sf-hidden{display:none!important}</style><link rel=canonical href=https://notes.burke.libbey.me/ansi-escape-codes/><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;"></head>
+<body data-new-gr-c-s-check-loaded=14.1052.0 data-gr-ext-installed>
+<header>
+<h1 class=title>Everything you never wanted to know about ANSI escape codes</h1>
+<p class=date>2019-02-13</p>
+</header>
+<p><strong>See also: <a href=https://ankiweb.net/shared/info/1616925913>Flash cards (Anki deck) for memorization</a></strong></p>
+<p>My team writes a lot of command line tools, and we like to assume that people aren’t using a literal <a href=https://en.wikipedia.org/wiki/VT100>VT100</a> (meaning: we liberally use colours, italics, and basically every other terminal feature available to us). This tends to result in strings in our code that look a little like this:</p>
+<pre><code>"\x1b[A\r\x1b[K\x1b[1;32mopened \x1b[1;4;34m%s\x1b[0;1;32m in your browser.\x1b[0m\n"</code></pre>
+<p>If you’re like most people, your face just melted, but it’s actually really simple. This page is a crash course in what all of these things mean, and how to learn to read and write them effectively.</p>
+<h3 id=x1b><code>\x1b</code></h3>
+<p>ANSI escapes always start with <code>\x1b</code>, or <code>\e</code>, or <code>\033</code>. These are all the same thing: they’re just various ways of inserting the byte 27 into a string. If you look at an <a href=http://www.asciitable.com/>ASCII table</a>, <code>0x1b</code> is literally called <code>ESC</code>, and this is basically why.</p>
+<h3 id=control-sequences>Control sequences</h3>
+<p>The majority of these escape codes start with <code>\x1b[</code>. This pair of bytes is referred to as <code>CSI</code>, or “Control Sequence Introducer”. By and large, a control sequence looks like:</p>
+<pre><code>0x1B + "[" + &lt;zero or more numbers, separated by ";"&gt; + &lt;a letter&gt;</code></pre>
+<p>It’s helpful to think of it this way: the terminating letter is a function name, and the intervening numbers as function arguments, delimited by semicolons rather than the typical commas.</p>
+<p>If you see <code>\x1b[0;1;34m</code>, you can read it like this:</p>
+<pre><code>\x1b[  # call a function
+0;1;34 # function arguments (0, 1, 34)
+m      # function name</code></pre>
+<p>In effect, this is <code>m(0, 1, 34)</code>. Similarly, <code>\x1b[A</code> is just <code>A()</code>.</p>
+<h3 id=available-functions>Available functions</h3>
+<p>So with that mental model—reading escape sequences as function invocations—here’s an abridged documentation of the “standard library”, as it were:</p>
+<table>
+<colgroup>
+<col style=width:25%>
+<col style=width:25%>
+<col style=width:25%>
+<col style=width:25%>
+</colgroup>
+<thead>
+<tr class=header>
+<th></th>
+<th>name</th>
+<th>signature</th>
+<th>description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class=odd>
+<td>A</td>
+<td>Cursor Up</td>
+<td>(n=1)</td>
+<td>Move cursor up by <code>n</code></td>
+</tr>
+<tr class=even>
+<td>B</td>
+<td>Cursor Down</td>
+<td>(n=1)</td>
+<td>Move cursor down by <code>n</code></td>
+</tr>
+<tr class=odd>
+<td>C</td>
+<td>Cursor Forward</td>
+<td>(n=1)</td>
+<td>Move cursor forward by <code>n</code></td>
+</tr>
+<tr class=even>
+<td>D</td>
+<td>Cursor Back</td>
+<td>(n=1)</td>
+<td>Move cursor back by <code>n</code></td>
+</tr>
+<tr class=odd>
+<td>E</td>
+<td>Cursor Next Line</td>
+<td>(n=1)</td>
+<td>Move cursor to the beginning of the line <code>n</code> lines down</td>
+</tr>
+<tr class=even>
+<td>F</td>
+<td>Cursor Previous Line</td>
+<td>(n=1)</td>
+<td>Move cursor to the beginning of the line <code>n</code> lines up</td>
+</tr>
+<tr class=odd>
+<td>G</td>
+<td>Cursor Horizontal Absolute</td>
+<td>(n=1)</td>
+<td>Move cursor to the the column <code>n</code> within the current row</td>
+</tr>
+<tr class=even>
+<td>H</td>
+<td>Cursor Position</td>
+<td>(n=1, m=1)</td>
+<td>Move cursor to row <code>n</code>, column <code>m</code>, counting from the top left corner</td>
+</tr>
+<tr class=odd>
+<td>J</td>
+<td>Erase in Display</td>
+<td>(n=0)</td>
+<td>Clear part of the screen. 0, 1, 2, and 3 have various specific functions</td>
+</tr>
+<tr class=even>
+<td>K</td>
+<td>Erase in Line</td>
+<td>(n=0)</td>
+<td>Clear part of the line. 0, 1, and 2 have various specific functions</td>
+</tr>
+<tr class=odd>
+<td>S</td>
+<td>Scroll Up</td>
+<td>(n=1)</td>
+<td>Scroll window up by <code>n</code> lines</td>
+</tr>
+<tr class=even>
+<td>T</td>
+<td>Scroll Down</td>
+<td>(n=1)</td>
+<td>Scroll window down by <code>n</code> lines</td>
+</tr>
+<tr class=odd>
+<td>s</td>
+<td>Save Cursor Position</td>
+<td>()</td>
+<td>Save current cursor position for use with <code>u</code></td>
+</tr>
+<tr class=even>
+<td>u</td>
+<td>Restore Cursor Position</td>
+<td>()</td>
+<td>Set cursor back to position last saved by <code>s</code></td>
+</tr>
+<tr class=odd>
+<td>f</td>
+<td>…</td>
+<td>…</td>
+<td>(same as G)</td>
+</tr>
+<tr class=even>
+<td>m</td>
+<td>SGR</td>
+<td>(*)</td>
+<td>Set graphics mode. More below</td>
+</tr>
+</tbody>
+</table>
+<p>For practice, you might try interpreting the following string:</p>
+<pre><code>\x1b[3A\x1b[4D\x1b[shello\x1b[J\x1b[1;3Hworld\x1b[u\x1b[13T</code></pre>
+<h3 id=sgr>SGR</h3>
+<p>The SGR (“Select Graphics Rendition”) function (<code>m</code>) has a much more complex signature than the other functions. An—again, abridged—guide to SGR arguments:</p>
+<table>
+<colgroup>
+<col style=width:50%>
+<col style=width:50%>
+</colgroup>
+<thead>
+<tr class=header>
+<th>value</th>
+<th>name&nbsp;/&nbsp;description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class=odd>
+<td>0</td>
+<td>Reset: turn off all attributes</td>
+</tr>
+<tr class=even>
+<td>1</td>
+<td>Bold (or bright, it’s up to the terminal and the user config to some extent)</td>
+</tr>
+<tr class=odd>
+<td>3</td>
+<td>Italic</td>
+</tr>
+<tr class=even>
+<td>4</td>
+<td>Underline</td>
+</tr>
+<tr class=odd>
+<td>30–37</td>
+<td>Set text colour from the basic colour palette of 0–7</td>
+</tr>
+<tr class=even>
+<td>38;5;<em>n</em></td>
+<td>Set text colour to index <code>n</code> in a <a href=https://commons.wikimedia.org/wiki/File:Xterm_256color_chart.svg>256-colour palette</a> (e.g.&nbsp;<code>\x1b[38;5;34m</code>)</td>
+</tr>
+<tr class=odd>
+<td>38;2;<em>r</em>;<em>g</em>;<em>b</em></td>
+<td>Set text colour to an RGB value (e.g.&nbsp;<code>\x1b[38;2;255;255;0m</code>)</td>
+</tr>
+<tr class=even>
+<td>40–47</td>
+<td>Set background colour</td>
+</tr>
+<tr class=odd>
+<td>48;5;<em>n</em></td>
+<td>Set background colour to index <code>n</code> in a 256-colour palette</td>
+</tr>
+<tr class=even>
+<td>48;2;<em>r</em>;<em>g</em>;<em>b</em></td>
+<td>Set background colour to an RGB value</td>
+</tr>
+<tr class=odd>
+<td>90–97</td>
+<td>Set text colour from the <strong>bright</strong> colour palette of 0–7</td>
+</tr>
+<tr class=even>
+<td>100–107</td>
+<td>Set background colour from the <strong>bright</strong> colour palette of 0–7</td>
+</tr>
+</tbody>
+</table>
+<p>Multiple SGR arguments can always be concatenated using another <code>;</code>, and they will be applied in the order they are encountered. It’s especially common to see <code>0;</code> before some other argument, in order to reset the state before applying our own.</p>
+<h3 id=colour-palettes>Colour Palettes</h3>
+<p>The basic colour palette has 8 entries:</p>
+<ul>
+<li>0: black</li>
+<li>1: red</li>
+<li>2: green</li>
+<li>3: yellow</li>
+<li>4: blue</li>
+<li>5: magenta</li>
+<li>6: cyan</li>
+<li>7: white</li>
+</ul>
+<p>A useful way to help remember this, or at least to select colours for use, is that, with the exception of 0/black, the colours are ordered by usefulness, with highest first: red text is very useful for indicating failures, green is useful for indicating extreme success, yellow for warnings, and then blue, magenta, and cyan for progressively more obscure conditions or decoration.</p>
+<p>0 and 7 are less useful for text because one or the other will generally look nearly-unreadable depending on whether the user has a light or a dark background.</p>
+<p>Terminals will also have a “bright” version of this palette (activated using 90–97 / 100–107). These are the same (black/red/green/etc.) but generally noticeably brighter than their regular counterparts.</p>
+<p>For practice, you might try to figure out how this string would display:</p>
+<pre><code>\x1b[38;2;255;255;0mH\x1b[0;1;3;35me\x1b[95ml\x1b[42ml\x1b[0;41mo\x1b[0m</code></pre>
+<h3 id=miscellany>Miscellany</h3>
+<p>Another pair of useful escapes is <code>\x1b[?25h</code> and <code>\x1b[?25l</code>. These show and hide the cursor, respectively. Try not to think too hard about the syntax here: <code>?25</code> means something to do with the cursor and <code>h</code> and <code>l</code> stand for “high” and “low”: imagine a bit indicating whether the cursor should be visible. The “high” value (1) would indicate “show”; the “low” value (0) would indicate “hide”.</p>
+<p>Show/hide is useful when you’re going to draw some stuff that’ll cause the cursor to jump around like crazy, for example, repainting a couple of the last few lines to update them with new content.</p>
+<p>One other thing that we use frequently is <code>\r</code>, or Carriage Return, which is functionally similar or identical to <code>\x1b[1G</code>. It just moves the cursor to the start of the line.</p>
+<h3 id=summary>Summary</h3>
+<p>That was a lot of information, but that’s essentially everything you need to know in order to competently read and write ANSI escape codes in a terminal.</p>
+<p>If you want to learn this more thoroughly, <a href=https://ankiweb.net/shared/info/1616925913>I’ve put together a set of flash cards to help</a>.</p>
+<footer>
+⌁
+</footer>
+<grammarly-desktop-integration data-grammarly-shadow-root=true><template shadowmode=open><style class=sf-hidden>div.grammarly-desktop-integration{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}div.grammarly-desktop-integration:before{content:attr(data-content)}</style><div aria-label=grammarly-integration role=group tabindex=-1 class=grammarly-desktop-integration data-content='{"mode":"full","isActive":true,"isUserDisabled":false}'></div></template></grammarly-desktop-integration><script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowmode"),delegatesFocus:Boolean(element.getAttribute("delegatesfocus"))});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script><script>document.currentScript.remove();!function(){"use strict";(t=>{const n="singlefile-infobar",e="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8H+DhhoQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJJJREFUOI3t070NRCEMA2CnYAOyDyPwpHj/Va7hJ3FzV7zy3ET5JIwoAF6Jk4wzAJAkzxAYG9YRTgB+24wBgKmfrGAKTcEfAY4KRlRoIeBTgKOCERVaCPgU4Khge2GqKOBTgKOCERVaAEC/4PNcnyoSWHpjqkhwKxbcig0Q6AorXYF/+A6eIYD1lVbwG/jdA6/kA2THRAURVubcAAAAAElFTkSuQmCC",o="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8VC4EQ6QAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJtJREFUOI3NkrsBgCAMRLFwBPdxBArcfxXFkO8rbKWAAJfHJ9faf9vuYX/749T5NmShm3bEwbe2SxeuM4+2oxDL1cDoKtVUjRy+tH78Cv2CS+wIiQNC1AEhk4AQeUTMWUJMfUJMSEJMSEY8kIx4IONroaYAimNxsXp1PA7PxwfVL8QnowwoVC0lig07wDDVUjAdbAnjwtow/z/bDW7eI4M2KruJAAAAAElFTkSuQmCC",i="SingleFile",A="single-file-ui-element",r="\n\t.infobar {\n\t\tbackground-color: #737373;\n\t\tcolor: white;\n\t\tdisplay: flex;\n\t\tposition: fixed;\n\t\ttop: 16px;\n\t\tright: 16px;\n\t\theight: auto;\n\t\twidth: auto;\n\t\tmin-height: 24px;\n\t\tmin-width: 24px;\n\t\tbackground-position: center;\n\t\tbackground-repeat: no-repeat;\n\t\tz-index: 2147483647;\n\t\tmargin: 0 0 0 16px;\n\t\tbackground-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHADIRLMaOHwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAPUExURQAAAIqKioyNjY2OjvDw8L2y1DEAAAABdFJOUwBA5thmAAAAAWJLR0QB/wIt3gAAAGNJREFUSMdjYCAJsLi4OBCQx6/CBQwIGIDPCBcXAkYQUsACU+AwlBVQHg6Eg5pgZBGOboIJZugDFwRwoJECJCUOhJI1wZwzqmBUwagCuipgIqTABG9h7YIKaKGAURAFEF/6AQAO4HqSoDP8bgAAAABJRU5ErkJggg==);\n\t\tborder-radius: 16px;\n\t\tuser-select: none;\n\t\t-moz-user-select: none;\n\t\topacity: .7;\n\t\tcursor: pointer;\n\t\tpadding-left: 0;\n\t\tpadding-right: 0;\n\t\tpadding-top: 0;\n\t\tpadding-bottom: 0;\n\t\tborder: 2px solid #eee;\n\t\tbackground-size: 70% 70%;\n\t\ttransition: all 250ms;\n\t\tfont-size: 13px;\n\t}\n\t.infobar:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open {\n\t\topacity: 1;\n\t\tbackground-color: #f9f9f9;\n\t\tcursor: auto;\n\t\tcolor: #2d2d2d;\n\t\tpadding-top: 2px;\n\t\tpadding-bottom: 2px;\n\t\tborder: 2px solid #878787;\n\t\tbackground-image: none;\n\t\tborder-radius: 8px;\n\t\tuser-select: initial;\n\t\t-moz-user-select: initial;\n\t}\n\t.infobar-close-button {\n\t\tdisplay: none;\n\t\topacity: .7;\n\t\tpadding-top: 4px;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tcursor: pointer;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-close-button:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-content {\n\t\tdisplay: none;\n\t\tfont-family: Arial;\n\t\tfont-size: 14px;\n\t\tline-height: 22px;\n\t\tword-break: break-word;\n\t\twhite-space: pre-wrap;\n\t\tposition: relative;\n\t\ttop: 1px;\n\t\ttext-align: left;\n\t}\n\t.infobar-link {\n\t\tdisplay: none;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tline-height: 11px;\n\t\tcursor: pointer;\n\t\tuser-select: none;\n\t\toutline: 0;\n\t}\n\t.infobar-link-icon {\n\t\tpadding-top: 4px;\n\t\tpadding-left: 2px;\n\t\tcursor: pointer;\n\t\topacity: .7;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-link-icon:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open .infobar-close-button, .infobar-open .infobar-content, .infobar-open .infobar-link {\n\t\tdisplay: inline-block;\n\t}";let a=!0;const c=t.browser;async function s(){const t=document.evaluate("//comment()",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);let s=t&&t.singleNodeValue;if(s&&((p=s).nodeType==Node.COMMENT_NODE&&p.textContent.includes(i))){const t=s.textContent.split("\n"),[,,i,p,...g]=t;if(i&&p){let t;t=c&&c.runtime&&c.runtime.sendMessage?await c.runtime.sendMessage({method:"tabs.getOptions",url:i}):{displayInfobar:!0},t.displayInfobar&&await async function(t,i,c){let s=document.querySelector(n);if(!s){if(t=t.split("url: ")[1],i=i.split("saved date: ")[1],c&&c.length>1){let t=c[0].split("info: ")[1].trim();for(let n=1;n<c.length-1;n++)t+="\n"+c[n].trim();c=t.trim()}else c=i;s=d(n,document.body),s.className=A;const p=await async function(t){if(t.attachShadow)return t.attachShadow({mode:"open"});{a=!1;const n=d("iframe",t);return n.style.setProperty("background-color","transparent","important"),n.style.setProperty("position","fixed","important"),n.style.setProperty("top",0,"important"),n.style.setProperty("right",0,"important"),n.style.setProperty("width","44px","important"),n.style.setProperty("height","48px","important"),n.style.setProperty("z-index",2147483647,"important"),new Promise((t=>{n.contentDocument.body.style.setProperty("margin",0),n.onload=()=>t(n.contentDocument.body)}))}}(s),g=document.createElement("style");g.textContent=r,p.appendChild(g);const u=document.createElement("div");u.classList.add("infobar"),p.appendChild(u);const h=document.createElement("img");h.classList.add("infobar-close-button"),u.appendChild(h),h.src=o,h.onclick=t=>{0===t.button&&s.remove()};const m=document.createElement("span");u.appendChild(m),m.classList.add("infobar-content"),m.textContent=c;const b=document.createElement("a");b.classList.add("infobar-link"),u.appendChild(b),b.target="_blank",b.rel="noopener noreferrer",b.title="Open source URL: "+t,b.href=t;const f=document.createElement("img");f.classList.add("infobar-link-icon"),b.appendChild(f),f.src=e,l(u),document.addEventListener("click",(t=>{if(0===t.button){let n=t.target;for(;n&&n!=s;)n=n.parentElement;n!=s&&l(u)}}))}}(i,p,g)}}var p}function l(t){if(t.classList.remove("infobar-open"),t.onclick=e=>{if(0===e.button)return function(t){a||document.querySelector(n).childNodes[0].contentWindow.getSelection().removeAllRanges();if(t.classList.add("infobar-open"),t.onclick=null,t.onmouseout=null,!a){const e=document.querySelector(n).childNodes[0];e.style.setProperty("width","100vw","important"),e.style.setProperty("height","100vh","important"),e.style.setProperty("width",t.getBoundingClientRect().width+33+"px","important"),e.style.setProperty("height",t.getBoundingClientRect().height+21+"px","important")}}(t),!1},!a){const t=document.querySelector(n).childNodes[0];t.style.setProperty("width","44px","important"),t.style.setProperty("height","48px","important")}}function d(t,n){const e=document.createElement(t);return n.appendChild(e),Array.from(getComputedStyle(e)).forEach((t=>e.style.setProperty(t,"initial","important"))),e}t.window==t.top&&("loading"==document.readyState?document.addEventListener("DOMContentLoaded",s,!1):s())})("object"==typeof globalThis?globalThis:window)}();</script>

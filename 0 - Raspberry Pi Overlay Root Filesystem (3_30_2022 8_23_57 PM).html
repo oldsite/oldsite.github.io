@@ -1,0 +1,142 @@
+<!DOCTYPE html> <html style><!--
+ Page saved with SingleFile 
+ url: https://yagrebu.net/unix/rpi-overlay.md 
+ saved date: Wed Mar 30 2022 20:23:57 GMT+0530 (India Standard Time)
+--><meta charset=utf-8>
+<title>Raspberry Pi Overlay Root Filesystem</title>
+<style>body{font-family:serif;font-size:14px;line-height:1.6;padding-top:10px;padding-bottom:10px;background-color:white;padding:30px}body>*:first-child{margin-top:0!important}body>*:last-child{margin-bottom:0!important}a{color:#4183C4}h1,h2,h3{margin:20px 0 10px;padding:0;font-weight:bold;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h1{font-size:28px;color:black}h2{font-size:24px;border-bottom:1px solid #cccccc;color:black}h3{font-size:18px}p,pre{margin:15px 0}body>h2:first-child{margin-top:0;padding-top:0}body>h1:first-child{margin-top:0;padding-top:0}body>h3:first-child,body>h4:first-child,body>h5:first-child,body>h6:first-child{margin-top:0;padding-top:0}code{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;background:transparent}pre{background-color:#f8f8f8;border:1px solid #cccccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code{background-color:transparent;border:none}*{-webkit-print-color-adjust:exact}@media screen and (min-width:914px){body{width:854px;margin:0 auto}}</style>
+<link type=image/x-icon rel="shortcut icon" href="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><link rel=canonical href=https://yagrebu.net/unix/rpi-overlay.md><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;"></head>
+ <body>
+ <p><a href=https://yagrebu.net/>Index</a> / Unix</p>
+<h1>Raspberry Pi Overlay Root Filesystem</h1>
+<p><strong>Note: It appears that this functionality has now been included in the <code>raspi-config</code> utility of the base Raspbian distribution. You might want to check that out before implementing these instructions.</strong></p>
+<p>This document describes a method to protect the root filesystem from writes
+while still allowing all applications to function as normal while writing to a
+temporary Overlay filesystem. Figuring this out would have been impossible for
+me without this excellent post by <strong>ejolson</strong> on the <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=63&amp;t=161416">RPI.org forums</a>.</p>
+<p>For my installation I used a RPI 3 and the latest Raspbian Stretch Lite image
+(2017-11-29). I do not know if these instructions will work without modification
+on earlier RPI hardware.</p>
+<p><strong>Note:</strong> When the overlay filesystem is in place your RPI will function as
+usual, but any data generated after startup is only saved in RAM and will be
+lost upon reboot.</p>
+<h2>Let's Begin</h2>
+<p>First we need to create a <code>initramfs</code> image that contains the overlay module and
+a boot script to mount our root partition with the overlay. (All this could of
+course be compiled into the kernel image, but <a href=https://manpages.debian.org/initramfs-tools.8>initramfs-tools(8)</a> is an
+easier way to learn about the early init-process.)</p>
+<pre><code>echo overlay &gt;&gt;/etc/initramfs-tools/modules</code></pre>
+<p>Place the following boot script in <code>/etc/initramfs-tools/scripts/overlay</code>
+<a href=https://yagrebu.net/unix/rpi-overlay/overlay>(download)</a>:</p>
+<pre><code># Local filesystem mounting                     -*- shell-script -*-
+
+#
+# This script overrides local_mount_root() in /scripts/local
+# and mounts root as a read-only filesystem with a temporary (rw)
+# overlay filesystem.
+#
+
+. /scripts/local
+
+local_mount_root()
+{
+        local_top
+        local_device_setup "${ROOT}" "root file system"
+        ROOT="${DEV}"
+
+        # Get the root filesystem type if not set
+        if [ -z "${ROOTFSTYPE}" ]; then
+                FSTYPE=$(get_fstype "${ROOT}")
+        else
+                FSTYPE=${ROOTFSTYPE}
+        fi
+
+        local_premount
+
+        # CHANGES TO THE ORIGINAL FUNCTION BEGIN HERE
+        # N.B. this code still lacks error checking
+
+        modprobe ${FSTYPE}
+        checkfs ${ROOT} root "${FSTYPE}"
+
+        # Create directories for root and the overlay
+        mkdir /lower /upper
+
+        # Mount read-only root to /lower
+        if [ "${FSTYPE}" != "unknown" ]; then
+                mount -r -t ${FSTYPE} ${ROOTFLAGS} ${ROOT} /lower
+        else
+                mount -r ${ROOTFLAGS} ${ROOT} /lower
+        fi
+
+        modprobe overlay
+
+        # Mount a tmpfs for the overlay in /upper
+        mount -t tmpfs tmpfs /upper
+        mkdir /upper/data /upper/work
+
+        # Mount the final overlay-root in $rootmnt
+        mount -t overlay \
+            -olowerdir=/lower,upperdir=/upper/data,workdir=/upper/work \
+            overlay ${rootmnt}
+}</code></pre>
+<p>Create the <code>initramfs</code> image:</p>
+<pre><code>update-initramfs -c -k $(uname -r)</code></pre>
+<p>It will be placed in <code>/boot/initrd.img&lt;kernel_version&gt;</code> - you can rename it to
+match your kernel file if you want.</p>
+<p>Add the following to <code>/boot/config.txt</code> - where <code>initrd7.img</code> is the <code>initramfs</code>
+image you created in the previous step:</p>
+<pre><code>kernel=kernel7.img
+initramfs initrd7.img</code></pre>
+<p>And finally, add <code>boot=overlay</code> to the beginning of <code>/boot/cmdline.txt</code>.</p>
+<p>This should do it. Reboot and keep your fingers crossed.</p>
+<h2>Kernel Panic</h2>
+<p>If the OS doesn't come back up, there is probably a typo somewhere, or you
+missed something.</p>
+<p>You can remove <code>boot=overlay</code> from <code>cmdline.txt</code> to boot as normal.</p>
+<p>A serial connection can be really handy when trying to troubleshoot the startup
+process. USB TTL console cables are dirt cheap, just make sure you get one that
+outputs 3.3V on the TX line so that you don't fry your RPI. Use
+<a href=https://manpages.debian.org/screen.1>screen(1)</a>'s buffer to scroll back and try to figure out where it went
+wrong.</p>
+<p>The documentation is also quite good. Read the man page for
+<a href=https://manpages.debian.org/initramfs-tools.8>initramfs-tools(8)</a> and the default boot scripts themselves:</p>
+<pre><code>less /usr/share/initramfs-tools/init
+less /usr/share/initramfs-tools/scripts/local</code></pre>
+<h2>Finishing Touches</h2>
+<h3>Read-Only /boot</h3>
+<p>The <code>/boot</code> filesystem is still mounted <code>rw</code>. You can protect it as well by
+adding <code>ro</code> to the boot partitions mount options in <code>/etc/fstab</code>:</p>
+<pre><code>PARTUUID=72a9e9a9-01   /boot   vfat   defaults,ro   0   2</code></pre>
+<h3>overctl</h3>
+<p>Since I would be updating the filesystem on my RPI regularly, I wanted a secure
+way to enable and disable the overlay. <a href=https://yagrebu.net/unix/rpi-overlay/overctl>overctl</a> has the following features:</p>
+<pre><code>Usage: overctl [-h|-r|-s|-t|-w]
+   -h, --help     This message
+   -r, --ro       Set read-only root with overlay fs
+   -s, --status   Show current state
+   -t, --toggle   Toggle between -r and -w
+   -w, --rw       Set read-write root</code></pre>
+<p>Place the script in <code>/usr/local/sbin</code> and mark the file as executable. You
+will also need to create the following files containing the <code>cmdline.txt</code>
+options that you wish to toggle between:</p>
+<pre><code>cp /boot/cmdline.txt /boot/cmdline.txt.orig
+cp /boot/cmdline.txt /boot/cmdline.txt.overlay</code></pre>
+<p><code>cmdline.txt.orig</code> should contain your vanilla settings (so, no <code>boot=overlay</code>), while <code>/boot/cmdline.txt.overlay</code> should include the <code>boot=overlay</code> directive. The <code>overctl</code> script merely copies the contents of either of these files into <code>/boot/cmdline.txt</code> as requested.</p>
+<h3>motd(5)</h3>
+<p>I figured I could use a reminder of which state the RPI is in. So I cobbled
+together this <a href=https://manpages.debian.org/motd.5>motd(5)</a> script:</p>
+<pre><code>#!/bin/sh
+
+str=$(mount | grep ' on / ')
+
+if echo $str | grep -q 'overlay'; then
+        printf "\n------ INFO: / MOUNTED WITH OVERLAY ------\n\n"
+elif echo $str | grep -q 'rw'; then
+        printf "\n++++++ INFO: / MOUNTED READ-WRITE ++++++\n\n"
+else
+        printf "\n!!!!!! WARNING: / UNKNOWN STATE !!!!!!\n\n"
+fi</code></pre>
+<p>Place the code above in <code>/etc/update-motd.d/80-overlay</code> and make sure the file
+is executable.</p> 
+<script>document.currentScript.remove();!function(){"use strict";(t=>{const n="singlefile-infobar",e="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8H+DhhoQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJJJREFUOI3t070NRCEMA2CnYAOyDyPwpHj/Va7hJ3FzV7zy3ET5JIwoAF6Jk4wzAJAkzxAYG9YRTgB+24wBgKmfrGAKTcEfAY4KRlRoIeBTgKOCERVaCPgU4Khge2GqKOBTgKOCERVaAEC/4PNcnyoSWHpjqkhwKxbcig0Q6AorXYF/+A6eIYD1lVbwG/jdA6/kA2THRAURVubcAAAAAElFTkSuQmCC",o="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8VC4EQ6QAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJtJREFUOI3NkrsBgCAMRLFwBPdxBArcfxXFkO8rbKWAAJfHJ9faf9vuYX/749T5NmShm3bEwbe2SxeuM4+2oxDL1cDoKtVUjRy+tH78Cv2CS+wIiQNC1AEhk4AQeUTMWUJMfUJMSEJMSEY8kIx4IONroaYAimNxsXp1PA7PxwfVL8QnowwoVC0lig07wDDVUjAdbAnjwtow/z/bDW7eI4M2KruJAAAAAElFTkSuQmCC",i="SingleFile",A="single-file-ui-element",r="\n\t.infobar {\n\t\tbackground-color: #737373;\n\t\tcolor: white;\n\t\tdisplay: flex;\n\t\tposition: fixed;\n\t\ttop: 16px;\n\t\tright: 16px;\n\t\theight: auto;\n\t\twidth: auto;\n\t\tmin-height: 24px;\n\t\tmin-width: 24px;\n\t\tbackground-position: center;\n\t\tbackground-repeat: no-repeat;\n\t\tz-index: 2147483647;\n\t\tmargin: 0 0 0 16px;\n\t\tbackground-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHADIRLMaOHwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAPUExURQAAAIqKioyNjY2OjvDw8L2y1DEAAAABdFJOUwBA5thmAAAAAWJLR0QB/wIt3gAAAGNJREFUSMdjYCAJsLi4OBCQx6/CBQwIGIDPCBcXAkYQUsACU+AwlBVQHg6Eg5pgZBGOboIJZugDFwRwoJECJCUOhJI1wZwzqmBUwagCuipgIqTABG9h7YIKaKGAURAFEF/6AQAO4HqSoDP8bgAAAABJRU5ErkJggg==);\n\t\tborder-radius: 16px;\n\t\tuser-select: none;\n\t\t-moz-user-select: none;\n\t\topacity: .7;\n\t\tcursor: pointer;\n\t\tpadding-left: 0;\n\t\tpadding-right: 0;\n\t\tpadding-top: 0;\n\t\tpadding-bottom: 0;\n\t\tborder: 2px solid #eee;\n\t\tbackground-size: 70% 70%;\n\t\ttransition: all 250ms;\n\t\tfont-size: 13px;\n\t}\n\t.infobar:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open {\n\t\topacity: 1;\n\t\tbackground-color: #f9f9f9;\n\t\tcursor: auto;\n\t\tcolor: #2d2d2d;\n\t\tpadding-top: 2px;\n\t\tpadding-bottom: 2px;\n\t\tborder: 2px solid #878787;\n\t\tbackground-image: none;\n\t\tborder-radius: 8px;\n\t\tuser-select: initial;\n\t\t-moz-user-select: initial;\n\t}\n\t.infobar-close-button {\n\t\tdisplay: none;\n\t\topacity: .7;\n\t\tpadding-top: 4px;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tcursor: pointer;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-close-button:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-content {\n\t\tdisplay: none;\n\t\tfont-family: Arial;\n\t\tfont-size: 14px;\n\t\tline-height: 22px;\n\t\tword-break: break-word;\n\t\twhite-space: pre-wrap;\n\t\tposition: relative;\n\t\ttop: 1px;\n\t\ttext-align: left;\n\t}\n\t.infobar-link {\n\t\tdisplay: none;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tline-height: 11px;\n\t\tcursor: pointer;\n\t\tuser-select: none;\n\t\toutline: 0;\n\t}\n\t.infobar-link-icon {\n\t\tpadding-top: 4px;\n\t\tpadding-left: 2px;\n\t\tcursor: pointer;\n\t\topacity: .7;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-link-icon:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open .infobar-close-button, .infobar-open .infobar-content, .infobar-open .infobar-link {\n\t\tdisplay: inline-block;\n\t}";let a=!0;const c=t.browser;async function s(){const t=document.evaluate("//comment()",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);let s=t&&t.singleNodeValue;if(s&&((p=s).nodeType==Node.COMMENT_NODE&&p.textContent.includes(i))){const t=s.textContent.split("\n"),[,,i,p,...g]=t;if(i&&p){let t;t=c&&c.runtime&&c.runtime.sendMessage?await c.runtime.sendMessage({method:"tabs.getOptions",url:i}):{displayInfobar:!0},t.displayInfobar&&await async function(t,i,c){let s=document.querySelector(n);if(!s){if(t=t.split("url: ")[1],i=i.split("saved date: ")[1],c&&c.length>1){let t=c[0].split("info: ")[1].trim();for(let n=1;n<c.length-1;n++)t+="\n"+c[n].trim();c=t.trim()}else c=i;s=d(n,document.body),s.className=A;const p=await async function(t){if(t.attachShadow)return t.attachShadow({mode:"open"});{a=!1;const n=d("iframe",t);return n.style.setProperty("background-color","transparent","important"),n.style.setProperty("position","fixed","important"),n.style.setProperty("top",0,"important"),n.style.setProperty("right",0,"important"),n.style.setProperty("width","44px","important"),n.style.setProperty("height","48px","important"),n.style.setProperty("z-index",2147483647,"important"),new Promise((t=>{n.contentDocument.body.style.setProperty("margin",0),n.onload=()=>t(n.contentDocument.body)}))}}(s),g=document.createElement("style");g.textContent=r,p.appendChild(g);const u=document.createElement("div");u.classList.add("infobar"),p.appendChild(u);const h=document.createElement("img");h.classList.add("infobar-close-button"),u.appendChild(h),h.src=o,h.onclick=t=>{0===t.button&&s.remove()};const m=document.createElement("span");u.appendChild(m),m.classList.add("infobar-content"),m.textContent=c;const b=document.createElement("a");b.classList.add("infobar-link"),u.appendChild(b),b.target="_blank",b.rel="noopener noreferrer",b.title="Open source URL: "+t,b.href=t;const f=document.createElement("img");f.classList.add("infobar-link-icon"),b.appendChild(f),f.src=e,l(u),document.addEventListener("click",(t=>{if(0===t.button){let n=t.target;for(;n&&n!=s;)n=n.parentElement;n!=s&&l(u)}}))}}(i,p,g)}}var p}function l(t){if(t.classList.remove("infobar-open"),t.onclick=e=>{if(0===e.button)return function(t){a||document.querySelector(n).childNodes[0].contentWindow.getSelection().removeAllRanges();if(t.classList.add("infobar-open"),t.onclick=null,t.onmouseout=null,!a){const e=document.querySelector(n).childNodes[0];e.style.setProperty("width","100vw","important"),e.style.setProperty("height","100vh","important"),e.style.setProperty("width",t.getBoundingClientRect().width+33+"px","important"),e.style.setProperty("height",t.getBoundingClientRect().height+21+"px","important")}}(t),!1},!a){const t=document.querySelector(n).childNodes[0];t.style.setProperty("width","44px","important"),t.style.setProperty("height","48px","important")}}function d(t,n){const e=document.createElement(t);return n.appendChild(e),Array.from(getComputedStyle(e)).forEach((t=>e.style.setProperty(t,"initial","important"))),e}t.window==t.top&&("loading"==document.readyState?document.addEventListener("DOMContentLoaded",s,!1):s())})("object"==typeof globalThis?globalThis:window)}();</script>

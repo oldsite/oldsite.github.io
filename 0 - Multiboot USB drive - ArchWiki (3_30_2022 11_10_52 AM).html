@@ -1,0 +1,185 @@
+<!DOCTYPE html> <html class="client-js vector-animations-ready" dir=ltr style lang=en><!--
+ Page saved with SingleFile 
+ url: https://wiki.archlinux.org/title/Multiboot_USB_drive 
+ saved date: Wed Mar 30 2022 11:10:52 GMT+0530 (India Standard Time)
+--><meta charset=utf-8>
+<title>Multiboot USB drive - ArchWiki</title>
+<style>body{margin:0}main{display:block}@supports (text-decoration:underline dotted){abbr[title]{border-bottom:0;text-decoration:underline dotted}}pre{font-family:monospace,monospace}@media screen{html,body{height:100%}:focus{outline-color:#3366cc}html{font-size:100%}html,body{font-family:sans-serif}pre{line-height:1.3}.vector-body{font-size:calc(1em * 0.875);line-height:1.6}@-webkit-keyframes rotate{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}}@media screen{body{background-color:#f8f9fa;color:#202122;overflow-y:scroll}.mw-body{direction:ltr}.mw-body{border-top:1px solid #a7d7f9;margin-top:-1px;padding:1.25em 0.5em 1.5em}.mw-body{margin-left:0}[id='bodyContent']{position:relative;z-index:0}.mw-page-container{max-width:103.125em;min-height:100%;margin-left:auto;margin-right:auto;padding:0.05px 0.9375em;background-color:#ffffff}.skin--responsive .mw-page-container{min-width:auto}.mw-page-container-inner{position:relative}.mw-workspace-container{max-width:90em;margin-left:auto;margin-right:auto;position:relative}.mw-content-container{max-width:60em;margin-left:auto;margin-right:auto}@keyframes search-loader-progress-bar{0%{background-size:0 2px;background-position:-10% 0}30%{background-size:30% 2px;background-position:-10% 0}70%{background-size:30% 2px;background-position:110% 0}100%{background-size:0 2px;background-position:110% 0}}}@media screen and (min-width:106.875em){.mw-page-container{border-left:1px solid #f8f9fa;border-right:1px solid #f8f9fa}}@media screen and (max-width:86.75em){.mw-checkbox-hack-checkbox:checked~.mw-workspace-container .mw-content-container,.mw-checkbox-hack-checkbox:checked~.mw-workspace-container .mw-article-toolbar-container{margin-left:11.5em}}@media screen and (min-width:1000px){.mw-page-container{padding-left:1.875em;padding-right:1.875em}}@media screen and (max-width:720px){.mw-checkbox-hack-checkbox:checked~.mw-workspace-container .mw-content-container,.mw-checkbox-hack-checkbox:checked~.mw-workspace-container .mw-article-toolbar-container{margin-left:0!important}}@media screen{.mw-body-content:after{clear:both;content:'';display:block}pre{font-family:monospace,monospace}pre{background-color:#f8f9fa;color:#000;border:1px solid #eaecf0}pre{padding:1em;white-space:pre-wrap;overflow-x:hidden;word-wrap:break-word}@counter-style meetei{system:numeric;symbols:'\ABF0' '\ABF1' '\ABF2' '\ABF3' '\ABF4' '\ABF5' '\ABF6' '\ABF7' '\ABF8' '\ABF9';suffix:') '}@counter-style santali{system:numeric;symbols:'\1C50' '\1C51' '\1C52' '\1C53' '\1C54' '\1C55' '\1C56' '\1C57' '\1C58' '\1C59'}}body{background:#f6f9fc}#content{background:#ffffff;border:1px solid #cccccc}#content pre{color:#222222}#content pre:not([class*="CodeMirror"]){border:1px solid #bbccdd;overflow:auto;word-break:break-all;white-space:pre-wrap!important}#content pre:not([class*="CodeMirror"]),#content code,#content tt{background-color:#ebf1f5;font-family:monospace,monospace}body.skin-vector.skin--responsive div.mw-page-container{background-color:#f6f9fc}</style>
+<meta name=ResourceLoaderDynamicStyles content>
+<style>pre{white-space:pre}</style>
+<meta name=generator content="MediaWiki 1.37.1">
+<meta name=referrer content=no-referrer-when-downgrade>
+<meta name=format-detection content="telephone=no">
+<meta name=viewport content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0">
+<link rel=search type=application/opensearchdescription+xml href=https://wiki.archlinux.org/opensearch_desc.php title="ArchWiki (en)">
+<link rel=EditURI type=application/rsd+xml href="https://wiki.archlinux.org/api.php?action=rsd">
+<link rel=license href=http://www.gnu.org/copyleft/fdl.html>
+<link rel=alternate type=application/atom+xml title="ArchWiki Atom feed" href="https://wiki.archlinux.org/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="shortcut icon" href=data:image/vnd.microsoft.icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABvElEQVQ4jY2TP4gTQRTGfzM7ybp35mBX8LY4GxM5OI4UiqDWtoKIjWhl4QmmEQwIhzZaa3GLlYWgjViI+AcUrrASUYTbQ0UxepwpFj1EDCSXuLNj4QYSLxP8mnm8972P3wyMMMZgUxjF+ycLUjUW5l/YPMq6/VfnHCEmAGuAsBHsurG6QwiaRUeq2cCdfXy88nmUT9qSJ4tywVNyGxjVSbPzNp81wFNyt6cknpJ00uzk2Wfr/n8HHLrz4ajriFeuEsuekvS08Zu/eoujvFveYN+t98XAUw1jmEmN+ZEZfG2M8BzZKhVl+f6x8vexBIGn6hMFOeMqgTEEXZ2J39qwqbNSR5tLYwnmbr6b2hO4axvt1P/a6tHTw3SuI1pTrlNZPT33bSTBps7qb5K23/jZ7S8/AO72511tShud9MJIgjCKdwINYHs+e5TUqkfy2W3gVN5vA+WkVk3+Jbg8sAzwcKB+mp8G+ALUh64QRnEZOMOwPg3Ub/vEgAvcGwoArgKFvF4DrgEfBwKawHVgHagAy2EUnwAQ00sre4HXwBPgSlKrvmSMwig+CCwCh4F5Mb20chF4ntSq1h83JujAH3Eom+H9uAq8AAAAAElFTkSuQmCC><link rel=canonical href=https://wiki.archlinux.org/title/Multiboot_USB_drive><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;"></head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Multiboot_USB_drive rootpage-Multiboot_USB_drive skin-vector action-view skin--responsive skin-vector-search-vue"><div id=archnavbar class=noprint style=display:none!important>
+ 
+ 
+</div>
+<div class=mw-page-container>
+ <a class=mw-jump-link href=#content style=display:none!important>Jump to content</a>
+ <div class=mw-page-container-inner>
+<input type=checkbox id=mw-sidebar-checkbox class=mw-checkbox-hack-checkbox style=display:none!important>
+<header class=mw-header style=display:none!important>
+ 
+ 
+ 
+ 
+</header>
+<div class=mw-workspace-container>
+ <div id=mw-navigation style=display:none!important>
+ 
+ 
+ 
+ </div>
+ <div class=mw-content-container>
+<main id=content class=mw-body role=main>
+ <a id=top style=display:none!important></a>
+ <div id=siteNotice style=display:none!important></div>
+ <div class=mw-indicators style=display:none!important>
+ </div>
+ <h1 id=firstHeading class=firstHeading style=display:none!important>Multiboot USB drive</h1>
+ <div id=bodyContent class=vector-body>
+ <div id=siteSub class=noprint style=display:none!important>From ArchWiki</div>
+ <div id=contentSub style=display:none!important></div>
+ <div id=contentSub2 style=display:none!important></div>
+ 
+ <div id=mw-content-text class="mw-body-content mw-content-ltr" dir=ltr lang=en><div class=mw-parser-output><div class=archwiki-template-meta-related-articles-start style=display:none!important></div>
+<div class="noprint archwiki-template-message" style=display:none!important>
+</div>
+<p style=display:none!important>A multiboot USB flash drive allows booting multiple ISO files from a single device. The ISO files can be copied to the device and booted directly without unpacking them first. There are multiple methods available, but they may not work for all ISO images.
+</p>
+<div id=toc class=toc role=navigation aria-labelledby=mw-toc-heading style=display:none!important>
+</div>
+<h2 style=display:none!important></h2>
+<div class="noprint archwiki-template-message" style=display:none!important>
+</div>
+<p style=display:none!important>Advantages:
+</p>
+<ul style=display:none!important>
+</ul>
+<p style=display:none!important>Disadvantages:
+</p>
+<ul style=display:none!important>
+</ul>
+<h3 style=display:none!important></h3>
+<div class="noprint archwiki-template-message" style=display:none!important>
+</div>
+<p style=display:none!important>Create at least one partition and a filesystem supported by on the USB drive. See and . Choose the size based on the total size of the ISO files that you want to store on the drive, and plan for extra space for the bootloader.
+</p>
+<h3 style=display:none!important></h3>
+<h4 style=display:none!important></h4>
+<p style=display:none!important>Mount the filesystem located on the USB drive:
+</p>
+<pre style=display:none!important># mount /dev/sdXY /mnt
+</pre>
+<p style=display:none!important>Create the directory /boot:
+</p>
+<pre style=display:none!important># mkdir /mnt/boot
+</pre>
+<p style=display:none!important>Install GRUB on the USB drive:
+</p>
+<pre style=display:none!important># grub-install --target=i386-pc --recheck --boot-directory=/mnt/boot /dev/sdX
+</pre>
+<p style=display:none!important>In case you want to boot ISOs in UEFI mode, you have to install grub for the UEFI target:
+</p>
+<pre style=display:none!important># grub-install --target=x86_64-efi --removable --boot-directory=/mnt/boot --efi-directory=/mnt
+</pre>
+<p style=display:none!important>For UEFI, the partition has to be the first one in an MBR partition table and formatted with FAT32.
+</p>
+<h4 style=display:none!important></h4>
+<p style=display:none!important>This configuration is useful for creating a universal USB key, bootable everywhere.
+First of all you must create a partition table on your device. You need at least 3 partitions:
+</p>
+<ol style=display:none!important>
+</ol>
+<p style=display:none!important>Next you must create a partition table. Without it, a BIOS MBR based system will not boot. It will not find the partitions it expects to find.
+<p style=display:none!important>Hybrid MBR partition table creation example using :
+</p>
+<pre style=display:none!important># gdisk /dev/sdX
+
+Command (? for help): r
+Recovery/transformation command (? for help): h
+
+WARNING! Hybrid MBRs are flaky and dangerous! If you decide not to use one,
+just hit the Enter key at the below prompt and your MBR partition table will
+be untouched.
+
+Type from one to three GPT partition numbers, separated by spaces, to be added to the hybrid MBR, in sequence: 1 2 3
+Place EFI GPT (0xEE) partition first in MBR (good for GRUB)? (Y/N): N
+
+Creating entry for GPT partition #1 (MBR partition #1)
+Enter an MBR hex code (default EF): 
+Set the bootable flag? (Y/N): N
+
+Creating entry for GPT partition #2 (MBR partition #2)
+Enter an MBR hex code (default EF): 
+Set the bootable flag? (Y/N): N
+
+Creating entry for GPT partition #3 (MBR partition #3)
+Enter an MBR hex code (default 83): 
+Set the bootable flag? (Y/N): Y
+
+Recovery/transformation command (? for help): x
+Expert command (? for help): h
+Expert command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): Y
+</pre>
+<p style=display:none!important>Do not forget to format the partitions&nbsp;:
+</p>
+<pre style=display:none!important># mkfs.fat -F32 /dev/sdX2
+# mkfs.ext4 /dev/sdX3
+</pre>
+<p style=display:none!important>You can now install GRUB to support both EFI + GPT and BIOS + GPT/MBR. The GRUB configuration (--boot-directory) can be kept in the same place.
+<p style=display:none!important>First, you need to mount the EFI system partition and the data partition of your USB drive. 
+<p style=display:none!important>An example of this would be as follows:
+</p>
+<pre style=display:none!important># mount /dev/sdX3 /mnt
+# mkdir -p /mnt/boot/EFI
+# mount /dev/sdX2 /mnt/boot/EFI
+</pre>
+<p style=display:none!important>Then, you can install GRUB for UEFI with:
+<p style=display:none!important>In most cases will correspond to the subdirectory on your mounted USB disk.
+</p>
+<pre style=display:none!important># grub-install --target=x86_64-efi --recheck --removable --efi-directory=/ --boot-directory=//boot
+</pre>
+<p style=display:none!important>And for BIOS with:
+</p>
+<pre style=display:none!important># grub-install --target=i386-pc --recheck --boot-directory=//boot /dev/sd
+</pre>
+<p style=display:none!important>As an additional fallback, you can also install GRUB on your MBR-bootable data partition:
+</p>
+<pre style=display:none!important># grub-install --target=i386-pc --recheck --boot-directory=//boot /dev/
+</pre>
+<h3 style=display:none!important></h3>
+<h4 style=display:none!important></h4>
+<p style=display:none!important>There are some git projects which provide some pre-existing GRUB configuration files, and a nice generic which can be used to load the other boot entries on demand, showing them only if the specified ISO files - or folders containing them - are present on the drive.
+<p style=display:none!important>Multiboot USB: 
+<p style=display:none!important>GLIM (GRUB2 Live ISO Multiboot): 
+</p>
+<h4 style=display:none!important></h4>
+<p style=display:none!important>For the purpose of multiboot USB drive it is easier to edit by hand instead of generating it. Alternatively, make the following changes in or and generate using .
+<p style=display:none!important>As it is recommend to use a instead of to identify the partition on the USB drive where the image files are located, define a variable for convenience to hold the value. If the ISO images are on the same partition as GRUB, use the following to read the UUID at boot time:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>/mnt/boot/grub/grub.cfg</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em># path to the partition holding ISO images (using UUID)
+probe -u $root --set=rootuuid
+set imgdevpath="/dev/disk/by-uuid/$rootuuid"</pre>
+</div>
+</div>
+ 
+ </div>
+</main>
+ </div> 
+</div> 
+ </div> 
+</div> 
+</body><!-- Cached/compressed 20220330044113 --><script>document.currentScript.remove();!function(){"use strict";(t=>{const n="singlefile-infobar",e="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8H+DhhoQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJJJREFUOI3t070NRCEMA2CnYAOyDyPwpHj/Va7hJ3FzV7zy3ET5JIwoAF6Jk4wzAJAkzxAYG9YRTgB+24wBgKmfrGAKTcEfAY4KRlRoIeBTgKOCERVaCPgU4Khge2GqKOBTgKOCERVaAEC/4PNcnyoSWHpjqkhwKxbcig0Q6AorXYF/+A6eIYD1lVbwG/jdA6/kA2THRAURVubcAAAAAElFTkSuQmCC",o="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8VC4EQ6QAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJtJREFUOI3NkrsBgCAMRLFwBPdxBArcfxXFkO8rbKWAAJfHJ9faf9vuYX/749T5NmShm3bEwbe2SxeuM4+2oxDL1cDoKtVUjRy+tH78Cv2CS+wIiQNC1AEhk4AQeUTMWUJMfUJMSEJMSEY8kIx4IONroaYAimNxsXp1PA7PxwfVL8QnowwoVC0lig07wDDVUjAdbAnjwtow/z/bDW7eI4M2KruJAAAAAElFTkSuQmCC",i="SingleFile",A="single-file-ui-element",r="\n\t.infobar {\n\t\tbackground-color: #737373;\n\t\tcolor: white;\n\t\tdisplay: flex;\n\t\tposition: fixed;\n\t\ttop: 16px;\n\t\tright: 16px;\n\t\theight: auto;\n\t\twidth: auto;\n\t\tmin-height: 24px;\n\t\tmin-width: 24px;\n\t\tbackground-position: center;\n\t\tbackground-repeat: no-repeat;\n\t\tz-index: 2147483647;\n\t\tmargin: 0 0 0 16px;\n\t\tbackground-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHADIRLMaOHwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAPUExURQAAAIqKioyNjY2OjvDw8L2y1DEAAAABdFJOUwBA5thmAAAAAWJLR0QB/wIt3gAAAGNJREFUSMdjYCAJsLi4OBCQx6/CBQwIGIDPCBcXAkYQUsACU+AwlBVQHg6Eg5pgZBGOboIJZugDFwRwoJECJCUOhJI1wZwzqmBUwagCuipgIqTABG9h7YIKaKGAURAFEF/6AQAO4HqSoDP8bgAAAABJRU5ErkJggg==);\n\t\tborder-radius: 16px;\n\t\tuser-select: none;\n\t\t-moz-user-select: none;\n\t\topacity: .7;\n\t\tcursor: pointer;\n\t\tpadding-left: 0;\n\t\tpadding-right: 0;\n\t\tpadding-top: 0;\n\t\tpadding-bottom: 0;\n\t\tborder: 2px solid #eee;\n\t\tbackground-size: 70% 70%;\n\t\ttransition: all 250ms;\n\t\tfont-size: 13px;\n\t}\n\t.infobar:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open {\n\t\topacity: 1;\n\t\tbackground-color: #f9f9f9;\n\t\tcursor: auto;\n\t\tcolor: #2d2d2d;\n\t\tpadding-top: 2px;\n\t\tpadding-bottom: 2px;\n\t\tborder: 2px solid #878787;\n\t\tbackground-image: none;\n\t\tborder-radius: 8px;\n\t\tuser-select: initial;\n\t\t-moz-user-select: initial;\n\t}\n\t.infobar-close-button {\n\t\tdisplay: none;\n\t\topacity: .7;\n\t\tpadding-top: 4px;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tcursor: pointer;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-close-button:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-content {\n\t\tdisplay: none;\n\t\tfont-family: Arial;\n\t\tfont-size: 14px;\n\t\tline-height: 22px;\n\t\tword-break: break-word;\n\t\twhite-space: pre-wrap;\n\t\tposition: relative;\n\t\ttop: 1px;\n\t\ttext-align: left;\n\t}\n\t.infobar-link {\n\t\tdisplay: none;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tline-height: 11px;\n\t\tcursor: pointer;\n\t\tuser-select: none;\n\t\toutline: 0;\n\t}\n\t.infobar-link-icon {\n\t\tpadding-top: 4px;\n\t\tpadding-left: 2px;\n\t\tcursor: pointer;\n\t\topacity: .7;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-link-icon:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open .infobar-close-button, .infobar-open .infobar-content, .infobar-open .infobar-link {\n\t\tdisplay: inline-block;\n\t}";let a=!0;const c=t.browser;async function s(){const t=document.evaluate("//comment()",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);let s=t&&t.singleNodeValue;if(s&&((p=s).nodeType==Node.COMMENT_NODE&&p.textContent.includes(i))){const t=s.textContent.split("\n"),[,,i,p,...g]=t;if(i&&p){let t;t=c&&c.runtime&&c.runtime.sendMessage?await c.runtime.sendMessage({method:"tabs.getOptions",url:i}):{displayInfobar:!0},t.displayInfobar&&await async function(t,i,c){let s=document.querySelector(n);if(!s){if(t=t.split("url: ")[1],i=i.split("saved date: ")[1],c&&c.length>1){let t=c[0].split("info: ")[1].trim();for(let n=1;n<c.length-1;n++)t+="\n"+c[n].trim();c=t.trim()}else c=i;s=d(n,document.body),s.className=A;const p=await async function(t){if(t.attachShadow)return t.attachShadow({mode:"open"});{a=!1;const n=d("iframe",t);return n.style.setProperty("background-color","transparent","important"),n.style.setProperty("position","fixed","important"),n.style.setProperty("top",0,"important"),n.style.setProperty("right",0,"important"),n.style.setProperty("width","44px","important"),n.style.setProperty("height","48px","important"),n.style.setProperty("z-index",2147483647,"important"),new Promise((t=>{n.contentDocument.body.style.setProperty("margin",0),n.onload=()=>t(n.contentDocument.body)}))}}(s),g=document.createElement("style");g.textContent=r,p.appendChild(g);const u=document.createElement("div");u.classList.add("infobar"),p.appendChild(u);const h=document.createElement("img");h.classList.add("infobar-close-button"),u.appendChild(h),h.src=o,h.onclick=t=>{0===t.button&&s.remove()};const m=document.createElement("span");u.appendChild(m),m.classList.add("infobar-content"),m.textContent=c;const b=document.createElement("a");b.classList.add("infobar-link"),u.appendChild(b),b.target="_blank",b.rel="noopener noreferrer",b.title="Open source URL: "+t,b.href=t;const f=document.createElement("img");f.classList.add("infobar-link-icon"),b.appendChild(f),f.src=e,l(u),document.addEventListener("click",(t=>{if(0===t.button){let n=t.target;for(;n&&n!=s;)n=n.parentElement;n!=s&&l(u)}}))}}(i,p,g)}}var p}function l(t){if(t.classList.remove("infobar-open"),t.onclick=e=>{if(0===e.button)return function(t){a||document.querySelector(n).childNodes[0].contentWindow.getSelection().removeAllRanges();if(t.classList.add("infobar-open"),t.onclick=null,t.onmouseout=null,!a){const e=document.querySelector(n).childNodes[0];e.style.setProperty("width","100vw","important"),e.style.setProperty("height","100vh","important"),e.style.setProperty("width",t.getBoundingClientRect().width+33+"px","important"),e.style.setProperty("height",t.getBoundingClientRect().height+21+"px","important")}}(t),!1},!a){const t=document.querySelector(n).childNodes[0];t.style.setProperty("width","44px","important"),t.style.setProperty("height","48px","important")}}function d(t,n){const e=document.createElement(t);return n.appendChild(e),Array.from(getComputedStyle(e)).forEach((t=>e.style.setProperty(t,"initial","important"))),e}t.window==t.top&&("loading"==document.readyState?document.addEventListener("DOMContentLoaded",s,!1):s())})("object"==typeof globalThis?globalThis:window)}();</script>

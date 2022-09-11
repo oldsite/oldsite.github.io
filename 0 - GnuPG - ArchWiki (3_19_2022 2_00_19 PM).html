@@ -1,0 +1,994 @@
+<!DOCTYPE html> <html class="client-js vector-animations-ready" lang=en dir=ltr style><!--
+ Page saved with SingleFile 
+ url: https://wiki.archlinux.org/title/GnuPG 
+ saved date: Sat Mar 19 2022 14:00:19 GMT+0530 (India Standard Time)
+--><meta charset=utf-8>
+<title>GnuPG - ArchWiki</title>
+<style>:root{--sf-img-9: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyI+Cgk8cGF0aCBmaWxsPSIjMzZiIiBkPSJNNS4wMDIgMS4wMWg3djdsLTItMi0zIDJ2LTFsMy0yLjI1IDEgMVYyLjAxaC0zLjc1bDEgMS0yLjI1IDNoLTFsMi0zeiIvPgoJPHBhdGggZmlsbD0iIzM2YiIgZD0iTTcuMDAyIDMuMDFoLTV2OGg4di01aC0xdjRoLTZ2LTZoNHoiLz4KCTxwYXRoIGZpbGw9IiMxNWE1ZWEiIGQ9Ik00LjA4MiA1LjUxYzAtLjYyMS42MjEtLjYyMS42MjEtLjYyMSAxLjg2NC42MjEgMy4xMDcgMS44NjQgMy43MjggMy43MjggMCAwIDAgLjYyMS0uNjIuNjIxLTEuMjQ1LTEuODY0LTEuODY2LTIuNDg1LTMuNzMtMy43Mjh6Ii8+Cjwvc3ZnPgo=");--sf-img-13: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAMjklEQVRoge1aa2xcx3X+zszdXe6Dy+VL4lKiaEriw9HLsiNZD6OwELsWalmGHVmNgzatHaSJ4R9NGgNpDTc12rqFkQQNEBWNHMQp8mgFB1YrSrIFx7EcOaJkw7IESS1FUSIlkSKXpKXd1b7vzszpj8sVl8tdiqIC9Ed7gOHcO5w7833nnDlzZkjg/+V/V+hOB/hPoEUA6xkIM9AIQAJISiCtgUEFnLsGXPoqkL9zuDNlXgTeAJp8wHNkWTus6uqmunA44a+rI4/b7ZZCCBgjVD7PsevXVWx0VKajUZ9LyhNKqT02cODzwPDtzvkm8GgQ+O3DQHzeBA4DDUkhvufy+x9tvffeRHNHR766pkaREBLGCAghwCwBSAghIKWEZUmdzYrolSty7OJFNXT2rGDbPqO1/qcR4OBcLHMA2MTAWwHgri1AbF4E9gJbPZb1+rLNm9PL1q5NWpZFYJZgJhgjwSzALAAUSIjJNgnLknC7JaqqJEspJvr65PkjR1Lx0VGtjfnrHPD6TkBXmHdllZS/VloHvEDzvCywH/hDKxDYte7xx8fqm5qyIBLQWoJoCuRsBIxx3gGCZUn4/RaCQZkeGsLpt99OXb9yJaKMee5x4EjxvG8CrVVSHrt/27a6493dOcHc8gfAjeI+Yg6a32Z5vT/YtHPnUH04nAYAMM+Fd3lRCojHDYaGjC8YpA1f+1pw0zPPLA+EQm8elPInbwABAHgLaKwS4r21n/tcqL6rSwBAHpgx8awEDgMhF9HudY89NhRsaMhN/1IARAARwbIAKQlCEGiOXskMxGKMy5dNqKWFtrz4Ys3yTZt2+IU4ewDYAiHevXvjxqZwV5eElGCAqgBTOow12xwpIV5tXbUqVn/XXdmbZB2gws5k3Mlo1J/P590AhOX3s8fvZ19trRLMBK2BbFbAtgEzY94p0Rro7WVKJtGxerW7Nhhs+vidd/6jbcUKalu3zoVjxzQeflgCgF3GAhUJHAYaUsATd2/e3AdAgIjSiYR34JNPmkf6+4P2jRsSzsIjA4Acexjhduf84bDd0NamFyxfLutaW420bUIiAWQyJRpKAZcuMWIxB9jICBpXrhQPPfus1/L5CMePa2QygBBggLK3QyApxDPNS5dOWMEgwxj0vv9+68WPP15IgO1xuXSwqkp9ms2mNXOfZn7FBxzZDiRezmbF2sHB9vjg4MNDv/nN51FVtXbJ+vWqdcMGl7+hAbh+nXDlCiMS0YhGAeYpn8vngVOnjKutjRCLMRIJx1UtCwAocDsuREQ7Wrq6bmhj5LE9e9ZEh4ddfrfb9kjJABBJp1N55u88Dbxa/N3LziR9APqg9a69qdSCi4cPf3HwyJEXasNh92fWrasK+f3OYnY0On3RMAMDA9M1LRzvTc51Eb8BSDamvXbJktwn+/d/JjY8jDqfb8hjWVcZGEspFdfMvy4FX06eBMa3A99Pa730+vDwt452dydOnjhh252dEh0dAi7XrYZwXIiZGstYoCwBASyVLld6dGSkebyvzx3yej9g5vOG+QKA/rRSwwz8w61nnpKdgP0Y8BOX1h0jvb0/fG/PnkwkkzHYsEGgpmb20CUlANDEXC3gAmo8VVXZ/p6eJpdlHSHgHIB+Iuonon4GInHgv2+HQEEeAVLbgJfymczvfXLo0MVTH3yQMuvXCzQ1VSZBRADoqbmuAQG4Mul0ExKJbK3f320AwYAgZqEAN5hTd5pdVgN9aaKrbo9niTCGEY1W3h0n1wDNNQoZQLBSLreU7xnmfgMIZpYCEBYgCUiyEzbnvSWnhPhRU0fH/V0PPOBDT49GLlexLzsEys5ViUBEAGyYDwmtHQJut1TMUjILI0TsNWMszNMKB4T422A4/NjarVt94qOPzIz9YRp6Llhg7gRCwOUEkDfG/NfmbPYyACCbxVOA/BYgxoCh2jL+OBfZL8SfVwWDz2/cscMrzp41iMdvnXtIWdZ9KhLYAqhuot8q5vHi9l8C+pfO7jsvze8Ftrnc7m8/8PTTHisQIGzcKCAEQUpHy4VaCLq5gRVyrgoy7yPlW0DQO3symNwCqMLLQeB+DbzNgHc+8xFgbwdqyrSXl26iCDPP+KAgUohsuXZtjAfAx0Hg97cAZfv8LqViKiEAufW11ywZChGMcRaTk1U6vqh1wEnfJpeC1ogeO2Z6fvzjcW3MU79L8PuBexn4l+3A/XMmAADk8wE9PQbpdOVwSQS0t4vk2Bj3vP56Qhvz0OPA2O2C/BVQg9paWNFoDoAqdj8FNEhgxW7AVbr/zEpgmsYrSUsLKdvmo7t2JW2t//RJJ5G7bUkAlkynG/x+f6xaCHXRslTWsnR8YkJPAIsZkGFgMYDBuRK49QJvbCSursbRV15JqFzuH58EDswHPAAoQNQK0egSAkoIFclklE2k4fcrymQeYmMggQW3Q8CRSuffQICwaBGd3LUrmbx2bf82Y747X/AAYAOeDFGDRymbiJSSUoNIuwEQ84NElGVmVfpdxTBIwNTiLduBYLRGdWurIOYHuoF1d0LAB4SqjKljIUJ5olomClUR1UTT6S94XK6sS8oJXWb/mfVQz7MRSCRYXLhg2h95xLf5m99c4lu48FcHhfjnA0DtfAiwlKtZCDcThQRRjTCmxlaqlYE/62xuPqOMCeSAa3MmMPOoVEYyGeDcOVNTXY0HX3jBv/S++/6YpDzXLcTXJ69HqKSUlV8ArRbRvZYQkolCwpiQAhYlcrm/aQiFInVe77hhFjuBq6Xfzr4GmG99B2QM0NfHcnzcdHV2elpaWjznT5x4aXRo6MW9wL+eNeZn3wYuYSqacVEx3wWaXEJ8o9rl0pI5CGaVyufbcko9UVtTc2N9a+vRS5FIkwROl5t+9ihUDL6+nuDzAcPDXGhngDA8zBgeZhgDRCLsa2ykezZsCNy9Zo26fO7cV6oGBr7cbcxIHDg4bMz7R4GLGjD3AM3LhNhYTbQ54HKlbaJ0yrbXQOt2QVS/LBw+19XQcBL5vBmKxe7SzLvmTyAQIG5pITsSgae9nXhggJHPA319jOvXp1gyA+PjjE8/Ne5gkNs7O2nZihUUHRsLT4yOPhuemPjSylSqDkQgQDNAxGyMbZNmtnxeb6JpwYKJlvr6Ux7mpK2UTNt2IJHNLmbgjbkSoMl2h4BlEZYvp96f/zwz8OGHdN8TT7jDmzYJfPih4WLwRcLGEMdi4FiM2bJM0OfTNUuXqmWdnZqZRzKJBOUyGTbGaAKUJUTW6/HEKZ/PGdvOk9Yqb4wgQJwZGbknR/TTHcw5OH97mHYJXEpATrY5dyfMQHs7Db37bv7C8eNXeoz5K7V37/da+vsXrv7sZ71Wezt4cLBwRTKNw+QP4nyeOB5nE48zMxtIaVxSKpeUigHFzHlWKq9sm2EMEUDsnPrkaDzeEs1k/LuYvwPADSe9IBSlGcUECuCtm+3MuHb6NJ/cty+225gvvwVEFxmz8+/PnPmLsd7e7avWr/csWrVKIhJxXEdr3AQOEDNT8bMBhFFKQGsyk1Gp0GdSaZqIBBsjoolEw/nR0ZWnmf/ofQewhenRTBVAF9xmGoEvEn29qaPD1bN7d+KQUn/yb8AoACsB0D7mj4TWH/mGhztGL1/2hxYudPtaW53LXaUArcGTUcY4INlMxTRmImbAMDOzc7IzDBgQGWMMj0ajC/ojkc4TzM+9DJwqsWyx29681hMAXMUE9hMNCJ+PTqZSz78EHCv63bR+zwObHhTiq9WBQF3nsmXe5sWLhcznjUkmNafTSuVyhpmVAZRhdtyGSDGQZ0CBKM9ECsx2Mp0Wg2NjTbFMRh1i/sZrQC+c3VeVlJttxQSmgdsHXBgX4tWvGPPvpaDLkfkCsHKrlE/VMq+ua2zUixYs8NTX1SmP2611Lqe1Uoq1VsYYxQ6RPBujtG2raCzmHolGvTfS6eoI0Z6/M+ZHV4HUbMBLCVApuJ8Cf/kl4PsVgBeKLHmWbUDwUeCeNVJurGdeLQGvx+vN+nw+I4QgyQyttc7kciaXy1lKKW+O6PyQMe/8ENh3AUiUAV6JhCne3kUxoCDgujETYOmzLCmiqBAAagN8m4HWVmCRy+nDANQN4NoEMPEecOEqkIETHlVRrSq8F7fPyE8KlpgNbClwgengCVM5VvH4N9OHoloX1aVFlalvar4YcDkprIlioIV3gZkal0XAZ0veSgkUl0pkVMnzNLlVwlkIr7NpfIbbFI1bzgLTkrlZSBTqaRq/XQKlfSuBJ0y3QLmxy2ajZYgUtD2ne9c7/V+JYo3fyn2A6SQKgEs3p/9b8j9WNUDAtPOUpwAAAABJRU5ErkJggg==");--sf-img-14: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAALuUlEQVRogb2Ze3BdxX3HP7vnnPuUdPV+WUIgIT+EBZjxg/BubCjUhEBqKJnWkDaN26E8WqYz9WSmU/ijk2kmJYTiNKQzJelAE5JhiqltOcG4xtTI0Bowxg9kS5ZlWy/r6nnv1X2cs9s/rq51X7qWZNPfzM7eu7vn9/t+d3/729/ZI7hC8uID1Ig4txgG60p81jp/wN/ssjxF0pDSTsRjiXhsKjQ1/elEyO5U0DlRzKHnfk38cu2Ky3n41bvwTHl4vKqy6MmrWq9Z3tK8hLKqKlMYFk40jtAKIUBr0FJiWBInEdZD54fsnlNn1NneobcmQvEXn+7g4P8rgVe+hs/RPNt0Tf3WtTff5AlUVxuEptDhSXQkjE4k5jZouZF+P8pXjHALBk5325983NV1tn/yiac7eO9LJ/DS77Kxrr7s5xvuua3MX1ouGR3GmRgHrRaqCiElsrQCp8jLUF+3feCDY3vHx6KP/8UuBuetY74DX70LT7SIbV+5/abNbTfeYBEcwhkLLhh0fhQCWVGNcik6DxyKfH504KGnO/jtfB415jPolQ0ERJnV+dAj997d2NhoqnM9qHDo8kBniY6EkXFF4/JWqywgvtnuHZ3c8YX+8FLPXZLAjzdS5il1H3r4m/ct81tu6ZzrBbVwd5mPaMeGUJiyhga5pM5zd7sryPYTquC+KEjghYfxFgmzc9Oj9y71KCmcof7LAijcxYhAA9JfBQiwo4DOpgGRCP6KKllV5b5jhWtkZMcX+n/m0mkWMuiL8tP7N9253CNdwhk4t2jQxsrfx2hZj6hszYQaCaJOv4d95E30aHdah4bgOLW19ca6NZEX/ynR/dFTu/jfvPrnMvyjjTx629plP7t+9Rq3feZUUukCxWh/GHPtFoS7eLbRjqGdeGabVjhdHST2/wAS07PgDAMqvOzdd3j8yNmRq/7mbaaybeRdgR8+SGmFz//T9nVr3U7f6YWDFxLrzq0YbQ8k8U32Yx/+Ber0PnQshJAmGomsvQ5jxQMYzXdiLNuIrFxOfMcz6PBI8jnHQUzEuOO21sCF/5h4ARLfyZmkfPa/3sL37r//5tu9jhYqlEP6kmKu3YJ5w6MA2Id/SWL3VggNIbxlyeIpQXiKIRFB9exDnflvZNOtiJJ6ZP2NOF27QTlJZY5CmoYw3EZ7u3fsjV0nyYjdMtv4S/dRVVVVsqW8tlE6oyMLBi9r2zFXfysJ/uN/w/7gJURJHcJXDiLLnJAIXzk6HCS+/UlIRJDVbZhr/jRzWNhmxbJaq7zc+4Mce9kNArbcsm65W09MLsrvza88CQjU0OfYH/4EDAtheQs+Iywv2FES7/9jUkf7Iwh/1cV+rYBIgmuvqbn3xxspK0jA5zWfrG5qMtT4wk9ZEWhA1t0AgP3hK0nLdnxeaYZwF+P07EOPnQHTjdF6d+aAcJwVy6tNR/DYnAR+dD+tVzeWBYiDXsRhJZtuBUBHx1HnD820anQ8NOM+hTMX4fLj9PxXhq6UaO3CANFQE8jwr8wVUKxvbamzdCSyYPAAMtCQNDZyMmPWdTgIriJwFydr0wMyTwA0LPSFE0kygcYsdgIxHaWmpmT5q3fhyUvALfidiupyU02HF0UAb9I9dXQys92Oosd6ES4/wuVPknD5wfJlEtEaHZ1I4vWVkS0ialNXU6InPLTnJSAlK62iEnQstjgC8SRx4S3N6dKhIVTwFMyQECkClhcM1wzRGOLiJOQJ3wlFWcBrCMnyVFPGOlouq15osajcHkCP9yUJVC4FaczG8rR+NT2GqFyG8FcgLBOkgRYyuUrRSUT1ihnCua8EStl4/W6pNRf9K4OAYZle1MJDZ0qcMwcwb3kK4S5GNt6MOnMAtEq6RXQcHZsCFYfuPSBEcjWsIpBW8mDzlGI0fzUJti9PJq1BSoklqUw1ZbiQIYSJshdNQI/1os4ncy5z7Rb0VD9q4BN0sAsdHgZ7enZVtIZYCB0aRE+eRQ0fQzauQQSWJHOjU3tyDSiNVgqX2yjJS8BWTlznpLcLEUVi3z+AcpBVy7Du3Mp8J0Q2rMF1z/eSOI68gTr3UR71CYSUxKadiylCBoFE3A4LsYgVsKPoiT5U/6foyXOogU8BMG9+AtemnyWjTgEx2h7E/e09YHnRE+dI7HwWPXoKNXQU4rObWegoiXgCpWfzoYw9oGynx4mGKlNXIQVFa3R0FELD6NgkCIG1/nmsr/5txjDzpscxlt6HfXAbztE3UcFucGIIfzVGy3qMNd/BaL4rqXJ6lNhrD6KnZjZwIoQaPoZwB5Lh1kgQnorajuBkXgKO5rPpUHitNxYCqzK50bIlEUZHgujICDgz1yeGC9c3/gVz1WOZQ/d/H+uWZxBF1Vgbnsfa8Pyc86EGjxB7/Rvo4KncuYolzwajuo6R8YgyoCvVl+FCMYc9A4MTMVwadeEoeqofHRpGhwaSS9r/MWroc/TUwEXwwhPA/a2OHPA6NERiz98x/dL12J++NvP6mAf48HHi258g+vJNecFnjC0u4+y5CfVUB8dTbRkroBX7j/eM0rp+Kc650+h44RNZlF6F+/GdyJqVmeDH+4j9fGNyb4x0Ef/VZuJv/TnG1XcgimtByOTBNnQUPXa6oI1ZYxJZHGB4qLtTpL1IZxD4q98w8JOvTR1JIFcLXxE6MvfViWy6Fffm7QhfRUa76n2f2GsPoSNZ2Ww8jNPVMT+w+eyVlTM6GrJHJ2IvZ7RnD4wn2NZ9cihu1NTPqcxofwTPt/fkgHcO/4Lov96dC/4KiKhawmfHhuziKLvS23MIuC/w+kef9U+K0gqEy5PdjdH+CO4/eD2ZUaaJ3fkysV9vBnuReVQBESUB4oalenqGv//H+8jYTDkE/uwQielp+++/OH4+bl7VnKPMtfGFrAxSEd/5LPH/fCon97ky6AWy8Vo6P+yLAy9md+cQALCG2fbBobP9CbcPWV6V0aenx2f/JCLE/n0T9oEfXlnQaWLWNTA2lbC7eoa/+8ROxrL7895K7BhAbWjh4MDgxB+1rV5u6rERcJIntOo7gChvRo/3En/jD1Hde7808KKoBLWkmR27jx7vH3f+ZF8vOWlywXe8bb/H1lUra59bvarBbR87jLbnvve/0iI8XuSy69n9blek79zYsqc7yHs1WPBudOdJDrxdGrquyGu21iy9xlTjQXC+BD/PEun1IZe2s7+zN3ryTPDeZzo4MufYQooE6JEwm9//qO+dEycvxMwVNyJ8/iuPOB1QSSly2fXs7+yNHjsx/PBf7mJ/ofGFVkAA1r5erKPDvF0rJlti0UTr1atWmEIrdHjhN3aFkUuMJU3ouiY63v1i+uDR4Kbv7mUfs5OcN72ci4ABWIALcI1HsXaf4p1Gdzg4eD54e0tbk+mprUNHIpC4/LgvA+UYrdcxEpXOW7uO9r55KPz1Vw5xbAZ86j5GQO4mzkcgHXxGvf8MXZGI3REeGlxpO7qivq3FsMoqEEJALLqgmzxhWRiVtRhN1xL1leq9B04ntr935uXn3nX++vAQk8wGmPRAk0MiOwqJGbDmTD1XMR+7gdvW1otnW6+tqF/VVmOVVgYEoUl0aAIVnYbpCNq2kxcE0gDTRHh8CK8PURwAbxGD/UHnk2PD+rPusZ1vHeOfPx5gELCBRIFiz5S8BOQ8wGcQuaeFtrUN3NdQatzRWB8obm4spaLcZ/qKPELK2RihbMXkZEQNj0acnrPj4uz5iZ4Tw3rXO93sPTVGcB7As0nkJUA+kJdoS/02V1RQvbKWtho/TZU+Gk0DnwCpNPGozcTgFD3np+g92MeJ8TjhNNDp4LOJ5CN2MZbnIyALgUyrs4uRVqdvPkhGEE3Sf52Z2p75nU7CJpdUPnIXJd8XGjUzSJNpOGXcmQN0OvD0yJGSlB6dpie9pMDnI5Xj+ym51IfuFMC5ZjoFOht8yvmzCcw1IXORSS95Q9x8v9SLPOBTwLNdJt/sZxPIJpGPTGo1LglsMZKKVtkukw4+H4F0Iiqr2My62Lzl/wBFDSGUeNlntgAAAABJRU5ErkJggg==")}.mw-ui-button{display:inline-block;-moz-box-sizing:border-box;box-sizing:border-box;border:1px solid #a2a9b1;border-radius:2px;cursor:pointer;vertical-align:middle;font-family:inherit;font-size:1em;line-height:1.28571429em;text-align:center;-webkit-appearance:none}.mw-ui-button:not(.mw-ui-icon-element){min-height:32px;min-width:4em;max-width:28.75em;margin:0;padding:5px 12px}.mw-ui-button:not(:disabled){-webkit-transition:background-color 100ms,color 100ms,border-color 100ms,box-shadow 100ms;transition:background-color 100ms,color 100ms,border-color 100ms,box-shadow 100ms}.mw-ui-button:not(:disabled):visited{color:#202122}.mw-ui-button:not(:disabled):hover{background-color:#ffffff;color:#404244;border-color:#a2a9b1}.mw-ui-button:not(:disabled):focus{color:#202122;border-color:#3366cc;box-shadow:inset 0 0 0 1px #3366cc,inset 0 0 0 2px #ffffff;outline-width:0}.mw-ui-button:not(:disabled):active,.mw-ui-button:not(:disabled).is-on{background-color:#c8ccd1;color:#000000;border-color:#72777d;box-shadow:none}.mw-ui-button:disabled{background-color:#c8ccd1;color:#ffffff;border-color:#c8ccd1;cursor:default}.mw-ui-button.mw-ui-icon-element:not(.mw-ui-icon-with-label-desktop){color:transparent!important}.mw-ui-button.mw-ui-icon-element:not(.mw-ui-icon-with-label-desktop) span{display:block;position:absolute!important;clip:rect(1px,1px,1px,1px);width:1px;height:1px;margin:-1px;border:0;padding:0;overflow:hidden}@media all and (max-width:1000px){.mw-ui-button.mw-ui-icon-element span{display:block;position:absolute!important;clip:rect(1px,1px,1px,1px);width:1px;height:1px;margin:-1px;border:0;padding:0;overflow:hidden}}.mw-ui-button.mw-ui-quiet{background-color:transparent;color:#202122;border-color:transparent;font-weight:bold}.mw-ui-button.mw-ui-quiet:not(.mw-ui-icon-element),.mw-ui-button.mw-ui-quiet.mw-ui-progressive:not(.mw-ui-icon-element),.mw-ui-button.mw-ui-quiet.mw-ui-destructive:not(.mw-ui-icon-element){min-height:32px}input[type='checkbox']:hover+.mw-ui-button.mw-ui-quiet,input[type='checkbox']:hover+.mw-ui-button.mw-ui-quiet.mw-ui-progressive,input[type='checkbox']:hover+.mw-ui-button.mw-ui-quiet.mw-ui-destructive,.mw-ui-button.mw-ui-quiet:hover,.mw-ui-button.mw-ui-quiet.mw-ui-progressive:hover,.mw-ui-button.mw-ui-quiet.mw-ui-destructive:hover{background-color:rgba(0,24,73,0.02745098);color:#202122;border-color:transparent}input[type='checkbox']:focus+.mw-ui-button.mw-ui-quiet,input[type='checkbox']:focus+.mw-ui-button.mw-ui-quiet.mw-ui-progressive,input[type='checkbox']:focus+.mw-ui-button.mw-ui-quiet.mw-ui-destructive,.mw-ui-button.mw-ui-quiet:focus,.mw-ui-button.mw-ui-quiet.mw-ui-progressive:focus,.mw-ui-button.mw-ui-quiet.mw-ui-destructive:focus{color:#202122;border-color:#3366cc;box-shadow:inset 0 0 0 1px #3366cc,inset 0 0 0 2px #ffffff}input[type='checkbox']:active+.mw-ui-button.mw-ui-quiet,input[type='checkbox']:active+.mw-ui-button.mw-ui-quiet.mw-ui-progressive,input[type='checkbox']:active+.mw-ui-button.mw-ui-quiet.mw-ui-destructive,.mw-ui-button.mw-ui-quiet:active,.mw-ui-button.mw-ui-quiet.mw-ui-progressive:active,.mw-ui-button.mw-ui-quiet.mw-ui-destructive:active{background-color:rgba(0,36,73,0.08235294);color:#000000;border-color:#72777d;box-shadow:none}.mw-ui-button.mw-ui-quiet:disabled,.mw-ui-button.mw-ui-quiet.mw-ui-progressive:disabled,.mw-ui-button.mw-ui-quiet.mw-ui-destructive:disabled,.mw-ui-button.mw-ui-quiet:disabled:hover,.mw-ui-button.mw-ui-quiet.mw-ui-progressive:disabled:hover,.mw-ui-button.mw-ui-quiet.mw-ui-destructive:disabled:hover,.mw-ui-button.mw-ui-quiet:disabled:active,.mw-ui-button.mw-ui-quiet.mw-ui-progressive:disabled:active,.mw-ui-button.mw-ui-quiet.mw-ui-destructive:disabled:active{background-color:transparent;color:#72777d;border-color:transparent}a.mw-ui-button{text-decoration:none}a.mw-ui-button:hover,a.mw-ui-button:focus{text-decoration:none}.mw-ui-icon{font-size:initial;position:relative;display:inline-block;box-sizing:content-box!important;width:1.25em;height:1.25em;min-width:1.25em;min-height:1.25em;flex-basis:1.25em;vertical-align:middle;line-height:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;-moz-appearance:none;-webkit-appearance:none;background-color:transparent;margin:0;padding:0}.mw-ui-icon:not(.mw-ui-button){border:0}.mw-ui-icon:before{content:'';display:block;width:100%;height:100%;min-width:1.25em;min-height:1.25em;background-repeat:no-repeat;background-size:1.25em 1.25em;background-position:center}.mw-ui-icon-element{border-radius:2px;padding:0.75em;-webkit-transition:background-color 100ms;transition:background-color 100ms}.mw-ui-icon-element:focus,.mw-ui-icon-element:active,.mw-ui-icon-element:visited{color:transparent}.mw-ui-icon-element:active{background-color:rgba(0,0,0,0.03)}@media (hover:hover){.mw-ui-icon-element:not(.disabled):hover{background-color:rgba(0,0,0,0.03)}}.mw-ui-icon-before{width:auto;max-width:100%}.mw-ui-icon-before:before{display:inline-block;font-size:initial;width:auto;min-width:1.25em;min-height:1.25em;margin-right:8px;vertical-align:middle}.mw-ui-icon-before span{vertical-align:middle}.mw-ui-icon-wikimedia-ellipsis:before{background-image:url(data:text/plain;base64,SW1hZ2UgZ2VuZXJhdGlvbiBmYWlsZWQ=);background-image:linear-gradient(transparent,transparent),url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48dGl0bGU+ZWxsaXBzaXM8L3RpdGxlPjxnIGZpbGw9IiMwMDAiPjxjaXJjbGUgY3g9IjEwIiBjeT0iMTAiIHI9IjIiLz48Y2lyY2xlIGN4PSIzIiBjeT0iMTAiIHI9IjIiLz48Y2lyY2xlIGN4PSIxNyIgY3k9IjEwIiByPSIyIi8+PC9nPjwvc3ZnPgo=)}.mw-ui-icon-wikimedia-logIn:before{background-image:url(data:text/plain;base64,SW1hZ2UgZ2VuZXJhdGlvbiBmYWlsZWQ=);background-image:linear-gradient(transparent,transparent),url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48dGl0bGU+bG9nIGluPC90aXRsZT48ZyBmaWxsPSIjMDAwIj48cGF0aCBkPSJNMSAxMXY2YzAgMS4xLjkgMiAyIDJoMTRjMS4xIDAgMi0uOSAyLTJWM2MwLTEuMS0uOS0yLTItMkgzYy0xLjEgMC0yIC45LTIgMnY2aDhWNWw0Ljc1IDVMOSAxNXYtNEgxeiIvPjwvZz48L3N2Zz4K)}.mw-ui-icon-wikimedia-search:before{background-image:url(data:text/plain;base64,SW1hZ2UgZ2VuZXJhdGlvbiBmYWlsZWQ=);background-image:linear-gradient(transparent,transparent),url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48dGl0bGU+c2VhcmNoPC90aXRsZT48ZyBmaWxsPSIjMDAwIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMi4yIDEzLjZhNyA3IDAgMTExLjQtMS40bDUuNCA1LjQtMS40IDEuNC01LjQtNS40ek0xMyA4QTUgNSAwIDExMyA4YTUgNSAwIDAxMTAgMHoiLz48L2c+PC9zdmc+Cg==)}body{margin:0}main{display:block}@supports (text-decoration:underline dotted){abbr[title]{border-bottom:0;text-decoration:underline dotted}}pre{font-family:monospace,monospace}sup{line-height:1}img{border:0}input{margin:0}.toctogglecheckbox:checked~ul{display:none}@media screen{html,body{height:100%}:focus{outline-color:#3366cc}html{font-size:100%}html,body{font-family:sans-serif}ul{list-style-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjEzIj4KCTxjaXJjbGUgY3g9IjIuNSIgY3k9IjkiIHI9IjIuNSIgZmlsbD0iIzIwMjEyMiIvPgo8L3N2Zz4K)}pre{line-height:1.3}.mw-jump-link:not(:focus){display:block;position:absolute!important;clip:rect(1px,1px,1px,1px);width:1px;height:1px;margin:-1px;border:0;padding:0;overflow:hidden}.mw-body h1,.mw-body-content h2{margin-bottom:0.25em;padding:0;font-family:'Linux Libertine','Georgia','Times',serif;line-height:1.3}.mw-body h1:lang(ja),.mw-body-content h1:lang(ja),.mw-body-content h2:lang(ja),.mw-body h1:lang(he),.mw-body-content h1:lang(he),.mw-body-content h2:lang(he),.mw-body h1:lang(ko),.mw-body-content h1:lang(ko),.mw-body-content h2:lang(ko){font-family:sans-serif}.mw-body h1:lang(my),.mw-body-content h1:lang(my),.mw-body-content h2:lang(my){line-height:normal}.mw-body h1{font-size:1.8em}.vector-body{font-size:calc(1em * 0.875);line-height:1.6}.vector-body h2{margin-top:1em;font-size:1.5em}.vector-body h3,.vector-body h4,.vector-body h5{margin-top:0.3em;margin-bottom:0;padding-bottom:0;line-height:1.6}.vector-body h3{font-size:1.2em}.vector-body h3,.vector-body h4{font-weight:bold}.vector-body h4,.vector-body h5{font-size:100%}.vector-body .toc h2{font-family:sans-serif;font-size:100%}.vector-body p{margin:0.5em 0}.mw-parser-output .external{background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiI+Cgk8cGF0aCBmaWxsPSIjZmZmIiBzdHJva2U9IiMzNmMiIGQ9Ik0xLjUgNC41MThoNS45ODJWMTAuNUgxLjV6Ii8+Cgk8cGF0aCBmaWxsPSIjMzZjIiBkPSJNNS43NjUgMUgxMXY1LjM5TDkuNDI3IDcuOTM3bC0xLjMxLTEuMzFMNS4zOTMgOS4zNWwtMi42OS0yLjY4OCAyLjgxLTIuODA4TDQuMiAyLjU0NHoiLz4KCTxwYXRoIGZpbGw9IiNmZmYiIGQ9Im05Ljk5NSAyLjAwNC4wMjIgNC44ODVMOC4yIDUuMDcgNS4zMiA3Ljk1IDQuMDkgNi43MjNsMi44ODItMi44OC0xLjg1LTEuODUyeiIvPgo8L3N2Zz4K);background-position:center right;background-repeat:no-repeat;padding-right:13px}.mw-body .mw-indicators{font-size:0.875em;line-height:1.6;position:relative}#siteNotice{font-size:0.8em}.mw-portlet ul{list-style:none none;margin:0}.vector-menu-tabs{background-position:left bottom;float:left;height:2.5em;padding-left:1px}.vector-menu-tabs ul{float:left;height:100%;list-style:none none;margin:0;padding:0}.vector-menu-tabs li{background-image:linear-gradient(to top,#77c1f6 0,#e8f2f8 1px,#ffffff 100%);background-position:left bottom;background-repeat:repeat-x;float:left;display:block;height:100%;margin:0;padding:0;line-height:1.125em;white-space:nowrap}.vector-menu-tabs li a{background-position:right bottom;color:#0645ad;-moz-box-sizing:border-box;box-sizing:border-box;display:block;float:left;height:3.07692308em;position:relative;padding-top:1.25em;padding-left:8px;padding-right:8px;font-size:0.8125em;cursor:pointer}.vector-menu-tabs .selected{background:#ffffff}.vector-menu-tabs .selected a,.vector-menu-tabs .selected a:visited{color:#202122;text-decoration:none}@-webkit-keyframes rotate{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.vector-menu-dropdown{direction:ltr;float:left;cursor:pointer;position:relative;line-height:1.125em}.vector-menu-dropdown h3{color:#54595d;position:relative;display:block;-moz-box-sizing:border-box;box-sizing:border-box}.vector-menu-dropdown h3:after{content:'';background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDEyIDEyIj4KCTxwYXRoIGZpbGw9IiMyMDIxMjIiIGQ9Im0xMS4wNSAzLjk5Ni0uOTY1LTEuMDUzLTQuMDM1IDMuODYtMy45NDctMy44NkwxLjA1IDMuOTk2bDUgNSA1LTUiLz4KPC9zdmc+Cg==);background-position:100% 50%;background-repeat:no-repeat;position:absolute;top:0.76923077em;right:8px;bottom:0;width:1.23076923em;opacity:0.84}.vector-menu-dropdown h3:hover,.vector-menu-dropdown h3:focus{color:#202122}.vector-menu-dropdown h3:hover:after,.vector-menu-dropdown h3:focus:after{opacity:1}.vector-menu-dropdown .vector-menu-content{background-color:#ffffff;list-style:none none;min-width:100%;position:absolute;top:2.5em;left:-1px;margin:0;border:1px solid #a2a9b1;border-top-width:0;padding:0;box-shadow:0 1px 1px 0 rgba(0,0,0,0.1);text-align:left;opacity:0;visibility:hidden;-webkit-transition:opacity 100ms;transition:opacity 100ms;z-index:3}.vector-menu-dropdown .vector-menu-checkbox-expanded,.vector-menu-dropdown .vector-menu-checkbox-collapsed{position:absolute!important;clip:rect(1px,1px,1px,1px);width:1px;height:1px;margin:-1px;border:0;padding:0;overflow:hidden;display:none}.vector-menu-dropdown .vector-menu-checkbox:checked+.vector-menu-heading .vector-menu-checkbox-expanded,.vector-menu-dropdown .vector-menu-checkbox:not(:checked)+.vector-menu-heading .vector-menu-checkbox-collapsed{display:inline}.vector-menu-dropdown .vector-menu-checkbox:checked~.vector-menu-content{opacity:1;visibility:visible}.vector-menu-dropdown ul{list-style:none}.vector-menu-tabs,.vector-menu-tabs a{background-image:linear-gradient(to bottom,rgba(167,215,249,0) 0,#a7d7f9 100%);background-repeat:no-repeat;background-size:1px 100%}.vector-menu-checkbox{cursor:pointer;position:absolute;top:0;left:0;z-index:1;opacity:0;width:100%;height:100%;margin:0;padding:0;display:none}:not(:checked)>.vector-menu-checkbox{display:block}.vector-menu-portal{margin:0 0.6em 0 0.7em;padding:0.25em 0;direction:ltr}.vector-menu-portal h3{display:block;background-image:linear-gradient(to right,rgba(200,204,209,0) 0,#c8ccd1 33%,#c8ccd1 66%,rgba(200,204,209,0) 100%);background-position:center bottom;background-repeat:no-repeat;background-size:100% 1px;color:#54595d;margin:0.5em 0 0 0.66666667em;border:0;padding:0.25em 0;font-size:0.75em;font-weight:normal;cursor:default}.vector-menu-portal .vector-menu-content{margin-left:0.5em;padding-top:0}.vector-menu-portal .vector-menu-content ul{list-style:none none;margin:0;padding-top:0.3em}.vector-menu-portal .vector-menu-content li{margin:0;padding:0.25em 0;font-size:0.75em;line-height:1.125em;word-wrap:break-word}.vector-menu-portal .vector-menu-content li a{color:#0645ad}.vector-menu-portal .vector-menu-content li a:visited{color:#0b0080}.search-toggle{display:block;float:right}.mw-footer{direction:ltr}.mw-footer ul{list-style:none none;margin:0;padding:0}.mw-footer li{color:#202122;margin:0;padding:0.5em 0;font-size:0.75em}#footer-info li{line-height:1.4}#footer-places li{float:left;margin-right:1em;line-height:2}}@media screen and (min-width:1000px){.search-toggle{display:none}}@media screen{body{background-color:#f8f9fa;color:#202122;overflow-y:scroll}.mw-body{direction:ltr}.mw-body{border-top:1px solid #a7d7f9;margin-top:-1px;padding:1.25em 0.5em 1.5em}.mw-body .firstHeading{overflow:visible}.mw-header{min-height:3.125em;margin:0.625em 0 0.3125em;padding:0.125em 0;display:-ms-flexbox;display:flex;flex-wrap:nowrap;align-items:center;position:relative;z-index:4}#p-search{float:left;margin:0 0 0 2.85714286em;z-index:3;flex-grow:1}.mw-body,#left-navigation,.mw-footer{margin-left:0}.mw-indicators{z-index:1}.vector-body{position:relative;z-index:0}#mw-navigation h2{position:absolute;top:-9999px}.mw-article-toolbar-container{max-width:60em;margin-left:auto;margin-right:auto}.mw-article-toolbar-container:after{clear:both;content:'';display:block}#left-navigation{float:left}#right-navigation{float:right}#right-navigation .vector-menu-content{left:auto;right:-1px}#mw-sidebar-button{float:left;margin-left:-0.75em;margin-right:0.75em}#mw-panel{background-image:linear-gradient(to bottom,#ffffff 0%,#f8f9fa 10%,#f8f9fa 90%,#ffffff 100%);position:absolute;left:-1.875em;width:11em;-moz-box-sizing:border-box;box-sizing:border-box;padding:8px 0 40px 0.8125em;z-index:1}#p-namespaces{background-image:none;padding-left:0}.mw-footer{border-top:1px solid #a2a9b1;padding:0.75em}.mw-page-container{max-width:103.125em;min-height:100%;margin-left:auto;margin-right:auto;padding:0.05px 0.9375em;background-color:#ffffff}.skin--responsive .mw-page-container{min-width:auto}.mw-page-container-inner{position:relative}.mw-workspace-container{max-width:90em;margin-left:auto;margin-right:auto;position:relative}.mw-workspace-container.mw-footer-container{position:static}.mw-content-container{max-width:60em;margin-left:auto;margin-right:auto}.mw-footer-container{padding-top:50px;padding-bottom:82px}#mw-sidebar-checkbox:not(:checked)~.mw-workspace-container .mw-sidebar{-webkit-transform:translateX(-6.5625em);-ms-transform:translateX(-6.5625em);transform:translateX(-6.5625em)}@keyframes search-loader-progress-bar{0%{background-size:0 2px;background-position:-10% 0}30%{background-size:30% 2px;background-position:-10% 0}70%{background-size:30% 2px;background-position:110% 0}100%{background-size:0 2px;background-position:110% 0}}#p-search{font-size:calc(1em * 0.875)}#mw-panel{font-size:inherit}#mw-panel nav:first-child{background-image:none}#mw-panel nav:first-child h3{display:none}#mw-panel nav:first-child .vector-menu-content{margin-left:0.5em}.mw-checkbox-hack-button{display:inline-block;cursor:pointer}#mw-sidebar-button:before{opacity:0.67;background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E %3Ctitle%3E chevron %3C/title%3E %3Cpath d=%22m9 2 1.3 1.3L3.7 10l6.6 6.7L9 18l-8-8 8-8zm8.5 0L19 3.3 12.2 10l6.7 6.7-1.4 1.3-8-8 8-8z%22/%3E %3C/svg%3E")}#mw-sidebar-checkbox:not(:checked)~.mw-header #mw-sidebar-button:before{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E %3Ctitle%3E menu %3C/title%3E %3Cpath d=%22M1 3v2h18V3zm0 8h18V9H1zm0 6h18v-2H1z%22/%3E %3C/svg%3E")}#mw-sidebar-button:hover:before{opacity:1}#mw-sidebar-checkbox:not(:checked)~.mw-workspace-container .mw-sidebar{visibility:hidden;opacity:0;-webkit-transform:translateX(-100%);-ms-transform:translateX(-100%);transform:translateX(-100%)}.vector-animations-ready .mw-sidebar{-webkit-transition:transform 100ms ease-out,opacity 100ms ease-out,visibility 100ms ease-out;transition:transform 100ms ease-out,opacity 100ms ease-out,visibility 100ms ease-out}.vector-animations-ready #mw-sidebar-button{-webkit-transition:background-color 100ms,border-color 100ms,box-shadow 100ms;transition:background-color 100ms,border-color 100ms,box-shadow 100ms}.vector-user-links{display:flex;align-items:center;position:relative;justify-content:flex-end;flex-shrink:1}.vector-user-links .vector-user-menu-more{font-size:0.875em}.vector-user-links .vector-user-menu-more .vector-menu-content-list{display:flex;align-items:center}.vector-user-links .vector-user-menu-more .vector-menu-content-list li{margin:0;white-space:nowrap}.vector-user-links .vector-user-menu-more .vector-menu-content-list li a{color:#202122;text-decoration:none}.vector-user-links .vector-user-menu-more .vector-menu-content-list li.user-links-collapsible-item{display:none}.vector-user-links .vector-user-menu-more .mw-ui-button{display:flex;align-items:center}.vector-user-links .vector-user-menu.emptyPortlet{display:block}.vector-user-links .vector-user-menu .vector-menu-heading.mw-ui-icon>span{color:transparent}.vector-user-links .vector-user-menu .vector-menu-content{min-width:200px;max-width:21.875em;top:100%;left:unset;right:0;border-top-width:1px;border-radius:2px;box-shadow:0 2px 2px 0 rgba(0,0,0,0.25)}.vector-user-links .vector-user-menu .vector-menu-content-item{min-height:2em;display:flex;align-items:center;padding:0 12px;color:#202122;text-decoration:none}.vector-user-links .vector-user-menu .vector-menu-content-item span{font-size:0.875em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:initial}.vector-user-links .vector-user-menu li>a:hover,.vector-user-links .vector-user-menu .vector-menu-content-item:hover,.vector-user-links .vector-user-menu .mw-list-item>a:hover{background-color:#f6f6f6}.vector-user-links .vector-user-menu .vector-menu-content-item-login{border-bottom:1px solid #a2a9b1}.vector-user-links .vector-user-menu .vector-user-menu-anon-editor{padding:4px 12px;color:#54595d;font-size:0.875em}.vector-user-links .vector-user-menu .vector-user-menu-anon-editor p{margin:0}.vector-user-links .vector-user-menu .vector-user-menu-anon-editor a:before{content:'(';color:#54595d}.vector-user-links .vector-user-menu .vector-user-menu-anon-editor a:after{content:')';color:#54595d}.vector-user-links .vector-user-menu-logged-out h3:before{height:100%}.vector-user-links .vector-user-menu-logged-out h3:after{content:none}}@media screen and (min-width:106.875em){.mw-page-container{border-left:1px solid #f8f9fa;border-right:1px solid #f8f9fa}}@media screen and (max-width:86.75em){.mw-checkbox-hack-checkbox:checked~.mw-workspace-container .mw-content-container,.mw-checkbox-hack-checkbox:checked~.mw-workspace-container .mw-article-toolbar-container{margin-left:11.5em}.vector-animations-ready .mw-sidebar{-webkit-transition:none;transition:none}}@media screen and (min-width:93.75em){#mw-panel{background:#ffffff;border-right:1px solid #f8f9fa}}@media screen and (min-width:1000px){#p-search{margin:0 12px 0 2.85714286em;width:20vw;max-width:100%;min-width:25em;flex-basis:10.71428571em;flex-grow:1}.mw-page-container{padding-left:1.875em;padding-right:1.875em}}@media screen and (max-width:720px){.mw-checkbox-hack-checkbox:checked~.mw-workspace-container #mw-panel{width:100%;position:relative;left:0}.mw-checkbox-hack-checkbox:checked~.mw-workspace-container .mw-content-container,.mw-checkbox-hack-checkbox:checked~.mw-workspace-container .mw-article-toolbar-container{margin-left:0!important}}@media screen and (max-width:720px){.vector-animations-ready .mw-sidebar{transition:none}}@media screen and (min-width:720px){.vector-user-links .vector-user-menu-more .vector-menu-content-list li.user-links-collapsible-item{display:block}}@media screen{.mw-parser-output a.extiw:visited,.mw-parser-output a.external:visited{color:#663366}.mw-parser-output a.extiw:active,.mw-parser-output a.external:active{color:#bb6633}.plainlinks a.external{background:none!important;padding:0!important}.mw-parser-output a.external{background-image:var(--sf-img-9);background-position:center right;background-repeat:no-repeat;padding-right:13px}.mw-parser-output a.extiw,.mw-parser-output a.extiw:active{color:#36b}.mw-parser-output a.external{color:#36b}.mw-body-content:after{clear:both;content:'';display:block}.mw-body-content a.external.free{word-wrap:break-word}#siteNotice{position:relative;text-align:center;margin:0}#contentSub,#contentSub2{font-size:84%;line-height:1.2em;margin:0 0 1.4em 1em;color:#54595d;width:auto}.emptyPortlet{display:none}.mw-indicators{float:right}#catlinks{text-align:left}.catlinks{border:1px solid #a2a9b1;background-color:#f8f9fa;padding:5px;margin-top:1em;clear:both}.catlinks ul{display:inline;margin:0;padding:0;list-style:none}.catlinks li{display:inline-block;line-height:1.25em;border-left:1px solid #a2a9b1;margin:0.125em 0;padding:0 0.5em}.catlinks li:first-child{padding-left:0.25em;border-left:0}a{text-decoration:none;color:#0645ad;background:none}a:not([href]){cursor:pointer}a:visited{color:#0b0080}a:active{color:#faa700}a:hover,a:focus{text-decoration:underline}a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}img{border:0;vertical-align:middle}h1,h2,h3,h4,h5{color:#000;margin:0;padding-top:0.5em;padding-bottom:0.17em;overflow:hidden}h1,h2{margin-bottom:0.6em;border-bottom:1px solid #a2a9b1}h3,h4,h5{margin-bottom:0.3em}h1{font-size:188%;font-weight:normal}h2{font-size:150%;font-weight:normal}h3{font-size:128%}h4{font-size:116%}h5{font-size:108%}p{margin:0.4em 0 0.5em 0}p img{margin:0}ul{margin:0.3em 0 0 1.6em;padding:0}li{margin-bottom:0.1em}dl{margin-top:0.2em;margin-bottom:0.5em}dd{margin-bottom:0.1em}pre,code{font-family:monospace,monospace}pre,code{background-color:#f8f9fa;color:#000;border:1px solid #eaecf0}code{border-radius:2px;padding:1px 4px}pre{padding:1em;white-space:pre-wrap;overflow-x:hidden;word-wrap:break-word}@counter-style meetei{system:numeric;symbols:'\ABF0' '\ABF1' '\ABF2' '\ABF3' '\ABF4' '\ABF5' '\ABF6' '\ABF7' '\ABF8' '\ABF9';suffix:') '}@counter-style santali{system:numeric;symbols:'\1C50' '\1C51' '\1C52' '\1C53' '\1C54' '\1C55' '\1C56' '\1C57' '\1C58' '\1C59'}.mw-content-ltr ul{margin:0.3em 0 0 1.6em;padding:0}.mw-content-ltr dd{margin-left:1.6em;margin-right:0}h1:lang(anp),h1:lang(as),h1:lang(bh),h1:lang(bho),h1:lang(bn),h1:lang(gu),h1:lang(hi),h1:lang(kn),h1:lang(ks),h1:lang(ml),h1:lang(mr),h1:lang(my),h1:lang(mai),h1:lang(ne),h1:lang(new),h1:lang(or),h1:lang(pa),h1:lang(pi),h1:lang(sa),h1:lang(ta),h1:lang(te){line-height:1.6em!important}h2:lang(anp),h3:lang(anp),h4:lang(anp),h5:lang(anp),h6:lang(anp),h2:lang(as),h3:lang(as),h4:lang(as),h5:lang(as),h6:lang(as),h2:lang(bho),h3:lang(bho),h4:lang(bho),h5:lang(bho),h6:lang(bho),h2:lang(bh),h3:lang(bh),h4:lang(bh),h5:lang(bh),h6:lang(bh),h2:lang(bn),h3:lang(bn),h4:lang(bn),h5:lang(bn),h6:lang(bn),h2:lang(gu),h3:lang(gu),h4:lang(gu),h5:lang(gu),h6:lang(gu),h2:lang(hi),h3:lang(hi),h4:lang(hi),h5:lang(hi),h6:lang(hi),h2:lang(kn),h3:lang(kn),h4:lang(kn),h5:lang(kn),h6:lang(kn),h2:lang(ks),h3:lang(ks),h4:lang(ks),h5:lang(ks),h6:lang(ks),h2:lang(ml),h3:lang(ml),h4:lang(ml),h5:lang(ml),h6:lang(ml),h2:lang(mr),h3:lang(mr),h4:lang(mr),h5:lang(mr),h6:lang(mr),h2:lang(my),h3:lang(my),h4:lang(my),h5:lang(my),h6:lang(my),h2:lang(mai),h3:lang(mai),h4:lang(mai),h5:lang(mai),h6:lang(mai),h2:lang(ne),h3:lang(ne),h4:lang(ne),h5:lang(ne),h6:lang(ne),h2:lang(new),h3:lang(new),h4:lang(new),h5:lang(new),h6:lang(new),h2:lang(or),h3:lang(or),h4:lang(or),h5:lang(or),h6:lang(or),h2:lang(pa),h3:lang(pa),h4:lang(pa),h5:lang(pa),h6:lang(pa),h2:lang(pi),h3:lang(pi),h4:lang(pi),h5:lang(pi),h6:lang(pi),h2:lang(sa),h3:lang(sa),h4:lang(sa),h5:lang(sa),h6:lang(sa),h2:lang(ta),h3:lang(ta),h4:lang(ta),h5:lang(ta),h6:lang(ta),h2:lang(te),h3:lang(te),h4:lang(te),h5:lang(te),h6:lang(te){line-height:1.4em}h2:lang(th){line-height:1.6}.toc{border:1px solid #a2a9b1;background-color:#f8f9fa;font-size:95%}.toc{display:table;padding:7px}.toc h2{display:inline;border:0;padding:0;font-size:100%;font-weight:bold}.toc .toctitle{text-align:center}.toc ul{list-style:none;margin:0.3em 0;padding:0}.tocnumber,.toctext{display:table-cell;text-decoration:inherit}.tocnumber{color:#202122}.mw-content-ltr .tocnumber{padding-left:0;padding-right:0.5em}.toctogglecheckbox{display:inline!important;position:absolute;opacity:0;z-index:-1}.toctogglespan{font-size:94%}.toctogglespan:before{content:' ['}.toctogglespan:after{content:']'}.toctogglelabel{cursor:pointer;color:#0645ad}.toctogglelabel:hover{text-decoration:underline}.toctogglecheckbox:focus+.toctitle .toctogglelabel{text-decoration:underline;outline:dotted 1px;outline:auto -webkit-focus-ring-color}.toctogglecheckbox:checked+.toctitle .toctogglelabel:after{content:'show'}.toctogglecheckbox:not(:checked)+.toctitle .toctogglelabel:after{content:'hide'}.toc .toctitle{direction:ltr}.mw-content-ltr .toc ul{text-align:left}.mw-content-ltr .toc ul ul{margin:0 0 0 2em}}#archnavbar{height:40px!important;padding:10px 15px!important;background:#333!important;border-bottom:5px #08c solid!important}#archnavbarlogo{float:left!important;margin:0!important;padding:0!important;height:40px!important;width:190px!important}html>body #archnavbarlogo{background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEiIHdpZHRoPSI2MDAiIGhlaWdodD0iMTI2Ij48cGF0aCBkPSJNMTU5LjU2OCAzNC40MjdjLTguODktLjAxNC0xNi4yNjcgMS44MDktMTkuMTIgMi44MDNsLTIuOTM3IDE1Ljg1N2MtLjAwNy4wNTggMTQuNjE3LTMuOSAyMS4wNTktMy42NjcgMTAuNjY1LjM4MyAxMS42NDYgNC4wNzYgMTEuNDYgOS4wNi4xODIuMjkyLTIuNzUyLTQuNTAzLTExLjk3OS00LjY2NC0xMS42NC0uMi0yOC4wNjkgNC4xMjItMjguMDQ2IDIxLjY5Mi0uMzE0IDE5Ljc2NSAxNC43NjQgMjUuNTc5IDI1LjAzMiAyNS42ODYgOS4yMzItLjE2OCAxMy41NjMtMy40OTYgMTUuOTM0LTUuMjggMy4xMTUtMy4yNTcgNi42NzktNi41MzIgMTAuMDc4LTEwLjQ2Mi0zLjIxNiA1Ljg0NC02LjAwNSA5Ljg4NC04LjkwNyAxMi45Nzd2Mi42MTFsMTQuMDMzLTIuMzYxLjA5Ni0zOC4xNDRjLS4xNDMtNS4zOTkgMy4wOTYtMjYuMDU3LTI2LjcwMy0yNi4xMDh6bS0yLjAxNiAzMy4yMWM1LjgxNy4wOCAxMi40ODggMi45NDggMTIuNDk3IDkuODQ5LjAzIDYuMjc3LTcuODYzIDkuNjUxLTEyLjk5NiA5LjU5OC01LjEzNS0uMDUzLTExLjk0OS00LjAzNi0xMS45NzktMTAuMTU1LjA5OS01LjQ3IDYuNDI2LTkuNDMyIDEyLjQ3OC05LjI5MXptMzcuOTcyLTI5LjY4NWwtLjA5NSA2My4xNjYgMTYuMzQ4LTMuMTUuMDI3LTM1LjgxNGMuMDA0LTUuMzMzIDcuNjItMTEuNTY0IDE3LjE3OC0xMS40NjQgMi4wMjgtMy42NyA1Ljg0LTEzLjA1IDYuNzctMTUuMTgzLTIxLjM1MS0uMDUxLTIxLjYyMyA2LjEzNy0yNS4zMzYgOS4xOC0uMDQtNS44MDYtLjAxMy05LjI5Mi0uMDEzLTkuMjkybC0xNC44NzkgMi41NTd6bTkyLjAwMiA4LjI5MmMtLjE1OC0uMDc0LTguNTI2LTkuNzg4LTI1LjM1LTkuODY0LTE1Ljc1OC0uMjYyLTMzLjQzMyA1Ljg0Ny0zMy43MTYgMzIuMjcuMTM4IDIzLjIzMiAxNi45NzkgMzIuMzExIDMzLjgwNSAzMi40ODggMTguMDA3LjE4NyAyNS4xNzItMTEuMjYgMjUuNjAyLTExLjU0My0yLjE0OS0xLjg2My0xMC4xOTYtOS44MzctMTAuMTk2LTkuODM3cy01LjAyNyA3LjE1Ny0xNC43NzkgNy4yNDhjLTkuNzU1LjA5My0xOC4yMzQtNy41NC0xOC4zNTQtMTguMTg5LS4xMjUtMTAuNjUgNy43OTUtMTYuNDE5IDE4LjQyNy0xNi44ODUgOS4yMDUtLjAwMiAxNC41MTYgNS45NDMgMTQuNTE2IDUuOTQzem0yMC42MDYtMzAuMzk5bC0xNS40MzQgMy42MjguMTE1IDgyLjI3NyAxNS4yMDQtMi43NDUuMTcyLTM4LjcyYy4wMzMtNC4wNiA1Ljg3NC0xMC4yOTUgMTUuNjI2LTEwLjA5NyA5LjMyNS4wOTcgMTEuNDEgNi4yMTUgMTEuMzg0IDYuOTg4bC4yNjkgNDQuODI0IDE0Ljk5My0yLjY1LjA1Ny00Ny41M2MuMDk5LTQuNTc0LTEwLjAxOC0xNC4yMzMtMjYuMjgtMTQuMzAyLTcuNzI5LjAxMi0xMi4wMDkgMS43NjItMTQuMTg3IDMuMDUyLTMuNzI2IDIuODc5LTcuOTg1IDUuNjM3LTEyLjE3IDkuMTU3IDMuODY5LTQuOTcgNy4xMTctOC40MDcgMTAuMjktMTAuOTYxbC0uMDQtMjIuOTIxeiIgZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PHBhdGggZD0iTTM2MC4xMzYgMTcuMjE4bDYuOTYyLTEuNzQyLjMzIDgyLjk1LTcuMDc0IDEuMjA0em0xOC45MjggMjQuNzU3bDYuMTAxLTIuNzE2LjA1MiA1OS40NzgtNS44OTIgMS4yMTd6bS0xLjQ1LTIxLjQ0OGw0LjkyLTQuMDE1IDQuMDg2IDQuNTQ3LTQuOTIxIDQuMTIxem0xOS4wMjQgMjAuMzY1bDYuOTYyLTEuNDIxLjAzMyAxMi40MzRjLjAwMS41MzQgMy44MjMtMTMuODkgMjIuMjU4LTEzLjU3IDE3LjkuMSAyMC44MjcgMTMuOTU3IDIwLjczIDE3LjA2NGwuMjIxIDQzLjcyNS02LjEwMiAxLjMyNC0uMDM1LTQzLjE4OWMuMDctMS4yNjEtMi43OS0xMS45MjctMTUuNDM5LTExLjk2Ni0xMi42NDYtLjAzNy0yMS40MDkgOS4xODYtMjEuMzkzIDE1LjA3OGwuMSAzOC4wNDctNy4wNyAxLjg0N3ptMTEwLjk1NCA1OC41NDZsLTYuOTYyIDEuNDItLjAzMy0xMi40MzNjLS4wMDEtLjUzNC0zLjgyNSAxMy44OS0yMi4yNTggMTMuNTctMTcuOS0uMS0yMC44MjctMTMuOTU3LTIwLjczLTE3LjA2NGwtLjIyMS00My43MjUgNy4zOTctMS40OTQuMTE0IDQzLjE5Yy4wMDMgMS4xOCAxLjQxNiAxMi4wOTYgMTQuMDY1IDEyLjEzNSAxMi42NDYuMDM3IDIxLjUwNi03LjYxNiAyMS41NjktMTkuMTM5bC0uMDktMzQuMDc2IDYuODg1LTEuNzU3em0xMy42NDUtNTkuMDM3bC00Ljg4MiAzLjgyIDE4LjcxNyAyNC40OTQtMTkuOTYzIDI4LjMgNS4xNzkgMy44NDMgMTguNzY2LTI2LjI4IDE5LjM2OCAyNi45MDIgNC43OTEtMy44Mi0yMC43NTctMjguNzY1IDE2LjU2LTIzLjI2Mi01LjA5Mi00LjMwNS0xNS4wODUgMjEuNTI1ek02MS44OCAxLjc3OGMtNS4zODUgMTMuMjAzLTguNjMzIDIxLjgzOS0xNC42MjkgMzQuNjQ5IDMuNjc2IDMuODk2IDguMTg4IDguNDM0IDE1LjUxNiAxMy41NTktNy44NzgtMy4yNDItMTMuMjUyLTYuNDk3LTE3LjI2Ny05Ljg3NC03LjY3MyAxNi4wMTEtMTkuNjk1IDM4LjgxOC00NC4wOSA4Mi42NSAxOS4xNzQtMTEuMDY4IDM0LjAzNy0xNy44OTMgNDcuODg5LTIwLjQ5N2EzNS4xMDMgMzUuMTAzIDAgMCAxLS45MS04LjIxM2wuMDIzLS42MTRjLjMwNC0xMi4yODQgNi42OTQtMjEuNzMgMTQuMjY0LTIxLjA5IDcuNTcuNjQyIDEzLjQ1NCAxMS4xMjYgMTMuMTUgMjMuNDEtLjA1OCAyLjMxMi0uMzE5IDQuNTM2LS43NzQgNi41OTggMTMuNzAxIDIuNjggMjguNDA1IDkuNDg3IDQ3LjMyIDIwLjQwNy0zLjczLTYuODY2LTcuMDU5LTEzLjA1Ni0xMC4yMzgtMTguOTUtNS4wMDctMy44ODItMTAuMjMtOC45MzMtMjAuODg0LTE0LjQwMiA3LjMyMyAxLjkwMyAxMi41NjYgNC4wOTkgMTYuNjUzIDYuNTUyQzc1LjU4IDM1Ljc4NiA3Mi45NjMgMjcuNzkgNjEuODggMS43Nzh6IiBmaWxsPSIjMTc5M2QxIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48cGF0aCBkPSJNNTc2Ljc3MSA5My4yNjVWODAuNjAzaC00Ljczdi0xLjY5NWgxMS4zOHYxLjY5NWgtNC43NXYxMi42NjJoLTEuOW04LjYyOSAwVjc4LjkwOGgyLjg1OWwzLjM5OCAxMC4xNjZjLjMxNC45NDcuNTQyIDEuNjU1LjY4NiAyLjEyNS4xNjMtLjUyMi40MTgtMS4yOS43NjQtMi4zMDFsMy40MzctOS45OWgyLjU1NnYxNC4zNTdoLTEuODMxVjgxLjI1bC00LjE3MiAxMi4wMTZoLTEuNzE0bC00LjE1Mi0xMi4yMjJ2MTIuMjIyaC0xLjgzMiIgZm9udC13ZWlnaHQ9IjQwMCIgZm9udC1zaXplPSI4LjQ0MSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zIE1vbm8iIGZpbGw9ImdyYXkiLz48L3N2Zz4=) no-repeat!important;background-size:190px 40px!important}#archnavbarlogo p{margin:0!important;padding:0!important;text-indent:-9999px!important}#archnavbarlogo a{display:block!important;height:40px!important;width:190px!important}#archnavbar ul{display:inline!important;float:right!important;list-style:none!important;margin:0!important;padding:0!important}#archnavbar ul li{float:left!important;font-size:14px!important;font-family:sans-serif!important;line-height:45px!important;padding-right:15px!important;padding-left:15px!important}#archnavbar ul#archnavbarlist li a{color:#999;font-weight:bold!important;text-decoration:none!important}#archnavbar ul li a:hover{color:white!important;text-decoration:underline!important}#archnavbar ul li.anb-selected a{color:white!important}@media (max-width:600px){#anb-wiki{display:none}}@media (max-width:680px){html>body #archnavbarlogo{width:40px!important;margin-right:5px!important;background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjEyMDAiIHZlcnNpb249IjEiPjxwYXRoIGQ9Ik02MDAgMGMtNTMuNDE2IDEzMC45NjItODUuNjcxIDIxNi43NC0xNDUuMTQzIDM0My44MSAzNi40NjQgMzguNjUxIDgxLjIyIDgzLjQ0OSAxNTMuOTA1IDEzNC4yODUtNzguMTQ1LTMyLjE1Ni0xMzEuNDAzLTY0LjIxMy0xNzEuMjM4LTk3LjcxNEMzNjEuNDEgNTM5LjIgMjQxLjk4OSA3NjUuMTk0IDAgMTIwMGMxOTAuMTYxLTEwOS43ODQgMzM3LjY2NS0xNzcuMzk3IDQ3NS4wNDgtMjAzLjIzOC01Ljg5NS0yNS4zNjctOS4xOC01Mi44OTYtOC45NTMtODEuNTI0bC4xOS01LjkwNUM0NjkuMzA1IDc4Ny40OCA1MzIuNzIgNjkzLjYzOCA2MDcuODEgNzAwYzc1LjA4OSA2LjM2MiAxMzMuNDk0IDExMC41MjggMTMwLjQ3NiAyMzIuMzgxLS41NjggMjIuOTE2LTMuMTA1IDQ0Ljg4NS03LjYyIDY1LjMzM0M4NjYuNTI4IDEwMjQuMzI1IDEwMTIuNDYyIDEwOTEuNzMgMTIwMCAxMjAwYy0zNi45OTUtNjguMTExLTcwLjE4LTEyOS4zMzUtMTAxLjcxNC0xODcuODEtNDkuNjcyLTM4LjQ5OS0xMDEuMzY1LTg4LjYxMy0yMDcuMDQ4LTE0Mi44NTcgNzIuNjQgMTguODc1IDEyNC43OTMgNDAuNjEyIDE2NS4zMzMgNjQuOTUzQzczNS45NTIgMzM3LjM0OCA3MDkuOTQ4IDI1OC4wMTYgNjAwIDB6IiBmaWxsPSIjMTc5M2QxIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=) no-repeat!important;background-size:40px 40px!important}#archnavbar ul{display:flex!important;justify-content:space-between;flex-wrap:nowrap;overflow:hidden;float:none!important}#archnavbar ul li{padding:0!important;float:none!important}}@media (max-width:830px){html>body #archnavbarlogo{padding-right:15px!important}#archnavbar{padding-left:5px!important;padding-right:5px!important}#archnavbar ul li{padding-left:5px!important;padding-right:5px!important}}body{background:#f6f9fc}#content{background:#ffffff;border:1px solid #cccccc}#content h1,#content h2,#content h3,#content h4,#content h5,#content pre,#content code{color:#222222}#content ul{list-style-image:none}#content pre:not([class*="CodeMirror"]){border:1px solid #bbccdd;overflow:auto;word-break:break-all;white-space:pre-wrap!important}#content pre:not([class*="CodeMirror"]),#content code{background-color:#ebf1f5;font-family:monospace}#content code{display:inline-block;padding:0 0.3em;border-width:0;border-radius:0}#footer{color:#333333}#toc{background-color:#f9faff;border:1px solid #d7dfe3}#bodyContent>div.mw-content-ltr a{font-weight:bold}#bodyContent #toc a{font-weight:normal}#content a:not(.new),header.mw-header li:not(.new) a:not(.new),#mw-navigation li:not(.new) a:not(.new),#mw-panel li:not(.new) a:not(.new),#column-one li:not(.new) a:not(.new),#footer a:not(.new){text-decoration:none;color:#0077bb!important}#content a:not(.new):hover,header.mw-header li:not(.new) a:not(.new):hover,#mw-navigation li:not(.new) a:not(.new):hover,#mw-panel li:not(.new) a:not(.new):hover,#column-one li:not(.new) a:not(.new):hover,#footer a:not(.new):hover{text-decoration:underline;background-color:transparent;color:#999999!important}#content a:active,header.mw-header li:not(.new) a:active,#mw-navigation li:not(.new) a:active,#mw-panel li:not(.new) a:active,#column-one li:not(.new) a:active,#footer a:active,#content a:focus,header.mw-header li:not(.new) a:focus,#mw-navigation li:not(.new) a:focus,#mw-panel li:not(.new) a:focus,#column-one li:not(.new) a:focus,#footer a:focus,#content a:active:hover,header.mw-header li:not(.new) a:active:hover,#mw-navigation li:not(.new) a:active:hover,#mw-panel li:not(.new) a:active:hover,#column-one li:not(.new) a:active:hover,#footer a:active:hover,#content a:focus:hover,header.mw-header li:not(.new) a:focus:hover,#mw-navigation li:not(.new) a:focus:hover,#mw-panel li:not(.new) a:focus:hover,#column-one li:not(.new) a:focus:hover,#footer a:focus:hover{color:#ee9900!important}#content a:not(.new):visited,#mw-panel li:not(.new) a:not(.new):visited,#p-navigation li:not(.new) a:not(.new):visited,#p-tb li:not(.new) a:not(.new):visited{color:#666666!important}.mw-body-content a.external,.mw-body-content a.extiw{background:var(--sf-img-9) center right no-repeat;padding-right:13px}.mw-body h1,.mw-body-content h2{font-family:sans-serif}nav.vector-menu-tabs{padding-left:0}nav.vector-menu-tabs ul,nav.vector-menu-tabs ul li{background:none}nav.vector-menu-tabs li.selected{border:1px solid #cccccc;border-bottom-color:#ffffff;background-color:#ffffff}nav.vector-menu-tabs li.selected a{background:none!important}nav.vector-menu-tabs ul li{border:1px}body.skin-vector.skin--responsive nav.vector-menu-tabs li.selected{margin-top:-1px;border-bottom:none}body.skin-vector.skin--responsive li:not(:first-child).selected{margin-left:-1px}body.skin-vector.skin--responsive div.mw-page-container{background-color:#f6f9fc}body.skin-vector.skin--responsive div#mw-panel{background-image:none}</style>
+<meta name=ResourceLoaderDynamicStyles content>
+<style>pre{white-space:pre}#bodyContent a.external[href^="https://wiki.archlinux.org"]{background:none;padding-right:0}span.archwiki-template-pkg,span.archwiki-template-man{font-family:monospace,monospace}div.archwiki-template-box{padding:5px;border:thin solid black;margin:0.5em 0;overflow:hidden}div.archwiki-template-box.archwiki-template-box-note{background-color:#ddf;border-color:#bbd}div.archwiki-template-box.archwiki-template-box-warning{background-color:#fdd;border-color:#dbb}div.archwiki-template-box.archwiki-template-box-tip{background-color:#dfd;border-color:#bdb}div.archwiki-template-message{position:relative;overflow:hidden;min-height:4.6em;margin-bottom:1em;background-color:#f9faff;border:1px solid #d7dfe3;padding:0 100px;text-align:center}div.archwiki-template-message>p>a{display:block;position:absolute;top:5px}div.archwiki-template-message>p>a:first-of-type{left:26px}div.archwiki-template-message>p>a:last-of-type{right:26px}div.archwiki-template-message>div{font-size:90%}div.archwiki-template-meta-related-articles-start{float:right;clear:right;width:25%;margin:0 0 0.5em 0.5em}div.archwiki-template-meta-related-articles-start>p{background:#333;color:white;padding:0.2em;border-bottom:5px #08c solid;margin:0;text-align:center;font-weight:bold}div.archwiki-template-meta-related-articles-start>ul{list-style-type:none;margin:0;padding:0.3em}div.archwiki-template-meta-related-articles-start>ul>li{padding:0.4em 0;line-height:1}</style>
+<meta name=generator content="MediaWiki 1.37.1">
+<meta name=referrer content=no-referrer-when-downgrade>
+<meta name=format-detection content="telephone=no">
+<meta name=viewport content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0">
+<link rel=search type=application/opensearchdescription+xml href=https://wiki.archlinux.org/opensearch_desc.php title="ArchWiki (en)">
+<link rel=EditURI type=application/rsd+xml href="https://wiki.archlinux.org/api.php?action=rsd">
+<link rel=license href=http://www.gnu.org/copyleft/fdl.html>
+<link rel=alternate type=application/atom+xml title="ArchWiki Atom feed" href="https://wiki.archlinux.org/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="shortcut icon" href=data:image/vnd.microsoft.icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABvElEQVQ4jY2TP4gTQRTGfzM7ybp35mBX8LY4GxM5OI4UiqDWtoKIjWhl4QmmEQwIhzZaa3GLlYWgjViI+AcUrrASUYTbQ0UxepwpFj1EDCSXuLNj4QYSLxP8mnm8972P3wyMMMZgUxjF+ycLUjUW5l/YPMq6/VfnHCEmAGuAsBHsurG6QwiaRUeq2cCdfXy88nmUT9qSJ4tywVNyGxjVSbPzNp81wFNyt6cknpJ00uzk2Wfr/n8HHLrz4ajriFeuEsuekvS08Zu/eoujvFveYN+t98XAUw1jmEmN+ZEZfG2M8BzZKhVl+f6x8vexBIGn6hMFOeMqgTEEXZ2J39qwqbNSR5tLYwnmbr6b2hO4axvt1P/a6tHTw3SuI1pTrlNZPT33bSTBps7qb5K23/jZ7S8/AO72511tShud9MJIgjCKdwINYHs+e5TUqkfy2W3gVN5vA+WkVk3+Jbg8sAzwcKB+mp8G+ALUh64QRnEZOMOwPg3Ub/vEgAvcGwoArgKFvF4DrgEfBwKawHVgHagAy2EUnwAQ00sre4HXwBPgSlKrvmSMwig+CCwCh4F5Mb20chF4ntSq1h83JujAH3Eom+H9uAq8AAAAAElFTkSuQmCC><style>.sf-hidden{display:none!important}</style><link rel=canonical href=https://wiki.archlinux.org/title/GnuPG><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;"></head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-GnuPG rootpage-GnuPG skin-vector action-view skin--responsive skin-vector-search-vue" data-new-gr-c-s-check-loaded=14.1052.0 data-gr-ext-installed><div id=archnavbar class=noprint>
+ <div id=archnavbarlogo>
+ <p><a id=logo href=https://www.archlinux.org/></a></p>
+ </div>
+ <div id=archnavbarmenu>
+ <ul id=archnavbarlist>
+ <li id=anb-home class=sf-hidden></li> <li id=anb-packages><a href=https://www.archlinux.org/packages/>Packages</a></li> <li id=anb-forums><a href=https://bbs.archlinux.org/>Forums</a></li> <li id=anb-wiki class=anb-selected><a href=https://wiki.archlinux.org/>Wiki</a></li> <li id=anb-bugs><a href=https://bugs.archlinux.org/>Bugs</a></li> <li id=anb-security><a href=https://security.archlinux.org/>Security</a></li> <li id=anb-aur><a href=https://aur.archlinux.org/>AUR</a></li> <li id=anb-download><a href=https://www.archlinux.org/download/>Download</a></li> </ul>
+ </div>
+</div>
+<div class=mw-page-container>
+ <a class=mw-jump-link href=#content>Jump to content</a>
+ <div class=mw-page-container-inner>
+<input type=checkbox id=mw-sidebar-checkbox class="mw-checkbox-hack-checkbox sf-hidden">
+<header class=mw-header>
+ <label id=mw-sidebar-button class="mw-checkbox-hack-button mw-ui-icon mw-ui-button mw-ui-quiet mw-ui-icon-element" for=mw-sidebar-checkbox role=button aria-controls=mw-panel data-event-name=ui.sidebar tabindex=0 title="Main menu" aria-expanded=false>
+ Toggle sidebar
+ </label>
+ <a href=https://wiki.archlinux.org/title/Main_page class="mw-logo sf-hidden">
+ 
+ </a>
+ <div id=p-search role=search class="vector-search-box vector-search-box-collapses vector-search-box-show-thumbnail">
+ <div class=sf-hidden>
+ 
+ 
+ </div>
+ <a href=https://wiki.archlinux.org/title/Special:Search class="mw-ui-button mw-ui-quiet mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-search search-toggle">
+ 
+ <span>Search</span>
+ </a>
+ 
+</div>
+ <div class=vector-user-links>
+ <nav id=p-personal-more class="mw-portlet mw-portlet-personal-more vector-menu vector-user-menu-more" aria-labelledby=p-personal-more-label role=navigation>
+ <h3 id=p-personal-more-label class="vector-menu-heading sf-hidden"> 
+ </h3>
+ <div class=vector-menu-content>
+ 
+ <ul class=vector-menu-content-list>
+ <li id=p-createaccount class=user-links-collapsible-item>
+ <a href="https://wiki.archlinux.org/index.php?title=Special:CreateAccount&amp;returnto=GnuPG" icon=userAvatar class="mw-ui-button mw-ui-quiet" title="You are encouraged to create an account and log in; however, it is not mandatory"><span>Create account</span></a>
+ </li>
+</ul>
+ 
+ </div>
+</nav>
+ <nav id=p-personal class="mw-portlet mw-portlet-personal emptyPortlet vector-user-menu vector-user-menu-logged-out vector-menu vector-menu-dropdown" aria-labelledby=p-personal-label role=navigation title="More options">
+ <input type=checkbox id=p-personal-checkbox role=button aria-haspopup=true data-event-name=ui.dropdown-p-personal class=vector-menu-checkbox aria-labelledby=p-personal-label>
+ <h3 id=p-personal-label class="vector-menu-heading mw-ui-button mw-ui-quiet mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-ellipsis"> <span>Personal tools</span>
+ <span class=vector-menu-checkbox-expanded>expanded</span>
+ <span class=vector-menu-checkbox-collapsed>collapsed</span>
+ </h3>
+ <div class=vector-menu-content>
+ <div class=vector-user-menu-create-account><a href="https://wiki.archlinux.org/index.php?title=Special:CreateAccount&amp;returnto=GnuPG" icon=userAvatar class="user-links-collapsible-item vector-menu-content-item mw-ui-icon mw-ui-icon-before mw-ui-icon-wikimedia-userAvatar sf-hidden" title="You are encouraged to create an account and log in; however, it is not mandatory"></a></div>
+<div class=vector-user-menu-login><a href="https://wiki.archlinux.org/index.php?title=Special:UserLogin&amp;returnto=GnuPG" icon=logIn class="vector-menu-content-item vector-menu-content-item-login mw-ui-icon mw-ui-icon-before mw-ui-icon-wikimedia-logIn" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey=o><span>Log in</span></a></div>
+<div class=vector-user-menu-anon-editor>
+ <p>
+ Pages for logged out editors <a href=https://wiki.archlinux.org/title/Help:Introduction aria-label="Learn more about editing"><span>learn more</span></a>
+ </p>
+</div>
+ <ul class=vector-menu-content-list></ul>
+ 
+ </div>
+</nav>
+</div>
+</header>
+<div class=mw-workspace-container>
+ <div id=mw-navigation>
+ <h2>Navigation menu</h2>
+ 
+<div id=mw-panel class=mw-sidebar>
+ <nav id=p-navigation class="mw-portlet mw-portlet-navigation vector-menu vector-menu-portal portal" aria-labelledby=p-navigation-label role=navigation>
+ <h3 id=p-navigation-label class="vector-menu-heading sf-hidden"> 
+ </h3>
+ <div class=vector-menu-content>
+ 
+ <ul class=vector-menu-content-list><li id=n-mainpage-description class=mw-list-item><a href=https://wiki.archlinux.org/title/Main_page title="Visit the main page [alt-shift-z]" accesskey=z><span>Main page</span></a><li id=n-Table-of-contents class=mw-list-item><a href=https://wiki.archlinux.org/title/Table_of_contents><span>Table of contents</span></a><li id=n-portal class=mw-list-item><a href=https://wiki.archlinux.org/title/Getting_involved title="Various ways Archers can contribute to the community"><span>Getting involved</span></a><li id=n-currentevents class=mw-list-item><a href=https://wiki.archlinux.org/title/ArchWiki:News title="The latest lowdown on the wiki"><span>Wiki news</span></a><li id=n-randompage class=mw-list-item><a href=https://wiki.archlinux.org/title/Special:Random title="Load a random page [alt-shift-x]" accesskey=x><span>Random page</span></a></ul>
+ 
+ </div>
+</nav>
+ <nav id=p-Interaction class="mw-portlet mw-portlet-Interaction vector-menu vector-menu-portal portal" aria-labelledby=p-Interaction-label role=navigation>
+ <h3 id=p-Interaction-label class=vector-menu-heading> <span>Interaction</span>
+ </h3>
+ <div class=vector-menu-content>
+ 
+ <ul class=vector-menu-content-list><li id=n-help class=mw-list-item><a href=https://wiki.archlinux.org/title/Category:Help title="Wiki navigation, reading, and editing help"><span>Help</span></a><li id=n-Contributing class=mw-list-item><a href=https://wiki.archlinux.org/title/ArchWiki:Contributing><span>Contributing</span></a><li id=n-recentchanges class=mw-list-item><a href=https://wiki.archlinux.org/title/Special:RecentChanges title="A list of recent changes in the wiki [alt-shift-r]" accesskey=r><span>Recent changes</span></a><li id=n-Recent-talks class=mw-list-item><a href="https://wiki.archlinux.org/index.php?title=Special:RecentChanges&amp;namespace=all-discussions" rel=nofollow><span>Recent talks</span></a><li id=n-newpages class=mw-list-item><a href=https://wiki.archlinux.org/title/Special:NewPages><span>New pages</span></a><li id=n-Statistics class=mw-list-item><a href=https://wiki.archlinux.org/title/ArchWiki:Statistics><span>Statistics</span></a><li id=n-Requests class=mw-list-item><a href=https://wiki.archlinux.org/title/ArchWiki_talk:Requests><span>Requests</span></a></ul>
+ 
+ </div>
+</nav>
+<nav id=p-tb class="mw-portlet mw-portlet-tb vector-menu vector-menu-portal portal" aria-labelledby=p-tb-label role=navigation>
+ <h3 id=p-tb-label class=vector-menu-heading> <span>Tools</span>
+ </h3>
+ <div class=vector-menu-content>
+ 
+ <ul class=vector-menu-content-list><li id=t-whatlinkshere class=mw-list-item><a href=https://wiki.archlinux.org/title/Special:WhatLinksHere/GnuPG title="A list of all wiki pages that link here [alt-shift-j]" accesskey=j><span>What links here</span></a><li id=t-recentchangeslinked class=mw-list-item><a href=https://wiki.archlinux.org/title/Special:RecentChangesLinked/GnuPG rel=nofollow title="Recent changes in pages linked from this page [alt-shift-k]" accesskey=k><span>Related changes</span></a><li id=t-specialpages class=mw-list-item><a href=https://wiki.archlinux.org/title/Special:SpecialPages title="A list of all special pages [alt-shift-q]" accesskey=q><span>Special pages</span></a><li id=t-print class=mw-list-item><a href=https://wiki.archlinux.org/title/GnuPG rel=alternate title="Printable version of this page [alt-shift-p]" accesskey=p><span>Printable version</span></a><li id=t-permalink class=mw-list-item><a href="https://wiki.archlinux.org/index.php?title=GnuPG&amp;oldid=716337" title="Permanent link to this revision of the page"><span>Permanent link</span></a><li id=t-info class=mw-list-item><a href="https://wiki.archlinux.org/index.php?title=GnuPG&amp;action=info" title="More information about this page"><span>Page information</span></a></ul>
+ 
+ </div>
+</nav>
+ <nav id=p-lang class="mw-portlet mw-portlet-lang vector-menu vector-menu-portal portal" aria-labelledby=p-lang-label role=navigation>
+ <h3 id=p-lang-label class=vector-menu-heading> <span>In other languages</span>
+ </h3>
+ <div class=vector-menu-content>
+ 
+ <ul class=vector-menu-content-list><li class="interlanguage-link interwiki-de mw-list-item"><a href=https://wiki.archlinux.de/title/GnuPG title="GnuPG – Deutsch" lang=de hreflang=de class=interlanguage-link-target><span>Deutsch</span></a><li class="interlanguage-link interwiki-ja mw-list-item"><a href=https://wiki.archlinux.jp/index.php/GnuPG title="GnuPG – 日本語" lang=ja hreflang=ja class=interlanguage-link-target><span>日本語</span></a><li class="interlanguage-link interwiki-ko mw-list-item"><a href=https://wiki.archlinux.org/title/GnuPG_(%ED%95%9C%EA%B5%AD%EC%96%B4) title="GnuPG – 한국어" lang=ko hreflang=ko class=interlanguage-link-target><span>한국어</span></a><li class="interlanguage-link interwiki-pl mw-list-item"><a href=https://wiki.archlinux.org/title/GnuPG_(Polski) title="GnuPG – polski" lang=pl hreflang=pl class=interlanguage-link-target><span>Polski</span></a><li class="interlanguage-link interwiki-ru mw-list-item"><a href=https://wiki.archlinux.org/title/GnuPG_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9) title="GnuPG – русский" lang=ru hreflang=ru class=interlanguage-link-target><span>Русский</span></a><li class="interlanguage-link interwiki-zh-hans mw-list-item"><a href=https://wiki.archlinux.org/title/GnuPG_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) title="GnuPG – 中文（简体）" lang=zh-Hans hreflang=zh-Hans class=interlanguage-link-target><span>中文（简体）</span></a></ul>
+ 
+ </div>
+</nav>
+</div>
+ <div id=mw-head>
+ <div class=mw-article-toolbar-container>
+ <div id=left-navigation>
+ <nav id=p-namespaces class="mw-portlet mw-portlet-namespaces vector-menu vector-menu-tabs" aria-labelledby=p-namespaces-label role=navigation>
+ <h3 id=p-namespaces-label class="vector-menu-heading sf-hidden"> 
+ </h3>
+ <div class=vector-menu-content>
+ 
+ <ul class=vector-menu-content-list><li id=ca-nstab-main class="selected mw-list-item"><a href=https://wiki.archlinux.org/title/GnuPG title="View the content page [alt-shift-c]" accesskey=c><span>Page</span></a><li id=ca-talk class=mw-list-item><a href=https://wiki.archlinux.org/title/Talk:GnuPG rel=discussion title="Discussion about the content page [alt-shift-t]" accesskey=t><span>Discussion</span></a></ul>
+ 
+ </div>
+</nav>
+ <nav id=p-variants class="mw-portlet mw-portlet-variants emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown sf-hidden" aria-labelledby=p-variants-label role=navigation>
+ 
+ 
+ 
+</nav>
+ </div>
+ <div id=right-navigation>
+ <nav id=p-views class="mw-portlet mw-portlet-views vector-menu vector-menu-tabs" aria-labelledby=p-views-label role=navigation>
+ <h3 id=p-views-label class="vector-menu-heading sf-hidden"> 
+ </h3>
+ <div class=vector-menu-content>
+ 
+ <ul class=vector-menu-content-list><li id=ca-view class="selected mw-list-item collapsible"><a href=https://wiki.archlinux.org/title/GnuPG><span>Read</span></a><li id=ca-viewsource class="mw-list-item collapsible"><a href="https://wiki.archlinux.org/index.php?title=GnuPG&amp;action=edit" title="This page is protected.
+You can view its source [alt-shift-e]" accesskey=e><span>View source</span></a><li id=ca-history class="mw-list-item collapsible"><a href="https://wiki.archlinux.org/index.php?title=GnuPG&amp;action=history" title="Past revisions of this page [alt-shift-h]" accesskey=h><span>View history</span></a></ul>
+ 
+ </div>
+</nav>
+ <nav id=p-cactions class="mw-portlet mw-portlet-cactions emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown sf-hidden" aria-labelledby=p-cactions-label role=navigation title="More options">
+ 
+ 
+ 
+</nav>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=mw-content-container>
+<main id=content class=mw-body role=main>
+ <a id=top></a>
+ <div id=siteNotice></div>
+ <div class=mw-indicators>
+ </div>
+ <h1 id=firstHeading class=firstHeading>GnuPG</h1>
+ <div id=bodyContent class=vector-body>
+ <div id=siteSub class="noprint sf-hidden">From ArchWiki</div>
+ <div id=contentSub></div>
+ <div id=contentSub2></div>
+ 
+ <div id=mw-content-text class="mw-body-content mw-content-ltr" lang=en dir=ltr><div class=mw-parser-output><div class=archwiki-template-meta-related-articles-start><p>Related articles<ul>
+<li><a href=https://wiki.archlinux.org/title/Pacman/Package_signing title="Pacman/Package signing">pacman/Package signing</a></li>
+<li><a href=https://wiki.archlinux.org/title/Data-at-rest_encryption title="Data-at-rest encryption">Data-at-rest encryption</a></li>
+<li><a href=https://wiki.archlinux.org/title/List_of_applications/Security#Encryption,_signing,_steganography title="List of applications/Security">List of applications/Security#Encryption, signing, steganography</a></li>
+</ul></div>
+<p>According to the <a rel=nofollow class="external text" href=https://www.gnupg.org/>official website</a>:
+</p>
+<dl><dd>GnuPG is a complete and free implementation of the <a rel=nofollow class="external text" href=https://openpgp.org/about/>OpenPGP</a> standard as defined by <a href=https://tools.ietf.org/html/rfc4880 class=extiw title=rfc:4880>RFC 4880</a> (also known as PGP). GnuPG allows you to encrypt and sign your data and communications; it features a versatile key management system, along with access modules for all kinds of public key directories. GnuPG, also known as GPG, is a command line tool with features for easy integration with other applications. A wealth of frontend applications and libraries are available. GnuPG also provides support for S/MIME and Secure Shell (ssh).</dl>
+<div id=toc class=toc role=navigation aria-labelledby=mw-toc-heading><input type=checkbox role=button id=toctogglecheckbox class=toctogglecheckbox style=display:none><div class=toctitle lang=en dir=ltr><h2 id=mw-toc-heading>Contents</h2><span class=toctogglespan><label class=toctogglelabel for=toctogglecheckbox></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href=#Installation><span class=tocnumber>1</span> <span class=toctext>Installation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href=#Configuration><span class=tocnumber>2</span> <span class=toctext>Configuration</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href=#Directory_location><span class=tocnumber>2.1</span> <span class=toctext>Directory location</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href=#Configuration_files><span class=tocnumber>2.2</span> <span class=toctext>Configuration files</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href=#Default_options_for_new_users><span class=tocnumber>2.3</span> <span class=toctext>Default options for new users</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href=#Usage><span class=tocnumber>3</span> <span class=toctext>Usage</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href=#Create_a_key_pair><span class=tocnumber>3.1</span> <span class=toctext>Create a key pair</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href=#List_keys><span class=tocnumber>3.2</span> <span class=toctext>List keys</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href=#Export_your_public_key><span class=tocnumber>3.3</span> <span class=toctext>Export your public key</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href=#Import_a_public_key><span class=tocnumber>3.4</span> <span class=toctext>Import a public key</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href=#Use_a_keyserver><span class=tocnumber>3.5</span> <span class=toctext>Use a keyserver</span></a>
+<ul>
+<li class="toclevel-3 tocsection-12"><a href=#Sending_keys><span class=tocnumber>3.5.1</span> <span class=toctext>Sending keys</span></a></li>
+<li class="toclevel-3 tocsection-13"><a href=#Searching_and_receiving_keys><span class=tocnumber>3.5.2</span> <span class=toctext>Searching and receiving keys</span></a></li>
+<li class="toclevel-3 tocsection-14"><a href=#Key_servers><span class=tocnumber>3.5.3</span> <span class=toctext>Key servers</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-15"><a href=#Web_Key_Directory><span class=tocnumber>3.6</span> <span class=toctext>Web Key Directory</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href=#Encrypt_and_decrypt><span class=tocnumber>3.7</span> <span class=toctext>Encrypt and decrypt</span></a>
+<ul>
+<li class="toclevel-3 tocsection-17"><a href=#Asymmetric><span class=tocnumber>3.7.1</span> <span class=toctext>Asymmetric</span></a></li>
+<li class="toclevel-3 tocsection-18"><a href=#Symmetric><span class=tocnumber>3.7.2</span> <span class=toctext>Symmetric</span></a></li>
+<li class="toclevel-3 tocsection-19"><a href=#Directory><span class=tocnumber>3.7.3</span> <span class=toctext>Directory</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-20"><a href=#Key_maintenance><span class=tocnumber>4</span> <span class=toctext>Key maintenance</span></a>
+<ul>
+<li class="toclevel-2 tocsection-21"><a href=#Backup_your_private_key><span class=tocnumber>4.1</span> <span class=toctext>Backup your private key</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href=#Backup_your_revocation_certificate><span class=tocnumber>4.2</span> <span class=toctext>Backup your revocation certificate</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href=#Edit_your_key><span class=tocnumber>4.3</span> <span class=toctext>Edit your key</span></a></li>
+<li class="toclevel-2 tocsection-24"><a href=#Exporting_subkey><span class=tocnumber>4.4</span> <span class=toctext>Exporting subkey</span></a></li>
+<li class="toclevel-2 tocsection-25"><a href=#Extending_expiration_date><span class=tocnumber>4.5</span> <span class=toctext>Extending expiration date</span></a></li>
+<li class="toclevel-2 tocsection-26"><a href=#Rotating_subkeys><span class=tocnumber>4.6</span> <span class=toctext>Rotating subkeys</span></a></li>
+<li class="toclevel-2 tocsection-27"><a href=#Revoke_a_key><span class=tocnumber>4.7</span> <span class=toctext>Revoke a key</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-28"><a href=#Signatures><span class=tocnumber>5</span> <span class=toctext>Signatures</span></a>
+<ul>
+<li class="toclevel-2 tocsection-29"><a href=#Create_a_signature><span class=tocnumber>5.1</span> <span class=toctext>Create a signature</span></a>
+<ul>
+<li class="toclevel-3 tocsection-30"><a href=#Sign_a_file><span class=tocnumber>5.1.1</span> <span class=toctext>Sign a file</span></a></li>
+<li class="toclevel-3 tocsection-31"><a href=#Clearsign_a_file_or_message><span class=tocnumber>5.1.2</span> <span class=toctext>Clearsign a file or message</span></a></li>
+<li class="toclevel-3 tocsection-32"><a href=#Make_a_detached_signature><span class=tocnumber>5.1.3</span> <span class=toctext>Make a detached signature</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-33"><a href=#Verify_a_signature><span class=tocnumber>5.2</span> <span class=toctext>Verify a signature</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-34"><a href=#gpg-agent><span class=tocnumber>6</span> <span class=toctext>gpg-agent</span></a>
+<ul>
+<li class="toclevel-2 tocsection-35"><a href=#Configuration_2><span class=tocnumber>6.1</span> <span class=toctext>Configuration</span></a></li>
+<li class="toclevel-2 tocsection-36"><a href=#Reload_the_agent><span class=tocnumber>6.2</span> <span class=toctext>Reload the agent</span></a></li>
+<li class="toclevel-2 tocsection-37"><a href=#pinentry><span class=tocnumber>6.3</span> <span class=toctext>pinentry</span></a></li>
+<li class="toclevel-2 tocsection-38"><a href=#Cache_passwords><span class=tocnumber>6.4</span> <span class=toctext>Cache passwords</span></a></li>
+<li class="toclevel-2 tocsection-39"><a href=#Unattended_passphrase><span class=tocnumber>6.5</span> <span class=toctext>Unattended passphrase</span></a></li>
+<li class="toclevel-2 tocsection-40"><a href=#SSH_agent><span class=tocnumber>6.6</span> <span class=toctext>SSH agent</span></a>
+<ul>
+<li class="toclevel-3 tocsection-41"><a href=#Set_SSH_AUTH_SOCK><span class=tocnumber>6.6.1</span> <span class=toctext>Set SSH_AUTH_SOCK</span></a></li>
+<li class="toclevel-3 tocsection-42"><a href=#Configure_pinentry_to_use_the_correct_TTY><span class=tocnumber>6.6.2</span> <span class=toctext>Configure pinentry to use the correct TTY</span></a></li>
+<li class="toclevel-3 tocsection-43"><a href=#Add_SSH_keys><span class=tocnumber>6.6.3</span> <span class=toctext>Add SSH keys</span></a></li>
+<li class="toclevel-3 tocsection-44"><a href=#Using_a_PGP_key_for_SSH_authentication><span class=tocnumber>6.6.4</span> <span class=toctext>Using a PGP key for SSH authentication</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-45"><a href=#Smartcards><span class=tocnumber>7</span> <span class=toctext>Smartcards</span></a>
+<ul>
+<li class="toclevel-2 tocsection-46"><a href=#GnuPG_only_setups><span class=tocnumber>7.1</span> <span class=toctext>GnuPG only setups</span></a></li>
+<li class="toclevel-2 tocsection-47"><a href=#GnuPG_with_pcscd_(PCSC_Lite)><span class=tocnumber>7.2</span> <span class=toctext>GnuPG with pcscd (PCSC Lite)</span></a>
+<ul>
+<li class="toclevel-3 tocsection-48"><a href=#Always_use_pcscd><span class=tocnumber>7.2.1</span> <span class=toctext>Always use pcscd</span></a></li>
+<li class="toclevel-3 tocsection-49"><a href=#Shared_access_with_pcscd><span class=tocnumber>7.2.2</span> <span class=toctext>Shared access with pcscd</span></a>
+<ul>
+<li class="toclevel-4 tocsection-50"><a href=#Multi_applet_smart_cards><span class=tocnumber>7.2.2.1</span> <span class=toctext>Multi applet smart cards</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-51"><a href=#Tips_and_tricks><span class=tocnumber>8</span> <span class=toctext>Tips and tricks</span></a>
+<ul>
+<li class="toclevel-2 tocsection-52"><a href=#Different_algorithm><span class=tocnumber>8.1</span> <span class=toctext>Different algorithm</span></a></li>
+<li class="toclevel-2 tocsection-53"><a href=#Encrypt_a_password><span class=tocnumber>8.2</span> <span class=toctext>Encrypt a password</span></a></li>
+<li class="toclevel-2 tocsection-54"><a href=#Change_trust_model><span class=tocnumber>8.3</span> <span class=toctext>Change trust model</span></a></li>
+<li class="toclevel-2 tocsection-55"><a href="#Hide_all_recipient_id's"><span class=tocnumber>8.4</span> <span class=toctext>Hide all recipient id's</span></a></li>
+<li class="toclevel-2 tocsection-56"><a href=#Using_caff_for_keysigning_parties><span class=tocnumber>8.5</span> <span class=toctext>Using caff for keysigning parties</span></a></li>
+<li class="toclevel-2 tocsection-57"><a href="#Always_show_long_ID's_and_fingerprints"><span class=tocnumber>8.6</span> <span class=toctext>Always show long ID's and fingerprints</span></a></li>
+<li class="toclevel-2 tocsection-58"><a href=#Custom_capabilities><span class=tocnumber>8.7</span> <span class=toctext>Custom capabilities</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-59"><a href=#Troubleshooting><span class=tocnumber>9</span> <span class=toctext>Troubleshooting</span></a>
+<ul>
+<li class="toclevel-2 tocsection-60"><a href=#Not_enough_random_bytes_available><span class=tocnumber>9.1</span> <span class=toctext>Not enough random bytes available</span></a></li>
+<li class="toclevel-2 tocsection-61"><a href=#su><span class=tocnumber>9.2</span> <span class=toctext>su</span></a></li>
+<li class="toclevel-2 tocsection-62"><a href=#Agent_complains_end_of_file><span class=tocnumber>9.3</span> <span class=toctext>Agent complains end of file</span></a></li>
+<li class="toclevel-2 tocsection-63"><a href=#KGpg_configuration_permissions><span class=tocnumber>9.4</span> <span class=toctext>KGpg configuration permissions</span></a></li>
+<li class="toclevel-2 tocsection-64"><a href=#GNOME_on_Wayland_overrides_SSH_agent_socket><span class=tocnumber>9.5</span> <span class=toctext>GNOME on Wayland overrides SSH agent socket</span></a></li>
+<li class="toclevel-2 tocsection-65"><a href=#mutt><span class=tocnumber>9.6</span> <span class=toctext>mutt</span></a></li>
+<li class="toclevel-2 tocsection-66"><a href=#%22Lost%22_keys,_upgrading_to_gnupg_version_2.1><span class=tocnumber>9.7</span> <span class=toctext>"Lost" keys, upgrading to gnupg version 2.1</span></a></li>
+<li class="toclevel-2 tocsection-67"><a href=#gpg_hanged_for_all_keyservers_(when_trying_to_receive_keys)><span class=tocnumber>9.8</span> <span class=toctext>gpg hanged for all keyservers (when trying to receive keys)</span></a></li>
+<li class="toclevel-2 tocsection-68"><a href=#Smartcard_not_detected><span class=tocnumber>9.9</span> <span class=toctext>Smartcard not detected</span></a></li>
+<li class="toclevel-2 tocsection-69"><a href="#server_'gpg-agent'_is_older_than_us_(x_%3C_y)"><span class=tocnumber>9.10</span> <span class=toctext>server 'gpg-agent' is older than us (x &lt; y)</span></a></li>
+<li class="toclevel-2 tocsection-70"><a href=#IPC_connect_call_failed><span class=tocnumber>9.11</span> <span class=toctext>IPC connect call failed</span></a></li>
+<li class="toclevel-2 tocsection-71"><a href=#Mitigating_Poisoned_PGP_Certificates><span class=tocnumber>9.12</span> <span class=toctext>Mitigating Poisoned PGP Certificates</span></a></li>
+<li class="toclevel-2 tocsection-72"><a href=#Invalid_IPC_response_and_Inappropriate_ioctl_for_device><span class=tocnumber>9.13</span> <span class=toctext>Invalid IPC response and Inappropriate ioctl for device</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-73"><a href=#See_also><span class=tocnumber>10</span> <span class=toctext>See also</span></a></li>
+</ul>
+</div>
+<h2><span class=mw-headline id=Installation>Installation</span></h2>
+<p><a href=https://wiki.archlinux.org/title/Install class=mw-redirect title=Install>Install</a> the <span class="plainlinks archwiki-template-pkg"><a rel=nofollow class="external text" href="https://archlinux.org/packages/?name=gnupg">gnupg</a></span> package.
+<p>This will also install <span class="plainlinks archwiki-template-pkg"><a rel=nofollow class="external text" href="https://archlinux.org/packages/?name=pinentry">pinentry</a></span>, a collection of simple PIN or passphrase entry dialogs which GnuPG uses for passphrase entry. The shell script <code>/usr/bin/pinentry</code> determines which <i>pinentry</i> dialog is used, in the order described at <a href=#pinentry>#pinentry</a>.
+<p>If you want to use a graphical frontend or program that integrates with GnuPG, see <a href=https://wiki.archlinux.org/title/List_of_applications/Security#Encryption,_signing,_steganography title="List of applications/Security">List of applications/Security#Encryption, signing, steganography</a>.
+</p>
+<h2><span class=mw-headline id=Configuration>Configuration</span></h2>
+<h3><span class=mw-headline id=Directory_location>Directory location</span></h3>
+<p><code>$GNUPGHOME</code> is used by GnuPG to point to the directory where its configuration files are stored. By default <code>$GNUPGHOME</code> is not set and your <code>$HOME</code> is used instead; thus, you will find a <code>~/.gnupg</code> directory right after installation. 
+<p>To change the default location, either run gpg this way <code>$ gpg --homedir <i>path/to/file</i></code> or set the <code>GNUPGHOME</code> <a href=https://wiki.archlinux.org/title/Environment_variable class=mw-redirect title="Environment variable">environment variable</a>.
+</p>
+<h3><span class=mw-headline id=Configuration_files>Configuration files</span></h3>
+<div class="noprint archwiki-template-message">
+<p><a href=https://wiki.archlinux.org/title/File:Tango-view-refresh-red.png class=image><img alt=Tango-view-refresh-red.png src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect fill-opacity="0"/></svg>' decoding=async width=48 height=48 style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-13)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a><b>This article or section is out of date.</b><a href=https://wiki.archlinux.org/title/File:Tango-view-refresh-red.png class=image><img alt=Tango-view-refresh-red.png src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect fill-opacity="0"/></svg>' decoding=async width=48 height=48 style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-13)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a></p>
+<div><b>Reason:</b> ~/.gnupg/dirmngr.conf is no longer created; perhaps because no skeleton file can be found in usr/share/doc/gnupg/ (Discuss in <a rel=nofollow class="external text" href=https://wiki.archlinux.org/title/Talk:GnuPG>Talk:GnuPG</a>)</div>
+</div>
+<p>The default configuration files are <code>~/.gnupg/gpg.conf</code> and <code>~/.gnupg/dirmngr.conf</code>. 
+<p>By default, the gnupg directory has its <a href=https://wiki.archlinux.org/title/Permissions class=mw-redirect title=Permissions>permissions</a> set to <code>700</code> and the files it contains have their permissions set to <code>600</code>. Only the owner of the directory has permission to read, write, and access the files. This is for security purposes and should not be changed. In case this directory or any file inside it does not follow this security measure, you will get warnings about unsafe file and home directory permissions.
+<p>Append to these files any long options you want. Do not write the two dashes, but simply the name of the option and required arguments. You will find skeleton files in <code>/usr/share/doc/gnupg/</code>. These files are copied to <code>~/.gnupg</code> the first time gpg is run if they do not exist there. Other examples are found in <a href=#See_also>#See also</a>.
+<p>Additionally, <a href=https://wiki.archlinux.org/title/Pacman title=Pacman>pacman</a> uses a different set of configuration files for package signature verification. See <a href=https://wiki.archlinux.org/title/Pacman/Package_signing title="Pacman/Package signing">Pacman/Package signing</a> for details.
+</p>
+<h3><span class=mw-headline id=Default_options_for_new_users>Default options for new users</span></h3>
+<p>If you want to setup some default options for new users, put configuration files in <code>/etc/skel/.gnupg/</code>. When the new user is added in system, files from here will be copied to its GnuPG home directory. There is also a simple script called <i>addgnupghome</i> which you can use to create new GnuPG home directories for existing users:
+</p>
+<pre># addgnupghome user1 user2
+</pre>
+<p>This will add the respective <code>/home/user1/.gnupg/</code> and <code>/home/user2/.gnupg/</code> and copy the files from the skeleton directory to it. Users with existing GnuPG home directory are simply skipped.
+</p>
+<h2><span class=mw-headline id=Usage>Usage</span></h2>
+<div class="archwiki-template-box archwiki-template-box-note"><strong>Note:</strong> 
+<ul><li>Whenever a <i><code>user-id</code></i> is required in a command, it can be specified with your key ID, fingerprint, a part of your name or email address, etc. GnuPG is flexible on this.</li>
+<li>Whenever a <code><i>key-id</i></code> is needed, it can be found adding the <code>--keyid-format=long</code> flag to the command. To show the master secret key for example, run <code>gpg --list-secret-keys --keyid-format=long <i>user-id</i></code>, the <i>key-id</i> is the hexadecimal hash provided on the same line as <i>sec</i>.</ul>
+</div>
+<h3><span class=mw-headline id=Create_a_key_pair>Create a key pair</span></h3>
+<p>Generate a key pair by typing in a terminal:
+</p>
+<pre>$ gpg --full-gen-key
+</pre>
+<p>Also add the <code>--expert</code> option to the command line to access more ciphers and in particular the newer ECC cipher (<a href=https://en.wikipedia.org/wiki/Elliptic-curve_cryptography class=extiw title="wikipedia:Elliptic-curve cryptography">Wikipedia:Elliptic-curve cryptography</a>).
+<p>The command will prompt for answers to several questions. For general use most people will want: 
+</p>
+<ul><li>The default <i>RSA and RSA</i> for sign and encrypt keys.</li>
+<li>A keysize of the default 3072 value. A larger keysize of 4096 "gives us almost nothing, while costing us quite a lot" (see <a rel=nofollow class="external text" href=https://www.gnupg.org/faq/gnupg-faq.html#no_default_of_rsa4096>why doesn’t GnuPG default to using RSA-4096</a>).</li>
+<li>An expiration date: a period of one year is good enough for the average user. This way even if access is lost to the keyring, it will allow others to know that it is no longer valid. At a later stage, if necessary, the expiration date can be extended without having to re-issue a new key.</li>
+<li>Your name and email address. You can add multiple identities to the same key later (<i>e.g.</i>, if you have multiple email addresses you want to associate with this key).</li>
+<li><i>no</i> optional comment. Since the semantics of the comment field are <a rel=nofollow class="external text" href=https://lists.gnupg.org/pipermail/gnupg-devel/2015-July/030150.html>not well-defined</a>, it has limited value for identification.</li>
+<li>A secure passphrase, find some guidelines in <a href=https://wiki.archlinux.org/title/Security#Choosing_secure_passwords title=Security>Security#Choosing secure passwords</a>.</ul>
+<div class="archwiki-template-box archwiki-template-box-note"><strong>Note:</strong> The name and email address you enter here will be seen by anybody who imports your key.</div>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> The simpler <code>--gen-key</code> option uses default parameters for the key cipher, size and expiry and only asks for <i>real name</i> and <i>email address</i>.</div>
+<h3><span class=mw-headline id=List_keys>List keys</span></h3>
+<p>To list keys in your public key ring:
+</p>
+<pre>$ gpg --list-keys
+</pre>
+<p>To list keys in your secret key ring:
+</p>
+<pre>$ gpg --list-secret-keys
+</pre>
+<h3><span class=mw-headline id=Export_your_public_key>Export your public key</span></h3>
+<p>GnuPG's main usage is to ensure confidentiality of exchanged messages via public-key cryptography. With it each user distributes the public key of their keyring, which can be used by others to encrypt messages to the user. The private key must <i>always</i> be kept private, otherwise confidentiality is broken. See <a href=https://en.wikipedia.org/wiki/Public-key_cryptography class=extiw title="wikipedia:Public-key cryptography">Wikipedia:Public-key cryptography</a> for examples about the message exchange. 
+<p>So, in order for others to send encrypted messages to you, they need your public key. 
+<p>To generate an ASCII version of a user's public key to file <code><i>public.key</i></code> (e.g. to distribute it by e-mail):
+</p>
+<pre>$ gpg --export --armor --output <i>public.key</i> <i>user-id</i>
+</pre>
+<p>Alternatively, or in addition, you can <a href=#Use_a_keyserver>#Use a keyserver</a> to share your key. 
+</p>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> 
+<ul><li>Add <code>--no-emit-version</code> to avoid printing the version number, or add the corresponding setting to your configuration file.</li>
+<li>You can omit the <code>user-id</code> to export all public keys within your keyring. This is useful if you want to share multiple identities at once, or for importing in another application, e.g. <a href=https://wiki.archlinux.org/title/Thunderbird#Use_OpenPGP_with_external_GnuPG title=Thunderbird>Thunderbird</a>.</ul>
+</div>
+<h3><span class=mw-headline id=Import_a_public_key>Import a public key</span></h3>
+<p>In order to encrypt messages to others, as well as verify their signatures, you need their public key. To import a public key with file name <code><i>public.key</i></code> to your public key ring:
+</p>
+<pre>$ gpg --import <i>public.key</i>
+</pre>
+<p>Alternatively, <a href=#Use_a_keyserver>#Use a keyserver</a> to find a public key.
+<p>If you wish to import a key ID to install a specific Arch Linux package, see <a href=https://wiki.archlinux.org/title/Pacman/Package_signing#Managing_the_keyring title="Pacman/Package signing">pacman/Package signing#Managing the keyring</a> and <a href=https://wiki.archlinux.org/title/Makepkg#Signature_checking title=Makepkg>Makepkg#Signature checking</a>.
+</p>
+<h3><span class=mw-headline id=Use_a_keyserver>Use a keyserver</span></h3>
+<h4><span class=mw-headline id=Sending_keys>Sending keys</span></h4>
+<p>You can register your key with a public PGP key server, so that others can retrieve it without having to contact you directly:
+</p>
+<pre>$ gpg --send-keys <i>key-id</i>
+</pre>
+<div class="archwiki-template-box archwiki-template-box-warning"><strong>Warning:</strong> Once a key has been submitted to a keyserver, it cannot be deleted from the server. The reason is explained in the <a rel=nofollow class="external text" href=https://pgp.mit.edu/faq.html>MIT PGP Public Key Server FAQ</a>.</div>
+<div class="archwiki-template-box archwiki-template-box-note"><strong>Note:</strong> The associated email address, once published publicly, could be the target of spammers and in this case anti-spam filtering may be necessary.</div>
+<h4><span class=mw-headline id=Searching_and_receiving_keys>Searching and receiving keys</span></h4>
+<p>To find out details of a key on the keyserver, without importing it, do:
+</p>
+<pre>$ gpg --search-keys <i>user-id</i>
+</pre>
+<p>To import a key from a key server:
+</p>
+<pre>$ gpg --recv-keys <i>key-id</i>
+</pre>
+<div class="archwiki-template-box archwiki-template-box-warning"><strong>Warning:</strong> 
+<ul><li>You should verify the authenticity of the retrieved public key by comparing its fingerprint with one that the owner published on an independent source(s) (e.g., contacting the person directly). See <a href=https://en.wikipedia.org/wiki/Public_key_fingerprint class=extiw title="wikipedia:Public key fingerprint">Wikipedia:Public key fingerprint</a> for more information.</li>
+<li>It is recommended to use the long key ID or the full fingerprint when receiving a key. Using a short ID may encounter collisions. All keys will be imported that have the short ID, see <a rel=nofollow class="external text" href=https://lore.kernel.org/lkml/20160815153401.9EC2BADC2C@smtp.postman.i2p/>fake keys found in the wild</a> for such example.</ul>
+</div>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> Adding <code>auto-key-retrieve</code> to <code>gpg.conf</code> will automatically fetch keys from the key server as needed, but this can be considered a <b>privacy violation</b>; see "web bug" in <span class="plainlinks archwiki-template-man" title="$ man 1 gpg"><a rel=nofollow class="external text" href=https://man.archlinux.org/man/gpg.1>gpg(1)</a></span>.</div>
+<h4><span class=mw-headline id=Key_servers>Key servers</span></h4>
+<p>The most common keyservers are:
+</p>
+<ul><li><a rel=nofollow class="external text" href=https://keyserver.ubuntu.com/>Ubuntu Keyserver</a>: federated, no verification, keys cannot be deleted.</li>
+<li><a rel=nofollow class="external text" href=https://keys.mailvelope.com/>Mailvelope Keyserver</a>: central, verification of email IDs, keys can be deleted.</li>
+<li><a rel=nofollow class="external text" href=https://keys.openpgp.org/>keys.openpgp.org</a>: central, verification of email IDs, keys can be deleted, no third-party signatures (i.e. no Web of Trust support).</ul>
+<p>More are listed at <a href=https://en.wikipedia.org/wiki/Key_server_(cryptographic)#Keyserver_examples class=extiw title="wikipedia:Key server (cryptographic)">Wikipedia:Key server (cryptographic)#Keyserver examples</a>.
+<p>An alternative key server can be specified with the <code>keyserver</code> option in one of the <a href=#Configuration_files>#Configuration files</a>, for instance:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>~/.gnupg/dirmngr.conf</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>keyserver hkp://keyserver.ubuntu.com
+</pre>
+<p>A temporary use of another server is handy when the regular one does not work as it should. It can be achieved by, for example,
+</p>
+<pre>$ gpg --keyserver hkps://keys.openpgp.org/ --search-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+</pre>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> 
+<ul><li>If receiving fails with the message <code>gpg: keyserver receive failed: General error</code>, and you use the default hkps keyserver pool, make sure set the HKPS pool verification certificate with <code>hkp-cacert /usr/share/gnupg/sks-keyservers.netCA.pem</code> in your <code>dirmngr.conf</code> and kill the old dirmngr process.</li>
+<li>If receiving fails with the message <code>gpg: keyserver receive failed: Connection refused</code>, try using a different DNS server.</li>
+<li>You can connect to the keyserver over <a href=https://wiki.archlinux.org/title/Tor title=Tor>Tor</a> with <a href=https://wiki.archlinux.org/title/Tor#Torsocks title=Tor>Tor#Torsocks</a>. Or using the <code>--use-tor</code> command line option. See <a rel=nofollow class="external autonumber" href=https://gnupg.org/blog/20151224-gnupg-in-november-and-december.html>[1]</a> for more information.</li>
+<li>You can connect to a keyserver using a proxy by setting the <code>http_proxy</code> <a href=https://wiki.archlinux.org/title/Environment_variable class=mw-redirect title="Environment variable">environment variable</a> and setting <code>honor-http-proxy</code> in <code>dirmngr.conf</code>. Alternatively, set <code>http-proxy <i>host[:port]</i></code> in the configuration file to override the environment variable of the same name. <a href=https://wiki.archlinux.org/title/Restart class=mw-redirect title=Restart>Restart</a> the <code>dirmngr.service</code> <a href=https://wiki.archlinux.org/title/Systemd/User title=Systemd/User>user service</a> for the changes to take effect.</ul></div>
+<h3><span class=mw-headline id=Web_Key_Directory>Web Key Directory</span></h3>
+<p>The Web Key Service (WKS) protocol is a new <a rel=nofollow class="external text" href=https://datatracker.ietf.org/doc/draft-koch-openpgp-webkey-service/>standard</a> for key distribution, where the email domain provides its own key server called <a rel=nofollow class="external text" href=https://wiki.gnupg.org/WKD>Web Key Directory (WKD)</a>. When encrypting to an email address (e.g. <code>user@example.com</code>), GnuPG (&gt;=2.1.16) will query the domain (<code>example.com</code>) via HTTPS for the public OpenPGP key if it is not already in the local keyring. The option <code>auto-key-locate</code> will locate a key using the WKD protocol if there is no key on the local keyring for this email address.
+</p>
+<pre># gpg --recipient <i>user@example.org</i> --auto-key-locate --encrypt <i>doc</i>
+</pre>
+<p>See the <a rel=nofollow class="external text" href=https://wiki.gnupg.org/WKD#Implementations>GnuPG Wiki</a> for a list of email providers that support WKD. If you control the domain of your email address yourself, you can follow <a rel=nofollow class="external text" href=https://wiki.gnupg.org/WKDHosting>this guide</a> to enable WKD for your domain. To check if your key can be found in the WKD you can use <a rel=nofollow class="external text" href=https://metacode.biz/openpgp/web-key-directory>this webinterface</a>.
+</p>
+<h3><span class=mw-headline id=Encrypt_and_decrypt>Encrypt and decrypt</span></h3>
+<h4><span class=mw-headline id=Asymmetric>Asymmetric</span></h4>
+<p>You need to <a href=#Import_a_public_key>#Import a public key</a> of a user before encrypting (option <code>-e</code>/<code>--encrypt</code>) a file or message to that recipient (option <code>-r</code>/<code>--recipient</code>). Additionally you need to <a href=#Create_a_key_pair>#Create a key pair</a> if you have not already done so.
+<p>To encrypt a file with the name <i>doc</i>, use:
+</p>
+<pre>$ gpg --recipient <i>user-id</i> --encrypt <i>doc</i>
+</pre>
+<p>To decrypt (option <code>-d</code>/<code>--decrypt</code>) a file with the name <i>doc</i>.gpg encrypted with your public key, use:
+</p>
+<pre>$ gpg --output <i>doc</i> --decrypt <i>doc</i>.gpg
+</pre>
+<p><i>gpg</i> will prompt you for your passphrase and then decrypt and write the data from <i>doc</i>.gpg to <i>doc</i>. If you omit the <code>-o</code>/<code>--output</code> option, <i>gpg</i> will write the decrypted data to stdout.
+</p>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> 
+<ul><li>Add <code>--armor</code> to encrypt a file using ASCII armor, suitable for copying and pasting a message in text format.</li>
+<li>Use <code>-R <i>user-id</i></code> or <code>--hidden-recipient <i>user-id</i></code> instead of <code>-r</code> to not put the recipient key IDs in the encrypted message. This helps to hide the receivers of the message and is a limited countermeasure against traffic analysis.</li>
+<li>Add <code>--no-emit-version</code> to avoid printing the version number, or add the corresponding setting to your configuration file.</li>
+<li>You can use GnuPG to encrypt your sensitive documents by using your own user-id as recipient or by using the <code>--default-recipient-self</code> flag; however, you can only do this one file at a time, although you can always tarball various files and then encrypt the tarball. See also <a href=https://wiki.archlinux.org/title/Data-at-rest_encryption#Available_methods title="Data-at-rest encryption">Data-at-rest encryption#Available methods</a> if you want to encrypt directories or a whole file-system.</ul></div>
+<h4><span class=mw-headline id=Symmetric>Symmetric</span></h4>
+<p>Symmetric encryption does not require the generation of a key pair and can be used to simply encrypt data with a passphrase. Simply use <code>-c</code>/<code>--symmetric</code> to perform symmetric encryption:
+</p>
+<pre>$ gpg -c <i>doc</i>
+</pre>
+<p>The following example:
+</p>
+<ul><li>Encrypts <code><i>doc</i></code> with a symmetric cipher using a passphrase</li>
+<li>Uses the AES-256 cipher algorithm to encrypt the passphrase</li>
+<li>Uses the SHA-512 digest algorithm to mangle the passphrase</li>
+<li>Mangles the passphrase for 65536 iterations</ul>
+<pre>$ gpg -c --s2k-cipher-algo AES256 --s2k-digest-algo SHA512 --s2k-count 65536 <i>doc</i>
+</pre>
+<p>To decrypt a symmetrically encrypted <code><i>doc</i>.gpg</code> using a passphrase and output decrypted contents into the same directory as <code><i>doc</i></code> do:
+</p>
+<pre>$ gpg --output <i>doc</i> --decrypt <i>doc</i>.gpg
+</pre>
+<h4><span class=mw-headline id=Directory>Directory</span></h4>
+<p>Encrypting/decrypting a directory can be done with <span class="plainlinks archwiki-template-man" title="$ man 1 gpgtar"><a rel=nofollow class="external text" href=https://man.archlinux.org/man/gpgtar.1>gpgtar(1)</a></span>.
+<p>Encrypt:
+</p>
+<pre>$ gpgtar -c -o <i>dir</i>.gpg <i>dir</i>
+</pre>
+<p>Decrypt:
+</p>
+<pre>$ gpgtar -d <i>dir</i>.gpg
+</pre>
+<h2><span class=mw-headline id=Key_maintenance>Key maintenance</span></h2>
+<h3><span class=mw-headline id=Backup_your_private_key>Backup your private key</span></h3>
+<p>To backup your private key do the following:
+</p>
+<pre>$ gpg --export-secret-keys --armor --output <i>privkey.asc</i> <i>user-id</i>
+</pre>
+<p>Note the above command will require that you enter the passphrase for the key. This is because otherwise anyone who gains access to the above exported file would be able to encrypt and sign documents as if they were you <i>without</i> needing to know your passphrase. 
+</p>
+<div class="archwiki-template-box archwiki-template-box-warning"><strong>Warning:</strong> 
+<ul><li>The passphrase is usually the weakest link in protecting your secret key. Place the private key in a safe place on a different system/device, such as a locked container or encrypted drive. It is the only safety you have to regain control to your keyring in case of, for example, a drive failure, theft or worse.</li>
+<li>This method of backing up key has some security limitations. See <a rel=nofollow class="external free" href=https://web.archive.org/web/20210803213236/https://habd.as/post/moving-gpg-keys-privately/>https://web.archive.org/web/20210803213236/https://habd.as/post/moving-gpg-keys-privately/</a> for a more secure way to back up and import key using <i>gpg</i>.</ul>
+</div>
+<p>To import the backup of your private key:
+</p>
+<pre>$ gpg --import <i>privkey.asc</i>
+</pre>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> <a href=https://wiki.archlinux.org/title/Paperkey title=Paperkey>Paperkey</a> can be used to export private keys as human readable text or machine readable barcodes that can be printed on paper and archived.</div>
+<h3><span class=mw-headline id=Backup_your_revocation_certificate>Backup your revocation certificate</span></h3>
+<p>Revocation certificates are automatically generated for newly generated keys. These are by default located in <code>~/.gnupg/openpgp-revocs.d/</code>. The filename of the certificate is the fingerprint of the key it will revoke.
+The revocation certificates can also be generated manually by the user later using:
+</p>
+<pre>$ gpg --gen-revoke --armor --output <i>revcert.asc</i> <i>user-id</i>
+</pre>
+<p>This certificate can be used to <a href=#Revoke_a_key>#Revoke a key</a> if it is ever lost or compromised. The backup will be useful if you have no longer access to the secret key and are therefore not able to generate a new revocation certificate with the above command. It is short enough to be printed out and typed in by hand if necessary.
+</p>
+<div class="archwiki-template-box archwiki-template-box-warning"><strong>Warning:</strong> Anyone with access to the revocation certificate can revoke the key publicly, this action cannot be undone. Protect your revocation certificate like you protect your secret key.</div>
+<h3><span class=mw-headline id=Edit_your_key>Edit your key</span></h3>
+<p>Running the <code>gpg --edit-key <i>user-id</i></code> command will present a menu which enables you to do most of your key management related tasks.
+<p>Type <code>help</code> in the edit key sub menu to show the complete list of commands. Some useful ones:
+</p>
+<pre>&gt; passwd       # change the passphrase
+&gt; clean        # compact any user ID that is no longer usable (e.g revoked or expired)
+&gt; revkey       # revoke a key
+&gt; addkey       # add a subkey to this key
+&gt; expire       # change the key expiration time
+&gt; adduid       # add additional names, comments, and email addresses
+&gt; addphoto     # add photo to key (must be JPG, 240x288 recommended, enter full path to image when prompted)
+</pre>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> If you have multiple email accounts you can add each one of them as an identity, using <code>adduid</code> command. You can then set your favourite one as <code>primary</code>.</div>
+<h3><span class=mw-headline id=Exporting_subkey>Exporting subkey</span></h3>
+<p>If you plan to use the same key across multiple devices, you may want to strip out your master key and only keep the bare minimum encryption subkey on less secure systems.
+<p>First, find out which subkey you want to export.
+</p>
+<pre>$ gpg --list-secret-keys --with-subkey-fingerprint
+</pre>
+<p>Select only that subkey to export.
+</p>
+<pre>$ gpg -a --export-secret-subkeys [subkey id]! &gt; /tmp/subkey.gpg
+</pre>
+<div class="archwiki-template-box archwiki-template-box-warning"><strong>Warning:</strong> If you forget to add the&nbsp;!, all of your subkeys will be exported.</div>
+<p>At this point you could stop, but it is most likely a good idea to change the passphrase as well. Import the key into a temporary folder. 
+</p>
+<pre>$ gpg --homedir /tmp/gpg --import /tmp/subkey.gpg
+$ gpg --homedir /tmp/gpg --edit-key <i>user-id</i>
+&gt; passwd
+&gt; save
+$ gpg --homedir /tmp/gpg -a --export-secret-subkeys <i>[subkey id]</i>! &gt; /tmp/subkey.altpass.gpg
+</pre>
+<div class="archwiki-template-box archwiki-template-box-note"><strong>Note:</strong> You will get a warning that the master key was not available and the password was not changed, but that can safely be ignored as the subkey password was.</div>
+<p>At this point, you can now use <code>/tmp/subkey.altpass.gpg</code> on your other devices.
+</p>
+<h3><span class=mw-headline id=Extending_expiration_date>Extending expiration date</span></h3>
+<div class="archwiki-template-box archwiki-template-box-warning"><strong>Warning:</strong> <b>Never</b> delete your expired or revoked subkeys unless you have a good reason. Doing so will cause you to lose the ability to decrypt files encrypted with the old subkey. Please <b>only</b> delete expired or revoked keys from other users to clean your keyring.</div>
+<p>It is good practice to set an expiration date on your subkeys, so that if you lose access to the key (e.g. you forget the passphrase) the key will not continue to be used indefinitely by others. When the key expires, it is relatively straight-forward to extend the expiration date:
+</p>
+<pre>$ gpg --edit-key <i>user-id</i>
+&gt; expire
+</pre>
+<p>You will be prompted for a new expiration date, as well as the passphrase for your secret key, which is used to sign the new expiration date.
+<p>Repeat this for any further subkeys that have expired:
+</p>
+<pre>&gt; key 1
+&gt; expire
+</pre>
+<p>Finally, save the changes and quit:
+</p>
+<pre>&gt; save
+</pre>
+<p>Update it to a keyserver.
+</p>
+<pre>$ gpg --keyserver keyserver.ubuntu.com --send-keys <i>key-id</i>
+</pre>
+<p>Alternatively, if you use this key on multiple computers, you can export the public key (with new signed expiration dates) and import it on those machines:
+</p>
+<pre>$ gpg --export --output pubkey.gpg <i>user-id</i>
+$ gpg --import pubkey.gpg
+</pre>
+<p>There is no need to re-export your secret key or update your backups: the master secret key itself never expires, and the signature of the expiration date left on the public key and subkeys is all that is needed.
+</p>
+<h3><span class=mw-headline id=Rotating_subkeys>Rotating subkeys</span></h3>
+<div class="archwiki-template-box archwiki-template-box-warning"><strong>Warning:</strong> <b>Never</b> delete your expired or revoked subkeys unless you have a good reason. Doing so will cause you to lose the ability to decrypt files encrypted with the old subkey. Please <b>only</b> delete expired or revoked keys from other users to clean your keyring.</div>
+<p>Alternatively, if you prefer to stop using subkeys entirely once they have expired, you can create new ones. Do this a few weeks in advance to allow others to update their keyring.
+</p>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> You do not need to create a new key simply because it is expired. You can extend the expiration date, see the section <a href=#Extending_expiration_date>#Extending expiration date</a>.</div>
+<p>Create new subkey (repeat for both signing and encrypting key)
+</p>
+<pre>$ gpg --edit-key <i>user-id</i>
+&gt; addkey
+</pre>
+<p>And answer the following questions it asks (see <a href=#Create_a_key_pair>#Create a key pair</a> for suggested settings).
+<p>Save changes
+</p>
+<pre>&gt; save
+</pre>
+<p>Update it to a keyserver.
+</p>
+<pre>$ gpg --keyserver pgp.mit.edu --send-keys <i>user-id</i>
+</pre>
+<p>You will also need to export a fresh copy of your secret keys for backup purposes. See the section <a href=#Backup_your_private_key>#Backup your private key</a> for details on how to do this.
+</p>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> Revoking expired subkeys is unnecessary and arguably bad form. If you are constantly revoking keys, it may cause others to lack confidence in you.</div>
+<h3><span class=mw-headline id=Revoke_a_key>Revoke a key</span></h3>
+<p>Key revocation should be performed if the key is compromised, superseded, no longer used, or you forget your passphrase. This is done by merging the key with the revocation certificate of the key.
+<p>If you have no longer access to your keypair, first <a href=#Import_a_public_key>#Import a public key</a> to import your own key.
+Then, to revoke the key, import the file saved in <a href=#Backup_your_revocation_certificate>#Backup your revocation certificate</a>:
+</p>
+<pre> $ gpg --import <i>revcert.asc</i>
+</pre>
+<p>Now the revocation needs to be made public. <a href=#Use_a_keyserver>#Use a keyserver</a> to send the revoked key to a public PGP server if you used one in the past, otherwise, export the revoked key to a file and distribute it to your communication partners.
+</p>
+<h2><span class=mw-headline id=Signatures>Signatures</span></h2>
+<p>Signatures certify and timestamp documents. If the document is modified, verification of the signature will fail. Unlike encryption which uses public keys to encrypt a document, signatures are created with the user's private key. The recipient of a signed document then verifies the signature using the sender's public key.
+</p>
+<h3><span class=mw-headline id=Create_a_signature>Create a signature</span></h3>
+<h4><span class=mw-headline id=Sign_a_file>Sign a file</span></h4>
+<p>To sign a file use the <code>-s</code>/<code>--sign</code> flag:
+</p>
+<pre>$ gpg --output <i>doc</i>.sig --sign <i>doc</i>
+</pre>
+<p><code><i>doc</i>.sig</code> contains both the compressed content of the original file <code><i>doc</i></code> and the signature in a binary format, but the file is not encrypted. However, you can combine signing with <a href=#Encrypt_and_decrypt>encrypting</a>.
+</p>
+<h4><span class=mw-headline id=Clearsign_a_file_or_message>Clearsign a file or message</span></h4>
+<p>To sign a file without compressing it into binary format use:
+</p>
+<pre>$ gpg --output <i>doc</i>.sig --clearsign <i>doc</i>
+</pre>
+<p>Here both the content of the original file <code><i>doc</i></code> and the signature are stored in human-readable form in <code><i>doc</i>.sig</code>.
+</p>
+<h4><span class=mw-headline id=Make_a_detached_signature>Make a detached signature</span></h4>
+<p>To create a separate signature file to be distributed separately from the document or file itself, use the <code>--detach-sig</code> flag:
+</p>
+<pre>$ gpg --output <i>doc</i>.sig --detach-sig <i>doc</i>
+</pre>
+<p>Here the signature is stored in <code><i>doc</i>.sig</code>, but the contents of <code><i>doc</i></code> are not stored in it. This method is often used in distributing software projects to allow users to verify that the program has not been modified by a third party.
+</p>
+<h3><span class=mw-headline id=Verify_a_signature>Verify a signature</span></h3>
+<p>To verify a signature use the <code>--verify</code> flag:
+</p>
+<pre>$ gpg --verify <i>doc</i>.sig
+</pre>
+<p>where <code><i>doc</i>.sig</code> is the signed file containing the signature you wish to verify.
+<p>If you are verifying a detached signature, both the signed data file and the signature file must be present when verifying. For example, to verify Arch Linux's latest iso you would do:
+</p>
+<pre>$ gpg --verify archlinux-<i>version</i>.iso.sig
+</pre>
+<p>where <code>archlinux-<i>version</i>.iso</code> must be located in the same directory.
+<p>You can also specify the signed data file with a second argument:
+</p>
+<pre>$ gpg --verify archlinux-<i>version</i>.iso.sig <i>/path/to/</i>archlinux-<i>version</i>.iso
+</pre>
+<p>If a file has been encrypted in addition to being signed, simply <a href=#Encrypt_and_decrypt>decrypt</a> the file and its signature will also be verified.
+</p>
+<h2><span class=mw-headline id=gpg-agent>gpg-agent</span></h2>
+<p><i>gpg-agent</i> is mostly used as daemon to request and cache the password for the keychain. This is useful if GnuPG is used from an external program like a mail client. <span class="plainlinks archwiki-template-pkg"><a rel=nofollow class="external text" href="https://archlinux.org/packages/?name=gnupg">gnupg</a></span> comes with <a href=https://wiki.archlinux.org/title/Systemd/User title=Systemd/User>systemd user</a> sockets which are enabled by default. These sockets are <code>gpg-agent.socket</code>, <code>gpg-agent-extra.socket</code>, <code>gpg-agent-browser.socket</code>, <code>gpg-agent-ssh.socket</code>, and <code>dirmngr.socket</code>.
+</p>
+<ul><li>The main <code>gpg-agent.socket</code> is used by <i>gpg</i> to connect to the <i>gpg-agent</i> daemon.</li>
+<li>The intended use for the <code>gpg-agent-extra.socket</code> on a local system is to set up a Unix domain socket forwarding from a remote system. This enables to use <i>gpg</i> on the remote system without exposing the private keys to the remote system. See <span class="plainlinks archwiki-template-man" title="$ man 1 gpg-agent"><a rel=nofollow class="external text" href=https://man.archlinux.org/man/gpg-agent.1>gpg-agent(1)</a></span> for details.</li>
+<li>The <code>gpg-agent-browser.socket</code> allows web browsers to access the <i>gpg-agent</i> daemon.</li>
+<li>The <code>gpg-agent-ssh.socket</code> can be used by <a href=https://wiki.archlinux.org/title/SSH class=mw-redirect title=SSH>SSH</a> to cache <a href=https://wiki.archlinux.org/title/SSH_keys title="SSH keys">SSH keys</a> added by the <i>ssh-add</i> program. See <a href=#SSH_agent>#SSH agent</a> for the necessary configuration.</li>
+<li>The <code>dirmngr.socket</code> starts a GnuPG daemon handling connections to keyservers.</ul>
+<div class="archwiki-template-box archwiki-template-box-note"><strong>Note:</strong> If you use non-default GnuPG <a href=#Directory_location>#Directory location</a>, you will need to <a href=https://wiki.archlinux.org/title/Edit class=mw-redirect title=Edit>edit</a> all socket files to use the values of <code>gpgconf --list-dirs</code>. The socket names use the hash of the non-default GnuPG home directory <a rel=nofollow class="external autonumber" href=https://github.com/gpg/gnupg/blob/260bbb4ab27eab0a8d4fb68592b0d1c20d80179c/common/homedir.c#L710-L713>[2]</a>, so you can hardcode it without worrying about it changing.</div>
+<h3><span class=mw-headline id=Configuration_2>Configuration</span></h3>
+<p>gpg-agent can be configured via <code>~/.gnupg/gpg-agent.conf</code> file. The configuration options are listed in <span class="plainlinks archwiki-template-man" title="$ man 1 gpg-agent"><a rel=nofollow class="external text" href=https://man.archlinux.org/man/gpg-agent.1>gpg-agent(1)</a></span>. For example you can change cache ttl for unused keys:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>~/.gnupg/gpg-agent.conf</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>default-cache-ttl 3600
+</pre>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> To cache your passphrase for the whole session, please run the following command:
+<pre>$ /usr/lib/gnupg/gpg-preset-passphrase --preset XXXXX
+</pre>
+where XXXXX is the keygrip. You can get its value when running <code>gpg --with-keygrip -K</code>. The passphrase will be stored until <code>gpg-agent</code> is restarted. If you set up <code>default-cache-ttl</code> value, it will take precedence.</div>
+<h3><span class=mw-headline id=Reload_the_agent>Reload the agent</span></h3>
+<p>After changing the configuration, reload the agent using <i>gpg-connect-agent</i>:
+</p>
+<pre>$ gpg-connect-agent reloadagent /bye
+</pre>
+<p>The command should print <code>OK</code>.
+<p>However in some cases only the restart may not be sufficient, like when <code>keep-screen</code> has been added to the agent configuration.
+In this case you firstly need to kill the ongoing gpg-agent process and then you can restart it as was explained above.
+</p>
+<h3><span class=mw-headline id=pinentry>pinentry</span></h3>
+<p><code>gpg-agent</code> can be configured via the <code>pinentry-program</code> stanza to use a particular <span class="plainlinks archwiki-template-pkg"><a rel=nofollow class="external text" href="https://archlinux.org/packages/?name=pinentry">pinentry</a></span> user interface when prompting the user for a passphrase. For example:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>~/.gnupg/gpg-agent.conf</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>pinentry-program /usr/bin/pinentry-curses
+</pre>
+<p>There are other pinentry programs that you can choose from - see <code>pacman -Ql pinentry | grep /usr/bin/</code>.
+</p>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> 
+<ul><li>In order to use <code>/usr/bin/pinentry-kwallet</code> you have to install the <span class="plainlinks archwiki-template-pkg"><a rel=nofollow class="external text" href=https://aur.archlinux.org/packages/kwalletcli/>kwalletcli</a></span><sup><small>AUR</small></sup> package.</li>
+<li><code>/usr/bin/pinentry-gtk-2</code> and <code>/usr/bin/pinentry-gnome3</code> support the <a rel=nofollow class="external text" href=https://specifications.freedesktop.org/secret-service/>DBus Secret Service API</a>, which allows for remembering passwords via a compliant manager such as <a href=https://wiki.archlinux.org/title/GNOME_Keyring class=mw-redirect title="GNOME Keyring">GNOME Keyring</a> or <a href=https://wiki.archlinux.org/title/KeePass#Secret_Service title=KeePass>KeePassXC</a>.</ul>
+</div>
+<p>Remember to <a href=#Reload_the_agent>reload the agent</a> after making changes to the configuration.
+</p>
+<h3><span class=mw-headline id=Cache_passwords>Cache passwords</span></h3>
+<p><code>max-cache-ttl</code> and <code>default-cache-ttl</code> defines how many seconds gpg-agent should cache the passwords. To enter a password once a session, set them to something very high, for instance:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>gpg-agent.conf</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>max-cache-ttl 60480000
+default-cache-ttl 60480000
+</pre>
+<p>For password caching in SSH emulation mode, set <code>default-cache-ttl-ssh</code> and <code>max-cache-ttl-ssh</code> instead, for example:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>gpg-agent.conf</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>default-cache-ttl-ssh 60480000
+max-cache-ttl-ssh 60480000
+</pre>
+<h3><span class=mw-headline id=Unattended_passphrase>Unattended passphrase</span></h3>
+<p>Starting with GnuPG 2.1.0 the use of gpg-agent and pinentry is required, which may break backwards compatibility for passphrases piped in from STDIN using the <code>--passphrase-fd 0</code> commandline option. In order to have the same type of functionality as the older releases two things must be done:
+<p>First, edit the gpg-agent configuration to allow <i>loopback</i> pinentry mode:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>~/.gnupg/gpg-agent.conf</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>allow-loopback-pinentry
+</pre>
+<p><a href=#Reload_the_agent>Reload the agent</a> if it is running to let the change take effect.
+<p>Second, either the application needs to be updated to include a commandline parameter to use loopback mode like so:
+</p>
+<pre>$ gpg --pinentry-mode loopback ...
+</pre>
+<p>...or if this is not possible, add the option to the configuration:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>~/.gnupg/gpg.conf</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>pinentry-mode loopback
+</pre>
+<div class="archwiki-template-box archwiki-template-box-note"><strong>Note:</strong> The upstream author indicates setting <code>pinentry-mode loopback</code> in <code>gpg.conf</code> may break other usage, using the commandline option should be preferred if at all possible. <a rel=nofollow class="external autonumber" href=https://dev.gnupg.org/T1772>[3]</a></div>
+<h3><span class=mw-headline id=SSH_agent>SSH agent</span></h3>
+<p><i>gpg-agent</i> has OpenSSH agent emulation. If you already use the GnuPG suite, you might consider using its agent to also cache your <a href=https://wiki.archlinux.org/title/SSH_keys title="SSH keys">SSH keys</a>. Additionally, some users may prefer the PIN entry dialog GnuPG agent provides as part of its passphrase management.
+</p>
+<h4><span class=mw-headline id=Set_SSH_AUTH_SOCK>Set SSH_AUTH_SOCK</span></h4>
+<p>You have to set <code>SSH_AUTH_SOCK</code> to communicate with <i>gpg-agent</i> and replace the default <i>ssh-agent</i>. User-based configuration of <a href=https://wiki.archlinux.org/title/Environment_variables#Using_pam_env title="Environment variables">pam_env</a> allows you to set environment variables by user, instead of shell.
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>~/.pam_environment</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>SSH_AGENT_PID	DEFAULT=
+SSH_AUTH_SOCK	DEFAULT="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"</pre>
+<div class="archwiki-template-box archwiki-template-box-note"><strong>Note:</strong> 
+<ul><li>If you set your <code>SSH_AUTH_SOCK</code> manually (such as in this pam_env example), keep in mind that your socket location may be different if you are using a custom <code>GNUPGHOME</code>. You can use the following bash example, or change <code>SSH_AUTH_SOCK</code> to the value of <code>gpgconf --list-dirs agent-ssh-socket</code>.</li>
+<li>If GNOME Keyring is installed, it is necessary to <a href=https://wiki.archlinux.org/title/GNOME/Keyring#Disable_keyring_daemon_components title=GNOME/Keyring>deactivate</a> its ssh component. Otherwise, it will overwrite <code>SSH_AUTH_SOCK</code>.</ul>
+</div>
+<p>Alternatively, depend on Bash. This works for non-standard socket locations as well:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>~/.bashrc</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi</pre>
+<div class="archwiki-template-box archwiki-template-box-note"><strong>Note:</strong> The test involving the <code>gnupg_SSH_AUTH_SOCK_by</code> variable is for the case where the agent is started as <code>gpg-agent --daemon /bin/sh</code>, in which case the shell inherits the <code>SSH_AUTH_SOCK</code> variable from the parent, <i>gpg-agent</i> <a rel=nofollow class="external autonumber" href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=blob;f=agent/gpg-agent.c;hb=7bca3be65e510eda40572327b87922834ebe07eb#l1307">[4]</a>.</div>
+<h4><span class=mw-headline id=Configure_pinentry_to_use_the_correct_TTY>Configure pinentry to use the correct TTY</span></h4>
+<p>Also set the GPG_TTY and refresh the TTY in case user has switched into an X session as stated in <span class="plainlinks archwiki-template-man" title="$ man 1 gpg-agent"><a rel=nofollow class="external text" href=https://man.archlinux.org/man/gpg-agent.1>gpg-agent(1)</a></span>. For example:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>~/.bashrc</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye &gt;/dev/null</pre>
+<p>If you use multiple terminals simultaneously and want <i>gpg-agent</i> to ask for passphrase via <i>pinentry-curses</i> from the same terminal where the <i>ssh</i> command was run, add the following to the SSH configuration file. This will make the TTY to be refreshed every time an <i>ssh</i> command is run <a rel=nofollow class="external autonumber" href=https://unix.stackexchange.com/a/499133>[5]</a>:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>~/.ssh/config</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>Match host * exec "gpg-connect-agent UPDATESTARTUPTTY /bye"</pre>
+<p>Note that GPG_TTY environment variable has to be set for this to work.
+</p>
+<h4><span class=mw-headline id=Add_SSH_keys>Add SSH keys</span></h4>
+<p>Once <i>gpg-agent</i> is running you can use <i>ssh-add</i> to approve keys, following the same steps as for <a href=https://wiki.archlinux.org/title/SSH_keys#ssh-agent title="SSH keys">ssh-agent</a>. The list of approved keys is stored in the <code>~/.gnupg/sshcontrol</code> file. 
+<p>Once your key is approved, you will get a <i>pinentry</i> dialog every time your passphrase is needed. For password caching see <a href=#Cache_passwords>#Cache passwords</a>.
+</p>
+<h4><span class=mw-headline id=Using_a_PGP_key_for_SSH_authentication>Using a PGP key for SSH authentication</span></h4>
+<p>You can also use your PGP key as an SSH key. This requires a key with the <code>Authentication</code> capability (see <a href=#Custom_capabilities>#Custom capabilities</a>). There are various benefits gained by using a PGP key for SSH authentication, including:
+</p>
+<ul><li>Reduced key maintenance, as you will no longer need to maintain an SSH key.</li>
+<li>The ability to store the authentication key on a smartcard. GnuPG will automatically detect the key when the card is available, and add it to the agent (check with <code>ssh-add -l</code> or <code>ssh-add -L</code>). The comment for the key should be something like: <code>openpgp:<i>key-id</i></code> or <code>cardno:<i>card-id</i></code>.</ul>
+<p>To retrieve the public key part of your GPG/SSH key, run <code>gpg --export-ssh-key <i>gpg-key</i></code>. If your key is authentication-capable but this command still fails with "Unusable public key", add a <code>!</code> suffix (<a rel=nofollow class="external autonumber" href=https://dev.gnupg.org/T2957>[6]</a>). 
+<p>Unless you have your GPG key on a keycard, you need to add your key to <code>$GNUPGHOME/sshcontrol</code> to be recognized as a SSH key. If your key is on a keycard, its keygrip is added to <code>sshcontrol</code> implicitly. If not, get the keygrip of your key this way:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>$ gpg --list-keys --with-keygrip</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>sub   rsa4096 2018-07-25 [A]
+      Keygrip = <i>1531C8084D16DC4C36911F1585AF0ACE7AAFD7E7</i></pre>
+<p>Then edit <code>sshcontrol</code> like this. Adding the keygrip is a one-time action; you will not need to edit the file again, unless you are adding additional keys.
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>$GNUPGHOME/sshcontrol</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em><i>1531C8084D16DC4C36911F1585AF0ACE7AAFD7E7</i>
+</pre>
+<h2><span class=mw-headline id=Smartcards>Smartcards</span></h2>
+<p>GnuPG uses <i>scdaemon</i> as an interface to your smartcard reader, please refer to the <a href=https://wiki.archlinux.org/title/Man_page title="Man page">man page</a> <span class="plainlinks archwiki-template-man" title="$ man 1 scdaemon"><a rel=nofollow class="external text" href=https://man.archlinux.org/man/scdaemon.1>scdaemon(1)</a></span> for details.
+</p>
+<h3><span class=mw-headline id=GnuPG_only_setups>GnuPG only setups</span></h3>
+<div class="archwiki-template-box archwiki-template-box-note"><strong>Note:</strong> To allow scdaemon direct access to USB smartcard readers the optional dependency <span class="plainlinks archwiki-template-pkg"><a rel=nofollow class="external text" href="https://archlinux.org/packages/?name=libusb-compat">libusb-compat</a></span> must be installed</div>
+<p>If you do not plan to use other cards but those based on GnuPG, you should check the <code>reader-port</code> parameter in <code>~/.gnupg/scdaemon.conf</code>. The value '0' refers to the first available serial port reader and a value of '32768' (default) refers to the first USB reader.
+</p>
+<h3><span id=GnuPG_with_pcscd_.28PCSC_Lite.29></span><span class=mw-headline id=GnuPG_with_pcscd_(PCSC_Lite)>GnuPG with pcscd (PCSC Lite)</span></h3>
+<p><span class="plainlinks archwiki-template-man" title="$ man 8 pcscd"><a rel=nofollow class="external text" href=https://man.archlinux.org/man/pcscd.8>pcscd(8)</a></span> is a daemon which handles access to smartcard (SCard API). If GnuPG's scdaemon fails to connect the smartcard directly (e.g. by using its integrated CCID support), it will fallback and try to find a smartcard using the PCSC Lite driver.
+<p>To use pscsd <a href=https://wiki.archlinux.org/title/Install class=mw-redirect title=Install>install</a> <span class="plainlinks archwiki-template-pkg"><a rel=nofollow class="external text" href="https://archlinux.org/packages/?name=pcsclite">pcsclite</a></span> and <span class="plainlinks archwiki-template-pkg"><a rel=nofollow class="external text" href="https://archlinux.org/packages/?name=ccid">ccid</a></span>. Then <a href=https://wiki.archlinux.org/title/Start class=mw-redirect title=Start>start</a> and/or <a href=https://wiki.archlinux.org/title/Enable class=mw-redirect title=Enable>enable</a> <code>pcscd.service</code>. Alternatively start and/or enable <code>pcscd.socket</code> to activate the daemon when needed.
+</p>
+<h4><span class=mw-headline id=Always_use_pcscd>Always use pcscd</span></h4>
+<p>If you are using any smartcard with an opensc driver (e.g.: ID cards from some countries) you should pay some attention to GnuPG configuration. Out of the box you might receive a message like this when using <code>gpg --card-status</code>
+</p>
+<pre>gpg: selecting openpgp failed: ec=6.108
+</pre>
+<p>By default, scdaemon will try to connect directly to the device. This connection will fail if the reader is being used by another process. For example: the pcscd daemon used by OpenSC. To cope with this situation we should use the same underlying driver as opensc so they can work well together. In order to point scdaemon to use pcscd you should remove <code>reader-port</code> from <code>~/.gnupg/scdaemon.conf</code>, specify the location to <code>libpcsclite.so</code> library and disable ccid so we make sure that we use pcscd:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>~/.gnupg/scdaemon.conf</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>pcsc-driver /usr/lib/libpcsclite.so
+card-timeout 5
+disable-ccid
+</pre>
+<p>Please check <span class="plainlinks archwiki-template-man" title="$ man 1 scdaemon"><a rel=nofollow class="external text" href=https://man.archlinux.org/man/scdaemon.1>scdaemon(1)</a></span> if you do not use OpenSC.
+</p>
+<h4><span class=mw-headline id=Shared_access_with_pcscd>Shared access with pcscd</span></h4>
+<p>GnuPG <code>scdaemon</code> is the only popular <code>pcscd</code> client that uses <code>PCSC_SHARE_EXCLUSIVE</code> flag when connecting to <code>pcscd</code>. Other clients like OpenSC PKCS#11 that are used by browsers and programs listed in <a href=https://wiki.archlinux.org/title/Electronic_identification title="Electronic identification">Electronic identification</a> are using <code>PCSC_SHARE_SHARED</code> that allows simultaneous access to single smartcard. <code>pcscd</code> will not give exclusive access to smartcard while there are other clients connected. This means that to use GnuPG smartcard features you must before have to close all your open browser windows or do some other inconvenient operations. Starting from version 2.2.28 LTS and 2.3.0 you can enable shared access by modifying your <code>scdaemon.conf</code> file and adding <code>pcsc-shared</code> line end of it.
+</p>
+<h5><span class=mw-headline id=Multi_applet_smart_cards>Multi applet smart cards</span></h5>
+<p>When using <a href=https://wiki.archlinux.org/title/YubiKey title=YubiKey>YubiKeys</a> or other multi applet USB dongles with OpenSC PKCS#11 may run into problems where OpenSC switches your Yubikey from OpenPGP to PIV applet, breaking the <code>scdaemon</code>. 
+<p>You can hack around the problem by forcing OpenSC to also use the OpenPGP applet. Open <code>/etc/opensc.conf</code> file, search for Yubikey and change the <code>driver = "PIV-II";</code> line to <code>driver = "openpgp";</code>. If there is no such entry, use <code>pcsc_scan</code>. Search for the Answer to Reset <code>ATR: 12 34 56 78 90 AB CD ...</code>. Then create a new entry.
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>/etc/opensc.conf</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>...
+card_atr 12:23:34:45:67:89:ab:cd:... {
+    name = "YubiKey Neo";
+    driver = "openpgp"
+}
+...</pre>
+<p>After that you can test with <code>pkcs11-tool -O --login</code> that the OpenPGP applet is selected by default. Other PKCS#11 clients like browsers may need to be restarted for that change to be applied.
+</p>
+<h2><span class=mw-headline id=Tips_and_tricks>Tips and tricks</span></h2>
+<h3><span class=mw-headline id=Different_algorithm>Different algorithm</span></h3>
+<p>You may want to use stronger algorithms:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>~/.gnupg/gpg.conf</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>...
+
+personal-digest-preferences SHA512
+cert-digest-algo SHA512
+default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
+personal-cipher-preferences TWOFISH CAMELLIA256 AES 3DES
+</pre>
+<p>In the latest version of GnuPG, the default algorithms used are SHA256 and AES, both of which are secure enough for most people. However, if you are using a version of GnuPG older than 2.1, or if you want an even higher level of security, then you should follow the above step.
+</p>
+<h3><span class=mw-headline id=Encrypt_a_password>Encrypt a password</span></h3>
+<p>It can be useful to encrypt some password, so it will not be written in clear on a configuration file. A good example is your email password.
+<p>First create a file with your password. You <b>need</b> to leave <b>one</b> empty line after the password, otherwise gpg will return an error message when evaluating the file.
+<p>Then run:
+</p>
+<pre>$ gpg -e -a -r <i>user-id</i> <i>your_password_file</i>
+</pre>
+<p><code>-e</code> is for encrypt, <code>-a</code> for armor (ASCII output), <code>-r</code> for recipient user ID.
+<p>You will be left with a new <code><i>your_password_file</i>.asc</code> file.
+</p>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> <a href=https://wiki.archlinux.org/title/Pass title=Pass>pass</a> automates this process.</div>
+<h3><span class=mw-headline id=Change_trust_model>Change trust model</span></h3>
+<p>By default GnuPG uses the <a href=https://en.wikipedia.org/wiki/Web_of_Trust class=extiw title="wikipedia:Web of Trust">Web of Trust</a> as the trust model. You can change this to <a href=https://en.wikipedia.org/wiki/Trust_on_first_use class=extiw title="wikipedia:Trust on first use">Trust on first use</a> by adding <code>--trust-model=tofu</code> when adding a key or adding this option to your GnuPG configuration file. More details are in <a rel=nofollow class="external text" href=https://lists.gnupg.org/pipermail/gnupg-devel/2015-October/030341.html>this email to the GnuPG list</a>.
+</p>
+<h3><span id=Hide_all_recipient_id.27s></span><span class=mw-headline id="Hide_all_recipient_id's">Hide all recipient id's</span></h3>
+<p>By default the recipient's key ID is in the encrypted message. This can be removed at encryption time for a recipient by using <code>hidden-recipient <i>user-id</i></code>. To remove it for all recipients add <code>throw-keyids</code> to your configuration file. This helps to hide the receivers of the message and is a limited countermeasure against traffic analysis. (Using a little social engineering anyone who is able to decrypt the message can check whether one of the other recipients is the one he suspects.) On the receiving side, it may slow down the decryption process because all available secret keys must be tried (<i>e.g.</i> with <code>--try-secret-key <i>user-id</i></code>).
+</p>
+<h3><span class=mw-headline id=Using_caff_for_keysigning_parties>Using caff for keysigning parties</span></h3>
+<p>To allow users to validate keys on the keyservers and in their keyrings (i.e. make sure they are from whom they claim to be), PGP/GPG uses the <a href=https://en.wikipedia.org/wiki/Web_of_Trust class=extiw title="wikipedia:Web of Trust">Web of Trust</a>. Keysigning parties allow users to get together at a physical location to validate keys. The <a href=https://en.wikipedia.org/wiki/Zimmermann%E2%80%93Sassaman_key-signing_protocol class=extiw title="wikipedia:Zimmermann–Sassaman key-signing protocol">Zimmermann-Sassaman</a> key-signing protocol is a way of making these very effective. <a rel=nofollow class="external text" href=https://www.cryptnet.net/fdp/crypto/keysigning_party/en/keysigning_party.html>Here</a> you will find a how-to article.
+<p>For an easier process of signing keys and sending signatures to the owners after a keysigning party, you can use the tool <i>caff</i>. It can be installed from the AUR with the package <span class="plainlinks archwiki-template-pkg"><a rel=nofollow class="external text" href=https://aur.archlinux.org/packages/caff-git/>caff-git</a></span><sup><small>AUR</small></sup>.
+<p>To send the signatures to their owners you need a working <a href=https://en.wikipedia.org/wiki/Message_transfer_agent class=extiw title="wikipedia:Message transfer agent">MTA</a>. If you do not have already one, install <a href=https://wiki.archlinux.org/title/Msmtp title=Msmtp>msmtp</a>.
+</p>
+<h3><span id=Always_show_long_ID.27s_and_fingerprints></span><span class=mw-headline id="Always_show_long_ID's_and_fingerprints">Always show long ID's and fingerprints</span></h3>
+<p>To always show long key ID's add <code>keyid-format 0xlong</code> to your configuration file. To always show full fingerprints of keys, add <code>with-fingerprint</code> to your configuration file.
+</p>
+<h3><span class=mw-headline id=Custom_capabilities>Custom capabilities</span></h3>
+<p>For further customization also possible to set custom capabilities to your keys. The following capabilities are available:
+</p>
+<ul><li>Certify (only for master keys) - allows the key to create subkeys, mandatory for master keys.</li>
+<li>Sign - allows the key to create cryptographic signatures that others can verify with the public key.</li>
+<li>Encrypt - allows anyone to encrypt data with the public key, that only the private key can decrypt.</li>
+<li>Authenticate - allows the key to authenticate with various non-GnuPG programs. The key can be used as e.g. an SSH key.</ul>
+<p>It's possible to specify the capabilities of the master key, by running: 
+</p>
+<pre>$ gpg --full-generate-key --expert
+</pre>
+<p>And select an option that allows you to set your own capabilities.
+<p>Comparably, to specify custom capabilities for subkeys, add the <code>--expert</code> flag to <code>gpg --edit-key</code>, see <a href=#Edit_your_key>#Edit your key</a> for more information.
+</p>
+<h2><span class=mw-headline id=Troubleshooting>Troubleshooting</span></h2>
+<h3><span class=mw-headline id=Not_enough_random_bytes_available>Not enough random bytes available</span></h3>
+<p>When generating a key, gpg can run into this error:
+</p>
+<pre>Not enough random bytes available. Please do some other work to give the OS a chance to collect more entropy!
+</pre>
+<p>To check the available entropy, check the kernel parameters:
+</p>
+<pre>$ cat /proc/sys/kernel/random/entropy_avail
+</pre>
+<p>A healthy Linux system with a lot of entropy available will have return close to the full 4,096 bits of entropy. If the value returned is less than 200, the system is running low on entropy. 
+<p>To solve it, remember you do not often need to create keys and best just do what the message suggests (e.g. create disk activity, move the mouse, edit the wiki - all will create entropy). If that does not help, check which service is using up the entropy and consider stopping it for the time. If that is no alternative, see <a href=https://wiki.archlinux.org/title/Random_number_generation#Alternatives title="Random number generation">Random number generation#Alternatives</a>.
+</p>
+<h3><span class=mw-headline id=su>su</span></h3>
+<p>When using <code>pinentry</code>, you must have the proper permissions of the terminal device (e.g. <code>/dev/tty1</code>) in use. However, with <i>su</i> (or <i>sudo</i>), the ownership stays with the original user, not the new one. This means that pinentry will fail with a <code>Permission denied</code> error, even as root. If this happens when attempting to use ssh, an error like <code>sign_and_send_pubkey: signing failed: agent refused operation</code> will be returned. The fix is to change the permissions of the device at some point before the use of pinentry (i.e. using gpg with an agent). If doing gpg as root, simply change the ownership to root right before using gpg:
+</p>
+<pre># chown root /dev/ttyN  # where N is the current tty
+</pre>
+<p>and then change it back after using gpg the first time. The equivalent is true with <code>/dev/pts/</code>.
+</p>
+<div class="archwiki-template-box archwiki-template-box-note"><strong>Note:</strong> The owner of tty <i>must</i> match with the user for which pinentry is running. Being part of the group <code>tty</code> <b>is not</b> enough.</div>
+<div class="archwiki-template-box archwiki-template-box-tip"><strong>Tip:</strong> If you run gpg with <code>script</code> it will use a new tty with the correct ownership:
+<pre># script -q -c "gpg --gen-key" /dev/null
+</pre>
+</div>
+<h3><span class=mw-headline id=Agent_complains_end_of_file>Agent complains end of file</span></h3>
+<p>If the pinentry program is <code>/usr/bin/pinentry-gnome3</code>, it needs a DBus session bus to run properly. See <a href=https://wiki.archlinux.org/title/General_troubleshooting#Session_permissions title="General troubleshooting">General troubleshooting#Session permissions</a> for details.
+<p>Alternatively, you can use a variety of different options described in <a href=#pinentry>#pinentry</a>.
+</p>
+<h3><span class=mw-headline id=KGpg_configuration_permissions>KGpg configuration permissions</span></h3>
+<p>There have been issues with <span class="plainlinks archwiki-template-pkg"><a rel=nofollow class="external text" href="https://archlinux.org/packages/?name=kgpg">kgpg</a></span> being able to access the <code>~/.gnupg/</code> options. One issue might be a result of a deprecated <i>options</i> file, see the <a rel=nofollow class="external text" href="https://bugs.kde.org/show_bug.cgi?id=290221">bug</a> report.
+</p>
+<h3><span class=mw-headline id=GNOME_on_Wayland_overrides_SSH_agent_socket>GNOME on Wayland overrides SSH agent socket</span></h3>
+<p>For Wayland sessions, <code>gnome-session</code> sets <code>SSH_AUTH_SOCK</code> to the standard gnome-keyring socket, <code>$XDG_RUNTIME_DIR/keyring/ssh</code>. This overrides any value set in <code>~/.pam_environmment</code> or systemd unit files.
+<p>See <a href=https://wiki.archlinux.org/title/GNOME/Keyring#Disable_keyring_daemon_components title=GNOME/Keyring>GNOME/Keyring#Disable keyring daemon components</a> on how to disable this behavior.
+</p>
+<h3><span class=mw-headline id=mutt>mutt</span></h3>
+<p>Mutt might not use <i>gpg-agent</i> correctly, you need to set an <a href=https://wiki.archlinux.org/title/Environment_variable class=mw-redirect title="Environment variable">environment variable</a> <code>GPG_AGENT_INFO</code> (the content does not matter) when running mutt. Be also sure to enable password caching correctly, see <a href=#Cache_passwords>#Cache passwords</a>.
+<p>See <a rel=nofollow class="external text" href="https://bbs.archlinux.org/viewtopic.php?pid=1490821#p1490821">this forum thread</a>.
+</p>
+<h3><span id=.22Lost.22_keys.2C_upgrading_to_gnupg_version_2.1></span><span class=mw-headline id='"Lost"_keys,_upgrading_to_gnupg_version_2.1'>"Lost" keys, upgrading to gnupg version 2.1</span></h3>
+<p>When <code>gpg --list-keys</code> fails to show keys that used to be there, and applications complain about missing or invalid keys, some keys may not have been migrated to the new format.
+<p>Please read <a rel=nofollow class="external text" href="https://web.archive.org/web/20160502052025/http://jo-ke.name/wp/?p=111">GnuPG invalid packet workaround</a>. Basically, it says that there is a bug with keys in the old <code>pubring.gpg</code> and <code>secring.gpg</code> files, which have now been superseded by the new <code>pubring.kbx</code> file and the <code>private-keys-v1.d/</code> subdirectory and files. Your missing keys can be recovered with the following commands:
+</p>
+<pre>$ cd
+$ cp -r .gnupg gnupgOLD
+$ gpg --export-ownertrust &gt; otrust.txt
+$ gpg --import .gnupg/pubring.gpg
+$ gpg --import-ownertrust otrust.txt
+$ gpg --list-keys
+</pre>
+<h3><span id=gpg_hanged_for_all_keyservers_.28when_trying_to_receive_keys.29></span><span class=mw-headline id=gpg_hanged_for_all_keyservers_(when_trying_to_receive_keys)>gpg hanged for all keyservers (when trying to receive keys)</span></h3>
+<p>If gpg hanged with a certain keyserver when trying to receive keys, you might need to kill dirmngr in order to get access to other keyservers which are actually working, otherwise it might keeping hanging for all of them.
+</p>
+<h3><span class=mw-headline id=Smartcard_not_detected>Smartcard not detected</span></h3>
+<p>Your user might not have the permission to access the smartcard which results in a <code>card error</code> to be thrown, even though the card is correctly set up and inserted.
+<p>One possible solution is to add a new group <code>scard</code> including the users who need access to the smartcard.
+<p>Then use <a href=https://wiki.archlinux.org/title/Udev_rules class=mw-redirect title="Udev rules">udev rules</a>, similar to the following:
+</p>
+<pre style=margin-bottom:0;border-bottom:none;padding-bottom:0.8em>/etc/udev/rules.d/71-gnupg-ccid.rules</pre>
+<pre style=margin-top:0;border-top-style:dashed;padding-top:0.8em>ACTION=="add", SUBSYSTEM=="usb", ENV{ID_VENDOR_ID}=="1050", ENV{ID_MODEL_ID}=="0116|0111", MODE="660", GROUP="scard"
+</pre>
+<p>One needs to adapt VENDOR and MODEL according to the <code>lsusb</code> output, the above example is for a YubikeyNEO.
+</p>
+<h3><span id=server_.27gpg-agent.27_is_older_than_us_.28x_.3C_y.29></span><span class=mw-headline id="server_'gpg-agent'_is_older_than_us_(x_<_y)">server 'gpg-agent' is older than us (x &lt; y)</span></h3>
+<p>This warning appears if <code>gnupg</code> is upgraded and the old gpg-agent is still running. <a href=https://wiki.archlinux.org/title/Restart class=mw-redirect title=Restart>Restart</a> the <i>user'</i>s <code>gpg-agent.socket</code> (i.e., use the <code>--user</code> flag when restarting).
+</p>
+<h3><span class=mw-headline id=IPC_connect_call_failed>IPC connect call failed</span></h3>
+<div class="noprint archwiki-template-message">
+<p><a href=https://wiki.archlinux.org/title/File:Tango-inaccurate.png class=image><img alt=Tango-inaccurate.png src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect fill-opacity="0"/></svg>' decoding=async width=48 height=48 style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-14)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a><b>The factual accuracy of this article or section is disputed.</b><a href=https://wiki.archlinux.org/title/File:Tango-inaccurate.png class=image><img alt=Tango-inaccurate.png src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect fill-opacity="0"/></svg>' decoding=async width=48 height=48 style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-14)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a></p>
+<div><b>Reason:</b> The <code>gpg-agent*.socket</code> systemd sockets provided by the <span class="plainlinks archwiki-template-pkg"><a rel=nofollow class="external text" href="https://archlinux.org/packages/?name=gnupg">gnupg</a></span> package create the sockets in <code>/run/user/$UID/gnupg/</code> which is guaranteed to be an appropriate file system. (Discuss in <a rel=nofollow class="external text" href=https://wiki.archlinux.org/title/Talk:GnuPG>Talk:GnuPG</a>)</div>
+</div>
+<p>Make sure <code>gpg-agent</code> and <code>dirmngr</code> are not running with <code>killall gpg-agent dirmngr</code> and the <code>$GNUPGHOME/crls.d/</code> folder has permission set to <code>700</code>.
+<p>If your keyring is stored on a vFat filesystem (e.g. a USB drive), <code>gpg-agent</code> will fail to create the required sockets (vFat does not support sockets), you can create redirects to a location that handles sockets, e.g. <code>/dev/shm</code>:
+</p>
+<pre># export GNUPGHOME=/custom/gpg/home
+# printf '%%Assuan%%\nsocket=/dev/shm/S.gpg-agent\n' &gt; $GNUPGHOME/S.gpg-agent
+# printf '%%Assuan%%\nsocket=/dev/shm/S.gpg-agent.browser\n' &gt; $GNUPGHOME/S.gpg-agent.browser
+# printf '%%Assuan%%\nsocket=/dev/shm/S.gpg-agent.extra\n' &gt; $GNUPGHOME/S.gpg-agent.extra
+# printf '%%Assuan%%\nsocket=/dev/shm/S.gpg-agent.ssh\n' &gt; $GNUPGHOME/S.gpg-agent.ssh
+</pre>
+<p>Test that gpg-agent starts successfully with <code>gpg-agent --daemon</code>.
+</p>
+<h3><span class=mw-headline id=Mitigating_Poisoned_PGP_Certificates>Mitigating Poisoned PGP Certificates</span></h3>
+<p>In June 2019, an unknown attacker spammed several high-profile PGP certificates with tens of thousands (or hundreds of thousands) of signatures (CVE-2019-13050) and uploaded these signatures to the SKS keyservers.
+The existence of these poisoned certificates in a keyring causes gpg to hang with the following message:
+</p>
+<pre>gpg: removing stale lockfile (created by 7055)
+</pre>
+<p>Possible mitigation involves removing the poisoned certificate as per this <a rel=nofollow class="external text" href=https://tech.michaelaltfield.net/2019/07/14/mitigating-poisoned-pgp-certificates/>blog post</a>.
+</p>
+<h3><span class=mw-headline id=Invalid_IPC_response_and_Inappropriate_ioctl_for_device>Invalid IPC response and Inappropriate ioctl for device</span></h3>
+<p>The default pinentry program is <code>/usr/bin/pinentry-gtk-2</code>. If <span class="plainlinks archwiki-template-pkg"><a rel=nofollow class="external text" href="https://archlinux.org/packages/?name=gtk2">gtk2</a></span> is unavailable, pinentry falls back to <code>/usr/bin/pinentry-curses</code> and causes signing to fail:
+</p>
+<pre>gpg: signing failed: Inappropriate ioctl for device
+gpg: [stdin]: clear-sign failed: Inappropriate ioctl for device
+</pre>
+<p>You need to set the <code>GPG_TTY</code> environment variable for the pinentry programs <code>/usr/bin/pinentry-tty</code> and <code>/usr/bin/pinentry-curses</code>.
+</p>
+<pre>$ export GPG_TTY=$(tty)
+</pre>
+<h2><span class=mw-headline id=See_also>See also</span></h2>
+<ul><li><a rel=nofollow class="external text" href=https://gnupg.org/>GNU Privacy Guard Homepage</a></li>
+<li><a rel=nofollow class="external text" href=https://futureboy.us/pgp.html>Alan Eliasen's GPG Tutorial</a></li>
+<li><a href=https://tools.ietf.org/html/rfc4880 class=extiw title=rfc:4880>RFC 4880</a> — "OpenPGP Message Format"</li>
+<li><a rel=nofollow class="external text" href=https://help.riseup.net/en/security/message-security/openpgp/gpg-best-practices>gpg.conf recommendations and best practices</a></li>
+<li><a href=https://fedoraproject.org/wiki/Creating_GPG_Keys class=extiw title="fedora:Creating GPG Keys">Fedora:Creating GPG Keys</a></li>
+<li><a href=https://wiki.debian.org/Subkeys class=extiw title=debian:Subkeys>Debian:Subkeys</a></li>
+<li><a rel=nofollow class="external text" href=https://github.com/lfit/itpol/blob/master/protecting-code-integrity.md>Protecting code integrity with PGP</a></li>
+<li><a rel=nofollow class="external text" href=https://sanctum.geek.nz/arabesque/series/gnu-linux-crypto/>A more comprehensive gpg Tutorial</a></li>
+<li><a rel=nofollow class="external text" href=https://www.reddit.com/r/GPGpractice/>/r/GPGpractice - a subreddit to practice using GnuPG.</a></ul>
+</div>
+<div class="printfooter sf-hidden">Retrieved from ""</div></div>
+ <div id=catlinks class=catlinks data-mw=interface><div id=mw-normal-catlinks class=mw-normal-catlinks><a href=https://wiki.archlinux.org/title/Special:Categories title=Special:Categories>Categories</a>: <ul><li><a href=https://wiki.archlinux.org/title/Category:Encryption title=Category:Encryption>Encryption</a><li><a href=https://wiki.archlinux.org/title/Category:Email title=Category:Email>Email</a><li><a href=https://wiki.archlinux.org/title/Category:GNU title=Category:GNU>GNU</a></ul></div><div id=mw-hidden-catlinks class="mw-hidden-catlinks mw-hidden-cats-hidden sf-hidden">Hidden categories: </div></div>
+ </div>
+</main>
+ </div> 
+</div> 
+<div class="mw-workspace-container mw-footer-container">
+ <div class=mw-content-container>
+ <footer id=footer class=mw-footer role=contentinfo>
+ <ul id=footer-info>
+ <li id=footer-info-lastmod> This page was last edited on 6 February 2022, at 06:33.</li>
+ <li id=footer-info-copyright>Content is available under <a class=external rel=nofollow href=http://www.gnu.org/copyleft/fdl.html>GNU Free Documentation License 1.3 or later</a> unless otherwise noted.</li>
+</ul>
+ <ul id=footer-places>
+ <li id=footer-places-privacy><a href=https://terms.archlinux.org/docs/privacy-policy/ class=extiw title=archlinux-service-agreements:privacy-policy>Privacy policy</a></li>
+ <li id=footer-places-about><a href=https://wiki.archlinux.org/title/ArchWiki:About title=ArchWiki:About>About ArchWiki</a></li>
+ <li id=footer-places-disclaimer><a href=https://wiki.archlinux.org/title/ArchWiki:General_disclaimer title="ArchWiki:General disclaimer">Disclaimers</a></li>
+</ul>
+ 
+</footer>
+ </div>
+</div>
+ </div> 
+</div> 
+<grammarly-desktop-integration data-grammarly-shadow-root=true><template shadowmode=open><style class=sf-hidden>div.grammarly-desktop-integration{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}div.grammarly-desktop-integration:before{content:attr(data-content)}</style><div aria-label=grammarly-integration role=group tabindex=-1 class=grammarly-desktop-integration data-content='{"mode":"full","isActive":true,"isUserDisabled":false}'></div></template></grammarly-desktop-integration><script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowmode"),delegatesFocus:Boolean(element.getAttribute("delegatesfocus"))});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script></body><!-- Cached/compressed 20220318041407 --><script>document.currentScript.remove();!function(){"use strict";(t=>{const n="singlefile-infobar",e="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8H+DhhoQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJJJREFUOI3t070NRCEMA2CnYAOyDyPwpHj/Va7hJ3FzV7zy3ET5JIwoAF6Jk4wzAJAkzxAYG9YRTgB+24wBgKmfrGAKTcEfAY4KRlRoIeBTgKOCERVaCPgU4Khge2GqKOBTgKOCERVaAEC/4PNcnyoSWHpjqkhwKxbcig0Q6AorXYF/+A6eIYD1lVbwG/jdA6/kA2THRAURVubcAAAAAElFTkSuQmCC",o="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8VC4EQ6QAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJtJREFUOI3NkrsBgCAMRLFwBPdxBArcfxXFkO8rbKWAAJfHJ9faf9vuYX/749T5NmShm3bEwbe2SxeuM4+2oxDL1cDoKtVUjRy+tH78Cv2CS+wIiQNC1AEhk4AQeUTMWUJMfUJMSEJMSEY8kIx4IONroaYAimNxsXp1PA7PxwfVL8QnowwoVC0lig07wDDVUjAdbAnjwtow/z/bDW7eI4M2KruJAAAAAElFTkSuQmCC",i="SingleFile",A="single-file-ui-element",r="\n\t.infobar {\n\t\tbackground-color: #737373;\n\t\tcolor: white;\n\t\tdisplay: flex;\n\t\tposition: fixed;\n\t\ttop: 16px;\n\t\tright: 16px;\n\t\theight: auto;\n\t\twidth: auto;\n\t\tmin-height: 24px;\n\t\tmin-width: 24px;\n\t\tbackground-position: center;\n\t\tbackground-repeat: no-repeat;\n\t\tz-index: 2147483647;\n\t\tmargin: 0 0 0 16px;\n\t\tbackground-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHADIRLMaOHwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAPUExURQAAAIqKioyNjY2OjvDw8L2y1DEAAAABdFJOUwBA5thmAAAAAWJLR0QB/wIt3gAAAGNJREFUSMdjYCAJsLi4OBCQx6/CBQwIGIDPCBcXAkYQUsACU+AwlBVQHg6Eg5pgZBGOboIJZugDFwRwoJECJCUOhJI1wZwzqmBUwagCuipgIqTABG9h7YIKaKGAURAFEF/6AQAO4HqSoDP8bgAAAABJRU5ErkJggg==);\n\t\tborder-radius: 16px;\n\t\tuser-select: none;\n\t\t-moz-user-select: none;\n\t\topacity: .7;\n\t\tcursor: pointer;\n\t\tpadding-left: 0;\n\t\tpadding-right: 0;\n\t\tpadding-top: 0;\n\t\tpadding-bottom: 0;\n\t\tborder: 2px solid #eee;\n\t\tbackground-size: 70% 70%;\n\t\ttransition: all 250ms;\n\t\tfont-size: 13px;\n\t}\n\t.infobar:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open {\n\t\topacity: 1;\n\t\tbackground-color: #f9f9f9;\n\t\tcursor: auto;\n\t\tcolor: #2d2d2d;\n\t\tpadding-top: 2px;\n\t\tpadding-bottom: 2px;\n\t\tborder: 2px solid #878787;\n\t\tbackground-image: none;\n\t\tborder-radius: 8px;\n\t\tuser-select: initial;\n\t\t-moz-user-select: initial;\n\t}\n\t.infobar-close-button {\n\t\tdisplay: none;\n\t\topacity: .7;\n\t\tpadding-top: 4px;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tcursor: pointer;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-close-button:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-content {\n\t\tdisplay: none;\n\t\tfont-family: Arial;\n\t\tfont-size: 14px;\n\t\tline-height: 22px;\n\t\tword-break: break-word;\n\t\twhite-space: pre-wrap;\n\t\tposition: relative;\n\t\ttop: 1px;\n\t\ttext-align: left;\n\t}\n\t.infobar-link {\n\t\tdisplay: none;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tline-height: 11px;\n\t\tcursor: pointer;\n\t\tuser-select: none;\n\t\toutline: 0;\n\t}\n\t.infobar-link-icon {\n\t\tpadding-top: 4px;\n\t\tpadding-left: 2px;\n\t\tcursor: pointer;\n\t\topacity: .7;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-link-icon:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open .infobar-close-button, .infobar-open .infobar-content, .infobar-open .infobar-link {\n\t\tdisplay: inline-block;\n\t}";let a=!0;const c=t.browser;async function s(){const t=document.evaluate("//comment()",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);let s=t&&t.singleNodeValue;if(s&&((p=s).nodeType==Node.COMMENT_NODE&&p.textContent.includes(i))){const t=s.textContent.split("\n"),[,,i,p,...g]=t;if(i&&p){let t;t=c&&c.runtime&&c.runtime.sendMessage?await c.runtime.sendMessage({method:"tabs.getOptions",url:i}):{displayInfobar:!0},t.displayInfobar&&await async function(t,i,c){let s=document.querySelector(n);if(!s){if(t=t.split("url: ")[1],i=i.split("saved date: ")[1],c&&c.length>1){let t=c[0].split("info: ")[1].trim();for(let n=1;n<c.length-1;n++)t+="\n"+c[n].trim();c=t.trim()}else c=i;s=d(n,document.body),s.className=A;const p=await async function(t){if(t.attachShadow)return t.attachShadow({mode:"open"});{a=!1;const n=d("iframe",t);return n.style.setProperty("background-color","transparent","important"),n.style.setProperty("position","fixed","important"),n.style.setProperty("top",0,"important"),n.style.setProperty("right",0,"important"),n.style.setProperty("width","44px","important"),n.style.setProperty("height","48px","important"),n.style.setProperty("z-index",2147483647,"important"),new Promise((t=>{n.contentDocument.body.style.setProperty("margin",0),n.onload=()=>t(n.contentDocument.body)}))}}(s),g=document.createElement("style");g.textContent=r,p.appendChild(g);const u=document.createElement("div");u.classList.add("infobar"),p.appendChild(u);const h=document.createElement("img");h.classList.add("infobar-close-button"),u.appendChild(h),h.src=o,h.onclick=t=>{0===t.button&&s.remove()};const m=document.createElement("span");u.appendChild(m),m.classList.add("infobar-content"),m.textContent=c;const b=document.createElement("a");b.classList.add("infobar-link"),u.appendChild(b),b.target="_blank",b.rel="noopener noreferrer",b.title="Open source URL: "+t,b.href=t;const f=document.createElement("img");f.classList.add("infobar-link-icon"),b.appendChild(f),f.src=e,l(u),document.addEventListener("click",(t=>{if(0===t.button){let n=t.target;for(;n&&n!=s;)n=n.parentElement;n!=s&&l(u)}}))}}(i,p,g)}}var p}function l(t){if(t.classList.remove("infobar-open"),t.onclick=e=>{if(0===e.button)return function(t){a||document.querySelector(n).childNodes[0].contentWindow.getSelection().removeAllRanges();if(t.classList.add("infobar-open"),t.onclick=null,t.onmouseout=null,!a){const e=document.querySelector(n).childNodes[0];e.style.setProperty("width","100vw","important"),e.style.setProperty("height","100vh","important"),e.style.setProperty("width",t.getBoundingClientRect().width+33+"px","important"),e.style.setProperty("height",t.getBoundingClientRect().height+21+"px","important")}}(t),!1},!a){const t=document.querySelector(n).childNodes[0];t.style.setProperty("width","44px","important"),t.style.setProperty("height","48px","important")}}function d(t,n){const e=document.createElement(t);return n.appendChild(e),Array.from(getComputedStyle(e)).forEach((t=>e.style.setProperty(t,"initial","important"))),e}t.window==t.top&&("loading"==document.readyState?document.addEventListener("DOMContentLoaded",s,!1):s())})("object"==typeof globalThis?globalThis:window)}();</script>
