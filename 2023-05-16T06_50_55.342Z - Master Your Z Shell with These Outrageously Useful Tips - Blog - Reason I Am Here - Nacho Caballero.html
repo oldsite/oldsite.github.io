@@ -1,0 +1,720 @@
+<!DOCTYPE html> <html style lang=en><!--
+ Page saved with SingleFile 
+ url: http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/ 
+ saved date: Tue May 16 2023 12:20:55 GMT+0530 (India Standard Time)
+--><meta charset=utf-8>
+<title>Master Your Z Shell with These Outrageously Useful Tips - Blog - Reason I Am Here - Nacho Caballero</title>
+<meta name=author content="Nacho Caballero">
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<style>/*!
+ * Bootstrap v2.2.2
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */footer{display:block}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}a:focus{outline:thin dotted #333;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}a:hover,a:active{outline:0}body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;color:#333333;background-color:#ffffff}a{color:#0088cc;text-decoration:none}a:hover{color:#005580;text-decoration:underline}.row-fluid{width:100%}.row-fluid:before,.row-fluid:after{display:table;content:"";line-height:0}.row-fluid:after{clear:both}.row-fluid [class*="span"]{display:block;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;float:left;margin-left:2.127659574468085%}.row-fluid [class*="span"]:first-child{margin-left:0}.row-fluid .span12{width:100%}p{margin:0 0 10px}strong{font-weight:bold}em{font-style:italic}h1,h2,h3{margin:10px 0;font-family:inherit;font-weight:bold;color:inherit;text-rendering:optimizelegibility}h2,h3{line-height:40px}h2{font-size:31.5px}h3{font-size:24.5px}.page-header{padding-bottom:9px;margin:20px 0 30px}ul,ol{padding:0;margin:0 0 10px 25px}li{line-height:20px}ul.inline{margin-left:0;list-style:none}ul.inline>li{display:inline-block;padding-left:5px;padding-right:5px}hr{border-bottom:1px solid #ffffff}code,pre{font-family:Monaco,Menlo,Consolas,"Courier New",monospace;color:#333333;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}code{color:#d14;background-color:#f7f7f9;border:1px solid #e1e1e8}pre{display:block;word-break:break-all;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}pre code{background-color:transparent;border:0}[class^="icon-"]{display:inline-block;width:14px;height:14px;line-height:14px;vertical-align:text-top;background-image:/* original URL: http://reasoniamhere.com/assets/themes/twitter/bootstrap/img/glyphicons-halflings.png */url(data:image/png;base64,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);background-repeat:no-repeat;margin-top:1px}.icon-tags{background-position:-25px -48px}.nav{margin-left:0;margin-bottom:20px;list-style:none}.nav>li>a{display:block}.nav>li>a:hover{text-decoration:none;background-color:#eeeeee}.navbar{overflow:visible;margin-bottom:20px}.navbar-inner{min-height:40px;padding-left:20px;padding-right:20px;background-color:#fafafa;background-image:-moz-linear-gradient(top,#ffffff,#f2f2f2);background-image:-webkit-gradient(linear,0 0,0 100%,from(#ffffff),to(#f2f2f2));background-image:-webkit-linear-gradient(top,#ffffff,#f2f2f2);background-image:-o-linear-gradient(top,#ffffff,#f2f2f2);background-image:linear-gradient(to bottom,#ffffff,#f2f2f2);background-repeat:repeat-x;border:1px solid #d4d4d4;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:0 1px 4px rgba(0,0,0,0.065);-moz-box-shadow:0 1px 4px rgba(0,0,0,0.065);box-shadow:0 1px 4px rgba(0,0,0,0.065)}.navbar-inner:before,.navbar-inner:after{display:table;content:"";line-height:0}.navbar-inner:after{clear:both}.navbar .brand{float:left;display:block;padding:10px 20px 10px;margin-left:-20px;font-size:20px;color:#777777;text-shadow:0 1px 0#ffffff}.navbar .brand:hover{text-decoration:none}.navbar .nav{position:relative;left:0;display:block;margin:0 10px 0 0}.navbar .nav>li{float:left}.navbar .nav>li>a{float:none;padding:10px 15px 10px;color:#777777;text-decoration:none;text-shadow:0 1px 0#ffffff}.navbar .nav>li>a:focus,.navbar .nav>li>a:hover{background-color:transparent;color:#333333;text-decoration:none}@-webkit-keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}@-moz-keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}@-ms-keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}@-o-keyframes progress-bar-stripes{from{background-position:0 0}to{background-position:40px 0}}@keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}@media (max-width:767px){body{padding-left:20px;padding-right:20px}.row-fluid{width:100%}.row-fluid [class*="span"]{float:none;display:block;margin-left:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box}.row-fluid .span12{width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}}@media (min-width:768px) and (max-width:979px){.row-fluid{width:100%}.row-fluid:before,.row-fluid:after{display:table;content:"";line-height:0}.row-fluid:after{clear:both}.row-fluid [class*="span"]{display:block;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;float:left;margin-left:2.7624309392265194%}.row-fluid [class*="span"]:first-child{margin-left:0}.row-fluid .span12{width:100%}}@media (min-width:1200px){.row-fluid{width:100%}.row-fluid:before,.row-fluid:after{display:table;content:"";line-height:0}.row-fluid:after{clear:both}.row-fluid [class*="span"]{display:block;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;float:left;margin-left:2.564102564102564%}.row-fluid [class*="span"]:first-child{margin-left:0}.row-fluid .span12{width:100%}}@media (max-width:979px){body{padding-top:0}.navbar .brand{padding-left:10px;padding-right:10px;margin:0 0 0-5px}}.container-narrow{margin:0 auto;max-width:900px}.navbar .nav{float:right}.date{font-family:"ff-tisa-web-pro",Georgia,Cambria,"Times New Roman",Times,serif;margin-bottom:20px;font-weight:bold;font-size:22px;line-height:1.45}.tag_box{margin:0;overflow:hidden}.tag_box li i{opacity:0.9}.tag_box.inline li{float:left}.tag_box a{padding:3px 6px;margin:2px;background:#eee;color:#555;border-radius:3px;text-decoration:none;border:1px dashed #cccccc}.tag_box a span{vertical-align:super;font-size:0.8em}.tag_box a:hover{background-color:#e5e5e5}pre .comment{color:#999999}pre .variable{color:#f2777a}pre .string{color:#99cc99}pre .keyword{color:#cc99cc}pre code{display:block;background:#2d2d2d;color:#cccccc}h1{margin-bottom:0px;margin-top:0px;font-size:52px;line-height:1;letter-spacing:-1px;font-family:"freight-sans-pro","Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;font-weight:700;border-bottom:0}a:hover{text-decoration:none}.page-header{border-bottom:0}.content{padding-top:20px}.content p,.content ul{margin-bottom:30px;font-family:Georgia,Cambria,"Times New Roman",Times,serif;font-weight:400;font-size:22px;line-height:1.45}.content li,.content ol{font-family:Georgia,Cambria,"Times New Roman",Times,serif;font-weight:400;font-size:22px;line-height:1.45}code,pre{padding:0;margin:0 0 0;font-size:18px;line-height:25px;overflow:auto;word-wrap:normal;white-space:pre}p code,ul code{white-space:pre-line;padding:0 5px}pre{margin:30px 0;background-color:transparent;border:0}pre code{white-space:pre;padding:1em}hr{margin:20px 0;border:0;border-top:3px solid #eeeeee}.navbar .brand{font-weight:700}.nav{font-size:18px}.copyright{float:right}footer{padding-top:50px}</style>
+<link href=http://reasoniamhere.com/atom.xml type=application/atom+xml rel=alternate title="Sitewide ATOM Feed">
+<link href=http://reasoniamhere.com/rss.xml type=application/rss+xml rel=alternate title="Sitewide RSS Feed">
+<link type=image/x-icon rel="shortcut icon" href="data:image/vnd.microsoft.icon;base64,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G/8SGRv/Ehkb/xIZG/8SGRv/Ehsd/xMdH/8VHyL/FR8i/xUfIv8VISP/FR8i/8rn7//K5+//yejx/8rq8v/K6vL/yury/8rq8v/K6vL/yury/8vs8/9icnn/FR8i/xUbHv8SGx3/Ehkb/xIZG/8SGRv/ERcZ/xEXGf8QFxn/ERcZ/xIZG/8SGRv/Ehkb/xIZG/8SGx3/Ex0f/xUfIv8VHyL/FSEj/xUhI/8VISP/yufv/8rn7//K6vL/yury/8rq8v/K6vL/yury/8vs8//L7PP/y+zz/1dnbf8VHR//Ehsd/xIbHf8SGx3/Ehsd/xIbHf8SGRv/Ehkb/xIZG/8RFxn/Ehkb/xIZG/8SGRv/Ehkb/xIbHf8THR//FR8i/xUhI/8VISP/FSEj/xUhI//O6O7/zevx/83r8f/N6/H/zevx/83r8f/P7PP/y+zz/8/s8/+pw8v/Ji4x/xUbHv8SGx3/Ehsd/xIbHf8SGx3/Ehsd/xMdH/8SGx3/Ehsd/xIZG/8SGRv/Ehkb/xIZG/8SGx3/Ehsd/xMdH/8VHyL/FSEj/xUhI/8VISP/FSEj/8/p7//P6e//z+nv/83r8f/N6/H/z+zz/8/s8//P7PP/z+zz/2Jyef8VHyL/FBwh/xUbHv8SGx3/Ehsd/xIbHf8THR//Exsh/xMdH/8THR//Ex0f/xIbHf8SGx3/Ex0f/xMdH/8THR//Ex4h/xUhI/8VISP/FSEj/xUhI/8VISP/z+nv/9Hq7//N6/H/0Ovx/9Lt8v/S7fL/0u3y/9Hu9P/R7vT/f4+U/xofIv8SGx3/Ehsd/xUbHv8THiH/Ex0f/xMdH/8THiH/Ex4h/xMeIf8THR//Ex0f/xMdH/8THR//Ex0f/xMdH/8THiH/FSEj/xUhI/8WIiX/FiIl/xkiJf/C3uX/0Ovx/9Dr8f/S7fL/0u3y/9Lt8v/S7fL/0e70/8Lb4f9GVFr/Ehsd/xIZG/8SGRv/FR0f/xUfIv8THR//Ex4h/xUfIv8VHyL/Ex4h/xMeIf8THiH/Ex0f/xMeIf8THR//Ex0f/xMeIf8VHyL/FSEj/xYiJf8WJCb/FiQm/7zZ4P/F4uj/0u3y/9Lt8v/S7fL/0u3y/9Xu8v/V7vL/qr/F/x4mKf8UHCH/FR0f/xUdH/8VHyL/FR8i/xUfIv8VHyL/FR8i/xUfIv8THiH/Ex4h/xMeIf8THiH/Ex4h/xMdH/8THiH/Ex4h/xUhI/8WIiX/FiQm/xYkJv8WIiX/0erv/7zZ4P/L5uz/0u3y/9Lt8v/V7vL/1e7y/9Xu8v+tw8j/HiYp/xUbHv8VHR//FR0f/xUfIv8VICT/FR8i/xUgJP8VICT/FR8i/xUfIv8THiH/Ex4h/xMdH/8THR//Ex0f/xQhIv8VISP/FiIl/xYkJv8WJCb/FiQm/xYiJf/U7PD/0erv/73Z3//O6O7/1Ozw/9Xu8v/C2+H/kKSs/0lXXv8VHR//Ehsd/xQcIf8VHyL/GSIl/xYiJf8VISP/FSEj/xUgJP8VHyL/FR8i/xMeIf8THiH/Ex4h/xMeIf8UISL/FiIl/xYiJf8WJCb/FyUp/xYiJf8WIiX/FSEj/9fq7v/X6u7/0ebq/73Z3//R6u//0ebq/0tYYP8UHCH/Ehsd/xIbHf8SGx3/Ehsd/xUgJP8ZIiX/FiIl/xUgJP8VICT/Ex4h/xMeIf8THiH/Ex4h/xMeIf8THiH/FCEi/xQhIv8VISP/FiIl/xYkJv8WJCb/FSEj/xUhI/8VISP/1+ru/9fq7v/a6u3/0ebq/8PZ3f/R5ur/TFVa/xQcIf8TGyH/FRse/xIbHf8VGx7/FSAk/xkiJf8VISP/FSAk/xUfIv8THiH/Ex4h/xMeIf8THiH/Ex4h/xMeIf8THiH/FCEi/xQhIv8WIiX/FiQm/xYiJf8VHyL/Ex4h/xUdH//a5+r/2ejs/9no7P/a6u3/zuLl/8PZ3f+4x8r/Ji4x/xUbHv8SGx3/FR0f/xUfIv8ZISP/GSIl/xYiJf8VISP/FSAk/xUgJP8THiH/Ex4h/xMeIf8THiH/Ex0f/xMeIf8THiH/Ex4h/xQhIv8UISL/FR8i/xUhI/8VHyL/FR8i/9rn6v/a5+r/2ejs/9no7P/a6u3/yd7i/8ne4v91gIT/FBwh/xQcIf8UHCH/FR8i/xUgJP8ZIiX/GSIl/xYiJf8WIiX/FR8i/xMeIf8THiH/Ex0f/xMdH/8THR//Ex4h/xMdH/8THR//Ex0f/xMdH/8THR//FR8i/xUgJP8VHyL/2ejs/9rq7f/a6u3/2urt/9rt8P/a7fD/yd7i/7PFyf8uNjr/FBwh/xQcIf8VHyL/FR8i/xkhI/8ZISP/GSEj/xUfIv8VHyL/Ex4h/xMdH/8THR//Exsh/xMdH/8SGx3/Ehsd/xIbHf8THR//Ex0f/xIbHf8THiH/FR8i/xUfIv/Z6Oz/2ufq/9no7P/a6u3/2urt/9rq7f/a6u3/xNjc/4qXm/8dJCj/FBwh/xUdH/8VHyL/FR8i/xUfIv8VHyL/FR8i/xUfIv8THiH/Ex4h/xMeIf8TGyH/Ehsd/xIbHf8SGRv/Ehsd/xMdH/8THR//Ex0f/xMdH/8VISP/FR8i/9rn6v/a5+r/2ufq/9rn6v/a5+r/2ufq/9no7P/a6u3/v9Xa/1NgZf8VHyL/FR8i/xIbHf8VGx7/Ehsd/xUfIv8VHyL/FSEj/xUgJP8THiH/Ex4h/xMbIf8SGx3/Ehkb/xIZG/8SGRv/Ehkb/xMdH/8THR//Ex0f/xUgJP8THiH/2ufq/9rn6v/Z6Oz/2urt/9rq7f/a6u3/2urt/9rq7f+zxcn/Lzk9/xYiJf8THR//Ehkb/xIbHf8SGx3/FR8i/xUhI/8VISP/FSEj/xUgJP8THiH/Ex4h/xIbHf8SGRv/ERcZ/xEWF/8RFxn/Ehkb/xMdH/8SGx3/Ex4h/xQcIf/a5+r/2ufq/9rn6v/a5+r/2ufq/9rn6v/a5+r/2ufq/8DO0f8vOT3/FR0f/xIZG/8SGx3/Ex0f/xMdH/8THiH/FR8i/xUfIv8VHyL/FCEi/xQhIv8THiH/Ehsd/xAVFv8QFRb/EBUW/xAVFv8RFhf/Ehkb/xIZG/8THR//Exsh/9vl5//a5+r/2ufq/9vl5//b5ef/2+Xn/9vl5//b5ef/xtDR/zY8QP8dISP/Ehkb/xEXGf8SGRv/Ehkb/xUdH/8VHyL/FR8i/xUhI/8VISP/EyAk/xMeIf8SGRv/EBUW/xAVFv8QFRb/EBUW/xEWF/8RFhf/Ehkb/xIbHf8VGx7/2+Xn/9vl5//a5+r/2+Xn/9vl5//b5ef/2uTl/9rk5f/U3d3/UFVY/x4mKf8ZISP/FR0f/xUbHv8VHR//FR8i/xUfIv8VHyL/FSEj/xUhI/8TICT/Ex4h/xIZG/8QFRb/EBUW/xAVFv8QFRb/EBUW/xAVFv8QFRb/ERYX/xEWF//b5ef/2+Xn/9rk5f/a5OX/2uLi/9ri4v/a4uL/2uLi/9ri4v9+g4T/Iicq/xkhI/8VHyL/FR8i/xUdH/8VHR//FR0f/xUdH/8THiH/FR8i/xMeIf8THiH/Ehsd/xAZG/8QFRb/EBUW/xAVFv8QFRb/EBUW/xAVFv8RFhf/ERYX/9rk5f/a4uL/2uLi/9ri4v/b4d//2+Hf/9vh3//b4d//3OHf/6uvr/8oKy7/Gh8i/xUfIv8VHR//FRse/xIbHf8VGx7/Ehsd/xUbHv8VGx7/Ex0f/xMdH/8SGx3/EBkb/xAXGf8QFRb/EBUW/w8UFP8PFBT/DxQU/xAVFv8RFhf/2uTl/9ri4v/a4uL/2+Hf/9vh3//c4d//3OHf/9zh3//b393/yM3L/zQ4O/8dISP/Gh8i/xUdH/8VGx7/Ehkb/xIZG/8SGRv/Ehkb/xEXGf8RFhf/ERcZ/xEXGf8RFxn/EBUW/xAVFv8QFRb/EBUW/w8UFP8PFBT/DxQU/w8UFP/a5OX/2uLi/9ri4v/b4d//3OHf/9zf3f/b3tv/297b/9ve2/+0v8X/QkxT/x0hI/8aHyL/FR0f/xUbHv8SGRv/Ehkb/xEXGf8RFxn/ERYX/xEWF/8PFBT/DxQU/xEWF/8QFRb/EBUW/xAVFv8QFRb/EBUW/xAVFv8PFBT/DxQU/9zk4//c5OP/3OPj/9zf3f/b3tv/297b/9ve2//b3tv/0tbV/2R8kP9xjqD/Iykt/xUdH/8VGx7/FRse/xIZG/8RFxn/ERcZ/xEWF/8RFhf/ERYX/w8UFP8OEhP/DhIT/w4SE/8OEhP/DxQU/w8UFP8PFBT/DxQU/w8UFP8PFBT/3OPj/9zh3//c393/297b/9ve2//b393/3OTj/9vh3//O0tD/TGB0/12Jqf9pd37/FRse/xIZG/8SGRv/ERcZ/xEXGf8RFxn/ERYX/xEWF/8PFBT/DhIT/w4SE/8OEhP/DhIT/w4SE/8OEhP/DhIT/w4SE/8OEhP/DhIT/w8UFP/b393/2tzZ/9nb1//Z29f/2tzZ/9nb1//b3tv/2dvX/9bW0f9qcXT/HS05/y09R/8VHR//ERYX/xEWF/8RFhf/ERYX/xEXGf8RFhf/ERYX/w8UFP8OEhP/DhIT/w4SE/8OEhP/DhIT/w4SE/8OEhP/DhIT/w4SE/8OEhP/DhIT/9bW0f/W1tH/1tbR/9bW0f/W1tH/1tbR/9bW0f/W1tH/1tbR/6GprP8fKCv/ERcZ/w8UFP8OEhP/DhIT/w4SE/8PFBT/ERYX/xEWF/8RFhf/DxQU/w4SE/8OEhP/DhIT/w4SE/8OEhP/DhIT/w4SE/8OEhP/DhIT/w4SE/8PFBT/w764/8O9uP/Dvbj/w724/8O9uP/Dvbj/w724/8O9uP/Dvbj/q62r/0VNVP8hIiP/GxoZ/xkYF/8ZGBf/GRgX/xkYF/8bGhn/GxoZ/xsaGf8bGhn/GRgX/xkYF/8ZGBf/GRgX/xkYF/8bGhn/GxoZ/xkYF/8bGhn/GxoZ/xsaGf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==" data-sf-original-href=http://reasoniamhere.com/favicon.ico><style>.sf-hidden{display:none!important}</style><link rel=canonical href=http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head>
+ <body>
+ <div class=navbar>
+ <div class=navbar-inner>
+ <div class=container-narrow>
+ <a class=brand href=http://reasoniamhere.com/>Reason I am here</a>
+ <ul class=nav>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <li><a href=http://reasoniamhere.com/about.html>Nacho Caballero</a></li>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <li><a href=http://reasoniamhere.com/archive.html>Article Index</a></li>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <li><a href=http://reasoniamhere.com/tags.html>Tags</a></li>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </ul>
+ </div>
+ </div>
+ </div>
+ <div class=container-narrow>
+ <div class=content>
+ 
+<div class=page-header>
+ <h1>Master Your Z Shell with These Outrageously Useful Tips </h1>
+</div>
+<div class="row-fluid post-full">
+ <div class=span12>
+ <span class=date>11 January 2014</span>
+ <div class=content>
+ <p>If you had previously installed Zsh but never got around to exploring all of its magic features, this post is for you.</p>
+<p>If you never thought of using a different shell than the one that came by default when you got your computer, I recommend you go out and check the Z shell. Here are some <a href=http://blog.coolaj86.com/articles/zsh-is-to-bash-as-vim-is-to-vi.html>Linux</a> <a href=http://linuxg.net/how-to-install-zsh-shell-how-to-set-it-as-a-default-login-shell/>guides</a> that explain how to install it and set it as your default shell. You probably have Zsh installed you are on a Mac, but there’s nothing like the warm fuzzy feeling of running the latest version (here’s <a href=http://zanshin.net/2013/09/03/how-to-use-homebrew-zsh-instead-of-max-os-x-default/>a way to upgrade</a> using Homebrew).</p>
+<p>While you’re at it, you should also get <strong>oh-my-zsh</strong>, a framework that makes Zsh easier to configure. It’s pretty easy to install, just run this:</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash>curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh <span class=p>|</span> sh
+
+<span class=nb><span class=keyword>echo</span></span> <span class=nv><span class=variable>$0</span></span>
+<span class=c><span class=comment># if you don't see /bin/zsh you might need</span></span>
+<span class=c><span class=comment># to open up a new window, or manually run: zsh</span></span>
+</code></pre></div>
+<p><hr><p></p>
+<p>The Zsh manual is a daunting beast. Just the <a href=http://zsh.sourceforge.net/Doc/Release/Expansion.html>chapter on expansions</a> has 32 subsections. Forget about memorizing this madness in one sitting. Instead, we’ll focus on understanding a few useful concepts, and referencing the manual for additional help.</p>
+<p>The three main sections of this post are <strong>file picking</strong>, <strong>variable transformations</strong>, and <strong>magic tabbing</strong>. If you’re pressed for time, read the beginning of each one, and come back later to soak up the details (make sure you stick around for the bonus tips at the end).</p>
+<h2>You only learn by doing</h2>
+<p>Reading this post will only take you 10% of the way into Zsh paradise; to really grok what it’s all about, you need to run the commands yourself. I’m giving you everything you need to create the file structure that we’ll be using for the entire post. Simply copy and paste this into your Zsh window:</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># run me to get the party started</span></span>
+
+<span class=c><span class=comment># create the folder structure</span></span>
+mkdir -p zsh_demo/<span class=o>{</span>data,calculations<span class=o>}</span>/africa/<span class=o>{</span>kenya,malawi<span class=o>}</span>/ zsh_demo/<span class=o>{</span>data,calculations<span class=o>}</span>/europe/<span class=o>{</span>malta,poland<span class=o>}</span>/ zsh_demo/<span class=o>{</span>data,calculations<span class=o>}</span>/asia/<span class=o>{</span>nepal,laos<span class=o>}</span>/
+
+<span class=c><span class=comment># create dummy files inside the data folder</span></span>
+<span class=k><span class=keyword>for</span></span> country_folder <span class=keyword>in</span> zsh_demo/data/*/*<span class=p>;</span> <span class=k><span class=keyword>do</span></span>
+    dd <span class=k><span class=keyword>if</span></span><span class=o>=</span>/dev/zero <span class=nv>of</span><span class=o>=</span><span class=s2><span class=string>"<span class=variable>${country_folder}</span>/population.txt"</span></span> <span class=nv>bs</span><span class=o>=</span><span class=m>1024</span> <span class=nv>count</span><span class=o>=</span>1
+    dd <span class=k><span class=keyword>if</span></span><span class=o>=</span>/dev/zero <span class=nv>of</span><span class=o>=</span><span class=s2><span class=string>"<span class=variable>${country_folder}</span>/income.txt"</span></span> <span class=nv>bs</span><span class=o>=</span><span class=m>2048</span> <span class=nv>count</span><span class=o>=</span>1
+    dd <span class=k><span class=keyword>if</span></span><span class=o>=</span>/dev/zero <span class=nv>of</span><span class=o>=</span><span class=s2><span class=string>"<span class=variable>${country_folder}</span>/literacy.txt"</span></span> <span class=nv>bs</span><span class=o>=</span><span class=m>4096</span> <span class=nv>count</span><span class=o>=</span>1
+    <span class=c><span class=comment># we say these are dummy files because they don't have any content,</span></span>
+    <span class=c><span class=comment># but we are making them occupy disk space</span></span>
+<span class=k><span class=keyword>done</span></span>
+
+<span class=c><span class=comment># create dummy files inside the calculations folder</span></span>
+<span class=k><span class=keyword>for</span></span> country_folder <span class=keyword>in</span> zsh_demo/calculations/*/*<span class=p>;</span> <span class=k><span class=keyword>do</span></span>
+    touch <span class=s2><span class=string>"<span class=variable>${country_folder}</span>/population_by_province.txt"</span></span>    <span class=c><span class=comment># this file is empty</span></span>
+    dd <span class=k><span class=keyword>if</span></span><span class=o>=</span>/dev/zero <span class=nv>of</span><span class=o>=</span><span class=s2><span class=string>"<span class=variable>${country_folder}</span>/median_income.txt"</span></span> <span class=nv>bs</span><span class=o>=</span><span class=m>2048</span> <span class=nv>count</span><span class=o>=</span>1
+    dd <span class=k><span class=keyword>if</span></span><span class=o>=</span>/dev/zero <span class=nv>of</span><span class=o>=</span><span class=s2><span class=string>"<span class=variable>${country_folder}</span>/literacy_index.txt"</span></span> <span class=nv>bs</span><span class=o>=</span><span class=m>4096</span> <span class=nv>count</span><span class=o>=</span>1
+<span class=k><span class=keyword>done</span></span>
+
+<span class=c><span class=comment># because all the files are nested within the zsh_demo folder you will</span></span>
+<span class=c><span class=comment># be able to easily delete them by running:</span></span>
+<span class=c><span class=comment># rm -r zsh_demo</span></span>
+</code></pre></div>
+<p>Your file structure should look like this <code>zsh_demo/{data,calculations}/{continent}{/country}/{file}.txt</code>:</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash>zsh_demo
+├── data
+│&nbsp;&nbsp; ├── africa
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── kenya
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── literacy.txt
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── income.txt
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── population.txt
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── ...
+│&nbsp;&nbsp; ├── asia
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ...
+│&nbsp;&nbsp; └── europe
+│&nbsp;&nbsp;     ├── ...
+└── data
+    ├── africa
+    │&nbsp;&nbsp; ├── kenya
+    │&nbsp;&nbsp; │&nbsp;&nbsp; ├── literacy_index.txt
+    │&nbsp;&nbsp; │&nbsp;&nbsp; ├── median_income.txt
+    │&nbsp;&nbsp; │&nbsp;&nbsp; └── population_by_province.txt
+    │&nbsp;&nbsp; └── ...
+    ├── ...
+</code></pre></div>
+<p>Although you might not initially care about continents and countries, try to relate the examples we’ll be looking at with the type of file structure you usually work with.</p>
+<h2>1. File picking</h2>
+<p>Warning for purists: some of the features I talk about are not exclusive to Zsh, but I have explain them anyway before we can move on to sexier commands.</p>
+<p>First off, <strong>globbing</strong>! A glob is a short expression that lets you select a bunch of files. 99% of the time, there’s an asterisk involved.</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># run me please</span></span>
+
+ls zsh_demo/**/*.txt <span class=c><span class=comment># &lt;= this is a glob</span></span>
+</code></pre></div>
+<p>Globs get replaced by the names of the files that match the glob expression. For example, the glob above lists every text file located anywhere in the <code>zsh_demo</code> folder. Let’s break it down to see what each part is doing:</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># list every file directly below the zsh_demo folder</span></span>
+ls zsh_demo
+
+<span class=c><span class=comment># list every file in the folders directly below the zsh_demo folder</span></span>
+ls zsh_demo/*
+
+<span class=c><span class=comment># list every file in every folder two levels below the zsh_demo folder</span></span>
+ls zsh_demo/*/*
+
+<span class=c><span class=comment># list every file anywhere below the zsh_demo folder</span></span>
+ls zsh_demo/**/*
+
+<span class=c><span class=comment># list every file that ends in .txt in every folder at any level below the zsh_demo folder</span></span>
+ls zsh_demo/**/*.txt
+</code></pre></div>
+<p>We already used a glob when we specified the location of each file:</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=k><span class=keyword>for</span></span> country_folder <span class=keyword>in</span> zsh_demo/data/*/*<span class=p>;</span> <span class=k><span class=keyword>do</span></span>
+    <span class=c><span class=comment># create data files for each country</span></span>
+<span class=k><span class=keyword>done</span></span>
+</code></pre></div>
+<p>This loop runs six times. See for yourself:</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash>print -l zsh_demo/data/*/*
+<span class=c><span class=comment># zsh_demo/africa/kenya</span></span>
+<span class=c><span class=comment># zsh_demo/africa/malawi</span></span>
+<span class=c><span class=comment># zsh_demo/asia/laos</span></span>
+<span class=c><span class=comment># zsh_demo/asia/nepal</span></span>
+<span class=c><span class=comment># zsh_demo/europe/malta</span></span>
+<span class=c><span class=comment># zsh_demo/europe/poland</span></span>
+
+<span class=c><span class=comment># you could use echo instead of print -l, but the folders would be</span></span>
+<span class=c><span class=comment># separated by spaces instead of newlines</span></span>
+</code></pre></div>
+<h3>Glob operators</h3>
+<p>So, what else can you stick inside a glob besides asterisks? Glance at section <a href=http://zsh.sourceforge.net/Doc/Release/Expansion.html#Filename-Generation>14.8.1 of the manual</a> if you want to know all the options. Here are the ones that I find most useful:</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># list text files that end in a number from 1 to 10</span></span>
+ls -l zsh_demo/**/*&lt;1-10&gt;.txt
+
+<span class=c><span class=comment># list text files that start with the letter a</span></span>
+ls -l zsh_demo/**/<span class=o>[</span>a<span class=o>]</span>*.txt
+
+<span class=c><span class=comment># list text files that start with either ab or bc</span></span>
+ls -l zsh_demo/**/<span class=o>(</span>ab<span class=p>|</span>bc<span class=o>)</span>*.txt
+
+<span class=c><span class=comment># list text files that don't start with a lower or uppercase c</span></span>
+ls -l zsh_demo/**/<span class=o>[</span>^cC<span class=o>]</span>*.txt
+</code></pre></div>
+<h3>Glob qualifiers</h3>
+<p>Now that we got the basic stuff out of the way, let’s dive a little deeper. We previously mentioned this glob: <code>zsh_demo/**/*</code>, which lists every file anywhere below the <code>zsh_demo</code> folder. But, what if we only want to list folders and not regular files, or vice versa? What if we only want to list files bigger than 3 KB? Or maybe, just the last modified file? You can do all that in Zsh using <strong>glob qualifiers</strong>:</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># show only directories</span></span>
+print -l zsh_demo/**/*<span class=o>(</span>/<span class=o>)</span>
+
+<span class=c><span class=comment># show only regular files</span></span>
+print -l zsh_demo/**/*<span class=o>(</span>.<span class=o>)</span>
+
+<span class=c><span class=comment># show empty files</span></span>
+ls -l zsh_demo/**/*<span class=o>(</span>L0<span class=o>)</span>
+
+<span class=c><span class=comment># show files greater than 3 KB</span></span>
+ls -l zsh_demo/**/*<span class=o>(</span>Lk+3<span class=o>)</span>
+
+<span class=c><span class=comment># show files modified in the last hour</span></span>
+print -l zsh_demo/**/*<span class=o>(</span>mh-1<span class=o>)</span>
+
+<span class=c><span class=comment># sort files from most to least recently modified and show the last 3</span></span>
+ls -l zsh_demo/**/*<span class=o>(</span>om<span class=o>[</span>1,3<span class=o>])</span>
+</code></pre></div>
+<p>Glob qualifiers are surrounded in parentheses <code>()</code>, and appear at the end of a glob to make it more stringent. Globs filter files by their name, and glob qualifiers filter by any other attribute (file type, size, modification date). They can be a bit confusing if you don’t know the syntax. Consider this glob qualifier:</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash>ls -l zsh_demo/**/*<span class=o>(</span>.Lm-2mh-1om<span class=o>[</span>1,3<span class=o>])</span>
+<span class=c><span class=comment># you won't typically write at this level of obfuscation</span></span>
+
+ls -l zsh_demo/**/*<span class=o>(</span>. Lm-2 mh-1 om <span class=o>[</span>1,3<span class=o>])</span>
+<span class=c><span class=comment># this is more parseable, but unfortunately Zsh doesn't allow spaces</span></span>
+<span class=c><span class=comment># between qualifiers, so you'll get an error</span></span>
+</code></pre></div>
+<p>You need to be familiar with the individual options to make sense of this madness. Five different things are going on at the same time:</p>
+<ol>
+<li>The <code>.</code> tells the glob to only show <strong>regular files</strong> (no directories, symbolic links, or other types of files).</li>
+<li>The <code>Lm-2</code> tells the glob to show files smaller than 2 MB.
+<ul>
+<li>Use <code>-</code> for smaller, and <code>+</code> for greater; don’t use anything if you want to specify the exact size (<code>Lm2</code>).</li>
+<li>Use <code>m</code> for megabytes, <code>k</code> for kilobytes, or nothing for just bytes (notice that these letters must appear <strong>before</strong> the sign).</li>
+</ul></li>
+<li>The <code>mh-1</code> tells the glob to show files modified in the last hour
+<ul>
+<li>Use <code>-</code> if you want files modified within the last X units of time, and <code>+</code> for files modified more than X units of time ago.</li>
+<li>Use <code>M</code> for Months, <code>w</code> for weeks, <code>h</code> for hours, <code>m</code> for minutes, and <code>s</code> for seconds (notice that these leters must appear <strong>before</strong> the sign).</li>
+</ul></li>
+<li>The <code>om</code> tells the glob to sort the remaining files by their modification date.
+<ul>
+<li>A lowercase <code>o</code> sorts by most recent first, to use the reverse order, make it uppercase <code>O</code>.</li>
+<li>Use <code>m</code> to sort by modification date, and <code>L</code> to sort by size (<code>oL</code>).</li>
+</ul></li>
+<li>The <code>[1,3]</code> tells the glob to show the first 3 files (since we just sorted the files, these will be the most recently modified ones).
+<ul>
+<li>You can also show a single file (for example, the second one <code>[2]</code>)</li>
+</ul></li>
+</ol>
+<p>Syntax is a trade-off between terseness and obscurity. To people that are familiar with the Zsh jargon, the ability to combine five different filters by only typing a few characters is an awesome feature; to everybody else, it’s incomprehensible mumbo-jumbo. Fortunately, useful shortcuts get used more often, and they become easier to remember.</p>
+<p>Head over to <a href=http://zsh.sourceforge.net/Doc/Release/Expansion.html#Filename-Generation>section 14.8.7 of the manual</a> if you’d like to be showered in details.</p>
+<p><strong>Pro Tip</strong></p>
+<p>Here’s a cool tip for all you advanced devils (feel free to skip to section 2 if you’ve had enough file pickin’ for a day). How can we select folders that don’t contain a given file? In the manual you’ll find information about a qualifier called <code>estring</code>, which runs the code specified by the string, and only keeps the file names that return <em>true</em>. For example:</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># show every continent that doesn't contain a country named malta</span></span>
+print -l zsh_demo/*/*<span class=o>(</span>e:<span class=s1><span class=string>'[[ ! -e $REPLY/malta ]]'</span></span>:<span class=o>)</span>
+<span class=c><span class=comment># zsh_demo/calculations/africa</span></span>
+<span class=c><span class=comment># zsh_demo/calculations/asia</span></span>
+<span class=c><span class=comment># zsh_demo/data/africa</span></span>
+<span class=c><span class=comment># zsh_demo/data/asia</span></span>
+</code></pre></div>
+<p>Let’s parse this magic:</p>
+<ul>
+<li>After the <code>e</code>, the <code>string</code> has to be delimited by a convenient character (in this case, a colon <code>:</code>), and the code must be surrounded by single quotes <code>'</code>, so the actual command is just <code>[[ ! -e $REPLY/malta ]]</code>.</li>
+<li>The <code>$REPLY</code> variable contains every file name of the ones specified by the glob <code>zsh_demo/*/*</code> in turn, but only a single file at a time.</li>
+<li><code>[[ -e file ]]</code> is a <a href=http://zsh.sourceforge.net/Doc/Release/Conditional-Expressions.html#Conditional-Expressions>conditional expression</a> that returns <em>true</em> if the file exists. We want it to return <em>true</em> when the file called <code>malta</code> <em>doesn’t</em> exist, so we reverse it with <code>!</code>.</li>
+<li>When the code is executed, the <code>$REPLY</code> variable takes the value of the next file and the code is executed again.</li>
+</ul>
+<h2>2. Variable transformations</h2>
+<h3>Modifiers</h3>
+<p>To complicate things even further (or to make them more awesome, depending on your perspective), you can stick one more thing inside the parentheses at the end of your globs: <strong>modifiers</strong>.</p>
+<p>Each modifiers is preceded by a colon <code>:</code>, which makes them easily distinguishable from qualifiers.</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># A plain old glob</span></span>
+print -l zsh_demo/data/europe/poland/*.txt
+
+<span class=c><span class=comment># Return the file name (t stands for tail)</span></span>
+print -l zsh_demo/data/europe/poland/*.txt<span class=o>(</span>:t<span class=o>)</span>
+
+<span class=c><span class=comment># Return the file name without the extension (r stands for remove_extension, I think)</span></span>
+print -l zsh_demo/data/europe/poland/*.txt<span class=o>(</span>:t:r<span class=o>)</span>
+
+<span class=c><span class=comment># Return the extension</span></span>
+print -l zsh_demo/data/europe/poland/*.txt<span class=o>(</span>:e<span class=o>)</span>
+
+<span class=c><span class=comment># Return the parent folder of the file (h stands for head)</span></span>
+print -l zsh_demo/data/europe/poland/*.txt<span class=o>(</span>:h<span class=o>)</span>
+
+<span class=c><span class=comment># Return the parent folder of the parent</span></span>
+print -l zsh_demo/data/europe/poland/*.txt<span class=o>(</span>:h:h<span class=o>)</span>
+
+<span class=c><span class=comment># Return the parent folder of the first file</span></span>
+print -l zsh_demo/data/europe/poland/*.txt<span class=o>([</span>1<span class=o>]</span>:h<span class=o>)</span>
+<span class=c><span class=comment># Remember you can combine qualifiers and modifiers.</span></span>
+</code></pre></div>
+<p>Modifiers are not only for globs, you can also use them with variables (the technical term is <a href=http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion>parameter expansion</a>):</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># run me, you'll like it</span></span>
+
+<span class=nv>my_file</span><span class=o>=(</span>zsh_demo/data/europe/poland/*.txt<span class=o>([</span>1<span class=o>]))</span>
+<span class=c><span class=comment># If you want to store a glob in a variable, you must use parentheses</span></span>
+
+print -l <span class=nv><span class=variable>$my_file</span></span>
+print -l <span class=nv><span class=variable>$my_file</span></span><span class=o>(</span>:h<span class=o>)</span>    <span class=c><span class=comment># this is the syntax we saw before</span></span>
+print -l <span class=k><span class=variable>${</span></span><span class=variable><span class=nv>my_file</span><span class=p>:</span><span class=nv>h</span><span class=k>}</span></span><span class=k></span>    <span class=c><span class=comment># I find this syntax more convenient</span></span>
+print -l <span class=k><span class=variable>${</span></span><span class=variable><span class=nv>my_file</span><span class=p>(:</span><span class=nv>h</span><span class=p>)</span><span class=k>}</span></span><span class=k></span>  <span class=c><span class=comment># don't mix the two, or you'll get an error</span></span>
+
+print -l <span class=k><span class=variable>${</span></span><span class=variable><span class=nv>my_file</span><span class=p>:</span><span class=nv>u</span><span class=k>}</span></span><span class=k></span>    <span class=c><span class=comment># the :u modifier makes the text uppercase</span></span>
+</code></pre></div>
+<p>Let’s say we wanted to calculate the maximum income for each country, and store it in a file named <code>{country}_max_income.txt</code> in the corresponding calculations folder. We can do this easily using my favorite modifier (<code>:s</code>):</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># run me if you like to run things</span></span>
+
+<span class=k><span class=keyword>for</span></span> file <span class=keyword>in</span> zsh_demo/data/**/income.txt <span class=p>;</span> <span class=k><span class=keyword>do</span></span>
+    <span class=nv>output_dir</span><span class=o>=</span><span class=k><span class=variable>${</span></span><span class=variable><span class=nv>file</span><span class=p>:</span><span class=nv>h</span><span class=p>:</span><span class=nv>s</span><span class=p>/data/calculations/</span><span class=k>}</span></span><span class=k></span>
+    <span class=nv>country</span><span class=o>=</span><span class=k><span class=variable>${</span></span><span class=variable><span class=nv>output_dir</span><span class=p>:</span><span class=nv>t</span><span class=k>}</span></span><span class=k></span>
+    <span class=nv>output_file</span><span class=o>=</span><span class=s2><span class=string>"<span class=variable>${output_dir}</span>/<span class=variable>${country}</span>_max_income.txt"</span></span>
+    <span class=nb><span class=keyword>echo</span></span> <span class=s2><span class=string>"The max salary is <span class=variable>$RANDOM</span> dollars"</span></span> &gt; <span class=nv><span class=variable>$output_file</span></span>
+<span class=k><span class=keyword>done</span></span>
+
+<span class=c><span class=comment># let's see what we just did</span></span>
+grep <span class=s2><span class=string>""</span></span> zsh_demo/calculations/**/*_max_income.txt
+</code></pre></div>
+<p>Note: The <code>grep "" bunch_of_files</code> command is a quick-and-dirty way to show the name of each file and its contents (we could have also used <code>head bunch_of_files</code>, try it).</p>
+<p>So, what’s going on here?</p>
+<ul>
+<li>Each time the <strong>for loop</strong> runs, the <code>$file</code> variable is set to a different income file: <code>zsh_demo/data/africa/kenya/income.txt</code>.</li>
+<li>We use the <code>:h</code> modifier to get rid of the file name: <code>zsh_demo/data/africa/kenya/</code>,</li>
+<li>and then we use the <code>:s</code> modifier to substitute <code>data</code> with <code>calculations</code>: <code>zsh_demo/calculations/africa/kenya/</code>,</li>
+<li>then we store that substituted path in the <code>$output_dir</code> variable.</li>
+<li>We use the <code>:t</code> modifier to get the name of the country (<code>kenya</code>) and we store it in the <code>$country</code> variable</li>
+<li>Then we stick a slash <code>/</code> between the <code>$output_dir</code> and <code>$country</code> variables, and append <code>_max_income.txt</code> to get our output file path: <code>zsh_demo/calculations/africa/kenya/kenya_max_income.txt</code></li>
+<li>The <code>$RANDOM</code> variable gives you a random number every time you call it (it’s just a quick way of generating some content).</li>
+<li>The right arrow <code>&gt;</code> saves the calculation to the output file.</li>
+</ul>
+<p><hr><p></p>
+<p>A few more things about the <code>:s</code> modifier:</p>
+<ul>
+<li>You can use any character to separate the <code>:s</code> and the strings:</li>
+</ul>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># run me and see for yourself</span></span>
+
+<span class=nv>my_variable</span><span class=o>=</span><span class=s2><span class=string>"path/abcd"</span></span>
+<span class=nb><span class=keyword>echo</span></span> <span class=k><span class=variable>${</span></span><span class=variable><span class=nv>my_variable</span><span class=p>:</span><span class=nv>s</span><span class=p>/bc/BC/</span><span class=k>}</span></span><span class=k></span> <span class=c><span class=comment># path/aBCd</span></span>
+<span class=nb><span class=keyword>echo</span></span> <span class=k><span class=variable>${</span></span><span class=variable><span class=nv>my_variable</span><span class=p>:</span><span class=nv>s_bc_BC_</span><span class=k>}</span></span><span class=k></span> <span class=c><span class=comment># path/aBCd</span></span>
+
+<span class=nb><span class=keyword>echo</span></span> <span class=k><span class=variable>${</span></span><span class=variable><span class=nv>my_variable</span><span class=p>:</span><span class=nv>s</span><span class=p>/\//./</span><span class=k>}</span></span><span class=k></span> <span class=c><span class=comment># path.abcd (escaping the slash \/)</span></span>
+<span class=nb><span class=keyword>echo</span></span> <span class=k><span class=variable>${</span></span><span class=variable><span class=nv>my_variable</span><span class=p>:</span><span class=nv>s_</span><span class=p>/_._</span><span class=k>}</span></span><span class=k></span>  <span class=c><span class=comment># path.abcd (slightly more readable)</span></span>
+<span class=c><span class=comment># this is useful when you want to substitute the slash (/)</span></span>
+<span class=c><span class=comment># without having to escape it with a backslash (\)</span></span>
+</code></pre></div>
+<ul>
+<li>The <code>:s</code> modifier only performs one substitution, if you want to do more, use the <code>:gs</code> modifier (g stands for global)</li>
+</ul>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># run me just for fun</span></span>
+
+<span class=nv>my_variable</span><span class=o>=</span><span class=s2><span class=string>"aaa"</span></span>
+<span class=nb><span class=keyword>echo</span></span> <span class=k><span class=variable>${</span></span><span class=variable><span class=nv>my_variable</span><span class=p>:</span><span class=nv>s</span><span class=p>/a/A/</span><span class=k>}</span></span><span class=k></span> <span class=c><span class=comment># Aaa</span></span>
+<span class=nb><span class=keyword>echo</span></span> <span class=k><span class=variable>${</span></span><span class=variable><span class=nv>my_variable</span><span class=p>:</span><span class=nv>gs</span><span class=p>/a/A/</span><span class=k>}</span></span><span class=k></span> <span class=c><span class=comment># AAA</span></span>
+</code></pre></div>
+<h3>Expansion flags</h3>
+<p>Now that you’ve learned all about glob operators, glob qualifiers, and modifiers, let’s add one more spice to the pot: <strong>expansion flags</strong>.</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># run me, it's free</span></span>
+
+<span class=c><span class=comment># Let's say somebody gave you these updated files</span></span>
+<span class=c><span class=comment># and told you to replace the old ones</span></span>
+<span class=nb><span class=keyword>echo</span></span> <span class=nv><span class=variable>$RANDOM</span></span> &gt; zsh_demo/africa_malawi_population_2014.txt
+<span class=nb><span class=keyword>echo</span></span> <span class=nv><span class=variable>$RANDOM</span></span> &gt; zsh_demo/asia_nepal_income_2014.txt
+<span class=nb><span class=keyword>echo</span></span> <span class=nv><span class=variable>$RANDOM</span></span> &gt; zsh_demo/europe_malta_literacy_2014.txt
+
+<span class=c><span class=comment># How would you move them to their appropriate folders?</span></span>
+
+<span class=c><span class=comment># Try this wizardry</span></span>
+<span class=k><span class=keyword>for</span></span> file <span class=keyword>in</span> zsh_demo/*.txt<span class=p>;</span> <span class=k><span class=keyword>do</span></span>
+    <span class=nv>file_info</span><span class=o>=(</span><span class=k><span class=variable>${</span></span><span class=variable><span class=p>(s._.)file:</span><span class=nv>t</span><span class=k>}</span></span><span class=k></span><span class=o>)</span>
+    <span class=nv>continent</span><span class=o>=</span><span class=nv><span class=variable>$file_info</span></span><span class=o>[</span>1<span class=o>]</span>
+    <span class=nv>country</span><span class=o>=</span><span class=nv><span class=variable>$file_info</span></span><span class=o>[</span>2<span class=o>]</span>
+    <span class=nv>data</span><span class=o>=</span><span class=nv><span class=variable>$file_info</span></span><span class=o>[</span>3<span class=o>]</span>
+
+    mv -f <span class=nv><span class=variable>$file</span></span> zsh_demo/data/<span class=k><span class=variable>${</span></span><span class=variable><span class=nv>continent</span><span class=k>}</span></span><span class=k></span>/<span class=k><span class=variable>${</span></span><span class=variable><span class=nv>country</span><span class=k>}</span></span><span class=k></span>/<span class=k><span class=variable>${</span></span><span class=variable><span class=nv>data</span><span class=k>}</span></span><span class=k></span>.txt
+<span class=k><span class=keyword>done</span></span>
+
+<span class=c><span class=comment># Check the contents of the files (.) modified (m) in the last</span></span>
+<span class=c><span class=comment># 5 minutes (m-5) to see what you just did</span></span>
+grep <span class=s2><span class=string>""</span></span> zsh_demo/**/*<span class=o>(</span>.mm-5<span class=o>)</span>
+</code></pre></div>
+<p>Let’s tear down the example to understand what’s going on.</p>
+<ul>
+<li>We are using a <strong>for loop</strong> to cycle through the new text files, and we’re storing each file name in the <code>$file</code> variable.</li>
+</ul>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=nb><span class=keyword>echo</span></span> <span class=nv><span class=variable>$file</span></span>
+<span class=c><span class=comment># zsh_demo/europe_malta_literacy_2014.txt</span></span>
+</code></pre></div>
+<ul>
+<li>We don’t want the whole path, so we use the <code>:t</code> modifier to get rid of everything to the left of the first slash <code>/</code>.</li>
+</ul>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=nb><span class=keyword>echo</span></span> <span class=k><span class=variable>${</span></span><span class=variable><span class=nv>file</span><span class=p>:</span><span class=nv>t</span><span class=k>}</span></span><span class=k></span>
+<span class=c><span class=comment># europe_malta_literacy_2014.txt</span></span>
+</code></pre></div>
+<ul>
+<li>We use the <code>(s)</code> expansion flag to split the file name at each underscore <code>_</code>.</li>
+</ul>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=nb><span class=keyword>echo</span></span> <span class=k><span class=variable>${</span></span><span class=variable><span class=p>(s._.)file:</span><span class=nv>t</span><span class=k>}</span></span><span class=k></span>
+<span class=c><span class=comment># europe malta literacy 2014.txt</span></span>
+</code></pre></div>
+<ul>
+<li>We surround everything with parentheses so we can save it into an array variable.</li>
+</ul>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=nv>file_info</span><span class=o>=</span><span class=k><span class=variable>${</span></span><span class=variable><span class=p>(s._.)file:</span><span class=nv>t</span><span class=k>}</span></span><span class=k></span>
+<span class=nb><span class=keyword>echo</span></span> <span class=nv><span class=variable>$file_info</span></span>
+<span class=c><span class=comment># the parentheses are missing, file_info contains the wrong information:</span></span>
+<span class=c><span class=comment># europe_malta_literacy_2014.txt</span></span>
+
+<span class=nv>file_info</span><span class=o>=(</span><span class=k><span class=variable>${</span></span><span class=variable><span class=p>(s._.)file:</span><span class=nv>t</span><span class=k>}</span></span><span class=k></span><span class=o>)</span>
+<span class=nb><span class=keyword>echo</span></span> <span class=nv><span class=variable>$file_info</span></span>
+<span class=c><span class=comment># with parentheses, it works:</span></span>
+<span class=c><span class=comment># europe malta literacy 2014.txt</span></span>
+</code></pre></div>
+<ul>
+<li>We use an auxiliary variable for continent, country, and data. Since <code>$file_info</code> is now an array, we can refer to its elements by using a numeric index.</li>
+</ul>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=nb><span class=keyword>echo</span></span> <span class=k><span class=variable>${</span></span><span class=variable><span class=nv>file_info</span><span class=p>[3]</span><span class=k>}</span></span><span class=k></span>
+<span class=c><span class=comment># literacy</span></span>
+</code></pre></div>
+<ul>
+<li>We use the auxiliary variables to specify the path where we want to move the new files <code>zsh_demo/data/${continent}/${country}/${data}.txt</code>.</li>
+</ul>
+<p>There are a bunch of other flags described in the <a href=http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion>14.3.1 section of the manual</a>. Check them out if you’re curious. We have already covered the split expansion flag <code>(s)</code>; the only other one I use is the join expansion flag <code>(j)</code>, which does the opposite of the split flag.</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=nv>my_array</span><span class=o>=(</span>a b c d<span class=o>)</span>
+<span class=nb><span class=keyword>echo</span></span> <span class=k><span class=variable>${</span></span><span class=variable><span class=p>(j.-.)my_array</span><span class=k>}</span></span><span class=k></span>
+<span class=c><span class=comment># a-b-c-d</span></span>
+
+<span class=c><span class=comment># Since we are joining using dots (.), it makes more sense to</span></span>
+<span class=c><span class=comment># use underscores (_) to separate the dots and the j</span></span>
+<span class=nb><span class=keyword>echo</span></span> <span class=k><span class=variable>${</span></span><span class=variable><span class=p>(j_._)my_array</span><span class=k>}</span></span><span class=k></span>
+<span class=c><span class=comment># a.b.c.d</span></span>
+</code></pre></div>
+<h2>3. Magic tabbing</h2>
+<h3>Event designators</h3>
+<p>Let’s introduce the last member of our Zsh jargon family: after glob operators and qualifiers, modifiers and expansion flags, I give you <strong>event designators</strong>.</p>
+<p>An event designator references one of the commands that we have previously entered. They always start with a bang <code>!</code>:</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># show the previous command</span></span>
+<span class=nb><span class=keyword>echo</span> </span>a b c
+!! <span class=c><span class=comment># instead of pressing &lt;Enter&gt;, press &lt;Tab&gt;, then press &lt;Enter&gt;</span></span>
+
+<span class=c><span class=comment># show two commands ago</span></span>
+<span class=nb><span class=keyword>echo</span> </span>d e f
+<span class=nb><span class=keyword>echo</span> </span>g h i
+!-2 <span class=c><span class=comment># press &lt;Tab&gt;, then press &lt;Enter&gt;</span></span>
+</code></pre></div>
+<p>Note: If you press <code>&lt;Enter&gt;</code> instead of <code>&lt;Tab&gt;</code>, the event designator will also get replaced, but you’ll still have to press <code>&lt;Enter&gt;</code> one more time to run it.</p>
+<p>I find that these designators are not super useful by themselves because pressing the up arrow key is all we need to do to pull up the previous command (use <code>Control R</code> if you get tired of pressing). When they really come in handy is to add previous arguments to our current command.</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash><span class=c><span class=comment># add the last argument</span></span>
+ls zsh_demo/data/asia/laos/population.txt
+ls -l !!1 <span class=c><span class=comment># press &lt;Tab&gt;, then press &lt;Enter&gt;</span></span>
+
+<span class=c><span class=comment># add all the previous arguments</span></span>
+<span class=nb><span class=keyword>echo</span> </span>a b c
+print -l !!* <span class=c><span class=comment># press &lt;Tab&gt;, then press &lt;Enter&gt;</span></span>
+</code></pre></div>
+<p>So, we reference previous arguments in two steps:</p>
+<ol>
+<li>Specify which command you are interested in
+<ul>
+<li>The previous command <code>!!</code> is the one you’ll use most often.</li>
+<li>If you want to go back farther, use the minus sign <code>-</code> and a number: <code>!-2</code>, <code>!-3</code>.</li>
+<li>You can also use the current command <code>!#</code></li>
+</ul></li>
+<li>Pick what arguments you want to reuse
+<ul>
+<li>To pick an argument from the previous command, just add a number <code>!!1</code>, <code>!!2</code>. Use <code>!!$</code> for the last argument.</li>
+<li>To pick an argument from two or more commands ago, add a colon <code>:</code> before the number <code>!-2:1</code> (because<code>!-21</code> means something else).</li>
+<li>If you want to reference all the arguments, use an asterisk <code>*</code> <code>!!*</code> <code>!-2:*</code>.</li>
+<li>If you want skip all the arguments except the first one or two, add a number before the asterisk <code>!!2*</code>, <code>!-2:2*</code>.</li>
+</ul></li>
+</ol>
+<p>Some useful examples</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash>mv zsh_demo/data/asia/laos/population.txt !<span class=comment>#1</span>
+<span class=c><span class=comment># press &lt;Tab&gt;</span></span>
+<span class=c><span class=comment># now you can easily change the second argument</span></span>
+<span class=c><span class=comment># (use Control W to delete every up to the first slash)</span></span>
+
+ls zsh_demo/data/europe/malta/literacy.txt
+awk <span class=s1><span class=string>'$1 &gt; 3'</span></span> !<span class=err>$</span>
+<span class=c><span class=comment># press &lt;Tab&gt;</span></span>
+<span class=c><span class=comment># !$ is a shortcut for !!$</span></span>
+
+ls zsh_demo/*/*/nepal/literacy.txt
+ls zsh_demo/*/*/malta/literacy.txt
+ls -l !-2:1
+<span class=c><span class=comment># press &lt;Tab&gt;</span></span>
+<span class=c><span class=comment># now you can see the details of the nepal file</span></span>
+</code></pre></div>
+<p>If you don’t believe there is such a thing as being <em>too productive</em>, check out the <a href=http://zsh.sourceforge.net/Doc/Release/Expansion.html#History-Expansion>history expansion section of the manual</a> for additional shortcuts.</p>
+<p>Pressing <code>&lt;Tab&gt;</code> lets you expand not only old commands, but globs, variables (when they use the <code>${}</code> syntax), and even lazily-typed paths!</p>
+<div class=highlight><pre><code class=language-bash data-lang=bash>ls zsh_demo/*/*/nepal/literacy.txt
+<span class=c><span class=comment># press &lt;Tab&gt;</span></span>
+
+<span class=nv>my_var</span><span class=o>=</span><span class=s2><span class=string>"1 2 3"</span></span>
+<span class=nb><span class=keyword>echo</span></span> <span class=k><span class=variable>${</span></span><span class=variable><span class=nv>my_var</span><span class=k>}</span></span><span class=k></span>
+<span class=c><span class=comment># press &lt;Tab&gt;</span></span>
+
+
+ls z/d/a/l
+<span class=c><span class=comment># press &lt;Tab&gt;</span></span>
+<span class=c><span class=comment># Mind blown!</span></span>
+</code></pre></div>
+<h2>Bonus tips</h2>
+<p>There is a ton of stuff we haven’t covered, but I can point you to other people’s awesome tips. They are all totally worth it:</p>
+<ul>
+<li><p>Andrew Hays encourages us to <a href=http://www.andrewhays.net/2012/11/29/love-your-terminal.html>love our terminal</a> by installing the elegant <a href=http://ethanschoonover.com/solarized>Solarized color scheme</a>, and customizing our prompt. Follow his instructions and make all those hours in front of your terminal a more enjoyable experience.</p></li>
+<li><p>Danilo Petrozzi over at Zsh Wiki shares a powerful alternative to global aliases. If you find yourself typing stuff like <code>| head | column -t | less -S</code> at the end of your commands, <a href=http://zshwiki.org/home/examples/zleiab>check out his method</a> to turn any sequence of characters into a convenient snippet.</p></li>
+<li><p>Also at <a href=http://zshwiki.org/home/builtin/functions/zmv>Zsh Wiki</a>, learn about a way to rename multiple files by using the <code>zmv</code> command. It’s extremely convenient for replacing spaces with underscores, changing file extensions, and renaming files located in a nested folder structure. <strong>Always</strong> run <code>zmv</code> using the <code>-n</code> option once, so you are know what the command will actually do.</p></li>
+<li><p>We used brace expansion multiple times in this tutorial, but we didn’t cover all of its features. Tomasz Muras wrote <a href=http://jmuras.com/blog/2012/brace-expansion-in-bash-and-zsh/>a nice post</a> about it.</p></li>
+<li><p>I wasn’t able to find a blog post explaining <a href=http://zsh.sourceforge.net/Doc/Release/Parameters.html#Array-Parameters>associative arrays</a>, but I’ve found them incredibly useful to deal with sets of parameters. If there’s interest, I might go into them in a future post.</p></li>
+</ul>
+<h2>Parting thoughts</h2>
+<p>I’ve you read this entire thing in one sitting your brain is probably melting. Don’t fret about remembering every little detail. What’s important is to realize that there are easy ways of doing a lot of things that you didn’t know could be done, and recalling where to go for additional information.</p>
+<p>I have a file where I keep all my Zsh snippets. Every time I have to look up the syntax for a command, I open up the file and I write it down. I recommend you do the same. It’s the act of progressively improving this file that will help you achieve mastery.</p>
+<p>Feel free to leave a comment if you’d like to share a tip.</p>
+ </div>
+ 
+ 
+ <ins class="adsbygoogle sf-hidden" style=display:inline-block;width:300px;height:250px;max-width:0px data-ad-client=ca-pub-9441199102473745 data-ad-slot=6108086510></ins>
+ 
+ 
+ 
+ <hr>
+ <div class=related>
+ <h3>Related posts</h3>
+ <ul>
+ 
+ <li><a href=http://reasoniamhere.com/2013/09/26/switching-between-long-and-wide-formats-in-r>Switching Between Long and Wide Formats in R</a></li>
+ 
+ <li><a href=http://reasoniamhere.com/2013/09/18/awk-gtf-how-to-analyze-a-transcriptome-like-a-pro-part-3>AWK GTF! How to Analyze a Transcriptome Like a Pro - Part 3</a></li>
+ 
+ <li><a href=http://reasoniamhere.com/2013/09/17/awk-gtf-how-to-analyze-a-transcriptome-like-a-pro-part-2>AWK GTF! How to Analyze a Transcriptome Like a Pro - Part 2</a></li>
+ 
+ <li><a href=http://reasoniamhere.com/2013/09/16/awk-gtf-how-to-analyze-a-transcriptome-like-a-pro-part-1>AWK GTF! How to Analyze a Transcriptome Like a Pro - Part 1</a></li>
+ 
+ </ul>
+ </div>
+ 
+ <hr>
+ 
+ <ul class="tag_box inline">
+ <li><i class=icon-tags></i></li>
+ 
+ 
+ 
+ 
+ <li><a href=http://reasoniamhere.com/tags.html#zsh-ref>zsh <span>1</span></a></li>
+ 
+ <li><a href=http://reasoniamhere.com/tags.html#tutorial-ref>tutorial <span>5</span></a></li>
+ 
+ 
+ </ul>
+ 
+ 
+ </div>
+</div>
+ </div>
+ <footer>
+ <p class=copyright>© 2015 Nacho Caballero</p>
+ <p>
+ <a href=http://feeds.feedburner.com/TheReasonIAmHere>RSS</a> •
+ <a href=https://twitter.com/nachocaballero>Twitter</a> •
+ <a href=http://reasoniamhere.com/about.html>About</a>
+ </p>
+ </footer>
+ </div>
+ 
+ 
+<script>document.currentScript.remove();!function(){"use strict";(t=>{const n="singlefile-infobar",e="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8H+DhhoQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJJJREFUOI3t070NRCEMA2CnYAOyDyPwpHj/Va7hJ3FzV7zy3ET5JIwoAF6Jk4wzAJAkzxAYG9YRTgB+24wBgKmfrGAKTcEfAY4KRlRoIeBTgKOCERVaCPgU4Khge2GqKOBTgKOCERVaAEC/4PNcnyoSWHpjqkhwKxbcig0Q6AorXYF/+A6eIYD1lVbwG/jdA6/kA2THRAURVubcAAAAAElFTkSuQmCC",o="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8VC4EQ6QAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJtJREFUOI3NkrsBgCAMRLFwBPdxBArcfxXFkO8rbKWAAJfHJ9faf9vuYX/749T5NmShm3bEwbe2SxeuM4+2oxDL1cDoKtVUjRy+tH78Cv2CS+wIiQNC1AEhk4AQeUTMWUJMfUJMSEJMSEY8kIx4IONroaYAimNxsXp1PA7PxwfVL8QnowwoVC0lig07wDDVUjAdbAnjwtow/z/bDW7eI4M2KruJAAAAAElFTkSuQmCC",i="SingleFile",A="single-file-ui-element",r="\n\t.infobar {\n\t\tbackground-color: #737373;\n\t\tcolor: white;\n\t\tdisplay: flex;\n\t\tposition: fixed;\n\t\ttop: 16px;\n\t\tright: 16px;\n\t\theight: auto;\n\t\twidth: auto;\n\t\tmin-height: 24px;\n\t\tmin-width: 24px;\n\t\tbackground-position: center;\n\t\tbackground-repeat: no-repeat;\n\t\tz-index: 2147483647;\n\t\tmargin: 0 0 0 16px;\n\t\tbackground-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHADIRLMaOHwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAPUExURQAAAIqKioyNjY2OjvDw8L2y1DEAAAABdFJOUwBA5thmAAAAAWJLR0QB/wIt3gAAAGNJREFUSMdjYCAJsLi4OBCQx6/CBQwIGIDPCBcXAkYQUsACU+AwlBVQHg6Eg5pgZBGOboIJZugDFwRwoJECJCUOhJI1wZwzqmBUwagCuipgIqTABG9h7YIKaKGAURAFEF/6AQAO4HqSoDP8bgAAAABJRU5ErkJggg==);\n\t\tborder-radius: 16px;\n\t\tuser-select: none;\n\t\t-moz-user-select: none;\n\t\topacity: .7;\n\t\tcursor: pointer;\n\t\tpadding-left: 0;\n\t\tpadding-right: 0;\n\t\tpadding-top: 0;\n\t\tpadding-bottom: 0;\n\t\tborder: 2px solid #eee;\n\t\tbackground-size: 70% 70%;\n\t\ttransition: all 250ms;\n\t\tfont-size: 13px;\n\t}\n\t.infobar:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open {\n\t\topacity: 1;\n\t\tbackground-color: #f9f9f9;\n\t\tcursor: auto;\n\t\tcolor: #2d2d2d;\n\t\tpadding-top: 2px;\n\t\tpadding-bottom: 2px;\n\t\tborder: 2px solid #878787;\n\t\tbackground-image: none;\n\t\tborder-radius: 8px;\n\t\tuser-select: initial;\n\t\t-moz-user-select: initial;\n\t}\n\t.infobar-close-button {\n\t\tdisplay: none;\n\t\topacity: .7;\n\t\tpadding-top: 4px;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tcursor: pointer;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-close-button:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-content {\n\t\tdisplay: none;\n\t\tfont-family: Arial;\n\t\tfont-size: 14px;\n\t\tline-height: 22px;\n\t\tword-break: break-word;\n\t\twhite-space: pre-wrap;\n\t\tposition: relative;\n\t\ttop: 1px;\n\t\ttext-align: left;\n\t}\n\t.infobar-link {\n\t\tdisplay: none;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tline-height: 11px;\n\t\tcursor: pointer;\n\t\tuser-select: none;\n\t\toutline: 0;\n\t}\n\t.infobar-link-icon {\n\t\tpadding-top: 4px;\n\t\tpadding-left: 2px;\n\t\tcursor: pointer;\n\t\topacity: .7;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-link-icon:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open .infobar-close-button, .infobar-open .infobar-content, .infobar-open .infobar-link {\n\t\tdisplay: inline-block;\n\t}";let a=!0;const c=t.browser;async function s(){const t=document.evaluate("//comment()",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);let s=t&&t.singleNodeValue;if(s&&((p=s).nodeType==Node.COMMENT_NODE&&p.textContent.includes(i))){const t=s.textContent.split("\n"),[,,i,...p]=t,g=i.match(/^ url: (.*) $/),h=g&&g[1];if(h){let t;if(c&&c.runtime&&c.runtime.sendMessage)try{t=await c.runtime.sendMessage({method:"tabs.getOptions",url:h})}catch(n){t={displayInfobar:!0}}else t={displayInfobar:!0};t.displayInfobar&&await async function(t,i){let c=document.querySelector(n);if(!c){let s="";if(i.length){const t=i[0].split("saved date: ")[1];if(t&&i.shift(),i.length>1){let t=i[0].split("info: ")[1].trim();for(let n=1;n<i.length-1;n++)t+="\n"+i[n].trim();s=t.trim()}else s=t}s=s||"No info",c=d(n,document.body),c.className=A;const p=await async function(t){if(t.attachShadow)return t.attachShadow({mode:"open"});{a=!1;const n=d("iframe",t);return n.style.setProperty("background-color","transparent","important"),n.style.setProperty("position","fixed","important"),n.style.setProperty("top",0,"important"),n.style.setProperty("right",0,"important"),n.style.setProperty("width","44px","important"),n.style.setProperty("height","48px","important"),n.style.setProperty("z-index",2147483647,"important"),new Promise((t=>{n.contentDocument.body.style.setProperty("margin",0),n.onload=()=>t(n.contentDocument.body)}))}}(c),g=document.createElement("style");g.textContent=r,p.appendChild(g);const h=document.createElement("div");h.classList.add("infobar"),p.appendChild(h);const u=document.createElement("img");u.classList.add("infobar-close-button"),h.appendChild(u),u.src=o,u.onclick=t=>{0===t.button&&c.remove()};const m=document.createElement("span");h.appendChild(m),m.classList.add("infobar-content"),m.textContent=s;const f=document.createElement("a");f.classList.add("infobar-link"),h.appendChild(f),f.target="_blank",f.rel="noopener noreferrer",f.title="Open source URL: "+t,f.href=t;const b=document.createElement("img");b.classList.add("infobar-link-icon"),f.appendChild(b),b.src=e,l(h),document.addEventListener("click",(t=>{if(0===t.button){let n=t.target;for(;n&&n!=c;)n=n.parentElement;n!=c&&l(h)}}))}}(h,p)}}var p}function l(t){if(t.classList.remove("infobar-open"),t.onclick=e=>{if(0===e.button)return function(t){a||document.querySelector(n).childNodes[0].contentWindow.getSelection().removeAllRanges();if(t.classList.add("infobar-open"),t.onclick=null,t.onmouseout=null,!a){const e=document.querySelector(n).childNodes[0];e.style.setProperty("width","100vw","important"),e.style.setProperty("height","100vh","important"),e.style.setProperty("width",t.getBoundingClientRect().width+33+"px","important"),e.style.setProperty("height",t.getBoundingClientRect().height+21+"px","important")}}(t),!1},!a){const t=document.querySelector(n).childNodes[0];t.style.setProperty("width","44px","important"),t.style.setProperty("height","48px","important")}}function d(t,n){const e=document.createElement(t);return n.appendChild(e),Array.from(getComputedStyle(e)).forEach((t=>e.style.setProperty(t,"initial","important"))),e}t.window==t.top&&("loading"==document.readyState?document.addEventListener("DOMContentLoaded",s,!1):s())})("object"==typeof globalThis?globalThis:window)}();
+</script>

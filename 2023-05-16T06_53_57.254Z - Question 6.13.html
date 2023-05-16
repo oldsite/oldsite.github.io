@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3O//DTD W3 HTML 2.0//EN"> <html><!--
+ Page saved with SingleFile 
+ url: https://c-faq.com/aryptr/ptrtoarray.html 
+ saved date: Tue May 16 2023 12:23:57 GMT+0530 (India Standard Time)
+--><meta charset=utf-8>
+<meta name=GENERATOR content=faqproc>
+<title>Question 6.13</title>
+<link href=https://c-faq.com/aryptr/aryvsadr.html rev=precedes>
+<link href=https://c-faq.com/aryptr/dynarray.html rel=precedes>
+<link href=https://c-faq.com/aryptr/index.html rev=subdocument>
+<style>:root{--sf-img-3: /* original URL: ../images/buttonright.gif */ url("data:image/gif;base64,R0lGODdhHgAeAKEAAP///y8vMC8vt////ywAAAAAHgAeAAACXoSPqcvtGIx49EQgcn03+8103gdC0jiWhoimINu6FBzLDV3bCp7r1tnL7YBB4Q9TLK6IyZYJ2UQNodHJgtdzYGMzZm2z1by8pBJPdZSi0+J12j2Fx+WmgP2Oz+v3gQIAOw==");--sf-img-5: /* original URL: ../images/buttonsrch.gif */ url("data:image/gif;base64,R0lGODdhHgAeAKEAAP///y8vMC8vt////ywAAAAAHgAeAAACXISPqcvtGJ5U8Yl7ZWW4i7cpnueEyDg25kEaLbW8LsasQCfSi+3g+3TSwYA333AiS/Bywp8keew1a0+jqprRYD9ay5RKnCzDkK3Y3JVmQWg22f2+Bub0uv2ODxQAADs=");--sf-img-4: /* original URL: ../images/buttontop.gif */ url("data:image/gif;base64,R0lGODdhHgAeAKEAAP///y8vMC8vt////ywAAAAAHgAeAAACY4SPqcvtGN4R0kQpcr0ue8kx3viEyog6JoK2zWq0MgPL9rLaumLqfhLyCSET4dASMxqRlSYAlkiVHjNV5/ZqHHGiJfekpPDAYTGRVf6ck2k1E9B2MeNVqHN8Bz0D/L7/DxhYAAA7");--sf-img-1: /* original URL: ../images/buttonleft.gif */ url("data:image/gif;base64,R0lGODdhHgAeAKEAAP///y8vMC8vt////ywAAAAAHgAeAAACX4SPqcvtGJ48wsTphLaY6c91yEeGIomaE8qqGdsC1wvH81LnLpXrstILqoLEEPE4PPpuBiVs13SCfg1phUorYh/IrUToXdWg4lT4VDqLAFPmekR+H9xyiCyAz+v3/H4BADs=");--sf-img-2: /* original URL: ../images/buttonup.gif */ url("data:image/gif;base64,R0lGODdhHgAeAKEAAP///y8vMC8vt////ywAAAAAHgAeAAACY4SPqcvtGN4R0sRK632ia+xJW9OVolSGzrik5sq5WcMm8svUyK0uusHDKX6AYC/xMwohDOXxoHMuLS3pjGmzPmvabbZ7BbDAxxFZaD5fN2ocuz27wF/Eis+OjwT2/L7/DxhQAAA7")}</style><link rel=canonical href=https://c-faq.com/aryptr/ptrtoarray.html><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head>
+<body bgcolor=#ffffff>
+<a href=https://c-faq.com/aryptr/aryvsadr.html rev=precedes><img src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><rect fill-opacity="0"/></svg>' alt=prev data-sf-original-src=https://c-faq.com/images/buttonleft.gif style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-1)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a>
+<a href=https://c-faq.com/aryptr/index.html rev=subdocument><img src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><rect fill-opacity="0"/></svg>' alt=up data-sf-original-src=https://c-faq.com/images/buttonup.gif style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-2)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a>
+<a href=https://c-faq.com/aryptr/dynarray.html rel=precedes><img src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><rect fill-opacity="0"/></svg>' alt=next data-sf-original-src=https://c-faq.com/images/buttonright.gif style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-3)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a>
+&nbsp;
+<a href=https://c-faq.com/index.html><img src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><rect fill-opacity="0"/></svg>' alt=top/contents data-sf-original-src=https://c-faq.com/images/buttontop.gif style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-4)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a>
+<a href=https://c-faq.com/search.html><img src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><rect fill-opacity="0"/></svg>' alt=search data-sf-original-src=https://c-faq.com/images/buttonsrch.gif style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-5)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a>
+<hr>
+<p>
+<h1>
+comp.lang.c FAQ list
+<font color=blue>·</font>
+Question 6.13
+</h1>
+<p>
+<font size=8 face=Helvetica color=blue><b>Q:</b></font>
+How do I declare a pointer to an array?
+<p><hr>
+<p>
+<font size=8 face=Helvetica color=blue><b>A:</b></font>
+Usually, you don't want to.
+When people speak casually of a pointer to an array,
+they usually mean a pointer to its first element.
+<p>Instead of a pointer to an array,
+consider
+using a pointer to one of the array's elements.
+Arrays of type T decay into pointers to type T
+(see question
+<a href=https://c-faq.com/aryptr/aryptrequiv.html>6.3</a>),
+which is convenient;
+subscripting or incrementing
+the resultant pointer
+will access
+the
+individual members of the array.
+True pointers to arrays, when
+subscripted or incremented, step
+over entire arrays
+(see below),
+and are generally useful only when operating
+on arrays of arrays,
+<a href=https://c-faq.com/aryptr/fn31.html rel=subdocument>[footnote]</a>
+if at all.
+(See
+also
+question
+<a href=https://c-faq.com/aryptr/pass2dary.html>6.18</a>.)
+<p>If you really need to declare a pointer to an entire array,
+use something like
+``<tt>int&nbsp;(*ap)[N];</tt>''
+where <tt>N</tt> is the size of the array.
+(See also question
+<a href=https://c-faq.com/decl/cdecl1.html>1.21</a>.)
+If the size of the array is unknown, <tt>N</tt> can
+in principle
+be omitted,
+but the resulting type, ``pointer to array of unknown size,''
+is useless.
+<p>Here is an example
+showing the difference between
+simple pointers
+and
+pointers to arrays.
+Given the declarations
+<pre>int a1[3] = {0, 1, 2};
+int a2[2][3] = {{3, 4, 5}, {6, 7, 8}};
+int *ip;		/* pointer to int */
+int (*ap)[3];		/* pointer to array [3] of int */
+</pre>
+you could use the simple pointer-to-<tt>int</tt>,
+<tt>ip</tt>,
+to access the one-dimensional array <tt>a1</tt>:
+<pre>	ip = a1;
+	printf("%d ", *ip);
+	ip++;
+	printf("%d\n", *ip);
+</pre>
+This fragment would print
+<pre>	0 1
+</pre>
+An attempt to use a pointer-to-array,
+<tt>ap</tt>,
+on
+<tt>a1</tt>:
+<pre>	ap = &amp;a1;
+	printf("%d\n", **ap);
+	ap++;				/* WRONG */
+	printf("%d\n", **ap);		/* undefined */
+</pre>
+would print <tt>0</tt> on the first line
+and something undefined on the second
+(and might crash).
+The pointer-to-array
+would only be at all useful in accessing
+an array of arrays,
+such as <tt>a2</tt>:
+<pre>	ap = a2;
+	printf("%d %d\n", (*ap)[0], (*ap)[1]);
+	ap++;		/* steps over entire (sub)array */
+	printf("%d %d\n", (*ap)[0], (*ap)[1]);
+</pre>
+This last fragment
+would print
+<pre>	3 4
+	6 7
+</pre>
+<p><p>See also question <a href=https://c-faq.com/aryptr/aryvsadr.html>6.12</a>.
+<p>Additional links:
+<a href=https://c-faq.com/aryptr/ptrary2.html>further reading</a>
+</p>
+<p>References:
+ISO Sec. 6.2.2.1
+<br></p>
+<p>
+<hr>
+<a href=https://c-faq.com/aryptr/aryvsadr.html rev=precedes><img src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><rect fill-opacity="0"/></svg>' alt=prev data-sf-original-src=https://c-faq.com/images/buttonleft.gif style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-1)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a>
+<a href=https://c-faq.com/aryptr/index.html rev=subdocument><img src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><rect fill-opacity="0"/></svg>' alt=up data-sf-original-src=https://c-faq.com/images/buttonup.gif style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-2)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a>
+<a href=https://c-faq.com/aryptr/dynarray.html rel=precedes><img src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><rect fill-opacity="0"/></svg>' alt=next data-sf-original-src=https://c-faq.com/images/buttonright.gif style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-3)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a>
+&nbsp;
+<a href=https://c-faq.com/questions.html><img src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><rect fill-opacity="0"/></svg>' alt=contents data-sf-original-src=https://c-faq.com/images/buttontop.gif style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-4)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a>
+<a href=https://c-faq.com/search.html><img src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><rect fill-opacity="0"/></svg>' alt=search data-sf-original-src=https://c-faq.com/images/buttonsrch.gif style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-5)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></a>
+<br>
+<a href=https://c-faq.com/about.html>about this FAQ list</a>
+&nbsp;
+<a href=https://c-faq.com/eskimo.html>about eskimo</a>
+&nbsp;
+<a href=https://c-faq.com/search.html>search</a>
+&nbsp;
+<a href=https://c-faq.com/feedback.html>feedback</a>
+&nbsp;
+<a href=https://c-faq.com/aryptr/copyright.html>copyright</a>
+<p>
+Hosted by
+<a href=http://www.eskimo.com/><img src=data:image/gif;base64,R0lGODlhZAArAOcAAAICBHaCnL7CzJ6ipD5CRGJiZIKSrGZyhK6ytN7i7JKSlG56lL7S/IKChKKipIqavGZmbHqKrMLCzLKyvJKizEpSdJqq1CIiJHJyfF5qhIKSxOry/Gp6rGJynHKCtKKy3JaizKa69LbK/OLq9JKexNLS3MbK1E5afIqWtHJ6lI6e1HqKvDY2PBISFEpKTFZihLa6vF5qlNba5HqCnIaWtJqapIqKjKaqrI6exF5mjK7C9Gp2jI6i3Jaq5IqWxGp2nJ6y7Oru9F5eZFZmjIKSvIqazGZuhH6OtCoqLPb2/Jam3M7O1FZehHJ+lLbG/AoKDHaGrEZGRGZylHqKtMLGzG52lGJuhIaWxHJ+rGZ2nHqGtK6+/Obu9FJefL6+xN7e7IKOrLLG9JKm3J6u7Ka29HKCrIaSrN7m9JKWnGp6pKKmrI6avLK2vEpWdHaGtJamzKq+9L7O/NLW5MrO1H6OvD4+PB4eHEpOVFpihF5ulNre5JqepK6utJqu7KK29GZujMbGzM7S3PL2/G5udHqGpAYGBIaGjJ6u3CYmJHJ2dBYWFLq+xI6OlC4uLEJGRGpqbG5+rLrO/Pb6/A4ODJKe3DY6PHJ6pHJ+pIKOvGpyjH6KpGJqjIaSxGZynubq9VJag7q6xKqqtLLC/JKi3Jqq6KKy7Vpmjba2vk5WfJqm1E5OUmJumJ6ep3Z2fEJCRO7y/G56rHaCtKq69LrK/MrK1Nra5IaSvI6azGpylH6KtHaCrOLm9JaWnG56pKamrNbW5Pr6/HaCpIKStGZyjN7i9JKSnG56nIKCjKKirIqaxJKi1F5qjIKSzKKy5JKezNLS5IqWvHJ6nI6e3HqKxFZijIaWvI6ezK7C/Gp2lIqWzGp2pOru/Jam5M7O3HJ+nEZGTMLG1G52nGJujIaWzHJ+tGZ2pObu/FJehL6+zIKOtLLG/JKm5IaStI6axEpWfHaGvJam1Kq+/MrO3H6OxD4+RFpijNre7K6uvGZulMbG1HqGrAYGDCYmLBYWHC4uNH6KrCH+G01hZGUgd2l0aCBHSU1QIGJ5IFN0YXJmb3JjZQAsAAAAAGQAKwBACP4Am304ZMHCGwokcKx5gIIGO3YGwEicSLGixYsYM2rcONHMQxrQHqzBQYLCm1QWDh3yQeRfMBFOYAKYSbOmzZs4c+rcybPnzWuyyJQydglKLn2XfmxSx1SUzTsJRph7JSiJ1SSCBL3ats2cp1277NmTEYiWBBihWBl6ktPcTrduZ8adCwBu3bs14wIYM4YUKSY5VmlDimtZ02sz89lLAFYq1w2QN5jzCpZYAnty5DD2tOGVnmK+MssJtIiXKpt68dadTHOya7mu7ba26ddvF1OrstBB+uPatS3xfPaEQKvbkkWGoghfzhyn3x49AmuDpaLIFUwr3GDppa3TqhgxTP5Ro/binHnzn9KrX8++vfv38OOnP2/+xXhTpmKsWtVpOiQP76wwDzwUtAPNLJEgGMmCcTToIAMMNBghhBRWaOGFGGao4YZxROhggwsuOIsIJDrhRBjp2JLMLekghQ1TTOmEhADE7OKJOSN48tUuxHwxVglmweALBGzxlJpqd+lF12qtLYkkEEDwtQw+2mCBlBSGNUUTGmCZsw1VSUgipiSCdOXaVzVSldUrknmSQD4OuFBIc3Ty1Ecffn2CWxZaJCWOOqL4RpM/98ghg1gJJKqoWGPJIEcJgXQjaTeBBCKADYycUoJozyhAD2pyJQmqk6GWaupMtfXwwjKCXaeFLv5wyBJCKX1xY+ut3Cgxihij9Orrr8AGK+ywxBZrbK/rrIPsrZ3AgkUsBBGIwwPVsJPOP4QQEkAA3njTRAoLhCvuuOSWa+656KabbgpNdBtAMIRE8E86wlTzQDvOUACPNT7YcgSJACsY4sAEF2zwwQgnrHDCs4wIMIzXxKPLFJjYYksuuhjjBIw9PfGNL4HIIPJo3eQjAQKJ8FPnynT6UQqU+PxwSSy5BGPMHzA6ddMxxHDW2StsdtXVCDxeRpZZp6jBiB1vxQabkkyWatfUoM7E1xh94BFDJ70QtszGgNaEjI1fVhWmmFltYCaOPNpTi1gy0HLKDazwwvRNsc31Gv6Ssi2pJGs13WkbboNZgmXOM7nCmI1ebiCIJMCQ+cqZRNc4ldlWvYKAArww0gAjNrAsOqq1fVJPbi4uJUqgABQSCKPE1LgL0WCBdYZljY4WaTcliFzMHqKJVoMjo4Z6pGymQj1bTakyQTjGxkgR6G852cGCEMiAYsL2ks5BSz4CTADIpJJ6YYMLMxWiigTyMMJC1VErn5ryfNNGCnT5cU0Exr0AF48so7NJJVzhjxYE8IA04QZ0uMEfWJDDOpjQwqxqZStlBUsa0qAEBjfIwQ568IMgDKEIMajBDvIggzwQlgMDNIrqjEMDdMiOByABC210xzv7+Q54dsjDHvrwh/5ADKIQgZjDVXSgE/3xDzkAtIJpzIMZKjEICEjQjgdAw1pg+IcmNJGtbM1gBtsKoxjHSMYymvGMaBzjF7tICE38QyLCYEdI2lGSkxTkDc4wkLWwFYxuLaAKO8jEMIZhhAMYwQhWSKQiF8nIRjrykZCMZCIPaYRBDmMH2AhXt+A1LyJUIxnWoAAFcHBFEjVMYAtLpSpXycqBOYxEMAqDDnKRIh+0oxotApgIEMjLXtIkUHAgwyUmhglcIkUE6tjYciZxAXo84hEQUAULLuDLagIgKC/7QS90oYUWXUJjyVTHTgoBgUAkIHaxS9RY5FCy8DECEcLJ29NI1Tf47Y0mpf542Rj404syQE8KYNPZTSBgD8dAZm20M1pZqAAKXxiiH0aC3/Lk9zckqeZqY8DND2ARAT8hziaD6FlnqpIVrXBlMpX7gqO6YQJQ8GEAjFCETo6UF9iohi5UOx5N+IKnVXUiDakDmzhp0gIZ7MIcjhsT2oI2mR0ZrQQl8wIfHFCDArRFosjzm9SSFzjBnYNwhMnARwHAD8YgVU1KNelJzVGZBAQBMmy1RyAa2gprNocUeCKFngSjj2hIQaxaAsAkjEo2oIkJGMDAytp2RAzHVUVMWOHCKYqhAAWEzq4+qY1eT5eFKwE2bAAoRgLOMLvGOVYQkmlqW+1RWJIuQgF8oP4FG/agAEbUAbM8wWue9uS1pjjFdYs5J1h0RDnaEQNulQqEZmzEBwWYIHhyYAX68iK/idaUq8ujSapus4pypA5QrAMABn7xtsXIrnZhYZTIfvGM3VEqEOBghAOgKwdeEKB4oqqpPLObtyM1j3BTCEY4xDG9LdikEYYwwaEYBbeRkaw45AsEOmxwGlcsQg7tVcBtr0s1/Wb3ptfV7nNesLU08E8KvqFeTwrB4ie4+An7mJMd+DCpJXjBENNNnwtUhtUm0Q/Ep/Lv/biBm2ZF8BLhiFg8gnNARYRiDsghHm7vSgpbba1KnNjNJeDA5RBM+cs+wVV//sOSXEBBVqXAE4aujsXmNru5WJQYRZxHwYMUFmsd2vjPO/gFQy2UoRc/8M4yTFGeLpzgBKhAhTva0IYKOPrRkI60pCdN6UpbugKMZnSiD12feuSHP9N51jumoQxrZEMD2HFDGSCRhnLgEDz4ifUQxkPrWtv61rjOta53TetYxxo8eTBiJ8rBAQfGIkDzmEdAAAA7 alt="Eskimo North" data-sf-original-src=http://www.eskimo.com/img/link/eskitiny.gif></a>
+</p><script>document.currentScript.remove();!function(){"use strict";(t=>{const n="singlefile-infobar",e="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8H+DhhoQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJJJREFUOI3t070NRCEMA2CnYAOyDyPwpHj/Va7hJ3FzV7zy3ET5JIwoAF6Jk4wzAJAkzxAYG9YRTgB+24wBgKmfrGAKTcEfAY4KRlRoIeBTgKOCERVaCPgU4Khge2GqKOBTgKOCERVaAEC/4PNcnyoSWHpjqkhwKxbcig0Q6AorXYF/+A6eIYD1lVbwG/jdA6/kA2THRAURVubcAAAAAElFTkSuQmCC",o="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8VC4EQ6QAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJtJREFUOI3NkrsBgCAMRLFwBPdxBArcfxXFkO8rbKWAAJfHJ9faf9vuYX/749T5NmShm3bEwbe2SxeuM4+2oxDL1cDoKtVUjRy+tH78Cv2CS+wIiQNC1AEhk4AQeUTMWUJMfUJMSEJMSEY8kIx4IONroaYAimNxsXp1PA7PxwfVL8QnowwoVC0lig07wDDVUjAdbAnjwtow/z/bDW7eI4M2KruJAAAAAElFTkSuQmCC",i="SingleFile",A="single-file-ui-element",r="\n\t.infobar {\n\t\tbackground-color: #737373;\n\t\tcolor: white;\n\t\tdisplay: flex;\n\t\tposition: fixed;\n\t\ttop: 16px;\n\t\tright: 16px;\n\t\theight: auto;\n\t\twidth: auto;\n\t\tmin-height: 24px;\n\t\tmin-width: 24px;\n\t\tbackground-position: center;\n\t\tbackground-repeat: no-repeat;\n\t\tz-index: 2147483647;\n\t\tmargin: 0 0 0 16px;\n\t\tbackground-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHADIRLMaOHwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAPUExURQAAAIqKioyNjY2OjvDw8L2y1DEAAAABdFJOUwBA5thmAAAAAWJLR0QB/wIt3gAAAGNJREFUSMdjYCAJsLi4OBCQx6/CBQwIGIDPCBcXAkYQUsACU+AwlBVQHg6Eg5pgZBGOboIJZugDFwRwoJECJCUOhJI1wZwzqmBUwagCuipgIqTABG9h7YIKaKGAURAFEF/6AQAO4HqSoDP8bgAAAABJRU5ErkJggg==);\n\t\tborder-radius: 16px;\n\t\tuser-select: none;\n\t\t-moz-user-select: none;\n\t\topacity: .7;\n\t\tcursor: pointer;\n\t\tpadding-left: 0;\n\t\tpadding-right: 0;\n\t\tpadding-top: 0;\n\t\tpadding-bottom: 0;\n\t\tborder: 2px solid #eee;\n\t\tbackground-size: 70% 70%;\n\t\ttransition: all 250ms;\n\t\tfont-size: 13px;\n\t}\n\t.infobar:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open {\n\t\topacity: 1;\n\t\tbackground-color: #f9f9f9;\n\t\tcursor: auto;\n\t\tcolor: #2d2d2d;\n\t\tpadding-top: 2px;\n\t\tpadding-bottom: 2px;\n\t\tborder: 2px solid #878787;\n\t\tbackground-image: none;\n\t\tborder-radius: 8px;\n\t\tuser-select: initial;\n\t\t-moz-user-select: initial;\n\t}\n\t.infobar-close-button {\n\t\tdisplay: none;\n\t\topacity: .7;\n\t\tpadding-top: 4px;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tcursor: pointer;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-close-button:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-content {\n\t\tdisplay: none;\n\t\tfont-family: Arial;\n\t\tfont-size: 14px;\n\t\tline-height: 22px;\n\t\tword-break: break-word;\n\t\twhite-space: pre-wrap;\n\t\tposition: relative;\n\t\ttop: 1px;\n\t\ttext-align: left;\n\t}\n\t.infobar-link {\n\t\tdisplay: none;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tline-height: 11px;\n\t\tcursor: pointer;\n\t\tuser-select: none;\n\t\toutline: 0;\n\t}\n\t.infobar-link-icon {\n\t\tpadding-top: 4px;\n\t\tpadding-left: 2px;\n\t\tcursor: pointer;\n\t\topacity: .7;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-link-icon:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open .infobar-close-button, .infobar-open .infobar-content, .infobar-open .infobar-link {\n\t\tdisplay: inline-block;\n\t}";let a=!0;const c=t.browser;async function s(){const t=document.evaluate("//comment()",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);let s=t&&t.singleNodeValue;if(s&&((p=s).nodeType==Node.COMMENT_NODE&&p.textContent.includes(i))){const t=s.textContent.split("\n"),[,,i,...p]=t,g=i.match(/^ url: (.*) $/),h=g&&g[1];if(h){let t;if(c&&c.runtime&&c.runtime.sendMessage)try{t=await c.runtime.sendMessage({method:"tabs.getOptions",url:h})}catch(n){t={displayInfobar:!0}}else t={displayInfobar:!0};t.displayInfobar&&await async function(t,i){let c=document.querySelector(n);if(!c){let s="";if(i.length){const t=i[0].split("saved date: ")[1];if(t&&i.shift(),i.length>1){let t=i[0].split("info: ")[1].trim();for(let n=1;n<i.length-1;n++)t+="\n"+i[n].trim();s=t.trim()}else s=t}s=s||"No info",c=d(n,document.body),c.className=A;const p=await async function(t){if(t.attachShadow)return t.attachShadow({mode:"open"});{a=!1;const n=d("iframe",t);return n.style.setProperty("background-color","transparent","important"),n.style.setProperty("position","fixed","important"),n.style.setProperty("top",0,"important"),n.style.setProperty("right",0,"important"),n.style.setProperty("width","44px","important"),n.style.setProperty("height","48px","important"),n.style.setProperty("z-index",2147483647,"important"),new Promise((t=>{n.contentDocument.body.style.setProperty("margin",0),n.onload=()=>t(n.contentDocument.body)}))}}(c),g=document.createElement("style");g.textContent=r,p.appendChild(g);const h=document.createElement("div");h.classList.add("infobar"),p.appendChild(h);const u=document.createElement("img");u.classList.add("infobar-close-button"),h.appendChild(u),u.src=o,u.onclick=t=>{0===t.button&&c.remove()};const m=document.createElement("span");h.appendChild(m),m.classList.add("infobar-content"),m.textContent=s;const f=document.createElement("a");f.classList.add("infobar-link"),h.appendChild(f),f.target="_blank",f.rel="noopener noreferrer",f.title="Open source URL: "+t,f.href=t;const b=document.createElement("img");b.classList.add("infobar-link-icon"),f.appendChild(b),b.src=e,l(h),document.addEventListener("click",(t=>{if(0===t.button){let n=t.target;for(;n&&n!=c;)n=n.parentElement;n!=c&&l(h)}}))}}(h,p)}}var p}function l(t){if(t.classList.remove("infobar-open"),t.onclick=e=>{if(0===e.button)return function(t){a||document.querySelector(n).childNodes[0].contentWindow.getSelection().removeAllRanges();if(t.classList.add("infobar-open"),t.onclick=null,t.onmouseout=null,!a){const e=document.querySelector(n).childNodes[0];e.style.setProperty("width","100vw","important"),e.style.setProperty("height","100vh","important"),e.style.setProperty("width",t.getBoundingClientRect().width+33+"px","important"),e.style.setProperty("height",t.getBoundingClientRect().height+21+"px","important")}}(t),!1},!a){const t=document.querySelector(n).childNodes[0];t.style.setProperty("width","44px","important"),t.style.setProperty("height","48px","important")}}function d(t,n){const e=document.createElement(t);return n.appendChild(e),Array.from(getComputedStyle(e)).forEach((t=>e.style.setProperty(t,"initial","important"))),e}t.window==t.top&&("loading"==document.readyState?document.addEventListener("DOMContentLoaded",s,!1):s())})("object"==typeof globalThis?globalThis:window)}();
+</script>

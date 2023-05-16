@@ -1,0 +1,2 @@
+showkey -a - find which key is pressed
+xev on xorg for same.
