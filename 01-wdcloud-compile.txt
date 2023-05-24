@@ -162,7 +162,7 @@ You may also want to use an updated C++ compiler to build packages in the wheezy
 # apt-get install g++ g++-4.7
 # update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++.4.6 10
 # update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.7 20
-# update-alternatives --install /usr/bin/gcc g++ /usr/bin/gcc-4.6 10
+# update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 10
 # update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.7 20
 # rm /usr/bin/cpp
 # update-alternatives --install /usr/bin/cpp cpp /usr/bin/cpp-4.6 10
