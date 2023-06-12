@@ -1,0 +1,749 @@
+<!DOCTYPE html> <html dir=ltr class=client-js style lang=en><!--
+ Page saved with SingleFile 
+ url: https://wiki.osdev.org/GCC_Cross-Compiler 
+ saved date: Sat Jun 03 2023 07:33:23 GMT+0530 (India Standard Time)
+--><meta charset=utf-8>
+<title>GCC Cross-Compiler - OSDev Wiki</title>
+<meta name=generator content="MediaWiki 1.18.0">
+<link rel=search type=application/opensearchdescription+xml href=https://wiki.osdev.org/opensearch_desc.php title="OSDev Wiki (en)">
+<link rel=EditURI type=application/rsd+xml href="https://wiki.osdev.org/api.php?action=rsd">
+<link rel=alternate type=application/atom+xml title="OSDev Wiki Atom feed" href="https://wiki.osdev.org/index.php?title=Special:RecentChanges&amp;feed=atom">
+<style>:root{--sf-img-2: /* original URL: /images/d/d3/Difficulty_1.png */ url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAOCAYAAABQFS4BAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAxMC8yOS8wONtkcyYAAAAYdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3Jrc0+zH04AAAJwSURBVEiJzZS9axRBGMZ/t7fhxLvIKQgG1ISATfBPEAUbC4mN+AeIMEGwSGshWFr4heUUio2NacQoFqaI0UpBIVVMk0gu4bjL7e7Nft1+zFrcCZc1BhLz9SzDws7vffbZd2emMDU/dWHu49zrxrfGKTd0cV2XIAjwQx/P8/BGvbXyWPnG4oPFL1JKgBHgKTAOdIACG/UBmBRCLOf4a4DOsRkwvRPenH0/+3b43HB17PYYUSnCwaFBgxW9wsLSAtZda6g105oGjveKnwN1oCqEUP2uUsqzwDPgBXC5j7eAM0KI2m7xRuNHozp4ZZBKqcKJ3lWhgpEYZMcy1IQi+h5V++ovAXfyoQGEEL+A+8DFHC/yIf6XN5VSZEczBhigTJkiRZppEx1otKMpDBTIsqy/PhFCrOdN+5Sf2xPe8H2fkJCIiCJF0HTXuOMTWzGZk23hcXAyozhCoTAwCAmxU5u6V8d2bEI3JA3Tg864qUytNeus4+FRpIiVWtTCGq2gheoo0vSQBgdo0MDAQKOxtEUtrtGMmrTTdvdAyh94WyvrjT3lzSzLWGUVjaZDByu1qEd17I4NEXA4G46ZJEk3cGbhJA6O7xCoAHwgoBt+e/uzwPb+0Y54s9PpEOsYFSmUrwitEO1qUIALhNuw3EcZnufhtBxUWxE0A9JmCm3Ao3tf/qumIKWsbOE5tB+86Y64djwRV/1xn+RI0u2y6o1V4B1wGruv8DPwSkr5GFhi4y44CTwCPuX4l1LKe8BPIUTyZ0JKOQo83Alvls6Xrlpfran4Vpz/8u7aHmUNg+t9T28CT4CZf3TkDTC5CT/fe/mu8L8BlUZ7tsc10w0AAAAASUVORK5CYII=")}@media screen{.mw-content-ltr{direction:ltr}.sitedir-ltr input{direction:ltr}input[type="submit"]{direction:ltr}div#mw-js-message{margin:1em 5%;padding:0.5em 2.5%;border:solid 1px #ddd;background-color:#fcfcfc}#catlinks{text-align:left}#catlinks ul{display:inline;margin:0px;padding:0px;list-style:none;list-style-type:none;list-style-image:none}#catlinks li{display:inline-block;line-height:1.35em;padding:0 .7em;border-left:1px solid #AAA;margin:0.3em 0}#catlinks li:first-child{padding-left:.4em;border-left:none}.visualClear{clear:both}.mw-content-ltr ul{padding:0}.mw-content-ltr ul{margin:.3em 0 0 1.5em}#toc ul{margin:.3em 0}.mw-content-ltr #toc ul{text-align:left}.mw-content-ltr #toc ul ul{margin:0 0 0 2em}#toc #toctitle{direction:ltr}.ltr{direction:ltr;unicode-bidi:embed}}@media screen{html,body{height:100%;margin:0;padding:0;font-family:sans-serif;font-size:1em}body{background-color:#f3f3f3;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABRJREFUeF4FwTEBAAAAwJD1D+weGQD4APc0a6VeAAAAAElFTkSuQmCC)}div#content{margin-left:10em;padding:1em;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABhJREFUeF4FwTEBAAAAgjD7FzESWfjYdgwEoAJ4lTsaxgAAAABJRU5ErkJggg==);background-position:top left;background-repeat:repeat-y;background-color:white;color:black;direction:ltr}#mw-page-base{height:5em;background-color:white;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAsCAIAAAArRUU2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADpJREFUeF5VjUkOAEAIwoD//7lzGJd4MJHGSoBImkFETP67CdLldUd7KC6f8fv3+psd8znbtU5x354HaWQjOx76v7MAAAAASUVORK5CYII=);background-position:bottom left;background-repeat:repeat-x}#mw-head-base{margin-top:-5em;margin-left:10em;height:5em;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABhJREFUeF4FwTEBAAAAgjD7FzESWfjYdgwEoAJ4lTsaxgAAAABJRU5ErkJggg==);background-position:bottom left;background-repeat:repeat-x}div#mw-head{position:absolute;top:0;right:0;width:100%}#p-personal{position:absolute;top:0;right:0.75em}#p-personal ul{list-style:none;margin:0;padding-left:10em}#p-personal li{line-height:1.125em;float:left}#p-personal li{margin-left:0.75em;margin-top:0.5em;font-size:0.75em;white-space:nowrap}#left-navigation{position:absolute;left:10em;top:2.5em}#right-navigation{float:right;margin-top:2.5em}div.vectorTabs{float:left;height:2.5em}div.vectorTabs{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAuCAIAAABmjeQ9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAERJREFUeF5lTtEKgEAMMv//j/O0IxlH9CA6N2WURAA/OHl5GeWAwUUHBcKV795FtTePxpmV3t9uv8Z3/cmvM88vzbbrAV/dQdX+eas3AAAAAElFTkSuQmCC);background-position:bottom left;background-repeat:no-repeat;padding-left:1px}div.vectorTabs ul{float:left}div.vectorTabs ul{height:100%;list-style:none;margin:0;padding:0}div.vectorTabs ul li{float:left}div.vectorTabs ul li{line-height:1.125em;height:100%;margin:0;padding:0;background-color:#f3f3f3;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABkCAIAAADITs03AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADxJREFUeF7litsRACAMwrD77+Q0rtGoV98r+MEFchhgkr4NnZyb3bk/LM/yMCjiH4wots/++hYR3iXLJVWUBS1AtOi2fwAAAABJRU5ErkJggg==);background-position:bottom left;background-repeat:repeat-x;white-space:nowrap}div.vectorTabs ul>li{display:block}div.vectorTabs li.selected{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABkAQAAAABvV2fNAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABVJREFUeF7dwQEBAAAAQCDTTfdD4WOJ5TIB3ib9EgAAAABJRU5ErkJggg==)}div.vectorTabs li a{height:1.9em;padding-left:0.5em;padding-right:0.5em;color:#0645ad;cursor:pointer;font-size:0.8em}div.vectorTabs span a{padding-top:1.25em}div.vectorTabs span>a{float:left;display:block}div.vectorTabs span{display:inline-block;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAuCAIAAABmjeQ9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAERJREFUeF5lTtEKgEAMMv//j/O0IxlH9CA6N2WURAA/OHl5GeWAwUUHBcKV795FtTePxpmV3t9uv8Z3/cmvM88vzbbrAV/dQdX+eas3AAAAAElFTkSuQmCC);background-position:bottom right;background-repeat:no-repeat}div.vectorTabs li.selected a,div.vectorTabs li.selected a:visited{color:#333333;text-decoration:none}#p-search{float:left}#p-search{margin-right:0.5em;margin-left:0.5em}#p-search form,#p-search input{margin:0;margin-top:0.4em}div#mw-panel{position:absolute;top:160px;padding-top:1em;width:10em;left:0}div#mw-panel div.portal{padding-bottom:1.5em;direction:ltr}div#mw-panel div.portal h5{font-weight:normal;color:#444444;padding:0.25em;padding-top:0;padding-left:1.75em;cursor:default;border:none;font-size:0.75em}div#mw-panel div.portal div.body{margin:0;padding-top:0.5em;margin-left:1.25em;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAAABCAAAAAAphRnkAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAClJREFUeF61yMEJACAQxMCN/Xfr/yIsaAfOJxC2UTPWS6f5gABhUTedBz7fGPSonIP/AAAAAElFTkSuQmCC);background-repeat:no-repeat;background-position:top left}div#mw-panel div.portal div.body ul{list-style:none;list-style-image:none;list-style-type:none;padding:0;margin:0}div#mw-panel div.portal div.body ul li{line-height:1.125em;padding:0;padding-bottom:0.5em;margin:0;overflow:hidden;font-size:0.75em}div#mw-panel div.portal div.body ul li a{color:#0645ad}div#mw-panel div.portal div.body ul li a:visited{color:#0b0080}div#footer{margin-left:10em;margin-top:0;padding:0.75em;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABhJREFUeF4FwTEBAAAAgjD7FzESWfjYdgwEoAJ4lTsaxgAAAABJRU5ErkJggg==);background-position:top left;background-repeat:repeat-x;direction:ltr}div#footer ul{list-style:none;list-style-image:none;list-style-type:none;margin:0;padding:0}div#footer ul li{margin:0;padding:0;padding-top:0.5em;padding-bottom:0.5em;color:#333333;font-size:0.7em}div#footer #footer-icons{float:right}body.ltr div#footer #footer-places{float:left}div#footer #footer-info li{line-height:1.4em}div#footer #footer-icons li{float:left;margin-left:0.5em;line-height:2em;text-align:right}div#footer #footer-places li{float:left;margin-right:1em;line-height:2em}#p-logo{position:absolute;top:-160px;left:0;width:10em;height:160px}#p-logo a{display:block;width:10em;height:160px;background-repeat:no-repeat;background-position:center center;text-decoration:none}div#content{line-height:1.5em}#bodyContent{font-size:0.8em}a{text-decoration:none;color:#0645ad;background:none}a:visited{color:#0b0080}a:active{color:#faa700}a:hover,a:focus{text-decoration:underline}img{border:none;vertical-align:middle}h1,h2,h3,h4,h5{color:black;background:none;font-weight:normal;margin:0;overflow:hidden;padding-top:.5em;padding-bottom:.17em;border-bottom:1px solid #aaa;width:auto}h2{font-size:150%}h3,h4,h5{border-bottom:none;font-weight:bold}h3{font-size:132%}h4{font-size:116%}p{margin:.4em 0 .5em 0;line-height:1.5em}pre,tt{font-family:monospace,"Courier New"}pre{padding:1em;border:1px dashed #2f6fab;color:black;background-color:#f9f9f9;line-height:1.3em}ul{line-height:1.5em;list-style-type:square;margin:.3em 0 0 1.5em;padding:0;list-style-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAANCAMAAABW4lS6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRFAFKM////QIUK9QAAAAJ0Uk5T/wDltzBKAAAAGklEQVR42mJgBAEGokgGBjBGBxBxsBqAAAMACHwALd5r8ygAAAAASUVORK5CYII=)}li{margin-bottom:.1em}dl{margin-top:.2em;margin-bottom:.5em}dd{line-height:1.5em;margin-left:2em;margin-bottom:.1em}table{font-size:100%}form{border:none}#toc{border:1px solid #aaa;background-color:#f9f9f9;padding:5px;font-size:95%}#toc h2{display:inline;border:none;padding:0;font-size:100%;font-weight:bold}#toc #toctitle{text-align:center}#toc ul{list-style-type:none;list-style-image:none;margin-left:0;padding:0;text-align:left}#toc ul ul{margin:0 0 0 2em}#toc .toctoggle{font-size:94%}.catlinks{border:1px solid #aaa;background-color:#f9f9f9;padding:5px;margin-top:1em;clear:both}#contentSub{font-size:84%;line-height:1.2em;margin:0 0 1.4em 1em;color:#7d7d7d;width:auto}h2{margin-bottom:.6em}h3,h4,h5{margin-bottom:.3em}#firstHeading{margin-top:0;padding-top:0;margin-bottom:0.1em;line-height:1.2em;font-size:1.6em;padding-bottom:0}div#content a.external{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFZJREFUeF59z4EJADEIQ1F36k7u5E7ZKXeUQPACJ3wK7UNokVxVk9kHnQH7bY9hbDyDhNXgjpRLqFlo4M2GgfyJHhjq8V4agfrgPQX3JtJQGbofmCHgA/nAKks+JAjFAAAAAElFTkSuQmCC)center right no-repeat;padding-right:13px}div#content a.external[href^="https://"]{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIVJREFUeF6tjzsKg0AQhi09mimsFJLCzpNYCGKbK3gAtfUIljaCoKCCZIs8MMV2v+yCg8siWlh8zOtjhjEAEFmeIopDQtTrTJNEZIxhWysiNfULJFJjDzGnba/aBt4+wAuBzD+tg6a8SVkXf4GET96xmDxNzP39IvE/PPDtXIyVpYinv14A5F0laJ8oYFgAAAAASUVORK5CYII=)center right no-repeat;padding-right:13px}div#content a.external{color:#36b}div#content a.external:visited{color:#636}div#content a.external:active{color:#b63}#pt-login{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAYAAACQN/8FAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAHOSURBVCjPY2BAAjtLxLmPN4pFn2gSTdrfICDAgA2c65C0uznf6erT9dH/H6/0+39zut6d051SfiiK9jcwsFyfa3v21Z7S/++Odf1/uSP7/6OF1v+vT9O7ub9BlAdJoajBw+W+P98crPv/8eLC/6/2lPx/vNj+/705xv+PNwsHwRUerOFTvTXX9sfzjTFg056tC/v/YJbu//tzjP4eaxR3hiv8z8DAuKPF4N7DuUb/H84z/X9/hsb/BzM1/x/qMnxwJo2BFa5QP3rKpMjSiT/XtTr+vzzV+P+Vacb/N7fb/48v6fikHTYhFaxII3iSr0vRmm/muZv++9du/L969Yr/Wzeu+O9Tvvq/Rcay//aZC15reHXoMtimz91ulrnyv1n22v/muRv/960693/Fniv/TdKX/zdKXvDfPHX+f9PYySsYbFJnXDWIm/nfOG0pWDKkdsP/oonbgYoW/jdImPNfL2bKf+v4SRcZTCK6D5gkTAcLGibO/W+aMu+/b8mS//pxM8CKdAPr/xtFdB9lkDQNszOP7r1tnTLzr03qzP/WQGyVAqRTpv+3Tprxzzi88560VZo3xNui2jxi+oFB4oYRNaL6Ic0gDGEHh4HkQEoAjALoHv5slukAAAAASUVORK5CYII=)left top no-repeat;padding-left:15px!important;text-transform:none}#bodyContent{position:relative;width:100%}#mw-js-message{font-size:0.8em}div#bodyContent{line-height:1.5em}div.vectorTabs ul{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAuCAIAAABmjeQ9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAERJREFUeF5lTtEKgEAMMv//j/O0IxlH9CA6N2WURAA/OHl5GeWAwUUHBcKV795FtTePxpmV3t9uv8Z3/cmvM88vzbbrAV/dQdX+eas3AAAAAElFTkSuQmCC);background-position:right bottom;background-repeat:no-repeat}}.js-messagebox{margin:1em 5%;padding:0.5em 2.5%;border:1px solid #ccc;background-color:#fcfcfc;font-size:0.8em}</style><meta name=ResourceLoaderDynamicStyles content>
+<style>div.mw-geshi div,div.mw-geshi div pre,span.mw-geshi{font-family:monospace,Courier!important}a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}.source-bash{line-height:normal}.source-bash pre{line-height:normal;border:0px none white}.bash.source-bash .de1{font:normal normal 1em/1.2em monospace;margin:0;padding:0;background:none;vertical-align:top}.bash.source-bash{font-family:monospace}.bash.source-bash .kw1{color:#000000;font-weight:bold}.bash.source-bash .kw2{color:#c20cb9;font-weight:bold}.bash.source-bash .kw3{color:#7a0874;font-weight:bold}.bash.source-bash .co0{color:#666666;font-style:italic}.bash.source-bash .co4{color:#666666}.bash.source-bash .es2{color:#007800}.bash.source-bash .sy0{color:#000000;font-weight:bold}.bash.source-bash .st0{color:#ff0000}.bash.source-bash .nu0{color:#000000}.bash.source-bash .re1{color:#007800}.bash.source-bash .re2{color:#007800}.bash.source-bash .re5{color:#660033}.source-make{line-height:normal}.make.source-make{font-family:monospace}.make.source-make .br0{color:#004400}.make.source-make .sy0{color:#004400}.make.source-make .re2{color:#000088}.source-text{line-height:normal}.text.source-text{font-family:monospace}div.mw-geshi{padding:1em;margin:1em 0;border:1px dashed #2f6fab;background-color:#f9f9f9}</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/vector/csshover.min.htc")}</style><![endif]--><link rel="shortcut icon" href="data:image/vnd.microsoft.icon;base64,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" data-sf-original-href=https://wiki.osdev.org/favicon.ico><style>.sf-hidden{display:none!important}</style><link rel=canonical href=https://wiki.osdev.org/GCC_Cross-Compiler><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-GCC_Cross-Compiler action-view skin-vector">
+ <div id=mw-page-base class=noprint></div>
+ <div id=mw-head-base class=noprint></div>
+ 
+ <div id=content>
+ <a id=top></a>
+ <div id=mw-js-message style=display:none class=js-messagebox></div>
+ 
+ <h1 id=firstHeading class=firstHeading>GCC Cross-Compiler</h1>
+ 
+ 
+ <div id=bodyContent>
+ 
+ <div id=siteSub class=sf-hidden>From OSDev Wiki</div>
+ 
+ 
+ <div id=contentSub></div>
+ 
+ 
+ <div id=jump-to-nav class=sf-hidden>
+ Jump to: ,
+ 
+ </div>
+ 
+ 
+ <div dir=ltr class=mw-content-ltr lang=en><center>
+<table style="border:1px solid #cfcfbf;margin-top:25px;margin-bottom:25px;background-color:#f0f0ff;text-align:center">
+<tbody><tr>
+<td>
+<p>This page or section refers to its readers or editors using <i>I</i>, <i>my</i>, <i>we</i> or <i>us</i>. It should be <a rel=nofollow class="external text" href="https://wiki.osdev.org/index.php?title=GCC_Cross-Compiler&amp;action=edit">edited</a> to be in an encyclopedic tone.
+</p>
+</table>
+</center><table style="font-size:95%;line-height:1.5em;padding:0.25em;float:right;margin:0 0 8px 15px;clear:right;border:1px solid #aaaaaa;background:#eee;text-align:center"><tbody><tr><th>Difficulty level<tr><td><a href=https://wiki.osdev.org/File:Difficulty_1.png class=image><img alt="Difficulty 1.png" src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="46" height="14"><rect fill-opacity="0"/></svg>' data-sf-original-src=https://wiki.osdev.org/images/d/d3/Difficulty_1.png style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-2)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important" width=46 height=14></a><br>Beginner</table>
+<p>This tutorial focuses on creating a GCC cross-compiler for your own operating system. This compiler that we build here will have a generic target (i686-elf) that allows you to leave the current operating system behind, meaning that no headers or libraries of the host operating system will be used. Without using a cross-compiler for operating system development, a lot of unexpected things can happen because the compiler assumes that the code is running on the host operating system.
+</p>
+<table id=toc class=toc><tbody><tr><td><div id=toctitle><h2>Contents</h2><span class=toctoggle>&nbsp;[<a href=# class=internal id=togglelink>hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href=#Introduction><span class=tocnumber>1</span> <span class=toctext>Introduction</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href=#Why_cross-compilers_are_necessary><span class=tocnumber>1.1</span> <span class=toctext>Why cross-compilers are necessary</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href=#Which_compiler_version_to_choose><span class=tocnumber>1.2</span> <span class=toctext>Which compiler version to choose</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href=#Which_binutils_version_to_choose><span class=tocnumber>1.3</span> <span class=toctext>Which binutils version to choose</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href=#Deciding_on_the_target_platform><span class=tocnumber>1.4</span> <span class=toctext>Deciding on the target platform</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href=#Note_on_arm-none-eabi-gcc><span class=tocnumber>1.5</span> <span class=toctext>Note on arm-none-eabi-gcc</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href=#Preparing_for_the_build><span class=tocnumber>2</span> <span class=toctext>Preparing for the build</span></a>
+<ul>
+<li class=toclevel-2><a href=#Installing_Dependencies><span class=tocnumber>2.1</span> <span class=toctext>Installing Dependencies</span></a></li>
+<li class=toclevel-2><a href=#Downloading_the_Source_Code><span class=tocnumber>2.2</span> <span class=toctext>Downloading the Source Code</span></a></li>
+<li class=toclevel-2><a href=#Linux_Users_building_a_System_Compiler><span class=tocnumber>2.3</span> <span class=toctext>Linux Users building a System Compiler</span></a></li>
+<li class=toclevel-2><a href=#Gentoo_Users><span class=tocnumber>2.4</span> <span class=toctext>Gentoo Users</span></a></li>
+<li class=toclevel-2><a href=#macOS_Users><span class=tocnumber>2.5</span> <span class=toctext>macOS Users</span></a></li>
+<li class=toclevel-2><a href=#Windows_Users><span class=tocnumber>2.6</span> <span class=toctext>Windows Users</span></a></li>
+<li class=toclevel-2><a href=#OpenBSD_Users><span class=tocnumber>2.7</span> <span class=toctext>OpenBSD Users</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href=#The_Build><span class=tocnumber>3</span> <span class=toctext>The Build</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href=#Preparation><span class=tocnumber>3.1</span> <span class=toctext>Preparation</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href=#Binutils><span class=tocnumber>3.2</span> <span class=toctext>Binutils</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href=#GDB><span class=tocnumber>3.3</span> <span class=toctext>GDB</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href=#GCC><span class=tocnumber>3.4</span> <span class=toctext>GCC</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href=#Using_the_new_Compiler><span class=tocnumber>4</span> <span class=toctext>Using the new Compiler</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href=#Troubleshooting><span class=tocnumber>5</span> <span class=toctext>Troubleshooting</span></a>
+<ul>
+<li class="toclevel-2 tocsection-15"><a href=#ld:_cannot_find_-lgcc><span class=tocnumber>5.1</span> <span class=toctext>ld: cannot find -lgcc</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href=#Binutils_2.9><span class=tocnumber>5.2</span> <span class=toctext>Binutils 2.9</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href=#Building_GCC:_the_directory_that_should_contain_system_headers_does_not_exist><span class=tocnumber>5.3</span> <span class=toctext>Building GCC: the directory that should contain system headers does not exist</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href=#GCC_libsanitizer_failing_to_build><span class=tocnumber>5.4</span> <span class=toctext>GCC libsanitizer failing to build</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-19"><a href=#More_advanced><span class=tocnumber>6</span> <span class=toctext>More advanced</span></a></li>
+<li class="toclevel-1 tocsection-20"><a href=#See_Also><span class=tocnumber>7</span> <span class=toctext>See Also</span></a>
+<ul>
+<li class="toclevel-2 tocsection-21"><a href=#Articles><span class=tocnumber>7.1</span> <span class=toctext>Articles</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href=#External_Links><span class=tocnumber>7.2</span> <span class=toctext>External Links</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href=#Prebuilt_Toolchains><span class=tocnumber>7.3</span> <span class=toctext>Prebuilt Toolchains</span></a></li>
+</ul>
+</li>
+</ul>
+</table>
+<h2> <span class=mw-headline id=Introduction> Introduction </span></h2>
+<p>Generally speaking, a cross-compiler is a compiler that runs on platform A (the <b>host</b>), but generates executables for platform B (the <b>target</b>). These two platforms may (but do not need to) differ in CPU, operating system, and/or <a href=https://wiki.osdev.org/Category:Executable_Formats title="Category:Executable Formats">executable format</a>. In our case, the host platform is your current operating system and the target platform is the operating system you are about to make. It is important to realize that these two platforms are not the same; the operating system you are developing is always going to be different from the operating system you currently use.
+</p>
+<h3> <span class=mw-headline id=Why_cross-compilers_are_necessary> Why cross-compilers are necessary </span></h3>
+<dl><dd><i>Main article:</i> <a href=https://wiki.osdev.org/Why_do_I_need_a_Cross_Compiler%3F title="Why do I need a Cross Compiler?">Why do I need a Cross Compiler?</a>
+</dl>
+<p>The compiler must know the correct target platform (CPU, operating system). The compiler that comes with the host system does not know by default that it is compiling something else entirely, unless a lot of problematic options are passed to it, which will create a lot of problems in the future. The solution is to build a cross-compiler.
+</p>
+<h3> <span class=mw-headline id=Which_compiler_version_to_choose> Which compiler version to choose </span></h3>
+<dl><dd><i>Main article:</i> <a href=https://wiki.osdev.org/Building_GCC title="Building GCC">Building GCC</a>
+</dl>
+<p>The newest <a href=https://wiki.osdev.org/GCC title=GCC>GCC</a> is recommended as it is the latest and greatest release. For instance, using GCC 4.6.3 to build a GCC 4.8.0 cross-compiler would create troubles. Here is how to <a href=https://wiki.osdev.org/Building_GCC title="Building GCC">build the newest GCC as your system compiler</a>.
+<p>You can also use older releases as they are usually reasonably good. If your local system compiler isn't too terribly old (at least GCC 4.6.0), you may wish to save yourself the trouble and just pick the latest minor release (such as 4.6.3 if your system compiler is 4.6.1) for your cross-compiler.
+<p>This command prints the current compiler version:
+</p>
+<div dir=ltr class=mw-geshi style=text-align:left><div class="bash source-bash"><pre class=de1><span class=kw2>gcc</span> <span class=re5>--version</span></pre></div></div>
+<p>You may be able to use an older major GCC release to build a cross-compiler of a newer major GCC release. For instance, GCC 4.7.3 may be able to build a GCC 4.8.0 cross-compiler. However, if you want to use the latest and greatest GCC version for your cross-compiler, we recommend that you <a href=https://wiki.osdev.org/Building_GCC title="Building GCC">bootstrap the newest GCC</a> as your system compiler first. Individuals using OS X 10.7 or earlier might want to invest in either building a system GCC (that outputs native Mach-O), or upgrading the local LLVM/Clang installation. Users with 10.8 and above should install the Command Line Tools from Apple's developer website and use Clang to cross-compile GCC.
+</p>
+<h3> <span class=mw-headline id=Which_binutils_version_to_choose> Which binutils version to choose </span></h3>
+<dl><dd><i>Main article:</i> <a href=https://wiki.osdev.org/Cross-Compiler_Successful_Builds title="Cross-Compiler Successful Builds">Cross-Compiler Successful Builds</a>
+</dl>
+<p>The latest and greatest <a href=https://wiki.osdev.org/Binutils title=Binutils>Binutils</a> release is recommended. Note, however, that not all combinations of GCC and Binutils work. If you run into trouble, use a Binutils that was released at roughly the same time as your desired compiler version. You probably need at least Binutils 2.22, or preferably the latest 2.23.2 release. It doesn't matter what Binutils version you have installed on your current operating system. This command prints the binutils version:
+</p>
+<div dir=ltr class=mw-geshi style=text-align:left><div class="bash source-bash"><pre class=de1><span class=kw2>ld</span> <span class=re5>--version</span></pre></div></div>
+<h3> <span class=mw-headline id=Deciding_on_the_target_platform> Deciding on the target platform </span></h3>
+<dl><dd><i>Main article:</i> <a href=https://wiki.osdev.org/Target_Triplet title="Target Triplet">Target Triplet</a>
+</dl>
+<p>You should already know this. If you are following the <a href=https://wiki.osdev.org/Bare_Bones title="Bare Bones">Bare Bones</a> tutorial, you wish to build a cross-compiler for <tt>i686-elf</tt>.
+</p>
+<h3> <span class=mw-headline id=Note_on_arm-none-eabi-gcc> Note on arm-none-eabi-gcc </span></h3>
+<p>There is the prebuilt package gcc-arm-none-eabi on apt-get for Debiab/Ubuntu, but you shouldn't use it because it neither contains a libgcc.a nor freestanding C header files like stdint.h.<br>
+Instead you should build it yourself with <tt>arm-none-eabi</tt> being the $TARGET.
+</p>
+<h2> <span class=mw-headline id=Preparing_for_the_build> Preparing for the build </span></h2><table style="font-size:95%;line-height:1.5em;padding:0.25em;float:right;margin:0 0 8px 15px;clear:right;border:1px solid #aaaaaa;background:#eee;text-align:center"><tbody><tr><th>Difficulty level<tr><td><a href=https://wiki.osdev.org/File:Difficulty_1.png class=image><img alt="Difficulty 1.png" src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="46" height="14"><rect fill-opacity="0"/></svg>' data-sf-original-src=https://wiki.osdev.org/images/d/d3/Difficulty_1.png style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-2)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important" width=46 height=14></a><br>Beginner</table>
+<p><br>
+<p>The GNU Compiler Collection is an advanced piece of software with dependencies. You need the following in order to build GCC:
+</p>
+<ul><li> A Unix-like environment (Windows users can use the Windows Subsystem for Linux or Cygwin)
+<li> Enough memory and hard disk space (it depends, 256 MiB will not be enough).
+<li> GCC (existing release you wish to replace), or another system C compiler
+<li> G++ (if building a version of GCC &gt;= 4.8.0), or another system C++ compiler
+<li> Make
+<li> Bison
+<li> Flex
+<li> GMP
+<li> MPFR
+<li> MPC
+<li> Texinfo
+<li> ISL (optional)
+<li> CLooG (optional)
+</ul>
+<h3> <span class=mw-headline id=Installing_Dependencies> Installing Dependencies </span></h3>
+<table style="margin-top:1em;margin-bottom:1em;background:#f9f9f9;border:1px #aaa solid;border-collapse:collapse;{{{1}}}" cellspacing=0 cellpadding=4 border=2>
+<tbody><tr>
+<th> ↓ Dependency / OS →
+</th>
+<td> Source Code
+</td>
+<td> Debian (Ubuntu, Mint, WSL, ...)
+</td>
+<td> Gentoo
+</td>
+<td> Fedora
+</td>
+<td> Cygwin
+</td>
+<td> OpenBSD
+</td>
+<td> Arch
+</tr>
+<tr>
+<td>How to install
+</td>
+<td>Normally
+</td>
+<td><b><tt>sudo apt install</tt> <i>foo</i></b>
+</td>
+<td><b><tt>sudo emerge --ask</tt> <i>foo</i></b>
+</td>
+<td><b><tt>sudo dnf install</tt> <i>foo</i></b>
+</td>
+<td>Cygwin GUI setup
+</td>
+<td><b><tt>doas pkg_add</tt> <i>foo</i></b>
+</td>
+<td><b><tt>pacman -Syu</tt> <i>foo</i></b>
+</tr>
+<tr>
+<td>Compiler
+</td>
+<td>N/A
+</td>
+<td><b><tt>build-essential</tt></b>
+</td>
+<td><b><tt>sys-devel/gcc</tt></b>
+</td>
+<td><b><tt>gcc gcc-c++</tt></b>
+</td>
+<td><b><tt>mingw64-x86_64-gcc-g++</tt></b> / <b><tt>mingw64-i686-gcc-g++</tt></b>
+</td>
+<td>Preinstalled
+</td>
+<td><b><tt>base-devel</tt></b>
+</tr>
+<tr>
+<td>Make
+</td>
+<td>N/A
+</td>
+<td><b><tt>build-essential</tt></b>
+</td>
+<td><b><tt>sys-devel/make</tt></b>
+</td>
+<td><b><tt>make</tt></b>
+</td>
+<td><b><tt>make</tt></b>
+</td>
+<td>Preinstalled
+</td>
+<td><b><tt>base-devel</tt></b>
+</tr>
+<tr>
+<td><a rel=nofollow class="external text" href=https://www.gnu.org/software/bison/>Bison</a>
+</td>
+<td><a rel=nofollow class="external autonumber" href=https://ftp.gnu.org/gnu/bison/>[1]</a>
+</td>
+<td><b><tt>bison</tt></b>
+</td>
+<td><b><tt>sys-devel/bison</tt></b>
+</td>
+<td><b><tt>bison</tt></b>
+</td>
+<td><b><tt>bison</tt></b>
+</td>
+<td>?
+</td>
+<td><b><tt>base-devel</tt></b>
+</tr>
+<tr>
+<td><a rel=nofollow class="external text" href=https://github.com/westes/flex>Flex</a>
+</td>
+<td><a rel=nofollow class="external autonumber" href=https://github.com/westes/flex/releases>[2]</a>
+</td>
+<td><b><tt>flex</tt></b>
+</td>
+<td><b><tt>sys-devel/flex</tt></b>
+</td>
+<td><b><tt>flex</tt></b>
+</td>
+<td><b><tt>flex</tt></b>
+</td>
+<td>?
+</td>
+<td><b><tt>base-devel</tt></b>
+</tr>
+<tr>
+<td><a rel=nofollow class="external text" href=https://gmplib.org/>GMP</a>
+</td>
+<td><a rel=nofollow class="external autonumber" href=https://ftp.gnu.org/gnu/gmp/>[3]</a>
+</td>
+<td><b><tt>libgmp3-dev</tt></b>
+</td>
+<td><b><tt>dev-libs/gmp</tt></b>
+</td>
+<td><b><tt>gmp-devel</tt></b>
+</td>
+<td><b><tt>libgmp-devel</tt></b>
+</td>
+<td><b><tt>gmp</tt></b>
+</td>
+<td><b><tt>gmp</tt></b>
+</tr>
+<tr>
+<td>MPC
+</td>
+<td><a rel=nofollow class="external autonumber" href=https://ftp.gnu.org/gnu/mpc/>[4]</a>
+</td>
+<td><b><tt>libmpc-dev</tt></b>
+</td>
+<td><b><tt>dev-libs/mpc</tt></b>
+</td>
+<td><b><tt>libmpc-devel</tt></b>
+</td>
+<td><b><tt>libmpc-devel</tt></b>
+</td>
+<td><b><tt>libmpc</tt></b>
+</td>
+<td><b><tt>libmpc</tt></b>
+</tr>
+<tr>
+<td><a rel=nofollow class="external text" href=https://www.mpfr.org/>MPFR</a>
+</td>
+<td><a rel=nofollow class="external autonumber" href=https://ftp.gnu.org/gnu/mpfr/>[5]</a>
+</td>
+<td><b><tt>libmpfr-dev</tt></b>
+</td>
+<td><b><tt>dev-libs/mpfr</tt></b>
+</td>
+<td><b><tt>mpfr-devel</tt></b>
+</td>
+<td><b><tt>libmpfr-devel</tt></b>
+</td>
+<td><b><tt>mpfr</tt></b>
+</td>
+<td><b><tt>mpfr</tt></b>
+</tr>
+<tr>
+<td><a rel=nofollow class="external text" href=https://www.gnu.org/software/texinfo/>Texinfo</a>
+</td>
+<td><a rel=nofollow class="external autonumber" href=https://ftp.gnu.org/gnu/texinfo/>[6]</a>
+</td>
+<td><b><tt>texinfo</tt></b>
+</td>
+<td><b><tt>sys-apps/texinfo</tt></b>
+</td>
+<td><b><tt>texinfo</tt></b>
+</td>
+<td><b><tt>texinfo</tt></b>
+</td>
+<td><b><tt>texinfo</tt></b>
+</td>
+<td><b><tt>base-devel</tt></b>
+</tr>
+<tr>
+<td><a rel=nofollow class="external text" href=https://www.cloog.org/>CLooG</a> (Optional)
+</td>
+<td><a rel=nofollow class="external text" href=https://www.cloog.org/>CLooG</a>
+</td>
+<td><b><tt>libcloog-isl-dev</tt></b>
+</td>
+<td><b><tt>dev-libs/cloog</tt></b>
+</td>
+<td><b><tt>cloog-devel</tt></b>
+</td>
+<td><b><tt>libcloog-isl-devel </tt></b><tt>(Deprecated, no longer exists!)<b></b></tt>
+</td>
+<td>N/A
+</td>
+<td>N/A
+</tr>
+<tr>
+<td><a rel=nofollow class="external text" href=http://isl.gforge.inria.fr/>ISL</a> (Optional)
+</td>
+<td><a rel=nofollow class="external autonumber" href=http://isl.gforge.inria.fr/>[7]</a>
+</td>
+<td><b><tt>libisl-dev</tt></b>
+</td>
+<td><b><tt>dev-libs/isl</tt></b>
+</td>
+<td><b><tt>isl-devel</tt></b>
+</td>
+<td><b><tt>libisl-devel</tt></b>
+</td>
+<td>N/A
+</td>
+<td>N/A
+</table>
+<p>You need to have Texinfo installed to build Binutils. You need to have GMP, MPC, and MPFR installed to build GCC. GCC optionally can make use of the CLooG and ISL libraries.
+<p>For instance, you can install <b><tt>libgmp3-dev</tt></b> on Debian by running the shell command: <b><tt>sudo apt install libgmp3-dev</tt></b>
+<p><b>Note:</b> Version 5.x (or later) of Texinfo is known to be incompatible with the current Binutils 2.23.2 release (and older). You can check your current version using <tt>makeinfo --version</tt>. If your version is too new and you encounter problems during the build, you will need to either use Binutils 2.24 release (or newer) or install an older version of Texinfo - perhaps through building from source - and add it to your <tt>PATH</tt> prior and during the Binutils build.
+<p><b>Note:</b> Version 0.13 (or later) of ISL is incompatible with the current CLooG 0.18.1 release (and older). Use version 0.12.2 of ISL or the build <b>will</b> fail.
+<p><b>Note:</b> If you are using <b>Cygwin</b>, it is recommended to install the <b>libintl-devel</b> package (I couldn't build a cross compiler without this package)
+</p>
+<h3> <span class=mw-headline id=Downloading_the_Source_Code> Downloading the Source Code </span></h3>
+<p>Download the needed source code into a suitable directory such as <tt>$HOME/src</tt>:
+</p>
+<ul><li> You can download the desired Binutils release by visiting the <a rel=nofollow class="external text" href=https://gnu.org/software/binutils/>Binutils website</a> or directly accessing the <a rel=nofollow class="external text" href=https://ftp.gnu.org/gnu/binutils/>GNU main mirror</a>.
+</ul>
+<ul><li> You can download the desired GCC release by visiting the <a rel=nofollow class="external text" href=https://gnu.org/software/gcc/>GCC website</a> or directly accessing the <a rel=nofollow class="external text" href=https://ftp.gnu.org/gnu/gcc/>GNU main mirror</a>.
+</ul>
+<p><b>Note:</b> The versioning scheme used is that each fullstop separates a full number, i.e. Binutils 2.20.0 is newer than 2.9.0. This may be confusing, if you have not encountered this (quite common) versioning scheme yet, when looking at an alphanumerically sorted list of tarballs: The file at the bottom of the list is not the latest version! An easy way of getting the latest version is to sort by the last modified date and scrolling to the bottom.
+</p>
+<h3> <span class=mw-headline id=Linux_Users_building_a_System_Compiler> Linux Users building a System Compiler </span></h3>
+<p>Your distribution may ship its own patched GCC and Binutils that is customized to work on your particular Linux distribution. You should be able to build a working cross-compiler using the above source code, but you might not be able to build a new system compiler for your current Linux distribution. In that case, try a newer GCC release or get the patched source code.
+</p>
+<h3> <span class=mw-headline id=Gentoo_Users> Gentoo Users </span></h3>
+<p>Gentoo offers <a rel=nofollow class="external text" href=https://wiki.gentoo.org/wiki/Crossdev>crossdev</a> to set up a cross-development toolchain:
+</p>
+<pre>   emerge -av crossdev
+   crossdev --help
+   PORTDIR_OVERLAY="/usr/local/crossdev" crossdev --stage1 --binutils &lt;binutils-version&gt; --gcc &lt;gcc-version&gt; --target &lt;target&gt;
+</pre>
+<p>This will install a GCC cross-compiler into a "slot", i.e. alongside already-existing compiler versions. You can install several cross-compilers that way, simply by changing target designations. An unfortunate downside is that it will also pull in gentoo patches and pass additional configure options that differ from the official <strong class=selflink>GCC Cross-Compiler</strong> setup, and they might behave differently.
+<p>After the compilation finishes successfully, your cross-compiler is callable via &lt;target&gt;-gcc. You can also use gcc-config to toggle between compiler versions should you need to do so. Don't replace your system compiler with a cross-compiler. The package manager will also suggest updates as soon as they become available. 
+<p>You can uninstall the cross-compiler by calling <i>crossdev --clean &lt;target&gt;</i>. Read the <a rel=nofollow class="external text" href=https://wiki.gentoo.org/wiki/Cross_build_environment>cross-development</a> document for additional information.
+<p>Note that the version numbers to binutils and gcc are <i>Gentoo package versions</i>, i.e. there might be a suffix to the "official" (GNU) version that addresses additional patchsets supplied by the Gentoo maintainers. (For example, <i>--binutils 2.24-r3 --gcc 4.8.3</i> is the latest stable package pair at the time of this writing.) You can omit the version numbers to use the latest package available.
+<p>Portage uses overlays to store packages that are not part of the original package management. Crossdev needs one overlay where it can store its binutils and gcc packages before building them. You can configure one properly, or you can use PORTDIR_OVERLAY to point at where it should keep its package manager files. Using PORTDIR_OVERLAY is not a good idea with existing overlays, but by then you should know how you have personally set them up earlier anyway and how to do it properly. See <a rel=nofollow class="external autonumber" href=https://wiki.gentoo.org/wiki/Custom_repository#Crossdev>[8]</a>.
+</p>
+<h3> <span class=mw-headline id=macOS_Users> macOS Users </span></h3>
+<p>macOS users need a replacement libiconv because the system libiconv is seriously out of date. macOS users can download the latest libiconv release by visiting the <a rel=nofollow class="external text" href=https://gnu.org/software/libiconv/>libiconv website</a> or directly accessing the <a rel=nofollow class="external text" href=https://ftp.gnu.org/gnu/libiconv/>GNU main FTP mirror</a>. Otherwise you may get unresolved symbol errors related to libiconv when compiling GCC 4.3 or higher on OS X 10.4 and 10.5.
+<p>Install a new version (compile it yourself or use MacPorts) and add <tt>--with-libiconv-prefix=/opt/local</tt> (or <tt>/usr/local</tt> if you compiled it yourself) to GCC's <tt>./configure</tt> line. Alternatively you may place the libiconv source as gcc-x.y.z/libiconv and it will be compiled as part of the GCC compilation process. (This trick also works for MPFR, GMP, and MPC).
+<p>The makefiles of Binutils and GCC use the <span class="mw-geshi make source-make"><span class=sy0>$</span><span class=br0>(</span><span class=re2>CC</span><span class=br0>)</span></span> variable to invoke the compiler. On OS X, this resolves to <span class="mw-geshi text source-text">gcc</span> by default, which is actually <span class="mw-geshi bash source-bash">clang</span>. Prior to OS X 10.8, the Clang that came with Xcode's Command Line Tools package was not able to build a working GCC. Users running OS X 10.7 or below may need to find and install GCC, either from <a rel=nofollow class="external text" href=https://brew.sh/>Homebrew</a>, or from somewhere on Apple's website. You can try with the old GCC that comes preinstalled on some macOS versions.
+</p>
+<div dir=ltr class=mw-geshi style=text-align:left><div class="bash source-bash"><pre class=de1><span class=co0># This is only necessary for OS X users running 10.7 or below.</span>
+<span class=kw3>export</span> <span class=re2>CC</span>=<span class=sy0>/</span>usr<span class=sy0>/</span>bin<span class=sy0>/</span>gcc-<span class=nu0>4.2</span>
+<span class=kw3>export</span> <span class=re2>CXX</span>=<span class=sy0>/</span>usr<span class=sy0>/</span>bin<span class=sy0>/</span>g++-<span class=nu0>4.2</span>
+<span class=kw3>export</span> <span class=re2>CPP</span>=<span class=sy0>/</span>usr<span class=sy0>/</span>bin<span class=sy0>/</span>cpp-<span class=nu0>4.2</span>
+<span class=kw3>export</span> <span class=re2>LD</span>=<span class=sy0>/</span>usr<span class=sy0>/</span>bin<span class=sy0>/</span>gcc-<span class=nu0>4.2</span></pre></div></div>
+<p>You will want to unset these exports once you compiled and installed the cross compiler.
+<p><b>Note for Lion users:</b> If you're on Lion (or above) chances are that you don't have the "real" GCC since Apple removed it from the Xcode package, but you can still install it. You can do it via Homebrew or by compiling from source, both are perfectly described on <a rel=nofollow class="external text" href=https://apple.stackexchange.com/a/38247>a StackExchange answer</a>.
+<p><b>Note for Maverick users:</b> You can build binutils-2.24 and gcc-4.8.3 (possible other version) with Xcode 5.1.1. Note that building GCC with LLVM is not officially supported and may cause interesting bugs, if you are willing to take this risk and save time building host-gcc just to compile a cross-gcc, follow this.
+Install GMP, MPFR, Mpc with <a rel=nofollow class="external text" href=https://www.macports.org/>MacPorts</a>.
+</p>
+<pre>sudo port install gmp mpfr libmpc
+</pre>
+<pre>../binutils-2.24/configure --prefix=$PREFIX \
+--target=$TARGET \
+--enable-interwork --enable-multilib \
+--disable-nls --disable-werror
+</pre>
+<pre>../gcc-4.8.3/configure --prefix=$PREFIX \
+--target=$TARGET \
+--disable-nls \
+--enable-languages=c,c++ --without-headers \
+--enable-interwork --enable-multilib \
+--with-gmp=/usr --with-mpc=/opt/local --with-mpfr=/opt/local
+</pre>
+<p><b>Note:</b> There is an issue with port's GMP, so the version from OS X from /usr is used instead.
+<b>Note2:</b> If you still have some errors, try making a case-sensitive APFS disk image using disk utility app and build from there
+</p>
+<h3> <span class=mw-headline id=Windows_Users> Windows Users </span></h3>
+<p>Windows users need to set up a Unix-like enviroment such as <a href=https://wiki.osdev.org/MinGW title=MinGW>MinGW</a> or <a href=https://wiki.osdev.org/Cygwin title=Cygwin>Cygwin</a>. It may well be worth looking into systems such as Linux and see if they fit your needs, as you commonly use a lot of Unix-like tools in operating systems development and this is much easier from a Unix-like operating system. <b>If you have just installed the basic <a href=https://wiki.osdev.org/Cygwin title=Cygwin>Cygwin</a> package, you have to run the setup.exe again and install the following packages:</b> GCC, G++, Make, Flex, Bison, Diffutils, libintl-devel, libgmp-devel, libmpfr-devel, libmpc-devel, Texinfo
+<p>MinGW + MSYS is an option, and as it addresses the native Windows API instead of a POSIX emulation layer, results in a slightly faster toolchain. Some software packages will not build properly under MSYS as they were not designed for use with Windows. As far as this tutorial is concerned, everything that applies to Cygwin also applies to MSYS unless otherwise specified. Make sure you install the C and C++ compilers, and the MSYS Basic System.
+<p>The "Windows Subsystem for Linux (Beta)", released with the Windows 10 Anniversary update is also an option for using a cross compiler. (Tested 08/08/2016 with GCC 6.1.0 and Binutils 2.27) This cross-compiler works reasonably fast, although being in beta state, it may not be ideal permanent development platform.
+<p><b>Cygwin note:</b> Cygwin includes your Windows <tt>%PATH%</tt> in its bash <tt>$PATH.</tt> If you were using DJGPP before, this could result in confusion as e.g. calling <tt>GCC</tt> on the Cygwin bash command line would still call the DJGPP compiler. After uninstalling DJGPP, you should delete the DJGPP environment variable and clear the <tt>C:\djgpp</tt> entry (or wherever you installed it) from your <tt>%PATH%</tt>. Likewise, it might be a bad idea to mix build environments in your system PATH variable.
+<p><b>MinGW note:</b> Some MinGW-specific information on building a cross-toolchain can be found on the <a rel=nofollow class="external text" href=http://www.mingw.org/wiki/HostedCrossCompilerHOWTO>hosted cross-compiler how-to page</a> on the MinGW homepage.
+<p><b>Windows Subsystem for Linux (Beta) Note:</b> You cannot have your cross compiler in the /mnt/c/ (or /mnt/"x") areas, as trying to compile your cross-compiler there will generate errors, whereas building to $HOME/opt/cross works perfectly. This is fixed with Windows Update KB3176929
+</p>
+<h3> <span class=mw-headline id=OpenBSD_Users> OpenBSD Users </span></h3>
+<p>OpenBSD users might need to install "gcc" package from ports because base system's GCC is very outdated. If you want to build GCC, try to use the ports' version instead of the latest version available and apply all patches from ports to your build. Also, if the build fails during compiling lto-plugin, a temporary solution is to disable LTO altogether during configure stage of building GCC by adding <tt>--disable-lto</tt>
+</p>
+<h2> <span class=mw-headline id=The_Build> The Build </span></h2>
+<p>We build a toolset running on your host that can turn source code into object files for your target system.
+<p>You need to decide where to install your new compiler. It is dangerous and a very bad idea to install it into system directories. You also need to decide whether the new compiler should be installed globally or just for you. If you want to install it just for you (recommended), installing into <tt>$HOME/opt/cross</tt> is normally a good idea. If you want to install it globally, installing it into <tt>/usr/local/cross</tt> is normally a good idea.
+<p>Please note that we build everything out of the source directory tree, as is considered good practice. Some packages only support building outside, some only inside and some both (but may not offer extensive checking with make). Building GCC inside the source directory tree fails miserably, at least for older versions.
+</p>
+<h3> <span class=mw-headline id=Preparation> Preparation </span></h3>
+<div dir=ltr class=mw-geshi style=text-align:left><div class="bash source-bash"><pre class=de1><span class=kw3>export</span> <span class=re2>PREFIX</span>=<span class=st0>"<span class=es2>$HOME</span>/opt/cross"</span>
+<span class=kw3>export</span> <span class=re2>TARGET</span>=i686-elf
+<span class=kw3>export</span> <span class=re2>PATH</span>=<span class=st0>"<span class=es2>$PREFIX</span>/bin:<span class=es2>$PATH</span>"</span></pre></div></div>
+<p>We add the installation prefix to the <tt>PATH</tt> of the current shell session. This ensures that the compiler build is able to detect our new binutils once we have built them.
+<p>The prefix will configure the build process so that all the files of your cross-compiler environment end up in $HOME/opt/cross. You can change that prefix to whatever you like (e.g., /opt/cross or $HOME/cross would be options). If you have administrator access and wish to make the cross-compiler toolchain available to all users, you can install it into the /usr/local prefix - or perhaps a /usr/local/cross prefix if you are willing to change the system configuration such that this directory is in the search paths for all users. Technically, you could even install directly to /usr, so that your cross-compiler would reside alongside your system compiler, but that is not recommended for several reasons (like risking to overwrite your system compiler if you get TARGET wrong, or getting into conflict with your system's package management).
+</p>
+<h3> <span class=mw-headline id=Binutils> Binutils </span></h3>
+<div dir=ltr class=mw-geshi style=text-align:left><div class="bash source-bash"><pre class=de1><span class=kw3>cd</span> <span class=re1>$HOME</span><span class=sy0>/</span>src
+&nbsp;
+<span class=kw2>mkdir</span> build-binutils
+<span class=kw3>cd</span> build-binutils
+..<span class=sy0>/</span>binutils-x.y.z<span class=sy0>/</span>configure <span class=re5>--target</span>=<span class=re1>$TARGET</span> <span class=re5>--prefix</span>=<span class=st0>"<span class=es2>$PREFIX</span>"</span> <span class=re5>--with-sysroot</span> <span class=re5>--disable-nls</span> <span class=re5>--disable-werror</span>
+<span class=kw2>make</span>
+<span class=kw2>make</span> <span class=kw2>install</span></pre></div></div>
+<p>This compiles the binutils (assembler, disassembler, and various other useful stuff), runnable on your system but handling code in the format specified by $TARGET.
+<p><b>--disable-nls</b> tells binutils not to include native language support. This is basically optional, but reduces dependencies and compile time. It will also result in English-language diagnostics, which the people on the <a rel=nofollow class="external text" href=http://forum.osdev.org/>Forum</a> understand when you ask your questions.&nbsp;;-)
+<p><b>--with-sysroot</b> tells binutils to enable sysroot support in the cross-compiler by pointing it to a default empty directory. By default, the linker refuses to use sysroots for no good technical reason, while gcc is able to handle both cases at runtime. This will be useful later on.
+</p>
+<h3> <span class=mw-headline id=GDB> GDB </span></h3>
+<p>It may be worth noting that if you wish to use ```GDB```, and you are running on a different computer architecture than you OS (most common case is developing for ARM on x86_64 or x86_64 on ARM), you need to cross-compile GDB separately. While technically a part of Binutils, resides in a separate repository.
+<p>The protocol for building GDB to target a different architecture is very similar to that of regular Binutils:
+</p>
+<div dir=ltr class=mw-geshi style=text-align:left><div class="bash source-bash"><pre class=de1>..<span class=sy0>/</span>gdb.x.y.z<span class=sy0>/</span>configure <span class=re5>--target</span>=<span class=re1>$TARGET</span> <span class=re5>--prefix</span>=<span class=st0>"<span class=es2>$PREFIX</span>"</span> <span class=re5>--disable-werror</span>
+<span class=kw2>make</span> all-gdb
+<span class=kw2>make</span> install-gdb</pre></div></div>
+<p>The ```--disable-nls``` and ```--with-sysroot`` options don't seem to have any effect.
+</p>
+<h3> <span class=mw-headline id=GCC> GCC </span></h3>
+<dl><dd><i>See also the <a rel=nofollow class="external text" href=http://gcc.gnu.org/install/configure.html>offical instructions for configuring gcc</a>.</i>
+</dl>
+<p>Now, you can build <a href=https://wiki.osdev.org/GCC title=GCC>GCC</a>.
+</p>
+<div dir=ltr class=mw-geshi style=text-align:left><div class="bash source-bash"><pre class=de1><span class=kw3>cd</span> <span class=re1>$HOME</span><span class=sy0>/</span>src
+&nbsp;
+<span class=co0># The $PREFIX/bin dir _must_ be in the PATH. We did that above.</span>
+<span class=kw2>which</span> <span class=re5>--</span> <span class=re1>$TARGET</span>-as <span class=sy0>||</span> <span class=kw3>echo</span> <span class=re1>$TARGET</span>-as is not <span class=kw1>in</span> the PATH
+&nbsp;
+<span class=kw2>mkdir</span> build-gcc
+<span class=kw3>cd</span> build-gcc
+..<span class=sy0>/</span>gcc-x.y.z<span class=sy0>/</span>configure <span class=re5>--target</span>=<span class=re1>$TARGET</span> <span class=re5>--prefix</span>=<span class=st0>"<span class=es2>$PREFIX</span>"</span> <span class=re5>--disable-nls</span> <span class=re5>--enable-languages</span>=c,<span class=kw2>c++</span> <span class=re5>--without-headers</span>
+<span class=kw2>make</span> all-gcc
+<span class=kw2>make</span> all-target-libgcc
+<span class=kw2>make</span> install-gcc
+<span class=kw2>make</span> install-target-libgcc</pre></div></div>
+<p>We build <a href=https://wiki.osdev.org/Libgcc title=Libgcc>libgcc</a>, a low-level support library that the compiler expects available at compile time. Linking against <a href=https://wiki.osdev.org/Libgcc title=Libgcc>libgcc</a> provides integer, floating point, decimal, stack unwinding (useful for exception handling) and other support functions. Note how we are <i>not</i> simply running <tt>make &amp;&amp; make install</tt> as that would build way too much, not all components of gcc are ready to target your unfinished operating system.
+<p><b>--disable-nls</b> is the same as for binutils above.
+<p><b>--without-headers</b> tells <a href=https://wiki.osdev.org/GCC title=GCC>GCC</a> not to rely on any C library (standard or runtime) being present for the target.
+<p><b>--enable-languages</b> tells <a href=https://wiki.osdev.org/GCC title=GCC>GCC</a> not to compile all the other language frontends it supports, but only C (and optionally C++).
+<p>It will take a while to build your cross-compiler. On a multi-core machine, speed up the build by parallelizing it, e.g. <tt>make -j 8 all-gcc</tt>, if 8 is the number of jobs to run simultaneously.
+<p>If you are building a cross compiler for x86-64, you may want to consider building Libgcc without the "red zone": <a href=https://wiki.osdev.org/Libgcc_without_red_zone title="Libgcc without red zone">Libgcc_without_red_zone</a>
+</p>
+<h2> <span class=mw-headline id=Using_the_new_Compiler> Using the new Compiler </span></h2>
+<p>Now you have a "naked" cross-compiler. It does not have access to a C library or C runtime yet, so you cannot use most of the standard includes or create runnable binaries. But it is quite sufficient to compile the kernel you will be making shortly. Your toolset resides in $HOME/opt/cross (or what you set <tt>$PREFIX</tt> to). For example, you have a GCC executable installed as <tt>$HOME/opt/cross/bin/$TARGET-gcc</tt>, which creates programs for your TARGET. 
+<p>You can now run your new compiler by invoking something like:
+</p>
+<div dir=ltr class=mw-geshi style=text-align:left><div class="bash source-bash"><pre class=de1><span class=co4>$</span>HOME<span class=sy0>/</span>opt<span class=sy0>/</span>cross<span class=sy0>/</span>bin<span class=sy0>/</span><span class=re1>$TARGET</span>-gcc <span class=re5>--version</span></pre></div></div>
+<p>Note how this compiler is <i>not</i> able to compile normal C programs. The cross-compiler will spit errors whenever you want to #include any of the standard headers (except for a select few that actually are platform-independent, and generated by the compiler itself). This is quite correct - you don't have a standard library for the target system yet!
+<p>The C standard defines two different kinds of executing environments - "freestanding" and "hosted". While the definition might be rather fuzzy for the average application programmer, it is pretty clear-cut when you're doing OS development: A kernel is "freestanding", everything you do in user space is "hosted". A "freestanding" environment needs to provide only a subset of the C library: <tt>float.h</tt>, <tt>iso646.h</tt>, <tt>limits.h</tt>, <tt>stdalign.h</tt>, <tt>stdarg.h</tt>, <tt>stdbool.h</tt>, <tt>stddef.h</tt>, <tt>stdint.h</tt> and <tt>stdnoreturn.h</tt> (as of C11). All of these consist of typedef s and #define s "only", so you can implement them without a single .c file in sight.
+<p>Note that to have these compiler-provided includes work properly, you need to build your kernel with the <tt>-ffreestanding</tt> flag. Otherwise, they might attempt including your standard library's copy of the headers, which isn't gonna work if you don't have a standard library.
+<p>To use your new compiler simply by invoking <tt>$TARGET-gcc</tt>, add <tt>$HOME/opt/cross/bin</tt> to your <tt>$PATH</tt> by typing:
+</p>
+<div dir=ltr class=mw-geshi style=text-align:left><div class="bash source-bash"><pre class=de1><span class=kw3>export</span> <span class=re2>PATH</span>=<span class=st0>"<span class=es2>$HOME</span>/opt/cross/bin:<span class=es2>$PATH</span>"</span></pre></div></div>
+<p>This command will add your new compiler to your PATH for this shell session. If you wish to use it permanently, add the PATH command to your <tt>~/.profile</tt> configuration shell script or similar. Consult your shell documentation for more information.
+<p>You can now move on to complete the <a href=https://wiki.osdev.org/Bare_Bones title="Bare Bones">Bare Bones</a> tutorial variant that lead you here and complete it using your new cross-compiler. If you built a new GCC version as your system compiler and used it to build the cross-compiler, you can now safely uninstall it unless you wish to continue using it.
+</p>
+<h2> <span class=mw-headline id=Troubleshooting> Troubleshooting </span></h2>
+<p>In general, <b>verify</b> that you read the instructions carefully and typed the commands precisely. Don't skip instructions. You will have to set your PATH variable again if you use a new shell instance, if you don't make it permanent by adding it to your shell profile. If a compilation seems to have gotten really messed up, type <tt>make distclean</tt>, and then start the make process over again. Ensure your un-archiever doesn't change newline characters.
+</p>
+<h4> <span class=mw-headline id=ld:_cannot_find_-lgcc> ld: cannot find -lgcc </span></h4>
+<p>You specified that you want to link the GCC low-level runtime library into your executable through the <tt>-lgcc</tt>' switch, but forgot to build and properly install the library.<br>
+If you got no warnings or errors while installing libgcc and you still have problems you can copy the library in your project and link it with <tt>-L. -lgcc</tt><br>
+The libgcc is at $PREFIX/lib/gcc/$TARGET/&lt;gcc-version&gt;/libgcc.a .
+</p>
+<h4> <span class=mw-headline id=Binutils_2.9> Binutils 2.9 </span></h4>
+<p>What's alphabetically on the top or bottom is not necessarily the latest version. After 2.9 comes 2.10, 2.11, 2.12 and then there are more releases that are all newer and progressively more likely to build or support your choice of GCC version.
+</p>
+<h4> <span class=mw-headline id=Building_GCC:_the_directory_that_should_contain_system_headers_does_not_exist> Building GCC: the directory that should contain system headers does not exist </span></h4>
+<p>You might encounter this error when building <tt>mingw32</tt> targets, for example <tt>x86_64-w64-mingw32</tt>. The offending directory that can't be found is <tt>$SYSROOT/mingw/include</tt>. If you look in your sysroot, you will, of course, realise that no such folder exists.
+<p>The solution is simply to create the empty folders:
+</p>
+<div dir=ltr class=mw-geshi style=text-align:left><div class="bash source-bash"><pre class=de1><span class=kw2>mkdir</span> <span class=re5>-p</span> <span class=re1>$SYSROOT</span><span class=sy0>/</span>mingw<span class=sy0>/</span>include
+<span class=kw2>mkdir</span> <span class=re5>-p</span> <span class=re1>$SYSROOT</span><span class=sy0>/</span>mingw<span class=sy0>/</span>lib</pre></div></div>
+<p>This will allow the build to proceed. The reason this happens is that the <tt>mingw32</tt> (and mingw itself) configures <tt>INCLUDE_PATH</tt> and <tt>LIBRARY_PATH</tt> to be, as can be guessed, <tt>/mingw/include</tt> and <tt>/mingw/lib</tt>, instead of the defaults <tt>/usr/include</tt> and <tt>/usr/lib</tt>. Why the build fails even though nothing is required in those folders, and why it doesn't just make them, is beyond me.
+</p>
+<h3> <span class=mw-headline id=GCC_libsanitizer_failing_to_build> GCC libsanitizer failing to build </span></h3>
+<p>Sometimes GCC can't build libsanitizer, if that happens append <tt>--disable-libsanitizer</tt> to the configure command.<br>
+This only applies for building a hosted compiler.
+</p>
+<h2> <span class=mw-headline id=More_advanced> More advanced </span></h2>
+<p>Using this simple cross compiler will be sufficient for quite some time, but at some point you will want the compiler to automatically include your own system headers and libraries. Building an <a href=https://wiki.osdev.org/OS_Specific_Toolchain title="OS Specific Toolchain">OS-specific toolchain</a> for your own operating system is the way to go from here.
+</p>
+<h2> <span class=mw-headline id=See_Also> See Also </span></h2>
+<h3> <span class=mw-headline id=Articles> Articles </span></h3>
+<ul><li><a href=https://wiki.osdev.org/Cross-Compiler_Successful_Builds title="Cross-Compiler Successful Builds">Cross-Compiler Successful Builds</a> - combinations of GCC and Binutils which have been shown to work with this tutorial by OSDev.org members.
+<li><a href=https://wiki.osdev.org/Target_Triplet title="Target Triplet">Target Triplet</a> - on target triplets and their use
+<li><a href=https://wiki.osdev.org/OS_Specific_Toolchain title="OS Specific Toolchain">OS Specific Toolchain</a> - going a step further and adding your own target.
+<li><a href=https://wiki.osdev.org/LLVM_Cross-Compiler title="LLVM Cross-Compiler">LLVM Cross-Compiler</a> - some compilers make things much easier.
+<li><a href=https://wiki.osdev.org/Canadian_Cross title="Canadian Cross" class=mw-redirect>Canadian Cross</a> - making things yet more complicated.
+</ul>
+<h3> <span class=mw-headline id=External_Links> External Links </span></h3>
+<ul><li><a rel=nofollow class="external free" href=http://kegel.com/crosstool>http://kegel.com/crosstool</a> has a popular example of a script that automatically downloads, patches, and builds binutils, gcc, and glibc for known platforms.
+<li><a rel=nofollow class="external free" href=http://gcc.gnu.org/onlinedocs/gccint/Libgcc.html>http://gcc.gnu.org/onlinedocs/gccint/Libgcc.html</a> - Summary of the support functions you get when you link with libgcc.
+<li><a rel=nofollow class="external free" href="http://forums.gentoo.org/viewtopic.php?t=66125">http://forums.gentoo.org/viewtopic.php?t=66125</a> - Compiling Windows applications under Linux
+<li><a rel=nofollow class="external free" href=http://www.libsdl.org/extras/win32/cross/README.txt>http://www.libsdl.org/extras/win32/cross/README.txt</a> - dito
+<li><a rel=nofollow class="external free" href=https://github.com/travisg/toolchains>https://github.com/travisg/toolchains</a> - Another script for building simple cross compilers
+<li><a rel=nofollow class="external free" href="https://www.youtube.com/watch?v=aESwsmnA7Ec">https://www.youtube.com/watch?v=aESwsmnA7Ec</a> - A walkthrough of how to build a cross-compiler using Cygwin on Windows.
+<li><a rel=nofollow class="external free" href=https://github.com/Cheapskate01/Cross-Compiler-Build-Script>https://github.com/Cheapskate01/Cross-Compiler-Build-Script</a> - A dead-simple script that Binutils and Gcc for you.
+</ul>
+<h3> <span class=mw-headline id=Prebuilt_Toolchains> Prebuilt Toolchains </span></h3>
+<p>These were built by people in the OSdev community for their own building needs and shared at will, without guaranteeing any support or that it will even work on your setup. YMMV.
+<p><b>Latests versions for Linux (many arch)</b>
+</p>
+<ul><li> <a rel=nofollow class="external text" href=https://www.kernel.org/pub/tools/crosstool/>kernel.org various hosts/targets</a>
+</ul>
+<p><b>For Linux i686 host</b>
+</p>
+<ul><li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=1zcFAmxi7mtOwhMaKE36IsjLRB0uEv17p">aarch64-elf 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=1uEFrOJPxy13vxWCy-5IbxCJAs5TRdtTE">arm-eabi 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=13Kg6Xd8acUnwUoZQBTOjwAQQeGOeYzVz">i386-elf 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=1F5RsfIEfcpRYAqu5UuGTKgkMa3eBsXnP">i486-elf 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=1PdEFqMEJf_Vuf0drO1m8bjlrsudAmI5k">i586-elf 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=1g9jzEIn8CB6ZiVrc0uxbZprepcX4gYex">i686-elf 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=1xIeNJwD0Do-REFxzCLOkMIVYI3HGJUTX">mips-elf 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=10UuOf9LW4y9WEJcTWrMZW0GAlOWh9KG7">mips64-elf 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=1oW6UWr-OY22EgtyuXovORUtHeVLkL-Tw">m64k-elf 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=1H3Cbq4D_kjROB-7Otiisa-mac_9FYUM-">powerpc-elf 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=1kFGNHWhcBD9cf8X2y-BW49Su04lMa1ev">sh-elf 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=1XzQDKTK35EX8b380bPRbuhX1GPKrtI77">sparc-elf 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=1pU8bS0McTyRUTHb1b_c8ZVa2Ka_XeeEp">x86_64-elf 9.3.0 target</a>
+<li> <a rel=nofollow class="external text" href="https://drive.google.com/open?id=1cqk9RzY3QXQuaS-YdIWtCECKL81pcsv-">xtensa-elf 9.3.0 target</a>
+</ul>
+<p><b>For Linux x86_64 host</b>
+</p>
+<ul><li> <a rel=nofollow class="external text" href="https://drive.google.com/file/d/0Bw6lG3Ej2746STJaM2dNbC05elE/view?usp=sharing">i386-elf &amp; i686-elf 7.1.0 target uploaded by TheAlmostGenius</a>
+</ul>
+<ul><li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/i386-elf-7.5.0-Linux-x86_64.tar.xz>i386-elf 7.5.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/x86_64-elf-7.5.0-Linux-x86_64.tar.xz>x86_64-elf 7.5.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/aarch64-elf-7.5.0-Linux-x86_64.tar.xz>aarch64-elf 7.5.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/arm-eabi-7.5.0-Linux-x86_64.tar.xz>arm-eabi 7.5.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/m68k-elf-7.5.0-Linux-x86_64.tar.xz>m68k-elf 7.5.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/microblaze-elf-7.5.0-Linux-x86_64.tar.xz>microblaze-elf 7.5.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/mips-elf-7.5.0-Linux-x86_64.tar.xz>mips-elf 7.5.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/nios2-elf-7.5.0-Linux-x86_64.tar.xz>nios2-elf 7.5.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/powerpc-elf-7.5.0-Linux-x86_64.tar.xz>powerpc-elf 7.5.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/riscv32-elf-7.5.0-Linux-x86_64.tar.xz>riscv32-elf 7.5.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/riscv64-elf-7.5.0-Linux-x86_64.tar.xz>riscv64-elf 7.5.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/sh-elf-7.5.0-Linux-x86_64.tar.xz>sh-elf 7.5.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://newos.org/toolchains/sparc-elf-7.5.0-Linux-x86_64.tar.xz>sparc-elf 7.5.0 target</a>
+</ul>
+<p>The packages from phillid.tk below have been shrunk to about 10 MiB for each pair of packages (GCC &amp; Binutils).
+Please note that this has been achieved by enabling only the C front-end for GCC.
+If you're going to write your OS in any language but C or Assembly, these packages aren't for you.
+These are actually Pacman packages, but untarring them to / and rm-ing /.MTREE and other clutter dotfiles contained in the package will work the same.
+<p><b>For Windows host</b>
+</p>
+<ul><li> <a rel=nofollow class="external text" href="https://drive.google.com/file/d/0B85K_c7mx3QjUnZuaFRPWlBIcXM/edit?usp=sharing">i686-elf 4.8.2 target</a>
+<li> <a rel=nofollow class="external text" href=https://mega.co.nz/#F!bBxA3SKJ!TDL4i1NjaZKd4YMo9p2U7g>x86_64-elf 5.1.0 target</a>
+<li> <a rel=nofollow class="external text" href=https://github.com/lordmilko/i686-elf-tools>i686-/x86_64-elf 7.1.0 target + GDB</a>
+</ul>
+<p><b>For Windows Subsystem for Linux (Beta) host</b>
+</p>
+<ul><li> <a rel=nofollow class="external text" href=http://www.bin-os.com/i686-elf-6.1.0.tar.gz>i686-elf 6.1.0 target</a> (extracts to a directory called "cross", don't forget to install 'make' - I would recommend "apt-get install build-essential" to also add additional useful tools)
+</ul>
+<p><b>For macOS host</b>
+<p>x86_64-elf <a rel=nofollow class="external text" href=https://formulae.brew.sh/formula/x86_64-elf-binutils>binutils</a> and <a rel=nofollow class="external text" href=https://formulae.brew.sh/formula/x86_64-elf-gcc>gcc</a> (canonical target name x86_64-pc-elf) can be installed from <a rel=nofollow class="external text" href=https://brew.sh/>homebrew</a>:
+</p>
+<pre>$ brew install x86_64-elf-gcc
+</pre>
+<p>i686-elf toolchain is also <a rel=nofollow class="external text" href=https://formulae.brew.sh/formula/i686-elf-gcc>available</a> in homebrew.
+<p><b>ARM prebuilt toolchains for multiple host platforms</b>
+<p>ARM provides it's own prebuilt toolchain based upon GNU utilities for development targeting ARM systems.
+</p>
+<ul><li> <a rel=nofollow class="external text" href=https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads>GNU ARM Embedded Toolchain</a>
+</ul>
+<p><b>Docker image</b>
+</p>
+<ul><li> <a rel=nofollow class="external text" href=https://hub.docker.com/r/joshwyant/gcc-cross/>i686-elf 8.1.0 target</a>
+</ul>
+</div> 
+ 
+ <div class="printfooter sf-hidden">
+ Retrieved from "" </div>
+ 
+ 
+ <div id=catlinks class=catlinks><div id=mw-normal-catlinks><a href=https://wiki.osdev.org/Special:Categories title=Special:Categories>Categories</a>: <ul><li><a href=https://wiki.osdev.org/Category:Articles_Written_in_First_Person title="Category:Articles Written in First Person">Articles Written in First Person</a><li><a href=https://wiki.osdev.org/Category:Level_1_Tutorials title="Category:Level 1 Tutorials">Level 1 Tutorials</a><li><a href=https://wiki.osdev.org/Category:Compilers title=Category:Compilers>Compilers</a><li><a href=https://wiki.osdev.org/Category:Tutorials title=Category:Tutorials>Tutorials</a></ul></div></div> 
+ <div class=visualClear></div>
+ 
+ 
+ </div>
+ 
+ </div>
+ 
+ 
+ <div id=mw-head class=noprint>
+ 
+<div id=p-personal>
+ <h5 class=sf-hidden>Personal tools</h5>
+ <ul>
+ <li id=pt-login><a href="https://wiki.osdev.org/index.php?title=Special:UserLogin&amp;returnto=GCC_Cross-Compiler" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey=o>Log in</a></li>
+ </ul>
+</div>
+ <div id=left-navigation>
+ 
+<div id=p-namespaces class=vectorTabs>
+ <h5 class=sf-hidden>Namespaces</h5>
+ <ul>
+ <li id=ca-nstab-main class=selected><span><a href=https://wiki.osdev.org/GCC_Cross-Compiler title="View the content page [alt-shift-c]" accesskey=c>Page</a></span></li>
+ <li id=ca-talk><span><a href=https://wiki.osdev.org/Talk:GCC_Cross-Compiler title="Discussion about the content page [alt-shift-t]" accesskey=t>Discussion</a></span></li>
+ </ul>
+</div>
+<div id=p-variants class="vectorMenu emptyPortlet sf-hidden">
+ 
+ 
+</div>
+ </div>
+ <div id=right-navigation>
+ 
+<div id=p-views class=vectorTabs>
+ <h5 class=sf-hidden>Views</h5>
+ <ul>
+ <li id=ca-view class=selected><span><a href=https://wiki.osdev.org/GCC_Cross-Compiler>Read</a></span></li>
+ <li id=ca-viewsource><span><a href="https://wiki.osdev.org/index.php?title=GCC_Cross-Compiler&amp;action=edit" title="This page is protected.
+You can view its source [alt-shift-e]" accesskey=e>View source</a></span></li>
+ <li id=ca-history class=collapsible><span><a href="https://wiki.osdev.org/index.php?title=GCC_Cross-Compiler&amp;action=history" title="Past revisions of this page [alt-shift-h]" accesskey=h>View history</a></span></li>
+ </ul>
+</div>
+<div id=p-cactions class="vectorMenu emptyPortlet sf-hidden">
+ 
+ 
+</div>
+<div id=p-search>
+ <h5 class=sf-hidden></h5>
+ <form action=/index.php id=searchform>
+ 
+ <input type=search name=search title="Search OSDev Wiki [alt-shift-f]" accesskey=f id=searchInput value> <input type=submit name=go value=Go title="Go to a page with this exact name if exists" id=searchGoButton class=searchButton> <input type=submit name=fulltext value=Search title="Search the pages for this text" id=mw-searchButton class=searchButton> </form>
+</div>
+ </div>
+ </div>
+ 
+ 
+ <div id=mw-panel class=noprint>
+ 
+ <div id=p-logo><a style="background-image:/* original URL: https://wiki.osdev.org/skins/common/images/osdev.png */url(data:image/png;base64,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)" href=https://wiki.osdev.org/Main_Page title="Visit the main page"></a></div>
+ 
+ 
+<div class=portal id=p-navigation>
+ <h5>Navigation</h5>
+ <div class=body>
+ <ul>
+ <li id=n-mainpage><a href=https://wiki.osdev.org/Main_Page title="Visit the main page [alt-shift-z]" accesskey=z>Main Page</a></li>
+ <li id=n-portal><a href=http://forum.osdev.org/ rel=nofollow title="About the project, what you can do, where to find things">Forums</a></li>
+ <li id=n-FAQ><a href=https://wiki.osdev.org/Category:FAQ>FAQ</a></li>
+ <li id=n-OS-Projects><a href=https://wiki.osdev.org/Projects>OS Projects</a></li>
+ <li id=n-randompage><a href=https://wiki.osdev.org/Special:Random title="Load a random page [alt-shift-x]" accesskey=x>Random page</a></li>
+ </ul>
+ </div>
+</div>
+<div class=portal id=p-about>
+ <h5>About</h5>
+ <div class=body>
+ <ul>
+ <li id=n-This-site><a href=https://wiki.osdev.org/OSDevWiki:About>This site</a></li>
+ <li id=n-Joining><a href=https://wiki.osdev.org/OSDevWiki:Joining>Joining</a></li>
+ <li id=n-Editing-help><a href=https://wiki.osdev.org/OSDevWiki:Editing>Editing help</a></li>
+ <li id=n-recentchanges><a href=https://wiki.osdev.org/Special:RecentChanges title="A list of recent changes in the wiki [alt-shift-r]" accesskey=r>Recent changes</a></li>
+ </ul>
+ </div>
+</div>
+<div class=portal id=p-tb>
+ <h5>Toolbox</h5>
+ <div class=body>
+ <ul>
+ <li id=t-whatlinkshere><a href=https://wiki.osdev.org/Special:WhatLinksHere/GCC_Cross-Compiler title="A list of all wiki pages that link here [alt-shift-j]" accesskey=j>What links here</a></li>
+ <li id=t-recentchangeslinked><a href=https://wiki.osdev.org/Special:RecentChangesLinked/GCC_Cross-Compiler title="Recent changes in pages linked from this page [alt-shift-k]" accesskey=k>Related changes</a></li>
+ <li id=t-specialpages><a href=https://wiki.osdev.org/Special:SpecialPages title="A list of all special pages [alt-shift-q]" accesskey=q>Special pages</a></li>
+ <li><a href="https://wiki.osdev.org/index.php?title=GCC_Cross-Compiler&amp;printable=yes" rel=alternate>Printable version</a></li>
+ <li id=t-permalink><a href="https://wiki.osdev.org/index.php?title=GCC_Cross-Compiler&amp;oldid=27769" title="Permanent link to this revision of the page">Permanent link</a></li>
+ </ul>
+ </div>
+</div>
+<div class=portal id=p-lang>
+ <h5>In other languages</h5>
+ <div class=body>
+ <ul>
+ <li class=interwiki-de><a href=http://www.lowlevel.eu/wiki/Cross-Compiler title=Cross-Compiler>Deutsch</a></li>
+ </ul>
+ </div>
+</div>
+ </div>
+ 
+ 
+ <div id=footer>
+ <ul id=footer-info>
+ <li id=footer-info-lastmod> This page was last modified on 18 May 2023, at 06:08.</li>
+ <li id=footer-info-viewcount>This page has been accessed 1,089,811 times.</li>
+ </ul>
+ <ul id=footer-places>
+ <li id=footer-places-privacy><a href=https://wiki.osdev.org/OSDev_Wiki:Privacy_policy title="OSDev Wiki:Privacy policy">Privacy policy</a></li>
+ <li id=footer-places-about><a href=https://wiki.osdev.org/OSDev_Wiki:About title="OSDev Wiki:About">About OSDev Wiki</a></li>
+ <li id=footer-places-disclaimer><a href=https://wiki.osdev.org/OSDev_Wiki:General_disclaimer title="OSDev Wiki:General disclaimer">Disclaimers</a></li>
+ </ul>
+ <ul id=footer-icons class=noprint>
+ <li id=footer-poweredbyico>
+ <a href=http://www.mediawiki.org/><img src="data:image/png;base64,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" alt="Powered by MediaWiki" data-sf-original-src=https://wiki.osdev.org/skins/common/images/poweredby_mediawiki_88x31.png width=88 height=31></a>
+ </li>
+ </ul>
+ <div style=clear:both></div>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+<script>document.currentScript.remove();!function(){"use strict";(t=>{const n="singlefile-infobar",e="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8H+DhhoQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJJJREFUOI3t070NRCEMA2CnYAOyDyPwpHj/Va7hJ3FzV7zy3ET5JIwoAF6Jk4wzAJAkzxAYG9YRTgB+24wBgKmfrGAKTcEfAY4KRlRoIeBTgKOCERVaCPgU4Khge2GqKOBTgKOCERVaAEC/4PNcnyoSWHpjqkhwKxbcig0Q6AorXYF/+A6eIYD1lVbwG/jdA6/kA2THRAURVubcAAAAAElFTkSuQmCC",o="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHAB8VC4EQ6QAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAICHi4qKioTuJAkAAAABdFJOUwBA5thmAAAAAWJLR0QCZgt8ZAAAAJtJREFUOI3NkrsBgCAMRLFwBPdxBArcfxXFkO8rbKWAAJfHJ9faf9vuYX/749T5NmShm3bEwbe2SxeuM4+2oxDL1cDoKtVUjRy+tH78Cv2CS+wIiQNC1AEhk4AQeUTMWUJMfUJMSEJMSEY8kIx4IONroaYAimNxsXp1PA7PxwfVL8QnowwoVC0lig07wDDVUjAdbAnjwtow/z/bDW7eI4M2KruJAAAAAElFTkSuQmCC",i="SingleFile",A="single-file-ui-element",r="\n\t.infobar {\n\t\tbackground-color: #737373;\n\t\tcolor: white;\n\t\tdisplay: flex;\n\t\tposition: fixed;\n\t\ttop: 16px;\n\t\tright: 16px;\n\t\theight: auto;\n\t\twidth: auto;\n\t\tmin-height: 24px;\n\t\tmin-width: 24px;\n\t\tbackground-position: center;\n\t\tbackground-repeat: no-repeat;\n\t\tz-index: 2147483647;\n\t\tmargin: 0 0 0 16px;\n\t\tbackground-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kj1Iw0AYht+mSkUrDnYQcchQnSyIijqWKhbBQmkrtOpgcukfNGlIUlwcBdeCgz+LVQcXZ10dXAVB8AfEydFJ0UVK/C4ptIjx4LiH9+59+e67A4RGhalm1wSgapaRisfEbG5VDLyiDwEAvZiVmKkn0osZeI6ve/j4ehfhWd7n/hz9St5kgE8kjjLdsIg3iGc2LZ3zPnGIlSSF+Jx43KACiR+5Lrv8xrnosMAzQ0YmNU8cIhaLHSx3MCsZKvE0cVhRNcoXsi4rnLc4q5Uaa9XJbxjMaytprtMcQRxLSCAJETJqKKMCCxFaNVJMpGg/5uEfdvxJcsnkKoORYwFVqJAcP/gb/O6tWZiadJOCMaD7xbY/RoHALtCs2/b3sW03TwD/M3Cltf3VBjD3SXq9rYWPgIFt4OK6rcl7wOUOMPSkS4bkSH6aQqEAvJ/RM+WAwVv6EGtu31r7OH0AMtSr5Rvg4BAYK1L2use9ezr79u+ZVv9+AFlNcp0UUpiqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AsHADIRLMaOHwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAPUExURQAAAIqKioyNjY2OjvDw8L2y1DEAAAABdFJOUwBA5thmAAAAAWJLR0QB/wIt3gAAAGNJREFUSMdjYCAJsLi4OBCQx6/CBQwIGIDPCBcXAkYQUsACU+AwlBVQHg6Eg5pgZBGOboIJZugDFwRwoJECJCUOhJI1wZwzqmBUwagCuipgIqTABG9h7YIKaKGAURAFEF/6AQAO4HqSoDP8bgAAAABJRU5ErkJggg==);\n\t\tborder-radius: 16px;\n\t\tuser-select: none;\n\t\t-moz-user-select: none;\n\t\topacity: .7;\n\t\tcursor: pointer;\n\t\tpadding-left: 0;\n\t\tpadding-right: 0;\n\t\tpadding-top: 0;\n\t\tpadding-bottom: 0;\n\t\tborder: 2px solid #eee;\n\t\tbackground-size: 70% 70%;\n\t\ttransition: all 250ms;\n\t\tfont-size: 13px;\n\t}\n\t.infobar:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open {\n\t\topacity: 1;\n\t\tbackground-color: #f9f9f9;\n\t\tcursor: auto;\n\t\tcolor: #2d2d2d;\n\t\tpadding-top: 2px;\n\t\tpadding-bottom: 2px;\n\t\tborder: 2px solid #878787;\n\t\tbackground-image: none;\n\t\tborder-radius: 8px;\n\t\tuser-select: initial;\n\t\t-moz-user-select: initial;\n\t}\n\t.infobar-close-button {\n\t\tdisplay: none;\n\t\topacity: .7;\n\t\tpadding-top: 4px;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tcursor: pointer;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-close-button:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-content {\n\t\tdisplay: none;\n\t\tfont-family: Arial;\n\t\tfont-size: 14px;\n\t\tline-height: 22px;\n\t\tword-break: break-word;\n\t\twhite-space: pre-wrap;\n\t\tposition: relative;\n\t\ttop: 1px;\n\t\ttext-align: left;\n\t}\n\t.infobar-link {\n\t\tdisplay: none;\n\t\tpadding-left: 8px;\n\t\tpadding-right: 8px;\n\t\tline-height: 11px;\n\t\tcursor: pointer;\n\t\tuser-select: none;\n\t\toutline: 0;\n\t}\n\t.infobar-link-icon {\n\t\tpadding-top: 4px;\n\t\tpadding-left: 2px;\n\t\tcursor: pointer;\n\t\topacity: .7;\n\t\ttransition: opacity 250ms;\n\t\theight: 16px;\n\t}\n\t.infobar-link-icon:hover {\n\t\topacity: 1;\n\t}\n\t.infobar-open .infobar-close-button, .infobar-open .infobar-content, .infobar-open .infobar-link {\n\t\tdisplay: inline-block;\n\t}";let a=!0;const c=t.browser;async function s(){const t=document.evaluate("//comment()",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);let s=t&&t.singleNodeValue;if(s&&((p=s).nodeType==Node.COMMENT_NODE&&p.textContent.includes(i))){const t=s.textContent.split("\n"),[,,i,...p]=t,g=i.match(/^ url: (.*) $/),h=g&&g[1];if(h){let t;if(c&&c.runtime&&c.runtime.sendMessage)try{t=await c.runtime.sendMessage({method:"tabs.getOptions",url:h})}catch(n){t={displayInfobar:!0}}else t={displayInfobar:!0};t.displayInfobar&&await async function(t,i){let c=document.querySelector(n);if(!c){let s="";if(i.length){const t=i[0].split("saved date: ")[1];if(t&&i.shift(),i.length>1){let t=i[0].split("info: ")[1].trim();for(let n=1;n<i.length-1;n++)t+="\n"+i[n].trim();s=t.trim()}else s=t}s=s||"No info",c=d(n,document.body),c.className=A;const p=await async function(t){if(t.attachShadow)return t.attachShadow({mode:"open"});{a=!1;const n=d("iframe",t);return n.style.setProperty("background-color","transparent","important"),n.style.setProperty("position","fixed","important"),n.style.setProperty("top",0,"important"),n.style.setProperty("right",0,"important"),n.style.setProperty("width","44px","important"),n.style.setProperty("height","48px","important"),n.style.setProperty("z-index",2147483647,"important"),new Promise((t=>{n.contentDocument.body.style.setProperty("margin",0),n.onload=()=>t(n.contentDocument.body)}))}}(c),g=document.createElement("style");g.textContent=r,p.appendChild(g);const h=document.createElement("div");h.classList.add("infobar"),p.appendChild(h);const u=document.createElement("img");u.classList.add("infobar-close-button"),h.appendChild(u),u.src=o,u.onclick=t=>{0===t.button&&c.remove()};const m=document.createElement("span");h.appendChild(m),m.classList.add("infobar-content"),m.textContent=s;const f=document.createElement("a");f.classList.add("infobar-link"),h.appendChild(f),f.target="_blank",f.rel="noopener noreferrer",f.title="Open source URL: "+t,f.href=t;const b=document.createElement("img");b.classList.add("infobar-link-icon"),f.appendChild(b),b.src=e,l(h),document.addEventListener("click",(t=>{if(0===t.button){let n=t.target;for(;n&&n!=c;)n=n.parentElement;n!=c&&l(h)}}))}}(h,p)}}var p}function l(t){if(t.classList.remove("infobar-open"),t.onclick=e=>{if(0===e.button)return function(t){a||document.querySelector(n).childNodes[0].contentWindow.getSelection().removeAllRanges();if(t.classList.add("infobar-open"),t.onclick=null,t.onmouseout=null,!a){const e=document.querySelector(n).childNodes[0];e.style.setProperty("width","100vw","important"),e.style.setProperty("height","100vh","important"),e.style.setProperty("width",t.getBoundingClientRect().width+33+"px","important"),e.style.setProperty("height",t.getBoundingClientRect().height+21+"px","important")}}(t),!1},!a){const t=document.querySelector(n).childNodes[0];t.style.setProperty("width","44px","important"),t.style.setProperty("height","48px","important")}}function d(t,n){const e=document.createElement(t);return n.appendChild(e),Array.from(getComputedStyle(e)).forEach((t=>e.style.setProperty(t,"initial","important"))),e}t.window==t.top&&("loading"==document.readyState?document.addEventListener("DOMContentLoaded",s,!1):s())})("object"==typeof globalThis?globalThis:window)}();
+</script>
