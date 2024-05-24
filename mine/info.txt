@@ -1,2 +1,4 @@
 showkey -a - find which key is pressed
 xev on xorg for same.
+adding meta tag in one way to block js.
+adding mutation observer is other. Add a script block which adds a mutation observer.

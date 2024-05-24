@@ -1,0 +1,51 @@
+q - quick fav
+f - radius
+F - strength
+u - material
+y - layer
+i - insert frame
+h - hide active layer
+H - hide inactive layer
+Alt-h - unhide
+Alt - st line (draw tool)
+Ctrl - erase
+C-Alt - lasso erase
+shift - st line (line tool)
+g - move
+enter - commiy
+S-middle mouse - pan
+Num - 0 - camera
+
+Edit mode:
+1,2,3 - select point,stroke,...
+Ctrl-Num+ - select more, - for less
+l - select linked
+shift-g - select group
+ctrl-i - invert selection
+a - select all
+alt-a - deselect all
+m - move to layer
+f - close pts
+ctrl-j - join pts
+v - move - splits strokes
+ctrl-c - copy
+D - duplicate
+R - repeat last action
+Alt-s - change stroke radius
+ctrl+m+x(axis) - mirror
+x - delete/dissolve
+
+Timeline:
+up/down - next frame
+Shift left/right - goto start/end
+tab - lock active layer
+select keyframe at summary layer to select keyframe at below layers too.
+B - box selece
+c - circle
+G,D,R,s,x
+e - extend on one side of playhead
+shift-t - slide keyframes
+
+
+
+
